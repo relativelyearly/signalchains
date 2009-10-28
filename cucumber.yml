@@ -1,1 +1,4 @@
-autotest: features -r features --format pretty --color --no-source
+default: features -r features --format pretty --color --no-source --tags @current
+all: features -r features --format pretty --color --no-source --tags ~@pending
+autotest: features -r features --format pretty --color --no-source --tags ~@pending
+autotest-all: features -r features --format pretty --color --no-source --tags ~@pending

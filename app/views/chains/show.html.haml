@@ -1,0 +1,54 @@
+- title "Chain"
+
+%p
+  %strong User:
+  =h @chain.user
+%p
+  %strong Status:
+  =h @chain.status
+%p
+  %strong Name:
+  =h @chain.name
+%p
+  %strong Notes:
+  =h @chain.notes
+%p
+  %strong Audio:
+  = image_tag @chain.audio.url
+%p
+  %strong Title:
+  =h @chain.title
+%p
+  %strong Performer:
+  =h @chain.performer
+%p
+  %strong Year:
+  =h @chain.year
+%p
+  %strong Studio:
+  =h @chain.studio
+
+%ul
+  - for tag in @chain.tags
+    %li= tag.name
+
+- unless complete_message.empty?
+  .incomplete_chain= complete_message
+
+Mic
+Line In
+
+- semantic_form_for @chain, :html => {:multipart => true} do |f|
+  = f.input :title
+  = f.input :performer
+  = f.input :year, :label => 'Year Recorded'
+  = f.input :studio
+  = f.input :audio, :label => false
+  = f.commit_button 'Submit'
+
+%p
+  = link_to "Edit", edit_chain_path(@chain)
+  |
+  = link_to "Destroy", @chain, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", chains_path

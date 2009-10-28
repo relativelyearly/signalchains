@@ -1,0 +1,29 @@
+- title "Chains"
+
+%table
+  %tr
+    %th User
+    %th Status
+    %th Name
+    %th Notes
+    %th Audio
+    %th Title
+    %th Performer
+    %th Year
+    %th Studio
+  - for chain in @chains
+    %tr
+      %td= h chain.user
+      %td= h chain.status
+      %td= h chain.name
+      %td= h chain.notes
+      %td= image_tag chain.audio.url
+      %td= h chain.title
+      %td= h chain.performer
+      %td= h chain.year
+      %td= h chain.studio
+      %td= link_to 'Show', chain
+      %td= link_to 'Edit', edit_chain_path(chain)
+      %td= link_to 'Destroy', chain, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Chain", new_chain_path

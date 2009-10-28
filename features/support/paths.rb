@@ -18,6 +18,8 @@ module NavigationHelpers
       '/logout'
     when /the password reset page/
       '/password_resets/new'
+    when /the new chain page/
+      '/chains/new'
     
     # Add more mappings here.
     # Here is a more fancy example:
