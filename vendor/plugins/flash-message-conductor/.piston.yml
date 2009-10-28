@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: b776bcdb28676a6dafd04d2581a9343e7b8060aa
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/planetargon/flash-message-conductor.git
