@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 465c3357be3c11f68193e5ecda828667ca5c1040
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/giraffesoft/resource_controller.git
