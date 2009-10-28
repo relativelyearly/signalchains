@@ -1,0 +1,35 @@
+/* @group Boxes */
+
+body {
+  background-color: #781803;
+  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-size: 100%;
+}
+
+#container {
+  background-color: #eee;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+}
+
+.session {
+  text-align: right;
+}
+
+/* @end */
+
+/* @group Text */
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5;
+}
+h3 {
+  font-size: 1;
+  font-weight: bold;
+}
+
+
+/* @end */

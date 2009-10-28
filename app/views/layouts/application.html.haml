@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    = javascript_include_merged :base
+    = stylesheet_link_merged :base
+    %title= yield(:title) || "Relatively Early Development"
+  %body
+    .wrapper
+      - authenticated_only do
+        .session
+          = link_to 'Log Out', logout_url
+      #container                             
+        = render_flash_messages
+        = yield
+      .push
+    .footer.redev
+      = image_tag '../images/red_logo.png', :alt => 'Relatively Early Development'
+      = link_to 'A Relatively Early Development', 'http://relativelyearly.com'
