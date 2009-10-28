@@ -10,6 +10,14 @@ module NavigationHelpers
     
     when /the homepage/
       '/'
+    when /the registration page/
+      '/users/new'
+    when /the login page/
+      '/login'
+    when /the logout page/
+      '/logout'
+    when /the password reset page/
+      '/password_resets/new'
     
     # Add more mappings here.
     # Here is a more fancy example:
