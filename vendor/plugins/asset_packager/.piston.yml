@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 8407a666e1eb586995c8a2d094d1eefe4a9b6f8e
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/sbecker/asset_packager.git
