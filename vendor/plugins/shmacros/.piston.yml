@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: 65bcb31d58303da087171e1d5af7417f5b9f960c
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/maxim/shmacros.git
