@@ -1,0 +1,10 @@
+---
+javascripts:
+- base:
+  - jquery
+  - jquery.validate
+  - jrails
+stylesheets:
+- base:
+  - application
+  - style
