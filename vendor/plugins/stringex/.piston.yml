@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: fd7f24674382b4f00eb17f85fb52ada1f2f4bf2c
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/rsl/stringex.git
