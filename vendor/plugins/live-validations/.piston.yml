@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: e6904d149977c991898d416cfd7b5c29f4ada0ba
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/augustl/live-validations.git
