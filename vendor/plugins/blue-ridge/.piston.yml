@@ -1,0 +1,8 @@
+--- 
+format: 1
+handler: 
+  commit: e0fada6f3327b1e3f8968ed3e35c420e616d17a4
+  branch: master
+lock: true
+repository_class: Piston::Git::Repository
+repository_url: git://github.com/relevance/blue-ridge.git
