@@ -1,0 +1,21 @@
+- unless chain_gear.gear.nil?
+  .chain_link
+    .gear.first.col{:class => chain_gear.gear_type.downcase}
+      %h4
+        =h chain_gear.gear.make
+        =h chain_gear.gear.model
+        %em (#{h chain_gear.gear.manufactured_date})
+
+      .info
+        .first.col.w10
+          hey
+        .col.w25
+          = render(:partial => chain_gear.gear.partial, :object => chain_gear.gear)
+        .notes.first
+          =# textilize chain_gear.notes
+    .meta.col.w25
+      nerp
+    .tags.first
+      yelp
+    .clear
+.clear

@@ -1,0 +1,18 @@
+- title "Chain Gear"
+
+%p
+  %strong Gear:
+  =h @chain_gear.gear_id
+%p
+  %strong Gear Type:
+  =h @chain_gear.gear_type
+%p
+  %strong Chain:
+  =h @chain_gear.chain_id
+
+%p
+  = link_to "Edit", edit_chain_gear_path(@chain_gear)
+  |
+  = link_to "Destroy", @chain_gear, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", chain_gears_path

@@ -14,7 +14,7 @@
   =h @chain.notes
 %p
   %strong Audio:
-  = image_tag @chain.audio.url
+  = link_to @chain.audio.url
 %p
   %strong Title:
   =h @chain.title
@@ -35,8 +35,12 @@
 - unless complete_message.empty?
   .incomplete_chain= complete_message
 
-= link_to 'Mic', 
+- @chain.gear.each do |gear|
+  = render(:partial => 'chain_gears/chain_gear', :object => gear)
+
+= link_to 'Mic', chain_mics_url(@chain)
 Line In
+Preamp
 
 - semantic_form_for @chain, :html => {:multipart => true} do |f|
   = f.input :title

@@ -5,4 +5,5 @@ class Chain < ActiveRecord::Base
   has_attached_file :audio
 
   belongs_to :user
+  has_many :gear, :class_name => 'ChainGear'
 end

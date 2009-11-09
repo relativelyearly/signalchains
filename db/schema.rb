@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091028182155) do
+ActiveRecord::Schema.define(:version => 20091109203525) do
+
+  create_table "chain_gears", :force => true do |t|
+    t.integer  "gear_id"
+    t.string   "gear_type"
+    t.integer  "chain_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chains", :force => true do |t|
     t.integer  "user_id"

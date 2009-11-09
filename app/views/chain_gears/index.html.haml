@@ -1,0 +1,17 @@
+- title "Chain Gears"
+
+%table
+  %tr
+    %th Gear
+    %th Gear type
+    %th Chain
+  - for chain_gear in @chain_gears
+    %tr
+      %td= h chain_gear.gear_id
+      %td= h chain_gear.gear_type
+      %td= h chain_gear.chain_id
+      %td= link_to 'Show', chain_gear
+      %td= link_to 'Edit', edit_chain_gear_path(chain_gear)
+      %td= link_to 'Destroy', chain_gear, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Chain Gear", new_chain_gear_path

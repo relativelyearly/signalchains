@@ -1,5 +1,5 @@
 require 'test_helper'
- 
+
 class MicTest < ActiveSupport::TestCase
   context "A Mic instance" do
     setup do
@@ -9,5 +9,6 @@ class MicTest < ActiveSupport::TestCase
     subject { @mic }
 
     should_have_attached_file :image
+    should_have_many :chains, :through => :chain_gears
   end
 end
