@@ -1,0 +1,2 @@
+module MicsHelper
+end

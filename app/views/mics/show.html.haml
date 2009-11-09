@@ -1,0 +1,30 @@
+- title "Mic"
+
+%p
+  %strong Make:
+  =h @mic.make
+%p
+  %strong Model:
+  =h @mic.model
+%p
+  %strong Manufactured Date:
+  =h @mic.manufactured_date
+%p
+  %strong Image:
+  = image_tag @mic.image.url
+%p
+  %strong Mic Type:
+  =h @mic.mic_type
+%p
+  %strong Diaphragm Size:
+  =h @mic.diaphragm_size
+%p
+  %strong Pattern:
+  =h @mic.pattern
+
+%p
+  = link_to "Edit", edit_mic_path(@mic)
+  |
+  = link_to "Destroy", @mic, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", mics_path

@@ -16,4 +16,5 @@ Rails::Initializer.run do |config|
   config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
 
   config.time_zone = 'UTC'
+  config.load_paths << "#{RAILS_ROOT}/app/models/gear"
 end

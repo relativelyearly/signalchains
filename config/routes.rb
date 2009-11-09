@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :mics
+
   map.resources :chains
 
   map.resource :account, :controller => 'users'

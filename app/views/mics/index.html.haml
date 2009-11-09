@@ -1,0 +1,25 @@
+- title "Mics"
+
+%table
+  %tr
+    %th Make
+    %th Model
+    %th Manufactured date
+    %th Image
+    %th Mic type
+    %th Diaphragm size
+    %th Pattern
+  - for mic in @mics
+    %tr
+      %td= h mic.make
+      %td= h mic.model
+      %td= h mic.manufactured_date
+      %td= image_tag mic.image.url
+      %td= h mic.mic_type
+      %td= h mic.diaphragm_size
+      %td= h mic.pattern
+      %td= link_to 'Show', mic
+      %td= link_to 'Edit', edit_mic_path(mic)
+      %td= link_to 'Destroy', mic, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Mic", new_mic_path

@@ -60,7 +60,6 @@ Feature: Create Chain
     And I should see "Overdrive"
     And I should see "Rock 'N Roll"
 
-  @current
   Scenario: Create a Chain without Audio
     Given I am logged in as "test@example.com/password"
     When I go to the new chain page
@@ -70,6 +69,7 @@ Feature: Create Chain
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "This chain is incomplete. It needs an audio file."
 
+  @current
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
