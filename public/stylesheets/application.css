@@ -1,3 +1,5 @@
+/* @override http://signalchains.local/stylesheets/application.css */
+
 a img {
   border: none;
 }
@@ -10,7 +12,7 @@ a {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */  
+	margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
 
 #flash_messages p.notice, #flash_messages p.error {
@@ -68,21 +70,21 @@ a {
 
 .LV_validation_message {
   font-weight: bold;
-  margin-left: 5px;  
+  margin-left: 5px;
 }
- 
+
 .LV_valid {
   background:#E6EFC2;
   color:#264409;
   border-color:#C6D880;
 }
- 
+
 .LV_invalid {
   background:#FBE3E4;
   color:#8a1f11;
   border-color:#FBC2C4;
 }
- 
+
 .LV_invalid_field {
   border-color: red;
   border-width: 1px;
@@ -140,7 +142,7 @@ input.button {
   -moz-border-radius:6px;
   text-decoration: none;
   padding: .3em .5em;
-  border-bottom: 1px solid rgba(144, 142, 139, 1);    
+  border-bottom: 1px solid rgba(144, 142, 139, 1);
   background:-webkit-gradient(linear, left top, left bottom, from(rgba(184, 192, 189, 1)),to(rgba(144, 142, 139, 1)));
   -webkit-box-shadow:0 2px 2px rgba(0, 0, 0, .8);
   color: #000;
@@ -149,17 +151,86 @@ input.button {
 }
 .button:hover{
   top: 1px;
-  -webkit-box-shadow:0 2px 2px rgba(0, 0, 0, .6);    
+  -webkit-box-shadow:0 2px 2px rgba(0, 0, 0, .6);
   border-bottom: 1px solid rgba(144, 142, 139, 1);
 }
 .button:active{
   border-bottom: 1px solid rgba(0,0,0,.6);
   top: 3px;
-  -webkit-box-shadow:0 -2px 1px rgba(180, 180, 180, .5); 
+  -webkit-box-shadow:0 -2px 1px rgba(180, 180, 180, .5);
   background:-webkit-gradient(linear, left top, left bottom, from(rgba(164, 172, 169, 1)),to(rgba(104, 102, 99, 1)));
 }
 
 /* @end */
+.col {
+  float: left;
+  margin-left: 3.125%;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.first {
+  clear: left;
+  margin-left: 0;
+}
+
+.w5 {
+  width: 50px;
+}
+.w10{
+  width: 100px;
+}
+.w15{
+  width: 150px;
+}
+.w20{
+  width: 200px;
+}
+.w25{
+  width: 250px;
+}
+.w30{
+  width: 300px;
+}
+.w35{
+  width: 350px;
+}
+.w40{
+  width: 400px;
+}
+.w45{
+  width: 450px;
+}
+.w50{
+  width: 500px;
+}
+.w55{
+  width: 550px;
+}
+.w60{
+  width: 600px;
+}
+.w65{
+  width: 650px;
+}
+.w70{
+  width: 700px;
+}
+.w75{
+  width: 750px;
+}
+.w80{
+  width: 800px;
+}
+.w85{
+  width: 850px;
+}
+.w90{
+  width: 900px;
+}
 
 .bold {
   font-weight: bold;
@@ -184,10 +255,10 @@ input.button {
 }
 .r4 {
   -webkit-border-radius:4px;
-  -moz-border-radius:4px;  
+  -moz-border-radius:4px;
 }
 .r10 {
   -webkit-border-radius:10px;
-  -moz-border-radius:10px;  
+  -moz-border-radius:10px;
 }
 /* @end */

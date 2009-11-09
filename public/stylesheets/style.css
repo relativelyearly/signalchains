@@ -1,15 +1,17 @@
+/* @override http://signalchains.local/stylesheets/style.css */
+
 /* @group Boxes */
 
 body {
-  background-color: #781803;
-  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  font-size: 100%;
+  background-color:#eee;
+  font-family: Lucida Grande;
+  font-size: 14px;
 }
-
+.wrapper {
+  width: 800px;
+}
 #container {
-  background-color: #eee;
-  padding: 20px 40px;
-  border: solid 1px black;
+  padding: 20px 0;
   margin-top: 20px;
 }
 
@@ -17,19 +19,163 @@ body {
   text-align: right;
 }
 
+/* @group gear */
+.gear {
+  padding: 0 0 10px 0;
+  width: 500px;
+  color: #ccc;
+  border-top: 1px solid #666;
+  background: url(../images/chains/gear_unit_sprite.jpg) left top;
+}
+.gear > * {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.gear .info {
+  padding: 0 10px;
+  margin: 0 50px;
+}
+.gear_img {
+  height: 100px;
+  border: 1px dashed #aaa;
+}
+
+.gear h4 {
+  padding: 10px;
+  color: #000;
+  border-bottom: 1px solid #111;
+  background-image: url(../images/chains/gear_header_sprite.png);
+  background-repeat: repeat-x;
+}
+.gear.mic h4 {
+  background-color: #dedede;
+  background-position: left top;
+}
+
+.gear.preamp h4 {
+  background-color: #d8c437;
+  background-position: left -400px;
+}
+.gear.dynamicsprocessor h4 {
+  background-color: #a31212;
+  background-position: left -800px;
+}
+.gear.effectsprocessor h4 {
+  background-color: #4d96ba;
+  background-position: left -1200px;
+}
+.gear.eq h4 {
+  background-color: #73c356;
+  background-position: left -1600px;
+}
+/* @end */
+
+/* @group chains */
+
+.btn {
+  display: block;
+  width: 100px;
+  height: 100px;
+  /*text-indent: -999em;*/
+  background-position: 0 top;
+  background-repeat: no-repeat;
+}
+.btn:hover {
+  background-position: 0 -100px;
+}
+.btn:active {
+  background-position: 0 -200px;
+}
+.btn#new_mic {
+  background-image: url(../images/chains/btn_mic.png);
+}
+
+.chain_link {
+  background: #ddd url(../images/chains/gear_unit_sprite.jpg) no-repeat -500px bottom;
+}
+.tags {
+  color: #666;
+  min-height: 45px;
+  padding: 0 60px;
+}
+.newlink {
+  margin-bottom: 3.125%;
+  padding: 1.25%;
+}
+.newlink .col, .chain_link .col {
+  margin-left: 1.25%;
+}
+.newlink .col, .chain_link .col.w70 {
+  width: 86.25%;
+}
+.newlink .col.first, .chain_link .col.first {
+  margin-left: 0;
+}
+/* @end */
 /* @end */
 
 /* @group Text */
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-family: Gill Sans, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
+  margin: 0 0 .5em 0;
+}
 h1 {
-  font-size: 2em;
+  font-size: 180%;
 }
 h2 {
-  font-size: 1.5;
+  font-size: 160%;
 }
 h3 {
-  font-size: 1;
-  font-weight: bold;
+  font-size: 140%;
+  font-weight: normal;
 }
+h4 {
+  font-size: 110%;
+}
+h5 {
+  font-size: 90%;
+  font-weight: normal;
+}
+p {
+  font-size: 90%;
+}
+/* @end */
+
+/* @group forms */
+
+/* @group Mic */
+form#new_chain_gear, form.chain {
+  list-style: none;
+}
+.formtastic.chain_gear li{
+  list-style: none;
+  padding-bottom: 20px;
+}
+.formtastic label {
+  display: block;
+  text-transform: uppercase;
+  font-size: .8em;
+}
+.formtastic li.commit {
+  background: #ddd;
+  padding: 10px;
+}
+.formtastic li input, .formtastic select, .formtastic textarea {
+  position: relative;
+  left: -2px;
+}
+
+/* @end */
+
+div.incomplete_chain {
+  margin: 25px 0;
+  padding: .5em;
+  background: #fb8d79;
+  border-top: 1px solid #fafafa;
+  border-bottom: 1px solid #ad6153;
+}
+
 
 
 /* @end */

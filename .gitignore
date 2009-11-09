@@ -24,3 +24,4 @@ public/uploads/**/*
 *.swp
 config/*.sphinx.conf
 db/sphinx/
+public/system/audios/**
