@@ -9,7 +9,8 @@ class Gear < ActiveRecord::Base
   has_attached_file :image,
                     :styles => { :thumb => ["100x100#", :jpg] },
                     :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml"
+                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :path => ':class/:id/:style.:extension'
 
   def position
     5
