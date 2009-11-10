@@ -54,4 +54,19 @@ class ChainGearsController < ResourceController::Base
       redirect_to chain_dynamics_processor_path(@chain, @dynamics_processor)
     end
   end
+
+  def add_effects_processor
+    @chain = Chain.find(params[:chain_id])
+    @effects_processor = EffectsProcessor.find(params[:effects_processor_id])
+    @chain_gear = ChainGear.new
+
+    @chain_gear.chain = @chain
+    @chain_gear.gear = @effects_processor
+
+    if @chain_gear.save
+      redirect_to chain_path(@chain)
+    else
+      redirect_to chain_effects_processor_path(@chain, @effects_processor)
+    end
+  end
 end

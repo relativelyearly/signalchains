@@ -124,7 +124,6 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs a preamp."
     And I should see "Start with"
 
-  @current
   Scenario: Adding a Compressor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -149,24 +148,24 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
-  @pending
+  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     And I follow "Effects"
+    And I follow "New Effects Processor"
     And I select "Other" from "Type"
     And I fill in "Make" with "Lexicon"
     And I fill in "Model" with "PCM70"
     And I fill in "Manufactured Date" with "1988"
-    And I fill in "Notes" with "Based on the Large Hall preset"
-    And I press "Submit"
+    And I press "Create Effects Processor"
+    And I follow "Add this effects processor to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Lexicon"
     And I should see "PCM70"
     And I should see "1988"
     And I should not see "Other"
-    And I should see "Based on the Large Hall preset"
 
   @pending
   Scenario: Adding an EQ
