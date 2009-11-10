@@ -19,7 +19,8 @@
   %strong Compression Type:
   =h @dynamics_processor.compression_type
 
-= link_to 'Add this dynamics processor to your chain', add_dynamics_processor_path(:chain_id => @chain.id, :dynamics_processor_id => @dynamics_processor.id)
+- if @chain
+  = link_to 'Add this dynamics processor to your chain', add_dynamics_processor_path(:chain_id => @chain.id, :dynamics_processor_id => @dynamics_processor.id)
 
 %p
   = link_to "Edit", edit_dynamics_processor_path(@dynamics_processor)

@@ -19,7 +19,8 @@
   %strong Interface:
   =h @effects_processor.interface
 
-= link_to 'Add this effects processor to your chain', add_effects_processor_path(:chain_id => @chain.id, :effects_processor_id => @effects_processor.id)
+- if @chain
+  = link_to 'Add this effects processor to your chain', add_effects_processor_path(:chain_id => @chain.id, :effects_processor_id => @effects_processor.id)
 
 %p
   = link_to "Edit", edit_effects_processor_path(@effects_processor)

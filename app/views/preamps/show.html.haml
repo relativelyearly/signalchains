@@ -16,7 +16,8 @@
   %strong Circuitry:
   =h @preamp.circuitry
 
-= link_to 'Add this preamp to your chain', add_preamp_path(:chain_id => @chain.id, :preamp_id => @preamp.id)
+- if @chain
+  = link_to 'Add this preamp to your chain', add_preamp_path(:chain_id => @chain.id, :preamp_id => @preamp.id)
 
 %p
   = link_to "Edit", edit_preamp_path(@preamp)

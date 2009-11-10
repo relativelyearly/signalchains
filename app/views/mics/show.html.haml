@@ -22,7 +22,8 @@
   %strong Pattern:
   =h @mic.pattern
 
-= link_to 'Add this mic to your chain', add_mic_path(:chain_id => @chain.id, :mic_id => @mic.id)
+- if @chain
+  = link_to 'Add this mic to your chain', add_mic_path(:chain_id => @chain.id, :mic_id => @mic.id)
 
 %p
   = link_to "Edit", edit_mic_path(@mic)

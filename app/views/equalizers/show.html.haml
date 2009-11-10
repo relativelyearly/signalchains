@@ -22,7 +22,8 @@
   %strong Interface:
   =h @equalizer.interface
 
-= link_to 'Add this equalizer to your chain', add_equalizer_path(:chain_id => @chain.id, :equalizer_id => @equalizer.id)
+- if @chain
+  = link_to 'Add this equalizer to your chain', add_equalizer_path(:chain_id => @chain.id, :equalizer_id => @equalizer.id)
 
 %p
   = link_to "Edit", edit_equalizer_path(@equalizer)
