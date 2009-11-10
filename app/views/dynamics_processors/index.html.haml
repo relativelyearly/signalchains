@@ -1,0 +1,23 @@
+- title "Dynamics Processors"
+
+%table
+  %tr
+    %th Make
+    %th Model
+    %th Manufactured date
+    %th Image
+    %th Circuitry
+    %th Compression type
+  - for dynamics_processor in @dynamics_processors
+    %tr
+      %td= h dynamics_processor.make
+      %td= h dynamics_processor.model
+      %td= h dynamics_processor.manufactured_date
+      %td= image_tag dynamics_processor.image.url
+      %td= h dynamics_processor.circuitry
+      %td= h dynamics_processor.compression_type
+      %td= link_to 'Show', dynamics_processor
+      %td= link_to 'Edit', edit_dynamics_processor_path(dynamics_processor)
+      %td= link_to 'Destroy', dynamics_processor, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Dynamics Processor", @chain.nil? ? new_dynamics_processor_path : new_chain_dynamics_processor_path(@chain)

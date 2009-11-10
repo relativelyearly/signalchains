@@ -104,7 +104,6 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs an input source."
     And I should not see "Start with"
 
-  @current
   Scenario: Adding a Preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -125,11 +124,13 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs a preamp."
     And I should see "Start with"
 
+  @current
   Scenario: Adding a Compressor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     And I follow "Dynamics"
+    And I follow "New Dynamics Processor"
     And I select "Compressor" from "Type"
     And I select "Hardware" from "Interface"
     And I select "Tube" from "Circuitry"
@@ -137,8 +138,8 @@ Feature: Create Chain
     And I fill in "Make" with "ART"
     And I fill in "Model" with "Pro VLA"
     And I fill in "Manufactured Date" with "2008"
-    And I fill in "Notes" with "Ratio of 4:1. Fast attack"
-    And I press "Submit"
+    And I press "Create Dynamics Processor"
+    And I follow "Add this dynamics processor to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "ART"
     And I should see "Pro VLA"
@@ -146,7 +147,6 @@ Feature: Create Chain
     And I should see "Tube"
     And I should see "Optical"
     And I should see "Compressor"
-    And I should see "Ratio of 4:1. Fast attack."
     And I should see "Start with"
 
   Scenario: Adding an Effects Processor

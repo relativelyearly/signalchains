@@ -39,4 +39,19 @@ class ChainGearsController < ResourceController::Base
       redirect_to chain_preamp_path(@chain, @preamp)
     end
   end
+
+  def add_dynamics_processor
+    @chain = Chain.find(params[:chain_id])
+    @dynamics_processor = DynamicsProcessor.find(params[:dynamics_processor_id])
+    @chain_gear = ChainGear.new
+
+    @chain_gear.chain = @chain
+    @chain_gear.gear = @dynamics_processor
+
+    if @chain_gear.save
+      redirect_to chain_path(@chain)
+    else
+      redirect_to chain_dynamics_processor_path(@chain, @dynamics_processor)
+    end
+  end
 end

@@ -1,0 +1,29 @@
+- title "Dynamics Processor"
+
+%p
+  %strong Make:
+  =h @dynamics_processor.make
+%p
+  %strong Model:
+  =h @dynamics_processor.model
+%p
+  %strong Manufactured Date:
+  =h @dynamics_processor.manufactured_date
+%p
+  %strong Image:
+  = image_tag @dynamics_processor.image.url
+%p
+  %strong Circuitry:
+  =h @dynamics_processor.circuitry
+%p
+  %strong Compression Type:
+  =h @dynamics_processor.compression_type
+
+= link_to 'Add this dynamics processor to your chain', add_dynamics_processor_path(:chain_id => @chain.id, :dynamics_processor_id => @dynamics_processor.id)
+
+%p
+  = link_to "Edit", edit_dynamics_processor_path(@dynamics_processor)
+  |
+  = link_to "Destroy", @dynamics_processor, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", dynamics_processors_path
