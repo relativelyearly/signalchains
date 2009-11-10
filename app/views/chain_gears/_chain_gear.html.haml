@@ -12,9 +12,14 @@
         .col.w25
           = render(:partial => chain_gear.gear.partial, :object => chain_gear.gear)
         .notes.first
-          Some notes on this gear.
           =# textilize chain_gear.notes
     .meta.col.w25
+      = link_to 'Buy This Gear', '#'
+
+      Other chains with this gear:
+      %ul
+        %li= link_to 'Another Awesome Chain'
+        %li= link_to 'A Pretty Lame Chain'
     .tags.first
     .clear
 - else
