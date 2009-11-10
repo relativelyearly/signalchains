@@ -1,0 +1,26 @@
+- title "Preamp"
+
+%p
+  %strong Make:
+  =h @preamp.make
+%p
+  %strong Model:
+  =h @preamp.model
+%p
+  %strong Manufactured Date:
+  =h @preamp.manufactured_date
+%p
+  %strong Image:
+  = image_tag @preamp.image.url
+%p
+  %strong Circuitry:
+  =h @preamp.circuitry
+
+= link_to 'Add this preamp to your chain', add_preamp_path(:chain_id => @chain.id, :preamp_id => @preamp.id)
+
+%p
+  = link_to "Edit", edit_preamp_path(@preamp)
+  |
+  = link_to "Destroy", @preamp, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", preamps_path

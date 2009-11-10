@@ -6,4 +6,12 @@ class Chain < ActiveRecord::Base
 
   belongs_to :user
   has_many :gear, :class_name => 'ChainGear'
+
+  def preamp?
+     gear.any? {|gear| gear.preamp?}
+  end
+
+  def input_source?
+    gear.any? {|gear| gear.input_source?}
+  end
 end

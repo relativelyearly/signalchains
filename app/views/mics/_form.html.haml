@@ -4,5 +4,6 @@
   = f.input :mic_type, :as => :select, :collection => Mic.types, :label => 'Type', :wrapper_html => { :class => "first col w25" }
   = f.input :diaphragm_size, :as => :select, :collection => Mic.diaphragm_sizes, :wrapper_html => { :class => "first col w25" }
   = f.input :pattern, :as => :select, :collection => Mic.patterns, :wrapper_html => { :class => "first col w25" }
-  = hidden_field_tag :chain_id, @chain.id
-  = f.submit 'Submit'
+  - if @chain
+    = hidden_field_tag :chain_id, @chain.id
+  = f.buttons

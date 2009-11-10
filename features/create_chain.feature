@@ -81,7 +81,7 @@ Feature: Create Chain
     And I select "Condenser" from "Type"
     And I select "Large" from "Diaphragm Size"
     And I select "Cardioid" from "Pattern"
-    And I press "Submit"
+    And I press "Create Mic"
     And I follow "Add this mic to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Shure"
@@ -94,7 +94,6 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs an input source."
     And I should not see "Start with"
 
-  @current
   Scenario: Adding a line source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -105,23 +104,24 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs an input source."
     And I should not see "Start with"
 
+  @current
   Scenario: Adding a Preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     And I follow "Preamp"
+    And I follow "New Preamp"
     And I fill in "Make" with "Summit"
     And I fill in "Model" with "MPC-100A"
     And I fill in "Manufactured Date" with "2008"
     And I select "Tube" from "Circuitry"
-    And I fill in "Notes" with "Drove input for saturation. Bypassed compression."
-    And I press "Submit"
+    And I press "Create Preamp"
+    And I follow "Add this preamp to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Summit"
     And I should see "MPC-100A"
     And I should see "2008"
     And I should see "Tube"
-    And I should see "Drove input for saturation. Bypassed compression."
     And I should not see "This chain is incomplete. It needs a preamp."
     And I should see "Start with"
 

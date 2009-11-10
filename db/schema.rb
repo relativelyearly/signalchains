@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091109203525) do
+ActiveRecord::Schema.define(:version => 20091110023619) do
 
   create_table "chain_gears", :force => true do |t|
     t.integer  "gear_id"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(:version => 20091109203525) do
     t.string   "mic_type"
     t.string   "diaphragm_size"
     t.string   "pattern"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "preamps", :force => true do |t|
+    t.string   "make"
+    t.string   "model"
+    t.string   "manufactured_date"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "circuitry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
