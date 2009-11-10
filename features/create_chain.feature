@@ -149,6 +149,7 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
+  @pending
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -167,6 +168,7 @@ Feature: Create Chain
     And I should not see "Other"
     And I should see "Based on the Large Hall preset"
 
+  @pending
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -187,6 +189,7 @@ Feature: Create Chain
     And I should see "5 band"
     And I should see "Slight boost around 3k for some bite"
 
+  @pending
   Scenario: Chain without an input source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -195,6 +198,7 @@ Feature: Create Chain
     Then I should see "This chain is incomplete. It needs an input source."
     And I should see "Start with"
 
+  @pending
   Scenario: Chain without an input source or audio file
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -206,6 +210,7 @@ Feature: Create Chain
     And I should see "It needs an audio file"
     And I should see "Start with"
 
+  @pending
   Scenario: Chain without a preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -214,6 +219,7 @@ Feature: Create Chain
     Then I should see "This chain is incomplete. It needs a preamp."
     And I should see "Start with"
 
+  @pending
   Scenario: Drafts not viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -221,6 +227,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
+  @pending
   Scenario: Complete chains viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -230,6 +237,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should see "Awesome Guitar"
 
+  @pending
   Scenario: Complete chains have no completion message
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -239,6 +247,7 @@ Feature: Create Chain
     When I view the chain named "Awesome Guitar"
     Then I should not see "This chain is incomplete."
 
+  @pending
   Scenario: Chain without input source not viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -247,6 +256,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
+  @pending
   Scenario: Chain without preamp not viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -255,6 +265,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
+  @pending
   Scenario: Chain without audio file not viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -263,6 +274,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
+  @pending
   Scenario: Adding other gear before an input source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -272,6 +284,7 @@ Feature: Create Chain
     Then I should see the input source first
     And I should see the "dynamics processor" second
 
+  @pending
   Scenario: Adding a preamp and other gear before an input source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
