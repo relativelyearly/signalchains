@@ -12,8 +12,8 @@ Rails::Initializer.run do |config|
   config.gem 'haml'
   config.gem 'RedCloth'
   config.gem 'binarylogic-searchlogic', :lib => 'searchlogic', :source => 'http://gems.github.com'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem "mbleigh-acts-as-taggable-on", :source => "http://gems.github.com", :lib => "acts-as-taggable-on"
+  config.gem 'will_paginate'
+  config.gem "acts-as-taggable-on"
 
   config.time_zone = 'UTC'
   config.load_paths << "#{RAILS_ROOT}/app/models/gear"
