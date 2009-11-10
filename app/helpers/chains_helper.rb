@@ -1,18 +1,23 @@
 module ChainsHelper
   def complete_message
-    error = ""
-    if !@chain.audio.file?
-      error += "This chain is incomplete. It needs an audio file.\n"
-    end
+    capture_haml do
+      haml_tag(:ul, :class => 'incomplete_chain') do
+        unless @chain.audio.file? && @chain.input_source? && @chain.preamp?
+          haml_tag(:h2, 'This chain is incomplete.')
+        end
 
-    unless @chain.input_source?
-      error += "This chain is incomplete. It needs an input source.\n"
-    end
+        unless @chain.audio.file?
+          haml_tag(:li, "It needs an audio file.")
+        end
 
-    unless @chain.preamp?
-      error += "This chain is incomplete. It needs a preamp.\n"
-    end
+        unless @chain.input_source?
+          haml_tag(:li, "It needs an input source.")
+        end
 
-    error
+        unless @chain.preamp?
+          haml_tag(:li, "It needs a preamp.")
+        end
+      end
+    end
   end
 end

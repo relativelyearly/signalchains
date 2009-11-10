@@ -168,7 +168,7 @@ form#new_chain_gear, form.chain {
 
 /* @end */
 
-div.incomplete_chain {
+ul.incomplete_chain {
   margin: 25px 0;
   padding: .5em;
   background: #fb8d79;
@@ -176,6 +176,8 @@ div.incomplete_chain {
   border-bottom: 1px solid #ad6153;
 }
 
-
+ul.incomplete_chain li {
+	list-style-type: none;
+}
 
 /* @end */

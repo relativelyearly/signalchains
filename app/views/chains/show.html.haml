@@ -4,17 +4,16 @@
   %strong User:
   =h @chain.user.email
 %p
-  %strong Status:
-  =h @chain.status
-%p
   %strong Name:
   =h @chain.name
 %p
   %strong Notes:
   =h @chain.notes
-%p
-  %strong Audio:
-  = link_to @chain.audio.url
+
+- if @chain.audio.file?
+  %p
+    %strong Audio:
+    = link_to @chain.audio.url
 %p
   %strong Title:
   =h @chain.title
@@ -28,12 +27,13 @@
   %strong Studio:
   =h @chain.studio
 
-%ul
-  - for tag in @chain.tags
-    %li= tag.name
+%p
+  %strong Tags:
+  %ul
+    - for tag in @chain.tags
+      %li= tag.name
 
-- unless complete_message.empty?
-  .incomplete_chain= complete_message
+= complete_message
 
 - @gear.each do |gear|
   = render(:partial => 'chain_gears/chain_gear', :object => gear)

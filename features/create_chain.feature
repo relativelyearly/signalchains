@@ -38,7 +38,7 @@ Feature: Create Chain
     And I fill in "Studio" with "BRC Audio Productions"
     And I press "Submit"
     Then I should be viewing the chain "Awesome Guitar"
-    And I should not see "This chain is incomplete. It needs an audio file."
+    And I should not see "It needs an audio file."
     And I should see "Song Name"
     And I should see "DJ Bad-Knee Bob"
     And I should see "1994"
@@ -67,7 +67,8 @@ Feature: Create Chain
     And I fill in "Notes" with "A nice sounding setup for my guitar rig, man."
     And I press "Create Chain"
     Then I should be viewing the chain "Awesome Guitar"
-    And I should see "This chain is incomplete. It needs an audio file."
+    And I should see "This chain is incomplete."
+    And I should see "It needs an audio file."
 
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
@@ -91,7 +92,7 @@ Feature: Create Chain
     And I should see "Large"
     And I should see "Cardioid"
     And I should see "Preamp"
-    And I should not see "This chain is incomplete. It needs an input source."
+    And I should not see "It needs an input source."
     And I should not see "Start with"
 
   Scenario: Adding a line source
@@ -101,7 +102,7 @@ Feature: Create Chain
     And I follow "Line In"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Line In"
-    And I should not see "This chain is incomplete. It needs an input source."
+    And I should not see "It needs an input source."
     And I should not see "Start with"
 
   Scenario: Adding a Preamp
@@ -121,7 +122,7 @@ Feature: Create Chain
     And I should see "MPC-100A"
     And I should see "2008"
     And I should see "Tube"
-    And I should not see "This chain is incomplete. It needs a preamp."
+    And I should not see "It needs a preamp."
     And I should see "Start with"
 
   Scenario: Adding a Compressor
@@ -191,7 +192,8 @@ Feature: Create Chain
     And I have started a chain named "Awesome Guitar"
     And I have not added an input source to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    Then I should see "This chain is incomplete. It needs an input source."
+    Then I should see "This chain is incomplete."
+    And I should see "It needs an input source."
     And I should see "Start with"
 
   Scenario: Chain without an input source or audio file
@@ -200,7 +202,8 @@ Feature: Create Chain
     And I have not added an input source to "Awesome Guitar"
     And I have not added an audio file to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    Then I should see "This chain is incomplete. It needs an input source."
+    Then I should see "This chain is incomplete."
+    And I should see "It needs an input source."
     And I should see "It needs a preamp."
     And I should see "It needs an audio file"
     And I should see "Start with"
@@ -210,7 +213,8 @@ Feature: Create Chain
     And I have started a chain named "Awesome Guitar"
     And I have not added a preamp to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    Then I should see "This chain is incomplete. It needs a preamp."
+    Then I should see "This chain is incomplete."
+    And I should see "It needs a preamp."
     And I should see "Start with"
 
   Scenario: Drafts not viewable by public
