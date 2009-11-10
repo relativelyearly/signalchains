@@ -1,15 +1,15 @@
 !!!
 %html
   %head
-    = javascript_include_merged :base
-    = stylesheet_link_merged :base
+    = javascript_include_tag('jquery', 'jquery.validate', 'jrails')
+    = stylesheet_link_tag('application', 'style')
     %title= yield(:title) || "Relatively Early Development"
   %body
     .wrapper
       - authenticated_only do
         .session
           = link_to 'Log Out', logout_url
-      #container                             
+      #container
         = render_flash_messages
         = yield
       .push
