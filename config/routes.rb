@@ -4,8 +4,10 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :preamps
     chain.resources :dynamics_processors
     chain.resources :effects_processors
+    chain.resources :equalizers
   end
 
+  map.resources :equalizers
   map.resources :effects_processors
   map.resources :dynamics_processors
   map.resources :preamps
@@ -21,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.add_preamp '/chains/:chain_id/add/preamp/:preamp_id', :controller => 'chain_gears', :action => 'add_preamp'
   map.add_dynamics_processor '/chains/:chain_id/add/dynamics_processor/:dynamics_processor_id', :controller => 'chain_gears', :action => 'add_dynamics_processor'
   map.add_effects_processor '/chains/:chain_id/add/effects_processor/:effects_processor_id', :controller => 'chain_gears', :action => 'add_effects_processor'
+  map.add_equalizer '/chains/:chain_id/add/equalizer/:equalizer_id', :controller => 'chain_gears', :action => 'add_equalizer'
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

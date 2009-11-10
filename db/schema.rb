@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110045504) do
+ActiveRecord::Schema.define(:version => 20091110051023) do
 
   create_table "chain_gears", :force => true do |t|
     t.integer  "gear_id"
@@ -61,6 +61,21 @@ ActiveRecord::Schema.define(:version => 20091110045504) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "effects_type"
+    t.string   "interface"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "equalizers", :force => true do |t|
+    t.string   "make"
+    t.string   "model"
+    t.string   "manufactured_date"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "equalizer_type"
+    t.integer  "bands"
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"

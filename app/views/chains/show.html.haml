@@ -49,6 +49,7 @@
   = link_to 'Preamp', chain_preamps_url(@chain)
   = link_to 'Dynamics', chain_dynamics_processors_url(@chain)
   = link_to 'Effects', chain_effects_processors_url(@chain)
+  = link_to 'EQ', chain_equalizers_url(@chain)
 
 - semantic_form_for @chain, :html => {:multipart => true} do |f|
   = f.input :title

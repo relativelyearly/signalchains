@@ -1,0 +1,32 @@
+- title "Equalizer"
+
+%p
+  %strong Make:
+  =h @equalizer.make
+%p
+  %strong Model:
+  =h @equalizer.model
+%p
+  %strong Manufactured Date:
+  =h @equalizer.manufactured_date
+%p
+  %strong Image:
+  = image_tag @equalizer.image.url
+%p
+  %strong Equalizer Type:
+  =h @equalizer.equalizer_type
+%p
+  %strong Bands:
+  =h @equalizer.bands
+%p
+  %strong Interface:
+  =h @equalizer.interface
+
+= link_to 'Add this equalizer to your chain', add_equalizer_path(:chain_id => @chain.id, :equalizer_id => @equalizer.id)
+
+%p
+  = link_to "Edit", edit_equalizer_path(@equalizer)
+  |
+  = link_to "Destroy", @equalizer, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", equalizers_path

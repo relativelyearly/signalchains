@@ -148,7 +148,6 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
-  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -167,26 +166,26 @@ Feature: Create Chain
     And I should see "1988"
     And I should not see "Other"
 
-  @pending
+  @current
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     And I follow "EQ"
+    And I follow "New Equalizer"
     And I select "Parametric" from "Type"
     And I fill in "Make" with "Sontec"
     And I fill in "Model" with "MEQ250A"
     And I fill in "Manufactured Date" with "1998"
     And I fill in "Bands" with "5"
-    And I fill in "Notes" with "Slight boost around 3k for some bite"
-    And I press "Submit"
+    And I press "Create Equalizer"
+    And I follow "Add this equalizer to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Sontec"
     And I should see "MEQ250A"
     And I should see "1998"
     And I should see "Parametric"
     And I should see "5 band"
-    And I should see "Slight boost around 3k for some bite"
 
   @pending
   Scenario: Chain without an input source

@@ -69,4 +69,19 @@ class ChainGearsController < ResourceController::Base
       redirect_to chain_effects_processor_path(@chain, @effects_processor)
     end
   end
+
+  def add_equalizer
+    @chain = Chain.find(params[:chain_id])
+    @equalizer = Equalizer.find(params[:equalizer_id])
+    @chain_gear = ChainGear.new
+
+    @chain_gear.chain = @chain
+    @chain_gear.gear = @equalizer
+
+    if @chain_gear.save
+      redirect_to chain_path(@chain)
+    else
+      redirect_to chain_equalizer_path(@chain, @equalizer)
+    end
+  end
 end

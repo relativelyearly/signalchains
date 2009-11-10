@@ -1,0 +1,25 @@
+- title "Equalizers"
+
+%table
+  %tr
+    %th Make
+    %th Model
+    %th Manufactured date
+    %th Image
+    %th Equalizer type
+    %th Bands
+    %th Interface
+  - for equalizer in @equalizers
+    %tr
+      %td= h equalizer.make
+      %td= h equalizer.model
+      %td= h equalizer.manufactured_date
+      %td= image_tag equalizer.image.url
+      %td= h equalizer.equalizer_type
+      %td= h equalizer.bands
+      %td= h equalizer.interface
+      %td= link_to 'Show', equalizer
+      %td= link_to 'Edit', edit_equalizer_path(equalizer)
+      %td= link_to 'Destroy', equalizer, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Equalizer", @chain.nil? ? new_equalizer_path : new_chain_equalizer_path(@chain)
