@@ -7,4 +7,8 @@ class Gear < ActiveRecord::Base
   has_many :chains, :through => :chain_gears
 
   has_attached_file :image, :styles => { :thumb => ["100x100#", :jpg] }
+
+  def position
+    5
+  end
 end

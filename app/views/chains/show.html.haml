@@ -35,7 +35,7 @@
 - unless complete_message.empty?
   .incomplete_chain= complete_message
 
-- @chain.gear.each do |gear|
+- @gear.each do |gear|
   = render(:partial => 'chain_gears/chain_gear', :object => gear)
 
 - unless @chain.input_source?

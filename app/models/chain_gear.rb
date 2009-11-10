@@ -10,4 +10,8 @@ class ChainGear < ActiveRecord::Base
   def preamp?
     gear_type == 'Preamp'
   end
+
+  def position
+    gear.position
+  end
 end

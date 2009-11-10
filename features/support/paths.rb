@@ -7,7 +7,7 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-    
+
     when /the homepage/
       '/'
     when /the registration page/
@@ -20,7 +20,9 @@ module NavigationHelpers
       '/password_resets/new'
     when /the new chain page/
       '/chains/new'
-    
+    when /the chains index page/
+      '/chains'
+
     # Add more mappings here.
     # Here is a more fancy example:
     #
