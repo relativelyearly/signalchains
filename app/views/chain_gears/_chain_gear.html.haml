@@ -8,15 +8,14 @@
 
       .info
         .first.col.w10
-          hey
+          = image_tag(chain_gear.gear.image.url(:thumb))
         .col.w25
           = render(:partial => chain_gear.gear.partial, :object => chain_gear.gear)
         .notes.first
           =# textilize chain_gear.notes
     .meta.col.w25
-      nerp
     .tags.first
-      yelp
+      = chain_gear.gear.tags.join(' ')
     .clear
 - else
   .chain_link
