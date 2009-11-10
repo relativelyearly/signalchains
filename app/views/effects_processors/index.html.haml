@@ -16,7 +16,7 @@
       %td= image_tag effects_processor.image.url
       %td= h effects_processor.effects_type
       %td= h effects_processor.interface
-      %td= link_to 'Show', effects_processor
+      %td= link_to 'Show', @chain.nil? ? effects_processor : chain_effects_processor_path(@chain, effects_processor)
       %td= link_to 'Edit', edit_effects_processor_path(effects_processor)
       %td= link_to 'Destroy', effects_processor, :confirm => 'Are you sure?', :method => :delete
 

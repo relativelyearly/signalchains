@@ -18,7 +18,7 @@
       %td= h equalizer.equalizer_type
       %td= h equalizer.bands
       %td= h equalizer.interface
-      %td= link_to 'Show', equalizer
+      %td= link_to 'Show', @chain.nil? ? equalizer : chain_equalizer_path(@chain, equalizer)
       %td= link_to 'Edit', edit_equalizer_path(equalizer)
       %td= link_to 'Destroy', equalizer, :confirm => 'Are you sure?', :method => :delete
 

@@ -14,7 +14,7 @@
       %td= h preamp.manufactured_date
       %td= image_tag preamp.image.url
       %td= h preamp.circuitry
-      %td= link_to 'Show', preamp
+      %td= link_to 'Show', @chain.nil? ? preamp : chain_preamp_path(@chain, preamp)
       %td= link_to 'Edit', edit_preamp_path(preamp)
       %td= link_to 'Destroy', preamp, :confirm => 'Are you sure?', :method => :delete
 
