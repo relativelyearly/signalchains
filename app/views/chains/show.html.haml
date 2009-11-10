@@ -38,9 +38,10 @@
 - @chain.gear.each do |gear|
   = render(:partial => 'chain_gears/chain_gear', :object => gear)
 
-= link_to 'Mic', chain_mics_url(@chain)
-Line In
-Preamp
+%ul
+  %li= link_to 'Mic', chain_mics_url(@chain)
+  %li= link_to 'Line In', add_line_in_path(:chain_id => @chain.id)
+  %li Preamp
 
 - semantic_form_for @chain, :html => {:multipart => true} do |f|
   = f.input :title

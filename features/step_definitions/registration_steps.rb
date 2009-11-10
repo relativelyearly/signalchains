@@ -7,8 +7,8 @@ Given /^I am registered with "(.*)\/(.*)"$/ do |email, password|
 end
 
 Given /^I am logged in as "(.*)\/(.*)"$/ do |email, password|
-  user = Factory(:user, :email => email, :password => password,
-                 :password_confirmation => password)
+  @user = Factory(:user, :email => email, :password => password,
+                  :password_confirmation => password)
   When %{I go to the login page}
   And %{I fill in "email" with "#{email}"}
   And %{I fill in "password" with "#{password}"}

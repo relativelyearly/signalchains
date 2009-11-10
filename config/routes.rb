@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
 
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'
+  map.add_line_in '/chains/:chain_id/add/line_in', :controller => 'chain_gears', :action => 'add_line_in'
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

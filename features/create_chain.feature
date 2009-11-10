@@ -69,7 +69,6 @@ Feature: Create Chain
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "This chain is incomplete. It needs an audio file."
 
-  @current
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -95,6 +94,7 @@ Feature: Create Chain
     And I should not see "This chain is incomplete. It needs an input source."
     And I should not see "Start with"
 
+  @current
   Scenario: Adding a line source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"

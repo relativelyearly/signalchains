@@ -1,5 +1,5 @@
 Given /^I have started a chain named "([^\"]*)"$/ do |name|
-  Factory(:chain, :name => name)
+  Factory(:chain, :name => name, :user => @user)
 end
 
 When /^I view the chain named "([^\"]*)"$/ do |name|

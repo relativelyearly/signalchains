@@ -13,4 +13,15 @@ class ChainGearsController < ResourceController::Base
       redirect_to chain_mic_path(@chain, @mic)
     end
   end
+
+  def add_line_in
+    @chain = Chain.find(params[:chain_id])
+    @chain_gear = ChainGear.new
+
+    @chain_gear.chain = @chain
+    @chain_gear.gear = nil
+    @chain_gear.save
+
+    redirect_to chain_path(@chain)
+  end
 end
