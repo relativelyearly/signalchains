@@ -14,7 +14,7 @@ Rails::Initializer.run do |config|
   config.gem 'binarylogic-searchlogic', :lib => 'searchlogic', :source => 'http://gems.github.com'
   config.gem 'will_paginate'
   config.gem "acts-as-taggable-on"
-  config.gem 'right_aws'
+  config.gem "aws-s3", :lib => "aws/s3"
 
   config.time_zone = 'UTC'
   config.load_paths << "#{RAILS_ROOT}/app/models/gear"
