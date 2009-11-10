@@ -1,65 +1,52 @@
 - title "Chain"
-
-%p
-  %strong User:
-  =h @chain.user.email
-%p
-  %strong Name:
-  =h @chain.name
-%p
-  %strong Notes:
-  =h @chain.notes
-
-- if @chain.audio.file?
-  %p
-    %strong Audio:
-    = link_to @chain.audio.url
-%p
-  %strong Title:
-  =h @chain.title
-%p
-  %strong Performer:
-  =h @chain.performer
-%p
-  %strong Year:
-  =h @chain.year
-%p
-  %strong Studio:
-  =h @chain.studio
-
-%p
-  %strong Tags:
-  %ul
-    - for tag in @chain.tags
-      %li= tag.name
-
-= complete_message
-
-- @gear.each do |gear|
-  = render(:partial => 'chain_gears/chain_gear', :object => gear)
-
-- unless @chain.input_source?
-  .newlink#input_sources
-    %h3 Start with
-    = link_to 'Mic', chain_mics_url(@chain)
-    = link_to 'Line In', add_line_in_path(:chain_id => @chain.id)
+.chain
+  .info
+    %h2= h @chain.name
+    %h5
+      by
+      =h @chain.user.email
+    .first.col.w50=textilize @chain.notes
+    .tags.col
+      Tags:
+      - for tag in @chain.tags
+        %span=h tag.name
     .clear
-.newlink.first
-  %h3 Add
-  = link_to 'Preamp', chain_preamps_url(@chain)
-  = link_to 'Dynamics', chain_dynamics_processors_url(@chain)
-  = link_to 'Effects', chain_effects_processors_url(@chain)
-  = link_to 'EQ', chain_equalizers_url(@chain)
+  - @gear.each do |gear|
+    = render(:partial => 'chain_gears/chain_gear', :object => gear)
 
-- semantic_form_for @chain, :html => {:multipart => true} do |f|
-  = f.input :title
-  = f.input :performer
-  = f.input :year, :label => 'Year Recorded'
-  = f.input :studio
-  = f.input :audio, :label => false
-  = f.commit_button 'Submit'
+.w50.first.col
+  - unless @chain.input_source?
+    .newlink#input_sources
+      %h3 Start with
+      = link_to 'Mic', chain_mics_url(@chain), :id => 'new_mic', :class => 'btn first col w5'
+      = link_to 'Line In', add_line_in_path(:chain_id => @chain.id), :id => 'new_lineIn', :class => 'btn col w5'
+      .clear
+  .newlink.first
+    %h3 Add
+    = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'btn first col w5'
+    = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'btn col w5'
+    = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'btn col w5'
+    = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'btn col w5'
+    .clear
+  .newlink.first
+    %h3 Audio
+    =h @chain.title
+    =h @chain.performer
+    =h @chain.year
+    =h @chain.studio
+    - semantic_form_for @chain, :html => {:multipart => true} do |f|
+      = f.input :title
+      = f.input :performer
+      = f.input :year, :label => 'Year Recorded'
+      = f.input :studio
+      = f.input :audio, :label => false
+      = f.commit_button 'Submit'
 
-%p
+.w30.col.snug
+  - unless complete_message.empty?
+    .incomplete_chain= complete_message
+
+%p.first
   = link_to "Edit", edit_chain_path(@chain)
   |
   = link_to "Destroy", @chain, :confirm => 'Are you sure?', :method => :delete

@@ -21,7 +21,7 @@ body {
 
 /* @group gear */
 .gear {
-  padding: 0 0 10px 0;
+  padding: 0;
   width: 500px;
   color: #ccc;
   border-top: 1px solid #666;
@@ -33,8 +33,19 @@ body {
 }
 .gear .info {
   padding: 0 10px;
-  margin: 0 50px;
 }
+
+.gear .meta {
+  color: #666;
+  height: 35px;
+  margin: 0;
+  padding: 10px 50px 0 50px;
+  background: #ddd url(../images/chains/gear_unit_sprite.jpg) no-repeat -500px bottom;
+}
+.gear .meta a {
+  color: #666;
+}
+
 .gear_img {
   height: 100px;
   border: 1px dashed #aaa;
@@ -64,7 +75,7 @@ body {
   background-color: #4d96ba;
   background-position: left -1200px;
 }
-.gear.eq h4 {
+.gear.equalizer h4 {
   background-color: #73c356;
   background-position: left -1600px;
 }
@@ -76,7 +87,7 @@ body {
   display: block;
   width: 100px;
   height: 100px;
-  /*text-indent: -999em;*/
+  text-indent: -999em;
   background-position: 0 top;
   background-repeat: no-repeat;
 }
@@ -89,32 +100,59 @@ body {
 .btn#new_mic {
   background-image: url(../images/chains/btn_mic.png);
 }
-
+.btn#new_lineIn {
+  background-image: url(../images/chains/btn_line-in.png);
+}
+.btn#new_dynamics {
+  background-image: url(../images/chains/btn_dynamics.png);
+}
+.btn#new_preamp {
+  background-image: url(../images/chains/btn_preamp.png);
+}
+.btn#new_effects {
+  background-image: url(../images/chains/btn_effects.png);
+}
+.btn#new_eq {
+  background-image: url(../images/chains/btn_eq.png);
+}
+.chain {
+  margin-bottom: 25px;
+}
+.chain .info h2 {
+  margin-bottom: 0;
+}
 .chain_link {
-  background: #ddd url(../images/chains/gear_unit_sprite.jpg) no-repeat -500px bottom;
+  background: #ddd;
 }
-.tags {
-  color: #666;
-  min-height: 45px;
-  padding: 0 60px;
+.newlink, .chain .tags {
+  margin-bottom: 25px;
+
 }
-.newlink {
-  margin-bottom: 3.125%;
-  padding: 1.25%;
-}
-.newlink .col, .chain_link .col {
-  margin-left: 1.25%;
-}
-.newlink .col, .chain_link .col.w70 {
-  width: 86.25%;
+.newlink .col, .chain_link .col, .chain .tags {
+  margin-left: 10px;
 }
 .newlink .col.first, .chain_link .col.first {
   margin-left: 0;
 }
+
+.chain .tags span {
+  padding: .3em;
+  line-height: 2em;
+  background: #fff;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border: 1px solid #ddd;
+}
+#current_chain > *{
+  padding: 0 10px;
+}
+#current_chain ol {
+  padding: 0 40px;
+}
 /* @end */
 /* @end */
 
-/* @group Text */
+/* @group Global Text */
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   font-family: Gill Sans, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
