@@ -1,0 +1,14 @@
+development:
+  access_key_id: AKIAJN5QWR3QW4MKWTRQ
+  secret_access_key: 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
+  bucket: signalchains-development
+
+test:
+  access_key_id: AKIAJN5QWR3QW4MKWTRQ
+  secret_access_key: 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
+  bucket: signalchains-test
+
+production:
+  access_key_id: AKIAJN5QWR3QW4MKWTRQ
+  secret_access_key: 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
+  bucket: signalchains-production

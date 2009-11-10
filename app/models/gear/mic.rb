@@ -2,15 +2,15 @@ class Mic < Gear
   attr_accessible :mic_type, :diaphragm_size, :pattern
 
   def self.types
-    ['Condenser']
+    ['Condenser', 'Dynamic', 'Ribbon', 'PZM']
   end
 
   def self.diaphragm_sizes
-    ['Large']
+    ['Small', 'Medium', 'Large']
   end
 
   def self.patterns
-    ['Cardioid']
+    ['Cardioid', 'Omni', 'Bi', 'Supercardioid', 'XY', 'ORTF', 'Spaced Pair', 'MS Stereo', 'Blumlein']
   end
 
   def partial
