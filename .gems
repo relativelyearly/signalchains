@@ -5,3 +5,4 @@ RedCloth
 binarylogic-searchlogic --source http://gems.github.com
 will_paginate
 acts-as-taggable-on
+right_aws
