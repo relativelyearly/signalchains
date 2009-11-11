@@ -1,0 +1,7 @@
+- semantic_form_for @search, :url => {:controller => :equalizers, :action => :search}, :html => {:id => 'search_form'} do |f|
+  = f.input :make_like, :input_html => { :size => 27 }
+  = f.input :model_like, :input_html => { :size => 27 }
+
+  = f.input :equalizer_type, :as => :select, :collection => Equalizer.equalizer_types, :label => 'Type'
+  = f.input :bands
+  = f.input :interface, :as => :select, :collection => Equalizer.interfaces

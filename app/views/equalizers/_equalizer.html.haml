@@ -1,3 +1,11 @@
-== #{equalizer.equalizer_type} EQ
-== #{equalizer.bands} band
-=h equalizer.interface
+= h equalizer.make
+= h equalizer.model
+= h equalizer.manufactured_date
+= image_tag equalizer.image.url
+= h equalizer.equalizer_type
+= h equalizer.bands
+= h equalizer.interface
+= link_to 'Show', @chain.nil? ? equalizer : chain_equalizer_path(@chain, equalizer)
+= link_to 'Edit', edit_equalizer_path(equalizer)
+= link_to 'Destroy', equalizer, :confirm => 'Are you sure?', :method => :delete
+%br.clear

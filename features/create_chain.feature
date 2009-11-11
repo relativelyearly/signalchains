@@ -165,7 +165,6 @@ Feature: Create Chain
     And I should see "Lexicon"
     And I should see "PCM70"
     And I should see "1988"
-    And I should not see "Other"
 
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"

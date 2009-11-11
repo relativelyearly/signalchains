@@ -18,6 +18,6 @@ class DynamicsProcessor < Gear
   end
 
   def partial
-    'dynamics_processors/dynamics_processor'
+    'dynamics_processors/dynamics_processor_info'
   end
 end

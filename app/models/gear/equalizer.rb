@@ -10,6 +10,6 @@ class Equalizer < Gear
   end
 
   def partial
-    'equalizers/equalizer'
+    'equalizers/equalizer_info'
   end
 end

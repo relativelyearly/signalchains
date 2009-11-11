@@ -7,12 +7,13 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :equalizers
   end
 
-  map.resources :equalizers
-  map.resources :effects_processors
-  map.resources :dynamics_processors
-  map.resources :preamps
-  map.resources :chain_gears
+  map.resources :equalizers, :collection => {:search => :get}
+  map.resources :effects_processors, :collection => {:search => :get}
+  map.resources :dynamics_processors, :collection => {:search => :get}
+  map.resources :preamps, :collection => {:search => :get}
   map.resources :mics, :collection => {:search => :get}
+
+  map.resources :chain_gears
   map.resource :account, :controller => 'users'
   map.resources :password_resets
   map.resources :users

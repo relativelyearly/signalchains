@@ -1,23 +1,20 @@
 - title "Dynamics Processors"
 
-%table
-  %tr
-    %th Make
-    %th Model
-    %th Manufactured date
-    %th Image
-    %th Circuitry
-    %th Compression type
-  - for dynamics_processor in @dynamics_processors
-    %tr
-      %td= h dynamics_processor.make
-      %td= h dynamics_processor.model
-      %td= h dynamics_processor.manufactured_date
-      %td= image_tag dynamics_processor.image.url
-      %td= h dynamics_processor.circuitry
-      %td= h dynamics_processor.compression_type
-      %td= link_to 'Show', @chain.nil? ? dynamics_processor : chain_dynamics_processor_path(@chain, dynamics_processor)
-      %td= link_to 'Edit', edit_dynamics_processor_path(dynamics_processor)
-      %td= link_to 'Destroy', dynamics_processor, :confirm => 'Are you sure?', :method => :delete
+#search
+  = render(:partial => 'dynamics_processors/search_form')
+
+%br.clear
+
+#gear= render(:partial => 'dynamics_processors/dynamics_processor', :collection => @dynamics_processors)
 
 %p= link_to "New Dynamics Processor", @chain.nil? ? new_dynamics_processor_path : new_chain_dynamics_processor_path(@chain)
+
+:javascript
+  $(function () {
+    $('input').keyup(search);
+    $('select').change(search);
+  });
+
+  function search() {
+    $('#search_form').ajaxSubmit({ target: '#gear' });
+  }

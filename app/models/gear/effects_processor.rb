@@ -6,7 +6,7 @@ class EffectsProcessor < Gear
   end
 
   def partial
-    'effects_processors/effects_processor'
+    'effects_processors/effects_processor_info'
   end
 
   def self.interfaces

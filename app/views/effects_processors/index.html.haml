@@ -1,23 +1,20 @@
 - title "Effects Processors"
 
-%table
-  %tr
-    %th Make
-    %th Model
-    %th Manufactured date
-    %th Image
-    %th Effects type
-    %th Interface
-  - for effects_processor in @effects_processors
-    %tr
-      %td= h effects_processor.make
-      %td= h effects_processor.model
-      %td= h effects_processor.manufactured_date
-      %td= image_tag effects_processor.image.url
-      %td= h effects_processor.effects_type
-      %td= h effects_processor.interface
-      %td= link_to 'Show', @chain.nil? ? effects_processor : chain_effects_processor_path(@chain, effects_processor)
-      %td= link_to 'Edit', edit_effects_processor_path(effects_processor)
-      %td= link_to 'Destroy', effects_processor, :confirm => 'Are you sure?', :method => :delete
+#search
+  = render(:partial => 'effects_processors/search_form')
+
+%br.clear
+
+#gear= render(:partial => 'effects_processors/effects_processor', :collection => @effects_processors)
 
 %p= link_to "New Effects Processor", @chain.nil? ? new_effects_processor_path : new_chain_effects_processor_path(@chain)
+
+:javascript
+  $(function () {
+    $('input').keyup(search);
+    $('select').change(search);
+  });
+
+  function search() {
+    $('#search_form').ajaxSubmit({ target: '#gear' });
+  }

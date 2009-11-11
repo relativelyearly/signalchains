@@ -6,7 +6,7 @@ class Preamp < Gear
   end
 
   def partial
-    'preamps/preamp'
+    'preamps/preamp_info'
   end
 
   def position
