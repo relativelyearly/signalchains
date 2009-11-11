@@ -3,3 +3,6 @@
   = f.input :model_like, :input_html => { :size => 27 }
 
   = f.input :circuitry, :as => :select, :collection => Preamp.circuitries
+
+  - if @chain
+    = hidden_field_tag :chain_id, @chain.id
