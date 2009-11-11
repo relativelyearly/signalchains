@@ -7,7 +7,8 @@ class ChainsController < ResourceController::Base
   end
 
   show.before do
-    @gear = @chain.gear.sort {|x,y| x.position <=> y.position}
+    @input_source = @chain.input_source
+    @gear = @chain.processors.sort {|x,y| x.position <=> y.position}
   end
 
   private

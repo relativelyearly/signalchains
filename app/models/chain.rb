@@ -22,6 +22,14 @@ class Chain < ActiveRecord::Base
     gear.any? {|gear| gear.input_source?}
   end
 
+  def input_source
+    gear.select {|g| g.input_source?}.first
+  end
+
+  def processors
+    gear.select {|g| !g.input_source?}
+  end
+
   private
   def complete?
     completion = 'draft'

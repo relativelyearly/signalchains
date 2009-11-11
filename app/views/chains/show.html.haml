@@ -5,14 +5,15 @@
     %h5
       by
       =h @chain.user.email
-    .first.col.w50=textilize @chain.notes
-    .tags.col
-      Tags:
-      - for tag in @chain.tags
-        %span=h tag.name
-    .clear
-  - @gear.each do |gear|
-    = render(:partial => 'chain_gears/chain_gear', :object => gear)
+    .info.first.col.w25
+      =textilize @chain.notes
+      .tags.col
+        Tags:
+        - for tag in @chain.tags
+          %span=h tag.name
+      .clear
+    = render(:partial => 'chain_gears/input_source', :object => @input_source)
+  = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
 
 .w50.first.col
   - unless @chain.input_source?

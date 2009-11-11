@@ -7,7 +7,7 @@ class Gear < ActiveRecord::Base
   has_many :chains, :through => :chain_gears
 
   has_attached_file :image,
-                    :styles => { :thumb => ["100x100#", :jpg] },
+                    :styles => { :thumb => ["100x100#", :jpg], :wide => ["250x130", :jpg] },
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'

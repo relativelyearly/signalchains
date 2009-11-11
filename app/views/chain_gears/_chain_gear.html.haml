@@ -1,26 +1,23 @@
 - unless chain_gear.gear.nil?
   .chain_link
-    .gear.first.col{:class => chain_gear.gear_type.downcase}
+    .first.col.w25
+      .first.col.w10.action
+        = link_to '<span>Buy This Gear</span>', '#'
+        %span.score 90
+      .col.w10.image
+        = image_tag(chain_gear.gear.image.url(:thumb))
+    .gear.col{:class => chain_gear.gear_type.downcase}
       %h4
         =h chain_gear.gear.make
         =h chain_gear.gear.model
         %em (#{h chain_gear.gear.manufactured_date})
 
       .info
-        .first.col.w10
-          = image_tag(chain_gear.gear.image.url(:thumb))
         .col.w25
           = render(:partial => chain_gear.gear.partial, :object => chain_gear.gear)
         .notes.first
           =# textilize chain_gear.notes
-    .meta.col.w25
-      = link_to 'Buy This Gear', '#'
-      %br
-      Other chains with this gear:
-      %ul
-        %li= link_to 'Another Awesome Chain'
-        %li= link_to 'A Pretty Lame Chain'
-    .tags.first
+      .meta.first.col.w25
     .clear
 - else
   .chain_link
