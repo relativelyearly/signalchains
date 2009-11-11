@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :dynamics_processors
   map.resources :preamps
   map.resources :chain_gears
-  map.resources :mics
+  map.resources :mics, :collection => {:search => :get}
   map.resource :account, :controller => 'users'
   map.resources :password_resets
   map.resources :users

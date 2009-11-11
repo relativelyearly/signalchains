@@ -1,25 +1,21 @@
 - title "Mics"
 
-%table
-  %tr
-    %th Make
-    %th Model
-    %th Manufactured date
-    %th Image
-    %th Mic type
-    %th Diaphragm size
-    %th Pattern
-  - for mic in @mics
-    %tr
-      %td= h mic.make
-      %td= h mic.model
-      %td= h mic.manufactured_date
-      %td= image_tag mic.image.url(:thumb)
-      %td= h mic.mic_type
-      %td= h mic.diaphragm_size
-      %td= h mic.pattern
-      %td= link_to 'Show', @chain.nil? ? mic : chain_mic_path(@chain, mic)
-      %td= link_to 'Edit', edit_mic_path(mic)
-      %td= link_to 'Destroy', mic, :confirm => 'Are you sure?', :method => :delete
+#search
+  = render(:partial => 'mics/search_form')
+
+%br.clear
+
+#gear= render(:partial => 'mics/microphone', :collection => @mics)
+
 
 %p= link_to "New Mic", @chain.nil? ? new_mic_path : new_chain_mic_path(@chain)
+
+:javascript
+  $(function () {
+    $('input').keyup(search);
+    $('select').change(search);
+  });
+
+  function search() {
+    $('#search_form').ajaxSubmit({ target: '#gear' });
+  }
