@@ -1,0 +1,23 @@
+- unless input_source.gear.nil?
+  .input_source.col.w45
+    .first.col.w30{:class => input_source.gear_type.downcase}
+      %h4
+        =h input_source.gear.make
+        =h input_source.gear.model
+        %em (#{h input_source.gear.manufactured_date})
+
+      .info
+        = render(:partial => input_source.gear.partial, :object => input_source.gear)
+        .notes.first
+          =# textilize input_source.notes
+      .meta.first.col.w25
+        = link_to 'Buy This Gear', '#'
+  
+    .col.w1
+      = image_tag(input_source.gear.image.url(:thumb))
+      .clear
+- else
+  .chain_link
+    .gear.first.col.line_in
+      %h4 Line In
+.clear
