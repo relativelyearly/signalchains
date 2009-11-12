@@ -70,6 +70,7 @@ Feature: Create Chain
     And I should see "This chain is incomplete."
     And I should see "It needs an audio file."
 
+  @current
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -78,7 +79,6 @@ Feature: Create Chain
     And I follow "New Mic"
     And I fill in "Make" with "Shure"
     And I fill in "Model" with "KSM32"
-    And I fill in "Manufactured Date" with "2008"
     And I select "Condenser" from "Type"
     And I select "Large" from "Diaphragm Size"
     And I select "Cardioid" from "Pattern"
@@ -87,7 +87,6 @@ Feature: Create Chain
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Shure"
     And I should see "KSM32"
-    And I should see "2008"
     And I should see "Condenser"
     And I should see "Large"
     And I should see "Cardioid"
@@ -95,6 +94,7 @@ Feature: Create Chain
     And I should not see "It needs an input source."
     And I should not see "Start with"
 
+  @current
   Scenario: Adding a line source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -105,6 +105,7 @@ Feature: Create Chain
     And I should not see "It needs an input source."
     And I should not see "Start with"
 
+  @current
   Scenario: Adding a Preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -113,18 +114,17 @@ Feature: Create Chain
     And I follow "New Preamp"
     And I fill in "Make" with "Summit"
     And I fill in "Model" with "MPC-100A"
-    And I fill in "Manufactured Date" with "2008"
     And I select "Tube" from "Circuitry"
     And I press "Create Preamp"
     And I follow "Add this preamp to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Summit"
     And I should see "MPC-100A"
-    And I should see "2008"
     And I should see "Tube"
     And I should not see "It needs a preamp."
     And I should see "Start with"
 
+  @current
   Scenario: Adding a Compressor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -137,18 +137,17 @@ Feature: Create Chain
     And I select "Optical" from "Compression Type"
     And I fill in "Make" with "ART"
     And I fill in "Model" with "Pro VLA"
-    And I fill in "Manufactured Date" with "2008"
     And I press "Create Dynamics Processor"
     And I follow "Add this dynamics processor to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "ART"
     And I should see "Pro VLA"
-    And I should see "2008"
     And I should see "Tube"
     And I should see "Optical"
     And I should see "Compressor"
     And I should see "Start with"
 
+  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -158,14 +157,13 @@ Feature: Create Chain
     And I select "Other" from "Type"
     And I fill in "Make" with "Lexicon"
     And I fill in "Model" with "PCM70"
-    And I fill in "Manufactured Date" with "1988"
     And I press "Create Effects Processor"
     And I follow "Add this effects processor to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Lexicon"
     And I should see "PCM70"
-    And I should see "1988"
 
+  @current
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -175,14 +173,12 @@ Feature: Create Chain
     And I select "Parametric" from "Type"
     And I fill in "Make" with "Sontec"
     And I fill in "Model" with "MEQ250A"
-    And I fill in "Manufactured Date" with "1998"
     And I fill in "Bands" with "5"
     And I press "Create Equalizer"
     And I follow "Add this equalizer to your chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Sontec"
     And I should see "MEQ250A"
-    And I should see "1998"
     And I should see "Parametric"
     And I should see "5 band"
 

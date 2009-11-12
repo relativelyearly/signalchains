@@ -4,7 +4,6 @@
       %h4
         =h input_source.gear.make
         =h input_source.gear.model
-        %em (#{h input_source.gear.manufactured_date})
 
       .info
         = render(:partial => input_source.gear.partial, :object => input_source.gear)
@@ -12,7 +11,7 @@
           =# textilize input_source.notes
       .meta.first.col.w25
         = link_to 'Buy This Gear', '#'
-  
+
     .col.w1
       = image_tag(input_source.gear.image.url(:thumb))
       .clear

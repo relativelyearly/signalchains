@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110051023) do
+ActiveRecord::Schema.define(:version => 20091112024419) do
 
   create_table "chain_gears", :force => true do |t|
     t.integer  "gear_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20091110051023) do
   create_table "dynamics_processors", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.string   "manufactured_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20091110051023) do
   create_table "effects_processors", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.string   "manufactured_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -69,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20091110051023) do
   create_table "equalizers", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.string   "manufactured_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -84,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20091110051023) do
   create_table "mics", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.string   "manufactured_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -99,7 +95,6 @@ ActiveRecord::Schema.define(:version => 20091110051023) do
   create_table "preamps", :force => true do |t|
     t.string   "make"
     t.string   "model"
-    t.string   "manufactured_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

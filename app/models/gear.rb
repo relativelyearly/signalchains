@@ -1,7 +1,7 @@
 class Gear < ActiveRecord::Base
   self.abstract_class = true
 
-  attr_accessible :make, :model, :manufactured_date, :image
+  attr_accessible :make, :modele, :image
 
   has_many :chain_gears, :as => :gear
   has_many :chains, :through => :chain_gears
