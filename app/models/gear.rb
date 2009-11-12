@@ -15,4 +15,8 @@ class Gear < ActiveRecord::Base
   def position
     5
   end
+
+  def score
+    90
+  end
 end

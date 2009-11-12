@@ -3,7 +3,7 @@
     .first.col.w25
       .first.col.w10.action
         = link_to '<span>Buy This Gear</span>', '#'
-        %span.score 90
+        %span.score= chain_gear.gear.score
       .col.w10.image
         = image_tag(chain_gear.gear.image.url(:thumb))
     .gear.col{:class => chain_gear.gear_type.downcase}
