@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112024419) do
+ActiveRecord::Schema.define(:version => 20091112033003) do
 
   create_table "chain_gears", :force => true do |t|
     t.integer  "gear_id"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20091112024419) do
     t.string   "title"
     t.string   "performer"
     t.string   "year"
-    t.string   "studio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

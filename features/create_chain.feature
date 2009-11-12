@@ -35,14 +35,12 @@ Feature: Create Chain
     And I fill in "Title" with "Song Name"
     And I fill in "Performer" with "DJ Bad-Knee Bob"
     And I fill in "Year Recorded" with "1994"
-    And I fill in "Studio" with "BRC Audio Productions"
     And I press "Submit"
     Then I should be viewing the chain "Awesome Guitar"
     And I should not see "It needs an audio file."
     And I should see "Song Name"
     And I should see "DJ Bad-Knee Bob"
     And I should see "1994"
-    And I should see "BRC Audio Productions"
 
   Scenario: Create a Chain with tags
     Given I am logged in as "test@example.com/password"

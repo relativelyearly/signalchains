@@ -35,12 +35,10 @@
     =h @chain.title
     =h @chain.performer
     =h @chain.year
-    =h @chain.studio
     - semantic_form_for @chain, :html => {:multipart => true} do |f|
       = f.input :title
       = f.input :performer
       = f.input :year, :label => 'Year Recorded'
-      = f.input :studio
       = f.input :audio, :label => false
       = f.commit_button 'Submit'
 

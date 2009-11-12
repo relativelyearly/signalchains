@@ -10,7 +10,6 @@
     %th Title
     %th Performer
     %th Year
-    %th Studio
   - for chain in @chains
     %tr
       %td= h chain.user
@@ -21,7 +20,6 @@
       %td= h chain.title
       %td= h chain.performer
       %td= h chain.year
-      %td= h chain.studio
       %td= link_to 'Show', chain
       %td= link_to 'Edit', edit_chain_path(chain)
       %td= link_to 'Destroy', chain, :confirm => 'Are you sure?', :method => :delete
