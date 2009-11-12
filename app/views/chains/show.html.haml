@@ -12,7 +12,8 @@
         - for tag in @chain.tags
           %span=h tag.name
       .clear
-    = render(:partial => 'chain_gears/input_source', :object => @input_source)
+    - unless @input_source.nil?
+      = render(:partial => 'chain_gears/input_source', :object => @input_source)
   = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
 
 .w50.first.col
