@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :dynamics_processors, :collection => {:search => :get}
   map.resources :preamps, :collection => {:search => :get}
   map.resources :mics, :collection => {:search => :get}
+  map.resources :audios, :except => [:index, :show, :create]
 
   map.resources :chain_gears
   map.resource :account, :controller => 'users'

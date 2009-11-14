@@ -1,5 +1,5 @@
 class Chain < ActiveRecord::Base
-  attr_accessible :user_id, :status, :name, :notes, :title, :performer, :year, :tag_list
+  attr_accessible :user_id, :status, :name, :notes, :title, :performer, :year, :tag_list, :audio_attributes
   acts_as_taggable_on :tags
 
   belongs_to :user

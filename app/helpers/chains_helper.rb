@@ -1,4 +1,12 @@
 module ChainsHelper
+  def mp3_link(chain)
+    if chain.audio.status == 'converted'
+      link_to 'download mp3', chain.audio.converted.url
+    else
+      'converting...'
+    end
+  end
+
   def complete_message
     capture_haml do
       haml_tag(:ul, :class => 'incomplete_chain') do

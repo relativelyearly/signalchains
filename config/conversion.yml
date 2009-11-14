@@ -1,0 +1,11 @@
+test:
+  url: http://convert.local
+  host: http://signalchains.local
+
+development:
+  url: http://convert.local
+  host: http://signalchains.local
+
+production:
+  url: http://convert.signalchains.com
+  host: http://signalchains.heroku.com

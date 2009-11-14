@@ -11,6 +11,11 @@
         Tags:
         - for tag in @chain.tags
           %span=h tag.name
+      - if @chain.audio.converted.file?
+        Audio:
+        = mp3_link(@chain)
+        - if @chain.audio.high_quality.file?
+          = link_to 'download hq', @chain.audio.high_quality.url
       .clear
     - unless @input_source.nil?
       = render(:partial => 'chain_gears/input_source', :object => @input_source)
