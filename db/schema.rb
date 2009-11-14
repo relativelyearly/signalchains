@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091113204434) do
+ActiveRecord::Schema.define(:version => 20091114060924) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -40,10 +40,6 @@ ActiveRecord::Schema.define(:version => 20091113204434) do
     t.string   "status"
     t.string   "name"
     t.text     "notes"
-    t.string   "audio_file_name"
-    t.string   "audio_content_type"
-    t.integer  "audio_file_size"
-    t.datetime "audio_updated_at"
     t.string   "title"
     t.string   "performer"
     t.string   "year"

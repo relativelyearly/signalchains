@@ -31,7 +31,7 @@ Feature: Create Chain
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    And I attach the file at "test/audio_files/guitar.aif" to "chain_audio"
+    And I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_high_quality"
     And I fill in "Title" with "Song Name"
     And I fill in "Performer" with "DJ Bad-Knee Bob"
     And I fill in "Year Recorded" with "1994"

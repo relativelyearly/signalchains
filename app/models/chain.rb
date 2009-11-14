@@ -31,7 +31,7 @@ class Chain < ActiveRecord::Base
   def complete?
     completion = 'draft'
 
-    if input_source? && preamp? && audio.file?
+    if input_source? && preamp? && audio.high_quality.file?
       completion = 'complete'
     end
 

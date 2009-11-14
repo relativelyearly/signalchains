@@ -32,7 +32,7 @@ end
 
 Given /^I have added an audio file to "([^\"]*)"$/ do |name|
    When %{I view the chain named "#{name}"}
-   When %{I attach the file at "test/audio_files/guitar.aif" to "chain_audio"}
+   When %{I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_high_quality"}
    When %{I press "Submit"}
 end
 
@@ -58,15 +58,15 @@ end
 
 Then /^I should see the input source first$/ do
   doc = Nokogiri::HTML(@response.body)
-  assert_match(/mic/, doc.css('.gear')[0]['class'])
+  assert_match(/mic/, doc.css('.input_source.col.w45').children[1]['class'])
 end
 
 Then /^I should see the "([^\"]*)" second$/ do |type|
   doc = Nokogiri::HTML(@response.body)
-  assert_match(/#{type.downcase.gsub(' ', '')}/, doc.css('.gear')[1]['class'])
+  assert_match(/#{type.downcase.gsub(' ', '')}/, doc.css('.gear')[0]['class'])
 end
 
 Then /^I should see the "([^\"]*)" third$/ do |type|
   doc = Nokogiri::HTML(@response.body)
-  assert_match(/#{type.downcase.gsub(' ', '')}/, doc.css('.gear')[2]['class'])
+  assert_match(/#{type.downcase.gsub(' ', '')}/, doc.css('.gear')[1]['class'])
 end
