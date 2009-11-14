@@ -39,7 +39,7 @@
       = f.input :title
       = f.input :performer
       = f.input :year, :label => 'Year Recorded'
-      = f.input :audio, :label => false
+      = f.inputs :high_quality, :for => :audio, :name => "Audio", :label => false
       = f.commit_button 'Submit'
 
 .w30.col.snug

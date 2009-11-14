@@ -1,5 +1,5 @@
 require 'test_helper'
- 
+
 class ChainTest < ActiveSupport::TestCase
   context "A Chain instance" do
     setup do
@@ -8,6 +8,7 @@ class ChainTest < ActiveSupport::TestCase
 
     subject { @chain }
 
-    should_have_attached_file :audio
+    should_belong_to :user
+    should_have_one :audio, :dependent => :destroy
   end
 end

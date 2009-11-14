@@ -1,14 +1,11 @@
 class Chain < ActiveRecord::Base
-  attr_accessible :user_id, :status, :name, :notes, :audio, :title, :performer, :year, :tag_list
+  attr_accessible :user_id, :status, :name, :notes, :title, :performer, :year, :tag_list
   acts_as_taggable_on :tags
-
-  has_attached_file :audio,
-                    :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :path => ':class/:id/:style.:extension'
 
   belongs_to :user
   has_many :gear, :class_name => 'ChainGear'
+  has_one :audio, :as => :audible, :dependent => :destroy
+  accepts_nested_attributes_for :audio, :allow_destroy => true
 
   before_save :complete?
 

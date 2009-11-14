@@ -9,6 +9,7 @@ class ChainsController < ResourceController::Base
   show.before do
     @input_source = @chain.input_source
     @gear = @chain.processors.sort {|x,y| x.position <=> y.position}
+    @chain.build_audio
   end
 
   private
