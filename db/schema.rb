@@ -9,22 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114060924) do
+ActiveRecord::Schema.define(:version => 20091114164229) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
     t.string   "high_quality_content_type"
     t.integer  "high_quality_file_size"
     t.datetime "high_quality_updated_at"
-    t.string   "converted_file_name"
-    t.string   "converted_content_type"
-    t.integer  "converted_file_size"
-    t.datetime "converted_updated_at"
+    t.string   "mp3_file_name"
+    t.string   "mp3_content_type"
+    t.integer  "mp3_file_size"
+    t.datetime "mp3_updated_at"
     t.string   "status",                    :default => "converting"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "audible_id"
     t.string   "audible_type"
+    t.string   "ogg_file_name"
+    t.string   "ogg_content_type"
+    t.integer  "ogg_file_size"
+    t.datetime "ogg_updated_at"
   end
 
   create_table "chain_gears", :force => true do |t|

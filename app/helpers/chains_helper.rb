@@ -1,7 +1,15 @@
 module ChainsHelper
   def mp3_link(chain)
     if chain.audio.status == 'converted'
-      link_to 'download mp3', chain.audio.converted.url
+      link_to 'download mp3', chain.audio.mp3.url
+    else
+      'converting...'
+    end
+  end
+
+  def ogg_link(chain)
+    if chain.audio.status == 'converted'
+      link_to 'download ogg', chain.audio.ogg.url
     else
       'converting...'
     end
