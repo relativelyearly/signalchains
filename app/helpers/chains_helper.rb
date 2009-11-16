@@ -1,7 +1,7 @@
 module ChainsHelper
   def mp3_link(chain)
     if chain.audio.status == 'converted'
-      link_to 'download mp3', chain.audio.mp3.url
+      link_to '<span>download mp3</span>', chain.audio.mp3.url, :class => 'btn'
     else
       'converting...'
     end
@@ -9,7 +9,7 @@ module ChainsHelper
 
   def ogg_link(chain)
     if chain.audio.status == 'converted'
-      link_to 'download ogg', chain.audio.ogg.url
+      link_to '<span>download ogg</span>', chain.audio.ogg.url, :class => 'btn'
     else
       'converting...'
     end

@@ -2,7 +2,7 @@
   .chain_link{:class => chain_gear_counter == 0 ? 'top' : nil}
     .first.col.community
       .first.col.w10.action
-        = link_to '<span>Buy</span>', '#'
+        = link_to '<span>Buy</span>', '#', :class => 'btn'
         %span.score= chain_gear.gear.score
       .col.image
         %a{:href => '#'}= image_tag(chain_gear.gear.image.url(:thumb))

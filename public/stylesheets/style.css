@@ -88,7 +88,7 @@ body {
 
 /* @group chains */
 
-.btn {
+.block-btn {
   display: block;
   width: 100px;
   height: 100px;
@@ -96,28 +96,28 @@ body {
   background-position: 0 top;
   background-repeat: no-repeat;
 }
-.btn:hover {
+.block-btn:hover {
   background-position: 0 -100px;
 }
-.btn:active {
+.block-btn:active {
   background-position: 0 -200px;
 }
-.btn#new_mic {
+.block-btn#new_mic {
   background-image: url(../images/chains/btn_mic.png);
 }
-.btn#new_lineIn {
+.block-btn#new_lineIn {
   background-image: url(../images/chains/btn_line-in.png);
 }
-.btn#new_dynamics {
+.block-btn#new_dynamics {
   background-image: url(../images/chains/btn_dynamics.png);
 }
-.btn#new_preamp {
+.block-btn#new_preamp {
   background-image: url(../images/chains/btn_preamp.png);
 }
-.btn#new_effects {
+.block-btn#new_effects {
   background-image: url(../images/chains/btn_effects.png);
 }
-.btn#new_eq {
+.block-btn#new_eq {
   background-image: url(../images/chains/btn_eq.png);
 }
 
@@ -131,21 +131,19 @@ div.chain_link.top {
 .action {
   text-align: right;
 }
-.action a {
+a.btn {
   color: #333;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-
   display: block;
   height: 40px;
   background-image: url(../images/backgrounds/button_sprite.png);
   background-position: left top;
   font-family: "Gill Sans";
   margin-bottom: 8px;
-
 }
-.action a span {
+a.btn span {
   display: block;
   height: 20px;
   text-align: center;
@@ -157,29 +155,29 @@ div.chain_link.top {
   padding-left: 8px;
 }
 
-.chain_link .action a {
+.community a.btn {
   color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   font-family: "Gill Sans";
   width: 100px;  
 }
 
-.chain_link .action a span {
+.community a.btn span {
   height: 20px;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   background-position: right 120px;  
   overflow: hidden;
 }
-.action a:hover {
+a.btn:hover {
   background-position: left -40px;
 }
-.action a:hover span {
+a.btn:hover span {
   background-position: right -160px;
 }
-.action a:active {
+a.btn:active {
   background-position: left -80px;
 }
-.action a:active span {
+a.btn:active span {
   background-position: right -200px;
 }
 
@@ -193,10 +191,26 @@ span.score {
   margin-bottom: 25px;
 }
 .chain .info {
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 }
 .chain > .info {
-  background: url(../images/backgrounds/gear_rack_tabletop.png) no-repeat 0 bottom;  
+  padding: 0;
+}
+#audio {
+  text-align: center;
+  padding: 0 260px 50px 260px;
+  width: 280px;
+  min-height: 160px;
+  background: url(../images/backgrounds/gear_rack_tabletop_monitors.png) no-repeat 0 bottom;  
+}
+#audio a.btn {
+  display: block;
+  width: 150px; 
+  margin: 0 auto 10px auto; 
+}
+#audio audio {
+  display: block;
+  margin: 10px auto;
 }
 .chain .info h2 {
   margin-bottom: 0;
@@ -226,7 +240,7 @@ span.score {
   width: 112px;
   height: 112px;
 }
-.chain_link .image a {
+.chain .image a {
   display: block;	
   width: 100px;
   height: 100px;
@@ -234,7 +248,7 @@ span.score {
   background-image: url(../images/backgrounds/gear_image_container.png);
   background-position:  0 top;
 }
-.chain_link .image a:hover {
+.chain .image a:hover {
   background-position: 0 bottom;
 }
 .chain .power {

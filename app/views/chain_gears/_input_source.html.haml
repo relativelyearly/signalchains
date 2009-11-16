@@ -12,8 +12,8 @@
       .meta.first.col.w25
         = link_to 'Buy This Gear', '#'
 
-    .col.w1
-      = image_tag(input_source.gear.image.url(:thumb))
+    .col.image
+      %a{:href => '#'}= image_tag(input_source.gear.image.url(:thumb))
       .clear
 - else
   .input_source.col.w45
