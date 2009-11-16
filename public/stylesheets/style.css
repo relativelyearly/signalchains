@@ -26,6 +26,7 @@ body {
   color: #ccc;
   border-top: 1px solid #666;
   background: url(../images/chains/gear_unit_sprite.jpg) left top;
+  margin: 0;
 }
 .gear > * {
   margin-left: 40px;
@@ -38,6 +39,7 @@ body {
 .gear .meta {
   color: #666;
   height: 35px;
+  width: 400px;
   margin: 0;
   padding: 10px 50px 0 50px;
   background: #ddd url(../images/chains/gear_unit_sprite.jpg) no-repeat -500px bottom;
@@ -45,7 +47,10 @@ body {
 .gear .meta a {
   color: #666;
 }
-
+.chain_link .community {
+  width: 240px;
+  padding:10px 0 0 35px;
+}
 .gear_img {
   height: 100px;
   border: 1px dashed #aaa;
@@ -117,25 +122,24 @@ body {
 }
 
 div.chain_link {
-  background: url(../images/chains/gear_unit_sprite.jpg) no-repeat right 130px bottom;  
+  background: url(../images/backgrounds/gear_rack_bg.png);  
 }
 .action {
   text-align: right;
-  color: #3cab3b;
-  text-shadow: 0 2px 0 #fff;
 }
 .action a {
   color: #333;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-  overflow: hidden;
+
   display: block;
   height: 40px;
   background-image: url(../images/backgrounds/button_sprite.png);
   background-position: left top;
   font-family: "Gill Sans";
   margin-bottom: 8px;
+
 }
 .action a span {
   display: block;
@@ -144,6 +148,23 @@ div.chain_link {
   padding: 10px;
   background-image: url(../images/backgrounds/button_sprite.png);
   background-position: right 120px;  
+  margin-right: -8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.chain_link .action a {
+  color: #fff;
+  background-image: url(../images/backgrounds/button_dark_sprite.png);
+  font-family: "Gill Sans";
+  width: 100px;  
+}
+
+.chain_link .action a span {
+  height: 20px;
+  background-image: url(../images/backgrounds/button_dark_sprite.png);
+  background-position: right 120px;  
+  overflow: hidden;
 }
 .action a:hover {
   background-position: left -40px;
@@ -161,22 +182,26 @@ div.chain_link {
 span.score {
   font-size: 28px;
   padding-right: 5px;
+  color: #3cab3b;
+  text-shadow: 0 3px 2px #000;  
 }
 .chain {
   margin-bottom: 25px;
 }
 .chain .info {
-  margin-bottom: 20px;
+  padding-bottom: 60px;
+}
+.chain > .info {
+  background: url(../images/backgrounds/gear_rack_tabletop.png) no-repeat 0 bottom;  
 }
 .chain .info h2 {
   margin-bottom: 0;
 }
-
 .newlink, .chain .tags {
   margin-bottom: 25px;
 }
-.newlink .col, .chain_link .col, .chain .tags {
-  margin-left: 10px;
+.newlink .col, .chain .tags {
+  margin-left: 0px;
 }
 .newlink .col.first, .chain_link .col.first {
   margin-left: 0;
@@ -191,14 +216,29 @@ span.score {
   border: 1px solid #ddd;
 }
 .chain_link .action {
-  width: 130px;
+  width: 110px;
 }
 .chain_link .image {
-  text-align: center;
+  width: 112px;
+  height: 112px;
 }
-.chain_link .image img {
-  border: 2px solid #aaa;  
+.chain_link .image a {
+  display: block;	
+  width: 100px;
+  height: 100px;
+  padding: 6px;
+  background-image: url(../images/backgrounds/gear_image_container.png);
+  background-position:  0 top;
 }
+.chain_link .image a:hover {
+  background-position: 0 bottom;
+}
+.chain .power {
+  height: 43px;
+  width: 800px;
+  background: #000 url(../images/backgrounds/gear_rack_bottom.png) no-repeat;
+}
+
 #current_chain > *{
   padding: 0 10px;
 }

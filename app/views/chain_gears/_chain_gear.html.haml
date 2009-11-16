@@ -1,11 +1,11 @@
 - unless chain_gear.gear.nil?
   .chain_link
-    .first.col.w25
+    .first.col.community
       .first.col.w10.action
-        = link_to '<span>Buy This Gear</span>', '#'
+        = link_to '<span>Buy</span>', '#'
         %span.score= chain_gear.gear.score
-      .col.w10.image
-        = image_tag(chain_gear.gear.image.url(:thumb))
+      .col.image
+        %a{:href => '#'}= image_tag(chain_gear.gear.image.url(:thumb))
     .gear.col{:class => chain_gear.gear_type.downcase}
       %h4
         =h chain_gear.gear.make
