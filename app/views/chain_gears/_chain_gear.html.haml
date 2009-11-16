@@ -1,5 +1,5 @@
 - unless chain_gear.gear.nil?
-  .chain_link
+  .chain_link{:class => chain_gear_counter == 0 ? 'top' : nil}
     .first.col.community
       .first.col.w10.action
         = link_to '<span>Buy</span>', '#'

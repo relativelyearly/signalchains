@@ -124,6 +124,10 @@ body {
 div.chain_link {
   background: url(../images/backgrounds/gear_rack_bg.png);  
 }
+div.chain_link.top {
+  background: url(../images/backgrounds/gear_rack_bg_top.png);  
+  padding-top: 25px;
+}
 .action {
   text-align: right;
 }
@@ -234,9 +238,9 @@ span.score {
   background-position: 0 bottom;
 }
 .chain .power {
-  height: 43px;
+  height: 45px;
   width: 800px;
-  background: #000 url(../images/backgrounds/gear_rack_bottom.png) no-repeat;
+  background: transparent url(../images/backgrounds/gear_rack_bottom.png) no-repeat;
 }
 
 #current_chain > *{
