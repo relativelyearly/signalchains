@@ -6,18 +6,27 @@
     :javascript
       $(document).ready(function() {
           $('.chain .image a').fancybox({
-              'zoomSpeedIn':    300, 
-              'zoomSpeedOut': 300, 
+              'zoomSpeedIn':    300,
+              'zoomSpeedOut': 300,
               'overlayShow': false,
               'imageScale': true
             });
       });
     %title= yield(:title) || "Relatively Early Development"
   %body
-    .wrapper
-      - authenticated_only do
-        .session
-          = link_to 'Log Out', logout_url
+    #header
+      .wrapper
+        = image_tag 'signalchains.png', :id => 'logo', :alt => 'Signal Chains'
+        #controls.right.w30
+          - authenticated_only do
+            .session
+              = current_user.email
+              = link_to 'Log Out', logout_url
+          %form
+            %input
+            %input{:type => 'submit', :value => 'search'}
+      = render :partial => "layouts/nav"
+    #content.wrapper
       #container
         = render_flash_messages
         = yield

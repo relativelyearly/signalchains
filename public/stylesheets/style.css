@@ -3,22 +3,112 @@
 /* @group Boxes */
 
 body {
-  background-color:#eee;
+  background-color: #eee;
   font-family: Lucida Grande;
   font-size: 14px;
+  margin: 0;
+  background-image: url(../images/backgrounds/grill_background.png);
 }
 .wrapper {
-  width: 800px;
+  width: 900px;
 }
 #container {
-  padding: 20px 0;
-  margin-top: 20px;
+  background: #eee url(../images/backgrounds/container_background.png) repeat-y;
+  padding: 20px 25px;
+  width: 800px;
+  margin: 0 auto;
 }
+
+/* @group nav */
+#nav ul {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+#nav ul li {
+  display: block;
+  width: 130px;
+  height: 65px;
+  float: left;
+  background-repeat:no-repeat ; 
+  padding: 35px 30px 0 40px; 
+}
+#nav ul li a {
+  display: block;
+  width: 100px;
+  height: 50px;
+  background-repeat:no-repeat ;
+  text-indent: -999em;
+}
+li#home  {
+  background-image: url(../images/backgrounds/nav/home.png);
+}
+li#home a  {
+  background-image: url(../images/backgrounds/nav/home-text.png);
+}
+li#gear {
+  background-image: url(../images/backgrounds/nav/gear.png);
+}
+li#gear a{
+  background-image: url(../images/backgrounds/nav/gear-text.png);
+}
+
+li#chains {
+  background-image: url(../images/backgrounds/nav/chains.png);
+}
+li#chains a {
+  background-image: url(../images/backgrounds/nav/chains-text.png);
+}
+li#profile {
+  background-image: url(../images/backgrounds/nav/profile.png);
+}
+li#profile a{
+  background-image: url(../images/backgrounds/nav/profile-text.png);
+}
+
+#controls {
+  text-align: right;
+}
+.session {
+  margin-bottom: 10px;
+  color: #74ED7E;
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
+  font-size: .8em;
+  text-decoration: none;
+  
+}
+.session a {
+  color: #ccc; 
+}
+.session a:hover {
+  text-decoration: underline;
+}
+.session a, #controls input {
+  margin-left: 10px;
+}
+/* @end */
 
 .session {
   text-align: right;
 }
-
+#header {
+  background: url(../images/backgrounds/header_banner_back.png) repeat-x;
+  border-bottom: 4px ridge #111;
+}
+#header .wrapper {
+  margin-top: 10px;
+  width: 780px;
+  padding: 30px 60px;
+  background: url(../images/backgrounds/header_banner.png);
+  height: 66px;
+}
+#content {
+  clear: both;
+  padding-top: 14px;
+  margin: 20px auto 0 auto;
+  background: url(../images/backgrounds/rounded_top_background.png) no-repeat center top;
+}
 /* @group gear */
 .gear {
   padding: 0;
