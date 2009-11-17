@@ -40,29 +40,29 @@ body {
   background-repeat:no-repeat ;
   text-indent: -999em;
 }
-li#home  {
+li#home-nav  {
   background-image: url(../images/backgrounds/nav/home.png);
 }
-li#home a  {
+li#home-nav a  {
   background-image: url(../images/backgrounds/nav/home-text.png);
 }
-li#gear {
+li#gear-nav {
   background-image: url(../images/backgrounds/nav/gear.png);
 }
-li#gear a{
+li#gear-nav a{
   background-image: url(../images/backgrounds/nav/gear-text.png);
 }
 
-li#chains {
+li#chains-nav {
   background-image: url(../images/backgrounds/nav/chains.png);
 }
-li#chains a {
+li#chains-nav a {
   background-image: url(../images/backgrounds/nav/chains-text.png);
 }
-li#profile {
+li#profile-nav {
   background-image: url(../images/backgrounds/nav/profile.png);
 }
-li#profile a{
+li#profile-nav a{
   background-image: url(../images/backgrounds/nav/profile-text.png);
 }
 
