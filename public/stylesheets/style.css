@@ -79,7 +79,8 @@ li#profile a{
   
 }
 .session a {
-  color: #ccc; 
+  color: #ccc;
+  text-decoration: none; 
 }
 .session a:hover {
   text-decoration: underline;
@@ -177,7 +178,9 @@ li#profile a{
 /* @end */
 
 /* @group chains */
-
+.input_source {
+  width: 375px;
+}
 .block-btn {
   display: block;
   width: 100px;
@@ -378,9 +381,11 @@ h4 {
 h5 {
   font-size: 90%;
   font-weight: normal;
+  margin-bottom: 1em;
 }
 p {
   font-size: 90%;
+  margin: 0 0 1em 0;
 }
 /* @end */
 
