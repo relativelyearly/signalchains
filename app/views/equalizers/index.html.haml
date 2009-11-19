@@ -7,7 +7,8 @@
 
 #gear= render(:partial => 'equalizers/equalizer', :collection => @equalizers)
 
-%p= link_to "New Equalizer", @chain.nil? ? new_equalizer_path : new_chain_equalizer_path(@chain)
+.w15
+  = link_to "<span>New Equalizer</span>", @chain.nil? ? new_equalizer_path : new_chain_equalizer_path(@chain), :class => 'btn'
 
 :javascript
   $(function () {

@@ -7,7 +7,8 @@
 
 #gear= render(:partial => 'preamps/preamp', :collection => @preamps)
 
-%p= link_to "New Preamp", @chain.nil? ? new_preamp_path : new_chain_preamp_path(@chain)
+.w15
+  = link_to "<span>New Preamp</span>", @chain.nil? ? new_preamp_path : new_chain_preamp_path(@chain), :class => 'btn'
 
 :javascript
   $(function () {

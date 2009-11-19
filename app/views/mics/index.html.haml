@@ -7,7 +7,9 @@
 
 #gear= render(:partial => 'mics/microphone', :collection => @mics)
 
-%p= link_to "New Mic", @chain.nil? ? new_mic_path : new_chain_mic_path(@chain)
+.w15
+  = link_to "<span>New Mic</span>", @chain.nil? ? new_mic_path : new_chain_mic_path(@chain), :class => 'btn'
+
 
 :javascript
   $(function () {

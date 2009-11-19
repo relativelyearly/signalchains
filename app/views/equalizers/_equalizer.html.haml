@@ -1,10 +1,17 @@
-= h equalizer.make
-= h equalizer.model
-= image_tag equalizer.image.url
-= h equalizer.equalizer_type
-= h equalizer.bands
-= h equalizer.interface
-= link_to 'Show', @chain.nil? ? equalizer : chain_equalizer_path(@chain, equalizer)
-= link_to 'Edit', edit_equalizer_path(equalizer)
-= link_to 'Destroy', equalizer, :confirm => 'Are you sure?', :method => :delete
-%br.clear
+.unit
+  .col.thumb
+    = link_to image_tag(equalizer.image.url(:thumb), :alt => equalizer.model), @chain.nil? ? equalizer : chain_equalizer_path(@chain, equalizer)
+  .col.w45  
+    %h3
+      = link_to "#{equalizer.make} #{equalizer.model}", @chain.nil? ? equalizer : chain_equalizer_path(@chain, equalizer)
+    %span  
+      #{equalizer.bands}-band
+    %span= h equalizer.equalizer_type
+    %br
+    %em= h equalizer.interface
+  .col.w15
+    .w15
+      = link_to '<span>Add to Chain</span>', '#', :class => 'btn'
+    %span.score
+      90
+  %br.clear

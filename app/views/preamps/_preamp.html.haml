@@ -1,8 +1,13 @@
-= h preamp.make
-= h preamp.model
-= image_tag preamp.image.url
-= h preamp.circuitry
-= link_to 'Show', @chain.nil? ? preamp : chain_preamp_path(@chain, preamp)
-= link_to 'Edit', edit_preamp_path(preamp)
-= link_to 'Destroy', preamp, :confirm => 'Are you sure?', :method => :delete
-%br.clear
+.unit
+  .col.thumb
+    = link_to image_tag(preamp.image.url(:thumb), :alt => preamp.model), @chain.nil? ? preamp : chain_preamp_path(@chain, preamp)
+  .col.w45  
+    %h3
+      = link_to "#{preamp.make} #{preamp.model}", @chain.nil? ? preamp : chain_preamp_path(@chain, preamp)
+    %span= h preamp.circuitry
+  .col.w15
+    .w15
+      = link_to '<span>Add to Chain</span>', '#', :class => 'btn'
+    %span.score
+      90
+  %br.clear

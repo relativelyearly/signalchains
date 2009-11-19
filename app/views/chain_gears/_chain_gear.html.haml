@@ -4,7 +4,7 @@
       .first.col.w10.action
         = link_to '<span>Buy</span>', '#', :class => 'btn'
         %span.score= chain_gear.gear.score
-      .col.image
+      .col.thumb
         =link_to image_tag(chain_gear.gear.image.url(:thumb), :alt => chain_gear.gear.model), chain_gear.gear.image.url
     .gear.col{:class => chain_gear.gear_type.downcase}
       %h4

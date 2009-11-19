@@ -1,9 +1,10 @@
 - semantic_form_for @search, :url => {:controller => :effects_processors, :action => :search}, :html => {:id => 'search_form'} do |f|
-  = f.input :make_like, :input_html => { :size => 27 }
-  = f.input :model_like, :input_html => { :size => 27 }
+  = f.input :make_like, :input_html => { :size => 27 }, :input_html => { :size => 27}, :wrapper_html => {:class => 'first col w20'}
+  = f.input :model_like, :input_html => { :size => 27 }, :input_html => { :size => 27}, :wrapper_html => {:class => 'col w20'}
 
-  = f.input :effects_type, :as => :select, :collection => EffectsProcessor.effects_types, :label => 'Type'
-  = f.input :interface, :as => :select, :collection => EffectsProcessor.interfaces
+  = f.input :effects_type, :as => :select, :collection => EffectsProcessor.effects_types, :label => 'Type', :wrapper_html => {:class => 'col w10'}
+  = f.input :interface, :as => :select, :collection => EffectsProcessor.interfaces, :wrapper_html => {:class => 'col w10'}
 
   - if @chain
     = hidden_field_tag :chain_id, @chain.id
+.clear

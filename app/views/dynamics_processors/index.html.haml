@@ -7,7 +7,8 @@
 
 #gear= render(:partial => 'dynamics_processors/dynamics_processor', :collection => @dynamics_processors)
 
-%p= link_to "New Dynamics Processor", @chain.nil? ? new_dynamics_processor_path : new_chain_dynamics_processor_path(@chain)
+.w15
+  = link_to "<span>New Processor</span>", @chain.nil? ? new_dynamics_processor_path : new_chain_dynamics_processor_path(@chain), :class => 'btn'
 
 :javascript
   $(function () {

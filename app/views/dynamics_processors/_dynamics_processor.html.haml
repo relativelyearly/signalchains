@@ -1,9 +1,16 @@
-= h dynamics_processor.make
-= h dynamics_processor.model
-= image_tag dynamics_processor.image.url
-= h dynamics_processor.circuitry
-= h dynamics_processor.compression_type
-= link_to 'Show', @chain.nil? ? dynamics_processor : chain_dynamics_processor_path(@chain, dynamics_processor)
-= link_to 'Edit', edit_dynamics_processor_path(dynamics_processor)
-= link_to 'Destroy', dynamics_processor, :confirm => 'Are you sure?', :method => :delete
-%br.clear
+.unit
+  .col.thumb
+    = link_to image_tag(dynamics_processor.image.url(:thumb), :alt => dynamics_processor.model), @chain.nil? ? dynamics_processor : chain_dynamics_processor_path(@chain, dynamics_processor)
+  .col.w45  
+    %h3
+      = link_to "#{dynamics_processor.make} #{dynamics_processor.model}", @chain.nil? ? dynamics_processor : chain_dynamics_processor_path(@chain, dynamics_processor)
+    %span= h dynamics_processor.compression_type
+    %span= h dynamics_processor.circuitry
+    %br
+    %em= h dynamics_processor.interface
+  .col.w15
+    .w15
+      = link_to '<span>Add to Chain</span>', '#', :class => 'btn'
+    %span.score
+      90
+  %br.clear

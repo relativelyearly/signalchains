@@ -175,6 +175,25 @@ li#profile-nav a{
   background-color: #73c356;
   background-position: left -1600px;
 }
+
+.unit {
+  margin-bottom: 20px;
+}
+.unit h3 a {
+  color: #000;
+  padding: .3em;
+  text-decoration: none;
+  position: relative;
+  left: -.3em;
+}
+.unit h3 a:hover {
+  background-color: #fff;
+}
+.unit span.score {
+  text-align: center;
+  width: 160px;
+  display: block;
+}
 /* @end */
 
 /* @group chains */
@@ -329,11 +348,11 @@ span.score {
 .chain_link .action {
   width: 110px;
 }
-.chain_link .image {
+.thumb {
   width: 112px;
   height: 112px;
 }
-.chain .image a {
+.thumb a {
   display: block;	
   width: 100px;
   height: 100px;
@@ -341,7 +360,7 @@ span.score {
   background-image: url(../images/backgrounds/gear_image_container.png);
   background-position:  0 top;
 }
-.chain .image a:hover {
+.thumb a:hover {
   background-position: 0 bottom;
 }
 .chain .power {
@@ -388,8 +407,20 @@ p {
   margin: 0 0 1em 0;
 }
 /* @end */
-
+#search #search_form.mic-search {
+  padding: 0;
+}
+#search {
+  width: 700px;
+  padding: 10px 50px 40px 50px;
+  background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
+}
 /* @group forms */
+
+.formtastic li {
+  list-style: none;
+}
+
 
 /* @group Mic */
 form#new_chain_gear, form.chain {

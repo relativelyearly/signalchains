@@ -1,11 +1,11 @@
 - semantic_form_for @search, :url => {:controller => :equalizers, :action => :search}, :html => {:id => 'search_form'} do |f|
-  = f.input :make_like, :input_html => { :size => 27 }
-  = f.input :model_like, :input_html => { :size => 27 }
+  = f.input :make_like, :input_html => { :size => 20}, :wrapper_html => {:class => 'first col w15'}
+  = f.input :model_like, :input_html => { :size => 20 }, :wrapper_html => {:class => 'col w15'}
 
-  = f.input :equalizer_type, :as => :select, :collection => Equalizer.equalizer_types, :label => 'Type'
-  = f.input :bands
-  = f.input :interface, :as => :select, :collection => Equalizer.interfaces
-
+  = f.input :equalizer_type, :as => :select, :collection => Equalizer.equalizer_types, :label => 'Type', :wrapper_html => {:class => 'col w10'}
+  = f.input :bands, :input_html => { :size => 6 }, :wrapper_html => {:class => 'col w5'}
+  = f.input :interface, :as => :select, :collection => Equalizer.interfaces, :wrapper_html => {:class => 'col w10'}
+.clear
 
   - if @chain
     = hidden_field_tag :chain_id, @chain.id

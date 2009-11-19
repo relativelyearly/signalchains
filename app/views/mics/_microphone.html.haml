@@ -1,10 +1,14 @@
-= h microphone.make
-= h microphone.model
-= image_tag microphone.image.url(:thumb)
-= h microphone.mic_type
-= h microphone.diaphragm_size
-= h microphone.pattern
-= link_to 'Show', @chain.nil? ? microphone : chain_mic_path(@chain, microphone)
-= link_to 'Edit', edit_mic_path(microphone)
-= link_to 'Destroy', microphone, :confirm => 'Are you sure?', :method => :delete
-%br
+.unit
+  .col.thumb
+    = link_to image_tag(microphone.image.url(:thumb), :alt => microphone.model), @chain.nil? ? microphone : chain_mic_path(@chain, microphone)
+  .col.w45
+    %h3
+      = link_to "#{microphone.make} #{microphone.model}", @chain.nil? ? microphone : chain_mic_path(@chain, microphone)
+    %span
+      #{microphone.diaphragm_size}-diaphragm #{microphone.pattern} #{microphone.mic_type}
+  .col.w15
+    .w15
+      = link_to '<span>Add to Chain</span>', '#', :class => 'btn'
+    %span.score
+      90
+  %br.clear
