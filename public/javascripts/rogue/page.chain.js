@@ -6,12 +6,11 @@ function toggle_edit_link (element) {
   var form = $(element).siblings('.notes-form');
 
   if(form.css('display') === 'none') {
-    form.show();
     $(element).html('hide form');
   } else {
-    form.hide();
     $(element).html('edit notes');
   }
+  form.toggle();
 
   return false;
 }
