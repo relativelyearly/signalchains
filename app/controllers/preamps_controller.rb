@@ -3,7 +3,10 @@ class PreampsController < ResourceController::Base
 
   index.before do
     @search = Preamp.search({})
+    @class = Preamp
   end
+  
+  index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
@@ -15,9 +18,10 @@ class PreampsController < ResourceController::Base
 
   def search
     @preamps = Preamp.search(:conditions => params["search"]).all
+    @class = Preamp
 
     respond_to do |format|
-      format.html { render(:partial => 'preamps/preamp', :collection => @preamps) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @preamps) }
     end
   end
 

@@ -1,16 +1,3 @@
-.unit
-  .col.thumb
-    = link_to image_tag(effects_processor.image.url(:thumb), :alt => effects_processor.model), @chain.nil? ? effects_processor : chain_effects_processor_path(@chain, effects_processor)
-  .col.w45  
-    %h3
-      = link_to "#{effects_processor.make} #{effects_processor.model}", @chain.nil? ? effects_processor : chain_effects_processor_path(@chain, effects_processor)
-    %span  
-    %span= h effects_processor.effects_type
-    %br
-    %em= h effects_processor.interface
-  .col.w15
-    .w15
-      = link_to '<span>Add to Chain</span>', '#', :class => 'btn'
-    %span.score
-      90
-  %br.clear
+%span= h effects_processor.effects_type
+%br
+%em= h effects_processor.interface

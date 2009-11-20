@@ -1,0 +1,22 @@
+- title(@class.to_s.underscore.humanize)
+
+#search
+  = render(:partial => "#{@class.to_s.pluralize.underscore}/search_form")
+
+%br.clear
+
+#gear= render(:partial => 'gear/index_gear', :collection => collection)
+
+.w15
+  = new_button(@class)
+
+
+:javascript
+  $(function () {
+    $('input').keyup(search);
+    $('select').change(search);
+  });
+
+  function search() {
+    $('#search_form').ajaxSubmit({ target: '#gear' });
+  }

@@ -5,7 +5,11 @@ class EffectsProcessor < Gear
     ['Reverb', 'Delay', 'Chorus', 'Other']
   end
 
-  def partial
+  def self.index_partial
+    'effects_processors/effects_processor'
+  end
+
+  def chain_gear_partial
     'effects_processors/effects_processor_info'
   end
 

@@ -3,7 +3,10 @@ class DynamicsProcessorsController < ResourceController::Base
 
   index.before do
     @search = DynamicsProcessor.search({})
+    @class = DynamicsProcessor
   end
+  
+  index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
@@ -15,9 +18,10 @@ class DynamicsProcessorsController < ResourceController::Base
 
   def search
     @dynamics_processors = DynamicsProcessor.search(:conditions => params["search"]).all
+    @class = DynamicsProcessor
 
     respond_to do |format|
-      format.html { render(:partial => 'dynamics_processors/dynamics_processor', :collection => @dynamics_processors) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @dynamics_processors) }
     end
   end
 

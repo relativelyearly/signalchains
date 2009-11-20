@@ -36,6 +36,7 @@ class Audio < ActiveRecord::Base
   end
 
   def convert
+    return if Rails.env == 'test'
     if self.high_quality_updated_at_changed?
       conversion_url = URI.parse(ConversionSettings["url"])
       audio_url = "#{ConversionSettings["host"]}/audios/#{self.id}.xml"

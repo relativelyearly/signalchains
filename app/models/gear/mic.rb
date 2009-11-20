@@ -13,7 +13,11 @@ class Mic < Gear
     ['Cardioid', 'Omni', 'Bi', 'Supercardioid', 'XY', 'ORTF', 'Spaced Pair', 'MS Stereo', 'Blumlein']
   end
 
-  def partial
+  def self.index_partial
+    'mics/microphone'
+  end
+
+  def chain_gear_partial
     'mics/mic'
   end
 
@@ -23,9 +27,5 @@ class Mic < Gear
 
   def position
     0
-  end
-
-  def partial
-    'mics/mic'
   end
 end

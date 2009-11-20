@@ -5,7 +5,11 @@ class Preamp < Gear
     ['Solid State', 'Tube']
   end
 
-  def partial
+  def self.index_partial
+    'preamps/preamp'
+  end
+
+  def chain_gear_partial
     'preamps/preamp_info'
   end
 

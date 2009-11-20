@@ -3,7 +3,10 @@ class EqualizersController < ResourceController::Base
 
   index.before do
     @search = Equalizer.search({})
+    @class = Equalizer
   end
+  
+  index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
@@ -15,9 +18,10 @@ class EqualizersController < ResourceController::Base
 
   def search
     @equalizers = Equalizer.search(:conditions => params["search"]).all
+    @class = Equalizer
 
     respond_to do |format|
-      format.html { render(:partial => 'equalizers/equalizer', :collection => @equalizers) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @equalizers) }
     end
   end
 

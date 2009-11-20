@@ -3,7 +3,10 @@ class MicsController < ResourceController::Base
 
   index.before do
     @search = Mic.search({})
+    @class = Mic
   end
+  
+  index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
@@ -15,9 +18,10 @@ class MicsController < ResourceController::Base
 
   def search
     @mics = Mic.search(:conditions => params["search"]).all
+    @class = Mic
 
     respond_to do |format|
-      format.html { render(:partial => 'mics/microphone', :collection => @mics) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @mics) }
     end
   end
 

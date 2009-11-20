@@ -3,7 +3,10 @@ class EffectsProcessorsController < ResourceController::Base
 
   index.before do
     @search = EffectsProcessor.search({})
+    @class = EffectsProcessor
   end
+  
+  index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
@@ -15,9 +18,10 @@ class EffectsProcessorsController < ResourceController::Base
 
   def search
     @effects_processors = EffectsProcessor.search(:conditions => params["search"]).all
+    @class = EffectsProcessor
 
     respond_to do |format|
-      format.html { render(:partial => 'effects_processors/effects_processor', :collection => @effects_processors) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @effects_processors) }
     end
   end
 

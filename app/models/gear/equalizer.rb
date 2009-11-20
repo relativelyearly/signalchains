@@ -9,7 +9,11 @@ class Equalizer < Gear
     ['Hardware', 'Software']
   end
 
-  def partial
+  def self.index_partial
+    'equalizers/equalizer'
+  end
+
+  def chain_gear_partial
     'equalizers/equalizer_info'
   end
 end

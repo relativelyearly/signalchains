@@ -17,7 +17,11 @@ class DynamicsProcessor < Gear
     ['Hardware', 'Software']
   end
 
-  def partial
+  def self.index_partial
+    'dynamics_processors/dynamics_processor'
+  end
+
+  def chain_gear_partial
     'dynamics_processors/dynamics_processor_info'
   end
 end

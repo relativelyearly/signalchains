@@ -58,7 +58,7 @@ end
 
 Then /^I should see the input source first$/ do
   doc = Nokogiri::HTML(@response.body)
-  assert_match(/mic/, doc.css('.input_source.col.w45').children[1]['class'])
+  assert_match(/mic/, doc.css('.input_source.col').children[1]['class'])
 end
 
 Then /^I should see the "([^\"]*)" second$/ do |type|
