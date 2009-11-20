@@ -1,4 +1,5 @@
 - title "Chain"
+
 .chain
   .info
     %h2= h @chain.name
@@ -69,3 +70,5 @@
   = link_to "Destroy", @chain, :confirm => 'Are you sure?', :method => :delete
   |
   = link_to "View All", chains_path
+
+= javascript_include_tag 'rogue/page.chain'

@@ -1,5 +1,5 @@
 class ChainGear < ActiveRecord::Base
-  attr_accessible :gear_id, :gear_type, :chain_id
+  attr_accessible :gear_id, :gear_type, :chain_id, :notes
   belongs_to :chain
   belongs_to :gear, :polymorphic => true
 

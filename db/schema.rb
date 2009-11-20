@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091114164229) do
+ActiveRecord::Schema.define(:version => 20091120020102) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20091114164229) do
     t.integer  "chain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "notes"
   end
 
   create_table "chains", :force => true do |t|
@@ -129,8 +130,8 @@ ActiveRecord::Schema.define(:version => 20091114164229) do
     t.datetime "created_at"
   end
 
+  add_index "taggings", ["context", "taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
     t.string "name"

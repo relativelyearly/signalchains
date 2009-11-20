@@ -15,7 +15,12 @@
         .col.w25
           = render(:partial => chain_gear.gear.chain_gear_partial, :object => chain_gear.gear)
         .notes.first
-          =# textilize chain_gear.notes
+          = textilize chain_gear.notes
+          = link_to('edit notes', edit_chain_gear_path(chain_gear), :class => 'show-form')
+          .notes-form{:id => "notes-form-#{chain_gear.id}", :style => 'display:none'}
+            - semantic_form_for chain_gear do |f|
+              = f.input :notes
+              = f.commit_button 'Save'
       .meta.first.col.w25
     .clear
 - else

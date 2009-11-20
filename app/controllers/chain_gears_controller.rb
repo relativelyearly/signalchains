@@ -1,4 +1,6 @@
 class ChainGearsController < ResourceController::Base
+  update.wants.html { redirect_to object.chain }
+  
   def add_mic
     @chain = Chain.find(params[:chain_id])
     @mic = Mic.find(params[:mic_id])

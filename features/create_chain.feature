@@ -68,7 +68,6 @@ Feature: Create Chain
     And I should see "This chain is incomplete."
     And I should see "It needs an audio file."
 
-  @current
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -92,7 +91,6 @@ Feature: Create Chain
     And I should not see "It needs an input source."
     And I should not see "Start with"
 
-  @current
   Scenario: Adding a line source
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -103,7 +101,6 @@ Feature: Create Chain
     And I should not see "It needs an input source."
     And I should not see "Start with"
 
-  @current
   Scenario: Adding a Preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -122,7 +119,6 @@ Feature: Create Chain
     And I should not see "It needs a preamp."
     And I should see "Start with"
 
-  @current
   Scenario: Adding a Compressor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -145,7 +141,6 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
-  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -161,7 +156,6 @@ Feature: Create Chain
     And I should see "Lexicon"
     And I should see "PCM70"
 
-  @current
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
