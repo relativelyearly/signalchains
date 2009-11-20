@@ -10,7 +10,7 @@ function toggle_edit_link (element) {
   } else {
     $(element).html('edit notes');
   }
-  form.toggle();
+  form.slideToggle();
 
   return false;
 }
