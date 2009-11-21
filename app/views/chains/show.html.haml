@@ -3,6 +3,7 @@
 .chain
   .info
     %h2= h @chain.name
+    = like_link(@chain)
     %h5
       by
       =h @chain.user.email

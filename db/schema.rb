@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091120020102) do
+ActiveRecord::Schema.define(:version => 20091121194455) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20091120020102) do
     t.string   "year"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "likes_count", :default => 0
   end
 
   create_table "dynamics_processors", :force => true do |t|
@@ -90,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20091120020102) do
     t.string   "equalizer_type"
     t.integer  "bands"
     t.string   "interface"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "chain_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

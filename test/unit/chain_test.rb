@@ -10,5 +10,6 @@ class ChainTest < ActiveSupport::TestCase
 
     should_belong_to :user
     should_have_one :audio, :dependent => :destroy
+    should_have_many :likes, :dependent => :destroy
   end
 end

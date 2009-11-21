@@ -15,6 +15,14 @@ module ChainsHelper
     end
   end
 
+  def like_link(chain)
+    if current_user && current_user.likes?(chain)
+      link_to "unlike (#{chain.likes.size})", like_chain_path(chain), :id => 'unlike'
+    else
+      link_to "like (#{chain.likes.size})", like_chain_path(chain), :id => 'like'
+    end
+  end
+
   def complete_message
     capture_haml do
       haml_tag(:ul, :class => 'incomplete_chain') do

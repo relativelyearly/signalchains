@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :chains do |chain|
+  map.resources :chains, :member => {:like => :get} do |chain|
     chain.resources :mics
     chain.resources :preamps
     chain.resources :dynamics_processors

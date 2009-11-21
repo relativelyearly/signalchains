@@ -3,7 +3,6 @@ Feature: Chain gear notes
   As a user
   I want I want to edit my notes
 
-  @current
   Scenario: On my chain
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome New Chain"
