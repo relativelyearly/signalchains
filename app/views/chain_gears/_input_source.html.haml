@@ -8,11 +8,16 @@
       .info
         = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)
         .notes.first
-          =# textilize input_source.notes
+          = textilize input_source.notes
+          = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form')
+          .notes-form{:id => "notes-form-#{input_source.id}", :style => 'display:none'}
+            - semantic_form_for input_source do |f|
+              = f.input :notes
+              = f.commit_button 'Save'
       .meta.first.col.w10
         = link_to '<span>Buy</span>', '#', :class => 'btn'
 
-    .col.image
+    .col.thumb
       = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
       .clear
 - else

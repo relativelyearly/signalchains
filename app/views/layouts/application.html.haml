@@ -3,15 +3,6 @@
   %head
     = javascript_include_tag('jquery', 'jquery.validate', 'jrails', 'jquery.form', '/fancybox/fancybox')
     = stylesheet_link_tag('application', 'style', '/fancybox/fancybox')
-    :javascript
-      $(document).ready(function() {
-          $('.chain .image a').fancybox({
-              'zoomSpeedIn':    300,
-              'zoomSpeedOut': 300,
-              'overlayShow': false,
-              'imageScale': true
-            });
-      });
     %title= yield(:title) || "Relatively Early Development"
   %body
     #header
