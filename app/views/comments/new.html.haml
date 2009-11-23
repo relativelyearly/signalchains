@@ -1,0 +1,6 @@
+- title "New Comment"
+
+- semantic_form_for @comment, :url => new_chain_comment_path(@chain) do |f|
+  = render :partial => 'form'
+
+%p= link_to "Back", collection_path

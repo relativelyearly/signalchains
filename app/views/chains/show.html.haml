@@ -65,6 +65,14 @@
   - unless complete_message.empty?
     .incomplete_chain= complete_message
 
+- if current_user
+  .w50.first.col
+    - semantic_form_for @chain.comments.build, :url => chain_comments_path(@chain) do |f|
+      = render(:partial => 'comments/form', :locals => {:f => f})
+
+.w50.first.col
+  = render(:partial => 'comments/comment', :collection => @chain.comments)
+
 %p.first
   = link_to "Edit", edit_chain_path(@chain)
   |

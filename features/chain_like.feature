@@ -3,7 +3,6 @@ Feature: Chain like
   As a user
   I want to like a chain
 
-  @current
   Scenario: When not logged in
     Given I am not logged in
     And a chain exists
@@ -11,7 +10,6 @@ Feature: Chain like
     And I follow "like"
     Then I should be on the login page
 
-  @current
   Scenario: When logged in
     Given I am logged in as "test@example.com/password"
     And a chain exists
@@ -20,7 +18,6 @@ Feature: Chain like
     Then I should be on the chain's page
     And I should have liked the chain
 
-  @current
   Scenario: When logged in and previously liked
     Given I am logged in as "test@example.com/password"
     And a chain exists

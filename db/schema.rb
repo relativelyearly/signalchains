@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091121194455) do
+ActiveRecord::Schema.define(:version => 20091123165032) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20091121194455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "likes_count", :default => 0
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "dynamics_processors", :force => true do |t|

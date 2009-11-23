@@ -33,3 +33,4 @@ config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => 'http://gems.gith
 config.gem 'nokogiri'
 config.gem 'pickle'
 config.gem 'cucumber'
+config.gem 'webrat'

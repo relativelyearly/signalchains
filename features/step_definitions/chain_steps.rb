@@ -2,6 +2,10 @@ Given /^I have started a chain named "([^\"]*)"$/ do |name|
   Factory(:chain, :name => name, :user => @user)
 end
 
+Given /^there is a chain named "([^\"]*)"$/ do |name|
+  Factory(:chain, :name => name)
+end
+
 Given /^I have not added an input source to "([^\"]*)"$/ do |name|
   chain = Chain.find(:first, :conditions => {:name => name})
   chain.gear.select {|g| g.input_source?}.each {|g| g.destroy}

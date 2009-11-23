@@ -1,0 +1,19 @@
+- title "Comments"
+
+%table
+  %tr
+    %th Commentable
+    %th Commentable type
+    %th Body
+    %th User
+  - for comment in @comments
+    %tr
+      %td= h comment.commentable_id
+      %td= h comment.commentable_type
+      %td= h comment.body
+      %td= h comment.user
+      %td= link_to 'Show', object_path(comment)
+      %td= link_to 'Edit', edit_object_path(comment)
+      %td= link_to 'Destroy', object_path(comment), :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Comment", new_object_path

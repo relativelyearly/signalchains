@@ -1,10 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
   map.resources :chains, :member => {:like => :get} do |chain|
     chain.resources :mics
     chain.resources :preamps
     chain.resources :dynamics_processors
     chain.resources :effects_processors
     chain.resources :equalizers
+    chain.resources :comments
   end
 
   map.resources :equalizers, :collection => {:search => :get}
