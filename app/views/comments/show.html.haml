@@ -1,0 +1,21 @@
+- title "Comment"
+
+%p
+  %strong Commentable:
+  =h @comment.commentable_id
+%p
+  %strong Commentable Type:
+  =h @comment.commentable_type
+%p
+  %strong Body:
+  =h @comment.body
+%p
+  %strong User:
+  =h @comment.user
+
+%p
+  = link_to "Edit", edit_object_path
+  |
+  = link_to "Destroy", object_path, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", collection_path

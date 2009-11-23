@@ -5,6 +5,7 @@ class Chain < ActiveRecord::Base
   belongs_to :user
   has_many :gear, :class_name => 'ChainGear'
   has_many :likes, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
   has_one :audio, :as => :audible, :dependent => :destroy
   accepts_nested_attributes_for :audio, :allow_destroy => true
 

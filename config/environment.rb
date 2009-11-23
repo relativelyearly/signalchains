@@ -8,10 +8,10 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem 'authlogic'
-  config.gem 'justinfrench-formtastic', :lib => 'formtastic', :source => 'http://gems.github.com'
+  config.gem 'formtastic'
   config.gem 'haml'
   config.gem 'RedCloth'
-  config.gem 'binarylogic-searchlogic', :lib => 'searchlogic', :source => 'http://gems.github.com'
+  config.gem 'searchlogic'
   config.gem 'will_paginate'
   config.gem "acts-as-taggable-on"
   config.gem "aws-s3", :lib => "aws/s3"
