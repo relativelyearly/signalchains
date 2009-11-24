@@ -1,0 +1,21 @@
+- title "Mic"
+
+= render(:partial => @class.index_partial, :object => object)
+
+- if @chain
+  = add_to_chain_button(object)
+
+- if current_user
+  .w50.first.col
+    - semantic_form_for object.comments.build, :url => gear_comments_path(object) do |f|
+      = render(:partial => 'comments/form', :locals => {:f => f})
+
+.w50.first.col
+  = render(:partial => 'comments/comment', :collection => object.comments)
+
+%p
+  = link_to "Edit", edit_object_path
+  |
+  = link_to "Destroy", object, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", collection_path

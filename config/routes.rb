@@ -10,11 +10,26 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :comments
   end
 
-  map.resources :equalizers, :collection => {:search => :get}
-  map.resources :effects_processors, :collection => {:search => :get}
-  map.resources :dynamics_processors, :collection => {:search => :get}
-  map.resources :preamps, :collection => {:search => :get}
-  map.resources :mics, :collection => {:search => :get}
+  map.resources :equalizers, :collection => {:search => :get} do |equalizer|
+    equalizer.resources :comments
+  end
+
+  map.resources :effects_processors, :collection => {:search => :get} do |effects_processor|
+    effects_processor.resources :comments
+  end
+
+  map.resources :dynamics_processors, :collection => {:search => :get} do |dynamics_processor|
+    dynamics_processor.resources :comments
+  end
+
+  map.resources :preamps, :collection => {:search => :get} do |preamp|
+    preamp.resources :comments
+  end
+
+  map.resources :mics, :collection => {:search => :get} do |mic|
+    mic.resources :comments
+  end
+
   map.resources :audios, :except => [:index, :show, :create]
 
   map.resources :chain_gears

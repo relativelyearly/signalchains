@@ -10,5 +10,6 @@ class MicTest < ActiveSupport::TestCase
 
     should_have_attached_file :image
     should_have_many :chains, :through => :chain_gears
+    should_have_many :comments, :dependent => :destroy
   end
 end

@@ -5,6 +5,7 @@ class Gear < ActiveRecord::Base
 
   has_many :chain_gears, :as => :gear
   has_many :chains, :through => :chain_gears
+  has_many :comments, :as => :commentable, :dependent => :destroy
 
   has_attached_file :image,
                     :styles => { :thumb => ["100x100#", :jpg], :wide => ["250x130", :jpg] },

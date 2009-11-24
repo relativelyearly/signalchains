@@ -5,8 +5,14 @@ class MicsController < ResourceController::Base
     @search = Mic.search({})
     @class = Mic
   end
-  
+
   index.wants.html { render 'gear/index' }
+
+  show.before do
+    @class = Mic
+  end
+
+  show.wants.html { render 'gear/show' }
 
   create.wants.html do
     if @chain

@@ -16,6 +16,12 @@ class DynamicsProcessorsController < ResourceController::Base
     end
   end
 
+  show.before do
+    @class = DynamicsProcessor
+  end
+
+  show.wants.html { render 'gear/show' }
+
   def search
     @dynamics_processors = DynamicsProcessor.search(:conditions => params["search"]).all
     @class = DynamicsProcessor

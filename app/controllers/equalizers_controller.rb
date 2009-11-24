@@ -16,6 +16,12 @@ class EqualizersController < ResourceController::Base
     end
   end
 
+  show.before do
+    @class = Equalizer
+  end
+
+  show.wants.html { render 'gear/show' }
+
   def search
     @equalizers = Equalizer.search(:conditions => params["search"]).all
     @class = Equalizer

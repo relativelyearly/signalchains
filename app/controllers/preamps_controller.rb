@@ -16,6 +16,12 @@ class PreampsController < ResourceController::Base
     end
   end
 
+  show.before do
+    @class = Preamp
+  end
+
+  show.wants.html { render 'gear/show' }
+
   def search
     @preamps = Preamp.search(:conditions => params["search"]).all
     @class = Preamp

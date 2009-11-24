@@ -22,6 +22,14 @@
 - if @chain
   = link_to 'Add this mic to your chain', add_mic_path(:chain_id => @chain.id, :mic_id => @mic.id)
 
+- if current_user
+  .w50.first.col
+    - semantic_form_for @mic.comments.build, :url => mic_comments_path(@mic) do |f|
+      = render(:partial => 'comments/form', :locals => {:f => f})
+
+.w50.first.col
+  = render(:partial => 'comments/comment', :collection => @mic.comments)
+
 %p
   = link_to "Edit", edit_mic_path(@mic)
   |

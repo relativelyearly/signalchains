@@ -1,5 +1,5 @@
 class CommentsController < ResourceController::Base
-  belongs_to :chain
+  belongs_to :chain, :mic, :preamp, :dynamics_processor, :effects_processor, :equalizer
 
   create.after do
     object.user = current_user

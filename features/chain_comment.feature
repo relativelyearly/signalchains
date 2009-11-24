@@ -3,14 +3,12 @@ Feature: Chain comment
   As a user
   I want to comment on a chain
 
-  @current
   Scenario: When not logged in
     Given I am not logged in
     And there is a chain named "A chain I like"
     When I view the chain named "A chain I like"
     Then I should not see "Create Comment"
-  
-  @current
+
   Scenario: When logged in
     Given I am logged in as "test@example.com/password"
     And a chain exists with name: "A chain I like"
