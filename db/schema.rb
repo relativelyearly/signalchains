@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091123165032) do
+ActiveRecord::Schema.define(:version => 20091124212219) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -100,6 +100,13 @@ ActiveRecord::Schema.define(:version => 20091123165032) do
     t.string   "equalizer_type"
     t.integer  "bands"
     t.string   "interface"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "follows", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

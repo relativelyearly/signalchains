@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :chain_gears
   map.resource :account, :controller => 'users'
   map.resources :password_resets
-  map.resources :users
+  map.resources :users, :member => {:follow => :get}
   map.resource :user_session
 
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'

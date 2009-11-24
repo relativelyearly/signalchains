@@ -3,14 +3,12 @@ Feature: Gear comment
   As a user
   I want to comment on a gear
 
-  @current
   Scenario: When not logged in
     Given I am not logged in
     And a mic exists with make: "Horrible", model: "Mic"
     When I go to the mic page
     Then I should not see "Create Comment"
 
-  @current
   Scenario: When logged in on a mic
     Given I am logged in as "test@example.com/password"
     And a mic exists with make: "Horrible", model: "Mic"
@@ -20,7 +18,6 @@ Feature: Gear comment
     Then I should be on the mic page
     And I should see "I really hate this mic."
 
-  @current
   Scenario: When logged in on a preamp
     Given I am logged in as "test@example.com/password"
     And a preamp exists with make: "Horrible", model: "Preamp"
@@ -30,7 +27,6 @@ Feature: Gear comment
     Then I should be on the preamp page
     And I should see "I really hate this preamp."
 
-  @current
   Scenario: When logged in on a dynamics processor
     Given I am logged in as "test@example.com/password"
     And a dynamics processor exists with make: "Horrible", model: "Dynamics Processor"
@@ -40,7 +36,6 @@ Feature: Gear comment
     Then I should be on the dynamics processor page
     And I should see "I really hate this dynamics processor."
 
-  @current
   Scenario: When logged in on a effects processor
     Given I am logged in as "test@example.com/password"
     And a effects processor exists with make: "Horrible", model: "Effects Processor"
@@ -50,7 +45,6 @@ Feature: Gear comment
     Then I should be on the effects processor page
     And I should see "I really hate this effects processor."
 
-  @current
   Scenario: When logged in on a equalizer
     Given I am logged in as "test@example.com/password"
     And a equalizer exists with make: "Horrible", model: "Equalizer"

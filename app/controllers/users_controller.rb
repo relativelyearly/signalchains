@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    @user = User.find(params[:id]) if params[:id]
+    @user ||= @current_user
   end
 
   def edit
@@ -25,12 +26,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = @current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
+    end
+  end
+
+  def follow
+    @user = User.find(params[:id])
+
+    if current_user.follows?(@user)
+      Follow.find(:first, :conditions => {:user_id => current_user.id, :followed_id => @user.id}).destroy
+    else
+      Follow.create(:user_id => current_user.id, :followed_id => @user.id)
+    end
+
+    respond_to do |format|
+      format.html {redirect_to @user}
     end
   end
 end

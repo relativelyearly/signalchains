@@ -13,6 +13,8 @@ class UserTest < ActiveSupport::TestCase
       :current_login_at, :last_login_ip, :current_login_ip, :roles, :created_at, :updated_at, :id
 
     should_have_many :likes, :dependent => :destroy
+    should_have_many :follows, :dependent => :destroy
+    should_have_many :followed_users
 
     context "#deliver_password_reset_instructions!" do
       setup do
@@ -46,6 +48,23 @@ class UserTest < ActiveSupport::TestCase
     
     should "confirm when not liked" do
       assert(!@user.likes?(@other_chain))
+    end
+  end
+  
+  context "with follows" do
+    setup do
+      @user = Factory(:user)
+      @followed_user = Factory(:user)
+      @unfollowed_user = Factory(:user)
+      @follow = Factory(:follow, :user_id => @user.id, :followed_id => @followed_user.id)
+    end
+
+    should "confirm the follow" do
+      assert(@user.follows?(@followed_user))
+    end
+
+    should "confirm when not followed" do
+      assert(!@user.follows?(@unfollowed_user))
     end
   end
 end
