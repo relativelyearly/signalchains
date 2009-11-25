@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:edit, :update]
   
   def new
     @user = User.new
@@ -21,7 +21,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @events = @user.events_about_self
     else
-      @user ||= @current_user
+      redirect_to(new_user_session_path) and return unless current_user
+      @user = current_user
       @events = @user.events
     end
   end
