@@ -13,6 +13,8 @@ Given /^I am logged in as "(.*)\/(.*)"$/ do |email, password|
   And %{I fill in "email" with "#{email}"}
   And %{I fill in "password" with "#{password}"}
   And %{I press "Login"}
+
+  find_model('user', "email: \"#{email}\"")
 end
 
 Given /^no user exists with an email of "([^\"]*)"$/ do |email|

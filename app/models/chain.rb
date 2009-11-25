@@ -11,6 +11,9 @@ class Chain < ActiveRecord::Base
 
   before_save :complete?
 
+  fires :new_chain, :on => :create,
+                    :actor => :user
+
   named_scope :complete, :conditions => {:status => 'complete'}
 
   def preamp?

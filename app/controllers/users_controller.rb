@@ -17,8 +17,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) if params[:id]
-    @user ||= @current_user
+    if params[:id]
+      @user = User.find(params[:id])
+      @events = @user.events_about_self
+    else
+      @user ||= @current_user
+      @events = @user.events
+    end
   end
 
   def edit

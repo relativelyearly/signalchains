@@ -3,4 +3,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
+
+  fires :commented, :on => :create,
+                    :actor => :user,
+                    :secondary_subject => :commentable
 end
