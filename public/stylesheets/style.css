@@ -207,6 +207,7 @@ li#profile-nav a{
   text-indent: -999em;
   background-position: 0 top;
   background-repeat: no-repeat;
+  margin-right: 10px;
 }
 .block-btn:hover {
   background-position: 0 -100px;
@@ -267,14 +268,14 @@ a.btn span {
   padding-left: 8px;
 }
 
-.community a.btn {
+.chain_link .community a.btn {
   color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   font-family: "Gill Sans";
   width: 100px;  
 }
 
-.community a.btn span {
+.chain_link .community a.btn span {
   height: 20px;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   background-position: right 120px;  
@@ -310,10 +311,17 @@ span.score {
 }
 #audio {
   text-align: center;
-  padding: 0 260px 50px 260px;
-  width: 280px;
-  min-height: 160px;
+  padding: 0 270px 50px 270px;
+  width: 260px;
+  min-height: 170px;
   background: url(../images/backgrounds/gear_rack_tabletop_monitors.png) no-repeat 0 bottom;  
+  margin-top: 20px;
+}
+#audio .pending {
+  text-align: left;
+}
+#audio .pending h5 {
+  text-align: center;
 }
 #audio a.btn {
   display: block;
@@ -326,6 +334,13 @@ span.score {
 }
 .chain .info h2 {
   margin-bottom: 0;
+}
+.chain .info .community a.btn{
+  color: #CF0A0A;
+  width: 120px;
+  display: inline;
+  float: left;
+  margin-right: 20px;
 }
 .newlink, .chain .tags {
   margin-bottom: 25px;
@@ -375,6 +390,48 @@ span.score {
 #current_chain ol {
   padding: 0 40px;
 }
+.chain .info .community {
+  margin-bottom: .8em;
+}
+.chain .social-links {
+  padding-top: 1px;
+  height: 22px;
+  overflow: hidden;
+}
+.community .social-links a {
+  display: inline;
+  padding: 3px 10px 5px 0;
+  background-position: right top;
+  position: relative; 
+}
+.community .social-links a:hover {
+  background-position: right -24px;
+  color: inherit;  
+}
+.community .social-links a:active {
+  background-position: right -48px;
+  top: 1px;
+}
+.community .social-links a span {
+  background-position: left top;
+  padding: 3px 2px 5px 30px;
+  text-decoration: none;
+  height: 17px;
+  overflow: hidden;
+  width: auto;
+}
+.community .social-links a:hover span {
+  background-position: left -24px;  
+}
+.community .social-links a:active span {
+  background-position: left -48px;  
+}
+#like, #like span {
+  background-image: url(../images/buttons/like.png);
+}
+#comments_btn, #comments_btn span {
+  background-image: url(../images/buttons/comments.png);
+}
 /* @end */
 /* @end */
 
@@ -420,9 +477,25 @@ p {
 .formtastic li {
   list-style: none;
 }
-
-
+.formtastic fieldset {
+  width: auto;
+  padding: 0;
+  height: auto;
+  border: none;
+}
+.formtastic fieldset ol{
+  padding: 0;
+  margin: 0;
+}
 /* @group Mic */
+.formtastic .select, .formtastic .string, .formtastic .numeric {
+  margin-bottom: 10px;
+}
+.formtastic .buttons, .buttons ol {
+  border: none;
+  padding: 0;
+  margin: 10px 0;
+}
 form#new_chain_gear, form.chain {
   list-style: none;
 }
@@ -431,13 +504,13 @@ form#new_chain_gear, form.chain {
   padding-bottom: 20px;
 }
 .formtastic label {
-  display: block;
+  display: inline;
   text-transform: uppercase;
   font-size: .8em;
 }
 .formtastic li.commit {
-  background: #ddd;
-  padding: 10px;
+  background: transparent;
+  padding: 10px 0;
 }
 .formtastic li input, .formtastic select, .formtastic textarea {
   position: relative;

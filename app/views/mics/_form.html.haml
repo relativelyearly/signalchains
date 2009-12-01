@@ -1,9 +1,10 @@
 - semantic_form_for @mic, :html => {:multipart => true} do |f|
   = render(:partial => 'gear/form', :locals => {:f => f})
-
-  = f.input :mic_type, :as => :select, :collection => Mic.types, :label => 'Type', :wrapper_html => { :class => "first col w25" }
-  = f.input :diaphragm_size, :as => :select, :collection => Mic.diaphragm_sizes, :wrapper_html => { :class => "first col w25" }
-  = f.input :pattern, :as => :select, :collection => Mic.patterns, :wrapper_html => { :class => "first col w25" }
-  - if @chain
-    = hidden_field_tag :chain_id, @chain.id
+  .col.w25
+    = f.input :mic_type, :as => :select, :collection => Mic.types, :label => 'Type'
+    = f.input :diaphragm_size, :as => :select, :collection => Mic.diaphragm_sizes
+    = f.input :pattern, :as => :select, :collection => Mic.patterns
+    - if @chain
+      = hidden_field_tag :chain_id, @chain.id
+  .clear
   = f.buttons

@@ -3,45 +3,64 @@
 .chain
   .info
     %h2= h @chain.name
-    = like_link(@chain)
     %h5
       by
       =h @chain.user.email
+    .community
+      .social-links
+        = like_link(@chain)
+        = link_to '<span>1</span>', '#', :id => 'comments_btn'
     .first.col.w40
       =textilize @chain.notes
       .tags.col
         Tags:
         - for tag in @chain.tags
           %span=h tag.name
+      - unless complete_message.empty?
+        .incomplete_chain.first.w30= complete_message
       
-    - unless @input_source.nil?
+
+    - if @input_source.nil?
+      .input_source.col
+        .first.col.w25    
+          .newlink#input_sources
+            %h3 Start with
+            = link_to 'Mic', chain_mics_url(@chain), :id => 'new_mic', :class => 'block-btn first col w5'
+            = link_to 'Line In', add_line_in_path(:chain_id => @chain.id), :id => 'new_lineIn', :class => 'block-btn col w5'
+            .clear
+    - else
       = render(:partial => 'chain_gears/input_source', :object => @input_source)
-    #audio
+    .clear
+    #audio.first
       %h3=h @chain.title
       %h5=h @chain.performer
       %h5=h @chain.year
-      %audio{:controls => "true"}
-        - if @chain.audio.ogg.file?
-          %source{:src => @chain.audio.ogg.url}
-        - if @chain.audio.mp3.file?
-          %source{:src => @chain.audio.mp3.url}
-      - if @chain.audio.mp3.file?
-        = mp3_link(@chain)
-      - if @chain.audio.ogg.file?
-        = ogg_link(@chain)
-      - if @chain.audio.high_quality.file?
-        = link_to '<span>download hq</span>', @chain.audio.high_quality.url, :class => 'btn'
-    .clear      
+      - if @chain.audio.high_quality?
+        %audio{:controls => "true"}
+          - if @chain.audio.ogg.file?
+            %source{:src => @chain.audio.ogg.url}
+          - if @chain.audio.mp3.file?
+            %source{:src => @chain.audio.mp3.url}
+          - if @chain.audio.mp3.file?
+            = mp3_link(@chain)
+          - if @chain.audio.ogg.file?
+            = ogg_link(@chain)
+          - if @chain.audio.high_quality.file?
+            = link_to '<span>download hq</span>', @chain.audio.high_quality.url, :class => 'btn'
+      - else
+        .pending
+          %h5 This chain won't be publicly visible until it has an audio file.
+          - semantic_form_for @chain, :html => {:multipart => true} do |f|
+            = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
+            = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }            
+            = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
+            = f.inputs :high_quality, :for => :audio, :wrapper_html => { :class => "w25" }
+            = f.commit_button 'Submit'        
+  .clear      
   = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
 .w50.first.col
-  - unless @chain.input_source?
-    .newlink#input_sources
-      %h3 Start with
-      = link_to 'Mic', chain_mics_url(@chain), :id => 'new_mic', :class => 'block-btn first col w5'
-      = link_to 'Line In', add_line_in_path(:chain_id => @chain.id), :id => 'new_lineIn', :class => 'block-btn col w5'
-      .clear
   .newlink.first
     %h3 Add
     = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'
@@ -49,21 +68,6 @@
     = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn col w5'
     = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
     .clear
-  .newlink.first
-    %h3 Audio
-    =h @chain.title
-    =h @chain.performer
-    =h @chain.year
-    - semantic_form_for @chain, :html => {:multipart => true} do |f|
-      = f.input :title
-      = f.input :performer
-      = f.input :year, :label => 'Year Recorded'
-      = f.inputs :high_quality, :for => :audio, :name => "Audio", :label => false
-      = f.commit_button 'Submit'
-
-.w30.col.snug
-  - unless complete_message.empty?
-    .incomplete_chain= complete_message
 
 - if current_user
   .w50.first.col

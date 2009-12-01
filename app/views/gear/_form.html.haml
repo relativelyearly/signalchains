@@ -1,3 +1,5 @@
-= f.input :image
-= f.input :make, :input_html => { :size => 27 }, :wrapper_html => { :class => "first col w25" }
-= f.input :model, :input_html => { :size => 27 }, :wrapper_html => { :class => "col w25" }
+.col.first.w25
+  = f.input :image, :input_html => { :size => 27 }, :wrapper_html => { :class => "first col w25" }
+.col.w25
+  = f.input :make, :input_html => { :size => 27 }, :wrapper_html => { :class => "first col w25" }
+  = f.input :model, :input_html => { :size => 27 }, :wrapper_html => { :class => "first col w25" }
