@@ -9,7 +9,7 @@ class Chain < ActiveRecord::Base
   has_one :audio, :as => :audible, :dependent => :destroy
   accepts_nested_attributes_for :audio, :allow_destroy => true
 
-  before_save :complete?
+  before_save :update_completion
 
   fires :new_chain, :on => :create,
                     :actor => :user
@@ -32,11 +32,15 @@ class Chain < ActiveRecord::Base
     gear.select {|g| !g.input_source?}
   end
 
-  private
   def complete?
+    self.status == 'complete'
+  end
+
+  private
+  def update_completion
     completion = 'draft'
 
-    if input_source? && preamp? && audio.high_quality.file?
+    if input_source? && preamp? && audio && audio.high_quality.file?
       completion = 'complete'
     end
 
