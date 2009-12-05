@@ -2,7 +2,7 @@
   .chain_link{:class => chain_gear_counter == 0 ? 'top' : nil}
     .first.col.community
       .first.col.w10.action
-        = link_to '<span>Buy</span>', '#', :class => 'btn'
+        = link_to '<span>View</span>', chain_gear.gear, :class => 'btn'
         %span.score= chain_gear.gear.score
       .col.thumb
         =link_to image_tag(chain_gear.gear.image.url(:thumb), :alt => chain_gear.gear.model), chain_gear.gear.image.url
@@ -12,7 +12,7 @@
         =h chain_gear.gear.model
 
       .info
-        .col.w25
+        %h5
           = render(:partial => chain_gear.gear.chain_gear_partial, :object => chain_gear.gear)
         .notes.first
           = textilize chain_gear.notes

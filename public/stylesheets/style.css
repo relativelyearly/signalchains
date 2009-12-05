@@ -403,6 +403,7 @@ span.score {
   padding: 3px 10px 5px 0;
   background-position: right top;
   position: relative; 
+  color: #222;
 }
 .community .social-links a:hover {
   background-position: right -24px;
