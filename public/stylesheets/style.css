@@ -281,6 +281,12 @@ a.btn span {
   background-position: right 120px;  
   overflow: hidden;
 }
+.chain_link .community a.btn:hover span {
+  background-position: right -160px;  
+}
+.chain_link .community a.btn:active span {
+  background-position: right -200px;  
+}
 a.btn:hover {
   background-position: left -40px;
 }
@@ -430,6 +436,16 @@ span.score {
 #like, #like span {
   background-image: url(../images/buttons/like.png);
 }
+#like.unlike span {
+  background-position: left -72px;
+}
+#like.unlike:hover span {
+  background-position: left -96px;
+}
+#like.unlike:active span {
+  background-position: left -120px;
+}
+
 #comments_btn, #comments_btn span {
   background-image: url(../images/buttons/comments.png);
 }
