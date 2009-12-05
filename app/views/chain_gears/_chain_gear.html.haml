@@ -5,7 +5,7 @@
         = link_to '<span>View</span>', chain_gear.gear, :class => 'btn'
         %span.score= chain_gear.gear.score
       .col.thumb
-        =link_to image_tag(chain_gear.gear.image.url(:thumb), :alt => chain_gear.gear.model), chain_gear.gear.image.url
+        = link_to image_tag(chain_gear.gear.image.url(:thumb), :alt => chain_gear.gear.model), chain_gear.gear.image.url
     .gear.col{:class => chain_gear.gear_type.downcase}
       %h4
         =h chain_gear.gear.make
@@ -16,11 +16,14 @@
           = render(:partial => chain_gear.gear.chain_gear_partial, :object => chain_gear.gear)
         .notes.first
           = textilize chain_gear.notes
-          = link_to('edit notes', edit_chain_gear_path(chain_gear), :class => 'show-form')
-          .notes-form{:id => "notes-form-#{chain_gear.id}", :style => 'display:none'}
-            - semantic_form_for chain_gear do |f|
-              = f.input :notes
-              = f.commit_button 'Save'
+          - if chain_gear.chain.user == current_user
+            = link_to('edit notes', |
+              edit_chain_gear_path(chain_gear), :class => 'show-form') |
+            .notes-form{:id => "notes-form-#{chain_gear.id}",
+                        :style => 'display:none'}
+              - semantic_form_for chain_gear do |f|
+                = f.input :notes
+                = f.commit_button 'Save'
       .meta.first.col.w25
     .clear
 - else

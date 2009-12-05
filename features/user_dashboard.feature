@@ -3,7 +3,6 @@ Feature: User dashboard
   As a user
   I want to view events on a dashboard
 
-  @current
   Scenario: Someone I follow leaves a comment
     Given I am logged in as "test@example.com/password"
     And a user exists with email: "friend@example.com"
@@ -15,7 +14,6 @@ Feature: User dashboard
     And I should see "A really awesome chain"
     And I should see "What an awesome chain."
 
-  @current
   Scenario: Someone leaves a comment on a chain I created
     Given I am logged in as "test@example.com/password"
     And a chain exists with name: "A really awesome chain", user: the user
@@ -26,7 +24,6 @@ Feature: User dashboard
     And I should see "A really awesome chain"
     And I should see "What an awesome chain."
 
-  @current
   Scenario: Someone I follow creates a chain
     Given I am logged in as "test@example.com/password"
     And a user exists with email: "friend@example.com"
@@ -40,7 +37,6 @@ Feature: User dashboard
   @pending
   Scenario: Someone I follow recommends some gear
 
-  @current
   Scenario: I comment on a chain
     Given I am logged in as "test@example.com/password"
     And a chain exists with name: "A really awesome chain"
@@ -49,7 +45,6 @@ Feature: User dashboard
     And I should not see "A really awesome chain"
     And I should not see "What an awesome chain."
 
-  @current
   Scenario: Viewing another user's profile who left a comment
     Given a user exists with email: "friend@example.com"
     And a chain exists with name: "A really awesome chain"
@@ -59,7 +54,6 @@ Feature: User dashboard
     And I should see "A really awesome chain"
     And I should see "What an awesome chain."
 
-  @current
   Scenario: Viewing another user's profile who created a chain
     Given I am logged in as "test@example.com/password"
     Given a user exists with email: "friend@example.com"

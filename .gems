@@ -1,8 +1,8 @@
 authlogic
-justinfrench-formtastic --source http://gems.github.com
+formtastic
 haml
 RedCloth
-binarylogic-searchlogic --source http://gems.github.com
+searchlogic
 will_paginate
 acts-as-taggable-on
 aws-s3

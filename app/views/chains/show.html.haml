@@ -16,9 +16,8 @@
         Tags:
         - for tag in @chain.tags
           %span=h tag.name
-      - unless complete_message.empty?
+      - unless @chain.complete?
         .incomplete_chain.first.w30= complete_message
-      
 
     - if @input_source.nil?
       .input_source.col
@@ -35,7 +34,7 @@
       %h3=h @chain.title
       %h5=h @chain.performer
       %h5=h @chain.year
-      - if @chain.audio.high_quality?
+      - if @chain.audio && @chain.audio.high_quality?
         %audio{:controls => "true"}
           - if @chain.audio.ogg.file?
             %source{:src => @chain.audio.ogg.url}
