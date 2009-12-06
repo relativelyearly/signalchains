@@ -258,4 +258,7 @@ input.button {
   -webkit-border-radius:10px;
   -moz-border-radius:10px;
 }
+.snug {
+  margin-left: 0;
+}
 /* @end */

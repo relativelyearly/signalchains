@@ -1,1 +1,8 @@
-=textilize(comment.body)
+.first.col.comment-text
+  =textilize(comment.body)
+.w30.col.snug
+  .avatar.col
+    = image_tag 'red_logo_fill_white.png'
+  .w20.col
+    = current_user.email
+      

@@ -6,6 +6,10 @@
     %h5
       by
       =h @chain.user.email
+    %p.first
+      = link_to "Edit", edit_chain_path(@chain)
+      |
+      = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete
     .community
       .social-links
         = like_link(@chain)
@@ -68,19 +72,18 @@
     = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
     .clear
 
+%h3.first Comments
+
 - if current_user
   .w50.first.col
     - semantic_form_for @chain.comments.build, :url => chain_comments_path(@chain) do |f|
       = render(:partial => 'comments/form', :locals => {:f => f})
+  .w30.col.snug
+    .avatar.col
+      = image_tag 'red_logo_fill_white.png'
+    .w20.col
+      = current_user.email
 
-.w50.first.col
-  = render(:partial => 'comments/comment', :collection => @chain.comments)
-
-%p.first
-  = link_to "Edit", edit_chain_path(@chain)
-  |
-  = link_to "Destroy", @chain, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", chains_path
-
+= render(:partial => 'comments/comment', :collection => @chain.comments)
+.first
 = javascript_include_tag 'rogue/page.chain'
