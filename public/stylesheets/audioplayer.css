@@ -5,7 +5,7 @@
 	padding:0;
 }
 
-ul#icons {margin: 0; padding: 0;}
+ul#icons {margin: 0 auto; padding: 0; width: 60px;}
 ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
 ul#icons span.ui-icon {float: left; margin: 0 4px;}
 
@@ -15,9 +15,8 @@ ul#icons #volume-min {
 
 #sliderVolume {
 	position:relative;
-	top:30px;
-	left:480px;
 	width:120px;
+	margin: 5px auto;
 	height:.4em;
 }
 
@@ -29,9 +28,8 @@ ul#icons #volume-min {
 
 #bars_holder {
 	position:relative;
-	top:27px;
-	left:100px;
-	width:300px;
+	width:240px;
+	margin: 10px auto;
 }
 
 #sliderPlayback .ui-slider-handle {

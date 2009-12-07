@@ -39,29 +39,7 @@
       %h5=h @chain.performer
       %h5=h @chain.year
       - if @chain.audio && @chain.audio.high_quality?
-        #jquery_jplayer
-        #player_container
-          %ul#icons.ui-widget.ui-helper-clearfix
-            %li#play.ui-state-default.ui-corner-all
-              %span.ui-icon.ui-icon-play
-            %li#pause.ui-state-default.ui-corner-all
-              %span.ui-icon.ui-icon-pause
-            %li#stop.ui-state-default.ui-corner-all
-              %span.ui-icon.ui-icon-stop
-            %li#volume-min.ui-state-default.ui-corner-all
-              %span.ui-icon.ui-icon-volume-off
-            %li#volume-max.ui-state-default.ui-corner-all
-              %span.ui-icon.ui-icon-volume-on
-          #sliderVolume
-          #bars_holder
-            #sliderPlayback
-            #loaderBar
-
-        %audio{:controls => "true"}
-          - if @chain.audio.ogg.file?
-            %source{:src => @chain.audio.ogg.url}
-          - if @chain.audio.mp3.file?
-            %source{:src => @chain.audio.mp3.url}
+        = render :partial => "audio_player"
         - if @chain.audio.mp3.file?
           = mp3_link(@chain)
         - if @chain.audio.ogg.file?
@@ -111,7 +89,6 @@
   $("#jquery_jplayer").jPlayer({
     ready: function ()
     {
-      $("#jquery_jplayer").setFile('http://www.miaowmusic.com/mp3/Miaow-05-The-separation.mp3').play();
-      showPauseBtn();
+      $("#jquery_jplayer").setFile('http://www.miaowmusic.com/mp3/Miaow-05-The-separation.mp3');
     }
   });
