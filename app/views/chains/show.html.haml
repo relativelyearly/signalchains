@@ -13,19 +13,19 @@
     .community
       .social-links
         = like_link(@chain)
-        = link_to '<span>1</span>', '#', :id => 'comments_btn'
+        = comments_link(@chain)
+    - unless @chain.complete?
+      .incomplete_chain.first= complete_message        
     .first.col.w40
       =textilize @chain.notes
       .tags.col
         Tags:
         - for tag in @chain.tags
           %span=h tag.name
-      - unless @chain.complete?
-        .incomplete_chain.first.w30= complete_message
 
     - if @input_source.nil?
       .input_source.col
-        .first.col.w25    
+        .first.col.w25
           .newlink#input_sources
             %h3 Start with
             = link_to 'Mic', chain_mics_url(@chain), :id => 'new_mic', :class => 'block-btn first col w5'
@@ -39,51 +39,79 @@
       %h5=h @chain.performer
       %h5=h @chain.year
       - if @chain.audio && @chain.audio.high_quality?
+        #jquery_jplayer
+        #player_container
+          %ul#icons.ui-widget.ui-helper-clearfix
+            %li#play.ui-state-default.ui-corner-all
+              %span.ui-icon.ui-icon-play
+            %li#pause.ui-state-default.ui-corner-all
+              %span.ui-icon.ui-icon-pause
+            %li#stop.ui-state-default.ui-corner-all
+              %span.ui-icon.ui-icon-stop
+            %li#volume-min.ui-state-default.ui-corner-all
+              %span.ui-icon.ui-icon-volume-off
+            %li#volume-max.ui-state-default.ui-corner-all
+              %span.ui-icon.ui-icon-volume-on
+          #sliderVolume
+          #bars_holder
+            #sliderPlayback
+            #loaderBar
+
         %audio{:controls => "true"}
           - if @chain.audio.ogg.file?
             %source{:src => @chain.audio.ogg.url}
           - if @chain.audio.mp3.file?
             %source{:src => @chain.audio.mp3.url}
-          - if @chain.audio.mp3.file?
-            = mp3_link(@chain)
-          - if @chain.audio.ogg.file?
-            = ogg_link(@chain)
-          - if @chain.audio.high_quality.file?
-            = link_to '<span>download hq</span>', @chain.audio.high_quality.url, :class => 'btn'
+        - if @chain.audio.mp3.file?
+          = mp3_link(@chain)
+        - if @chain.audio.ogg.file?
+          = ogg_link(@chain)
+        - if @chain.audio.high_quality.file?
+          = link_to '<span>download hq</span>', @chain.audio.high_quality.url, :class => 'btn'
       - else
         .pending
-          %h5 This chain won't be publicly visible until it has an audio file.
           - semantic_form_for @chain, :html => {:multipart => true} do |f|
             = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
-            = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }            
+            = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }
             = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
             = f.inputs :high_quality, :for => :audio, :wrapper_html => { :class => "w25" }
-            = f.commit_button 'Submit'        
-  .clear      
+            = f.commit_button 'Submit'
+  .clear
   = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
 .w50.first.col
-  .newlink.first
-    %h3 Add
+  .newlink.first#extra_gear
+    %h3 
+      Add
+      = image_tag 'helper/arrow.png', :id => 'arrow'
     = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'
     = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'block-btn col w5'
     = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn col w5'
     = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
     .clear
+#comments.first
+  %h3 Comments
 
-%h3.first Comments
+  - if current_user
+    .w50.first.col
+      - semantic_form_for @chain.comments.build, :url => chain_comments_path(@chain) do |f|
+        = render(:partial => 'comments/form', :locals => {:f => f})
+    .w30.col.snug
+      .avatar.col
+        = image_tag 'red_logo_fill_white.png'
+      .w20.col
+        = current_user.email
 
-- if current_user
-  .w50.first.col
-    - semantic_form_for @chain.comments.build, :url => chain_comments_path(@chain) do |f|
-      = render(:partial => 'comments/form', :locals => {:f => f})
-  .w30.col.snug
-    .avatar.col
-      = image_tag 'red_logo_fill_white.png'
-    .w20.col
-      = current_user.email
-
-= render(:partial => 'comments/comment', :collection => @chain.comments)
+  = render(:partial => 'comments/comment', :collection => @chain.comments)
 .first
 = javascript_include_tag 'rogue/page.chain'
+= javascript_include_tag 'plugins/jquery.jplayer'
+:javascript
+  $("#jquery_jplayer").jPlayer({
+    ready: function ()
+    {
+      $("#jquery_jplayer").setFile('http://www.miaowmusic.com/mp3/Miaow-05-The-separation.mp3').play();
+      showPauseBtn();
+    }
+  });

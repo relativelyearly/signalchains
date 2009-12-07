@@ -1,8 +1,8 @@
 !!!
 %html
   %head
-    = javascript_include_tag('jquery', 'jquery.validate', 'jrails', 'jquery.form', '/fancybox/fancybox')
-    = stylesheet_link_tag('application', 'style', '/fancybox/fancybox')
+    = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
+    = stylesheet_link_tag('application', 'style', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Relatively Early Development"
   %body
     #header

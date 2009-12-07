@@ -6,9 +6,8 @@
       = gear_link(index_gear)
     = render(:partial => @class.index_partial, :collection => collection)
   .col.w15
-    .w15
-      - if @chain
-        = add_to_chain_button(index_gear)
+    - if @chain
+      = add_to_chain_button(index_gear)
     %span.score
       90
   %br.clear

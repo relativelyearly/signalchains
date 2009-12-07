@@ -16,7 +16,7 @@
                 = f.input :notes
                 = f.commit_button 'Save'
       .meta.first.col.w10
-        = link_to '<span>Buy</span>', '#', :class => 'btn'
+        = link_to '<span>View</span>', input_source, :class => 'btn'
 
     .col.thumb
       = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url

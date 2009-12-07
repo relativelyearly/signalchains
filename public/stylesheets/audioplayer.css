@@ -1,0 +1,49 @@
+/* @override http://signalchains.local/stylesheets/audioplayer.css */
+
+#player_container {
+	position:relative;
+	padding:0;
+}
+
+ul#icons {margin: 0; padding: 0;}
+ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+ul#icons span.ui-icon {float: left; margin: 0 4px;}
+
+ul#icons #volume-min {
+	margin:2px 2px 2px 2px;
+}
+
+#sliderVolume {
+	position:relative;
+	top:30px;
+	left:480px;
+	width:120px;
+	height:.4em;
+}
+
+
+#sliderVolume .ui-slider-handle {
+	height:.8em;
+	width:.8em;
+}
+
+#bars_holder {
+	position:relative;
+	top:27px;
+	left:100px;
+	width:300px;
+}
+
+#sliderPlayback .ui-slider-handle {
+	height:1.6em;
+}
+
+#loaderBar.ui-progressbar {
+	height:.2em;
+	border:0;
+}
+
+.miaow {
+	font-size:.8em;
+	color:#999;
+}

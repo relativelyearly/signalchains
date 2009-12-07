@@ -1,13 +1,13 @@
 - title(@class.to_s.underscore.humanize)
-
 #search
+  %h3 Find the gear you're looking for
   = render(:partial => "#{@class.to_s.pluralize.underscore}/search_form")
 
 %br.clear
 
 #gear= render(:partial => 'gear/index_gear', :collection => collection)
 
-.w15
+.w20
   = new_button(@class)
 
 
