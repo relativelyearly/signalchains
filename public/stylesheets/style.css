@@ -580,7 +580,14 @@ form#new_chain_gear, form.chain {
   list-style: none;
   padding-bottom: 20px;
 }
+#new_chain p{
+  padding-top: 1em;
+  color: #666;
+}
 
+#chain_notes {
+  width: 356px;
+}
 
 
 li#chain_gear_notes_input {
