@@ -191,14 +191,14 @@ a{
 .unit {
   margin-bottom: 20px;
 }
-.unit h3 a {
+.unit h4 a {
   color: #000;
   padding: .3em;
   text-decoration: none;
   position: relative;
   left: -.3em;
 }
-.unit h3 a:hover {
+.unit h4 a:hover {
   background-color: #fff;
 }
 .unit span.score {
@@ -211,6 +211,9 @@ a{
 /* @group chains */
 .input_source {
   width: 375px;
+}
+.input_source .meta {
+  margin-top: 10px;
 }
 .block-btn {
   display: block;
@@ -450,8 +453,13 @@ span.score {
 .delete {
   background-image: url(../images/buttons/delete.png);
 }
-.chain_link .admin {
+.chain_link .admin, .input_source .admin {
 float: none;
+}
+.input_source .admin {
+  background: none;
+  width: auto;
+  padding: 0;
 }
 .community .social-links a{
   display: inline;
@@ -535,17 +543,25 @@ p {
 #search #search_form.mic-search {
   padding: 0;
 }
-#search {
+#search, .bucket {
   width: 700px;
   padding: 10px 50px 40px 50px;
   background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
+}
+#new_gear {
+  margin-top: 50px;
 }
 /* @group forms */
 #chain_gear_notes {
   height: 100px;
   width: 400px;
 }
-
+.input_source #chain_gear_notes {
+  width: 248px;
+}
+.input_source .notes {
+  border-top: 1px solid #bbb;
+}
 .notes {
   border-top: 1px solid #222;
   padding-top: 10px;
@@ -611,7 +627,6 @@ form.chain li {
 }
 .formtastic li input, .formtastic select, .formtastic textarea {
   position: relative;
-  left: -2px;
 }
 
 /* @end */

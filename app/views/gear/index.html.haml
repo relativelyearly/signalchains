@@ -7,8 +7,10 @@
 
 #gear= render(:partial => 'gear/index_gear', :collection => collection)
 
-.w20
-  = new_button(@class)
+.bucket#new_gear
+  %h3 Or add something new
+  .w20
+    = new_button(@class)
 
 
 :javascript

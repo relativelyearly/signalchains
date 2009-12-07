@@ -10,17 +10,18 @@
         .notes.first
           = textilize input_source.notes
           - if input_source.chain.user == current_user
-            = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form')
+            .admin
+              = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form edit')
             .notes-form{:id => "notes-form-#{input_source.id}", :style => 'display:none'}
               - semantic_form_for input_source do |f|
                 = f.input :notes
                 = f.commit_button 'Save'
-      .meta.first.col.w10
-        = link_to '<span>View</span>', input_source, :class => 'btn'
 
-    .col.thumb
-      = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
-      .clear
+    .col.w10
+      .thumb
+        = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
+      .meta.first.col.w10
+        = link_to '<span>View</span>', input_source, :class => 'btn'        
 - else
   .input_source.col.w45
     .first.col.line_in

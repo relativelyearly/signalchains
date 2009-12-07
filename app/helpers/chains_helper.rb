@@ -17,9 +17,9 @@ module ChainsHelper
 
   def like_link(chain)
     if current_user && current_user.likes?(chain)
-      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :class => 'unlike'
+      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :class => 'unlike', :title => 'Unlike this chain'
     else
-      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like'
+      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :title => 'Like this chain'
     end
   end
   

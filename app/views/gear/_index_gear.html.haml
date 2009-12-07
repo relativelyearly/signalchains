@@ -2,7 +2,7 @@
   .col.thumb
     = gear_link(index_gear, image_tag(index_gear.image.url(:thumb)))
   .col.w45  
-    %h3
+    %h4
       = gear_link(index_gear)
     = render(:partial => @class.index_partial, :collection => collection)
   .col.w15
