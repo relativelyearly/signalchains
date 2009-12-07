@@ -1,21 +1,22 @@
 - title "Chain"
 
 .chain
+  - if @chain.user == current_user
+    .admin  
+      = link_to "Edit", edit_chain_path(@chain), :class => 'edit', :title => 'Edit Chain'
+      = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete Chain'
   .info
     %h2= h @chain.name
-    %h5
+    %h5.first
       by
       =h @chain.user.email
-    %p.first
-      = link_to "Edit", edit_chain_path(@chain)
-      |
-      = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete
-    .community
+    .community.first
       .social-links
         = like_link(@chain)
         = comments_link(@chain)
-    - unless @chain.complete?
-      .incomplete_chain.first= complete_message        
+    - if @chain.user == current_user    
+      - unless @chain.complete?
+        .incomplete_chain.first= complete_message        
     .first.col.w40
       =textilize @chain.notes
       .tags.col
@@ -35,9 +36,10 @@
       = render(:partial => 'chain_gears/input_source', :object => @input_source)
     .clear
     #audio.first
-      %h3=h @chain.title
-      %h5=h @chain.performer
-      %h5=h @chain.year
+      - if @chain.title
+        %h3 &ldquo;#{@chain.title}&rdquo;
+      - if @chain.performer
+        %h5 #{@chain.performer}, #{@chain.year}
       - if @chain.audio && @chain.audio.high_quality?
         = render :partial => "audio_player"
         - if @chain.audio.mp3.file?

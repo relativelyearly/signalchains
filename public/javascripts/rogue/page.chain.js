@@ -124,7 +124,7 @@ $('#dialog_link, ul#icons li').hover(
 });
 
 function toggle_edit_link (element) {
-  var form = $(element).siblings('.notes-form');
+  var form = $(element).parent().siblings('.notes-form');
 
   if(form.css('display') === 'none') {
     $(element).html('hide form');

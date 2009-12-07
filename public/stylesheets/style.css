@@ -3,11 +3,14 @@
 /* @group Boxes */
 
 body {
-  background-color: #eee;
+  background-color: #222;
   font-family: Lucida Grande;
   font-size: 14px;
   margin: 0;
   background-image: url(../images/backgrounds/grill_background.png);
+}
+a{
+  color: #74ed7e;
 }
 .wrapper {
   width: 900px;
@@ -52,47 +55,31 @@ body {
 }
 #nav ul li {
   display: block;
-  width: 130px;
-  height: 65px;
+  width: 131px;
+  height: 75px;
   float: left;
+  margin: 20px 0 20px 0;
   background-repeat:no-repeat ; 
-  padding: 35px 30px 0 40px; 
+  padding: 25px 30px 25px 30px; 
+  background: url(../images/backgrounds/nav/vu-meter.png) no-repeat;  
 }
 #nav ul li a {
   display: block;
-  width: 100px;
   height: 50px;
-  background-repeat:no-repeat ;
-  text-indent: -999em;
+  width: 125px;
+  padding: 30px 0 0 0;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-family: "Gill Sans", "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
 }
-li#home-nav  {
-  background-image: url(../images/backgrounds/nav/home.png);
-}
-li#home-nav a  {
-  background-image: url(../images/backgrounds/nav/home-text.png);
-}
-li#gear-nav {
-  background-image: url(../images/backgrounds/nav/gear.png);
-}
-li#gear-nav a{
-  background-image: url(../images/backgrounds/nav/gear-text.png);
-}
-
-li#chains-nav {
-  background-image: url(../images/backgrounds/nav/chains.png);
-}
-li#chains-nav a {
-  background-image: url(../images/backgrounds/nav/chains-text.png);
-}
-li#profile-nav {
-  background-image: url(../images/backgrounds/nav/profile.png);
-}
-li#profile-nav a{
-  background-image: url(../images/backgrounds/nav/profile-text.png);
+#nav ul li a:hover {
+  color: #000;
 }
 
 #controls {
   text-align: right;
+  width: 300px;
 }
 .session {
   margin-bottom: 10px;
@@ -323,7 +310,9 @@ a.btn:hover span {
   background-position: right -160px;
 }
 a.btn:active {
+  position: relative;
   background-position: left -80px;
+  top: 1px;
 }
 a.btn:active span {
   background-position: right -200px;
@@ -349,7 +338,8 @@ span.score {
 }
 #audio {
   text-align: center;
-  padding: 0 270px 50px 270px;
+  border-top: 2px ridge #fff;
+  padding: 20px 270px 50px 270px;
   width: 260px;
   min-height: 170px;
   background: url(../images/backgrounds/gear_rack_tabletop_monitors.png) no-repeat 0 bottom;  
@@ -372,6 +362,8 @@ span.score {
 }
 .chain .info h2 {
   margin-bottom: 0;
+  width: 670px;
+  float: left;
 }
 .chain .info .community a.btn{
   color: #CF0A0A;
@@ -380,7 +372,7 @@ span.score {
   float: left;
   margin-right: 20px;
 }
-.newlink, .chain .tags {
+.newlink {
   margin-bottom: 25px;
 }
 .newlink .col, .chain .tags {
@@ -436,18 +428,45 @@ span.score {
   height: 22px;
   overflow: hidden;
 }
-.community .social-links a {
+.admin {
+  width: 70px;
+  height: 26px;
+  padding: 10px 15px;
+  float: right;
+  background: url(../images/backgrounds/admin.png) no-repeat;
+}
+.edit, .delete {
+  background-position: top right;
+  background-repeat: no-repeat;
+  display: block;
+  float: left;
+  width: 35px;
+  height: 24px;
+  text-indent: -999em;  
+}
+.edit {
+  background-image: url(../images/buttons/edit.png);
+}
+.delete {
+  background-image: url(../images/buttons/delete.png);
+}
+.chain_link .admin {
+float: none;
+}
+.community .social-links a{
   display: inline;
   padding: 3px 10px 5px 0;
   background-position: right top;
   position: relative; 
   color: #222;
+  background-repeat: no-repeat;
 }
-.community .social-links a:hover {
+.community .social-links a:hover, .admin a:hover {
   background-position: right -24px;
   color: inherit;  
 }
-.community .social-links a:active {
+.community .social-links a:active, .admin a:active {
+  position: relative;
   background-position: right -48px;
   top: 1px;
 }
@@ -459,7 +478,7 @@ span.score {
   overflow: hidden;
   width: auto;
 }
-.community .social-links a:hover span {
+.community .social-links a:hover span{
   background-position: left -24px;  
 }
 .community .social-links a:active span {
@@ -522,7 +541,16 @@ p {
   background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
 }
 /* @group forms */
+#chain_gear_notes {
+  height: 100px;
+  width: 400px;
+}
 
+.notes {
+  border-top: 1px solid #222;
+  padding-top: 10px;
+  color: #aaa;
+}
 .formtastic li {
   list-style: none;
 }
@@ -552,6 +580,13 @@ form#new_chain_gear, form.chain {
   list-style: none;
   padding-bottom: 20px;
 }
+
+
+
+li#chain_gear_notes_input {
+  margin-top: 20px;
+  padding: 0;
+}
 .formtastic label {
   display: block;
   text-transform: uppercase;
@@ -576,10 +611,11 @@ form.chain li {
 
 ul.incomplete_chain {
   margin: 25px 0;
-  padding: .5em;
-  background: #fb8d79;
-  border-top: 1px solid #fafafa;
-  border-bottom: 1px solid #ad6153;
+  padding: .8em;
+  color: #eee;
+  border-bottom: 1px solid #fff;
+  -webkit-border-radius:6px;-moz-border-radius:4px;
+  background-image: url(../images/backgrounds/grill_background.png);
 }
 
 ul.incomplete_chain li {
