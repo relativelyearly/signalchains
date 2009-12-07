@@ -89,8 +89,9 @@
 = javascript_include_tag 'plugins/jquery.jplayer'
 :javascript
   $("#jquery_jplayer").jPlayer({
+    oggSupport: true,
     ready: function ()
     {
-      $("#jquery_jplayer").setFile('http://www.miaowmusic.com/mp3/Miaow-05-The-separation.mp3');
+      $("#jquery_jplayer").setFile("#{@chain.audio.mp3.url}", "#{@chain.audio.ogg.url}");
     }
   });
