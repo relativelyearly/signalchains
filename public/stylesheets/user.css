@@ -1,0 +1,9 @@
+/* @override http://signalchains.local/stylesheets/user.css */
+
+#edit_profile {
+  color: #74ed7e;	
+  text-align: right;
+  overflow: hidden;
+  padding-left: 20px;
+  background: url(../images/backgrounds/gear.png) no-repeat left;
+}

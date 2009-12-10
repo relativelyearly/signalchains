@@ -2,7 +2,7 @@
 %html
   %head
     = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
-    = stylesheet_link_tag('application', 'style', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
+    = stylesheet_link_tag('application', 'style', 'events', 'user', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Relatively Early Development"
   %body
     #header
@@ -11,7 +11,7 @@
         #controls.right.w30
           - authenticated_only do
             .session
-              = current_user.email
+              = link_to current_user.email, edit_user_url(current_user), :id => 'edit_profile'
               = link_to 'Log Out', logout_url
           %form
             %input

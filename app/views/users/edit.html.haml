@@ -1,7 +1,13 @@
-%h1 Edit My Account
-- form_for @user, :url => account_path do |f|
-  = f.error_messages
-  = render :partial => "form", :object => f
-  = f.submit "Update", :class => 'button'
+.col.first.w35
+  %h1 Edit My Account
+  - form_for @user, :url => account_path do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "Update"
 
-= link_to "My Profile", account_path
+.col.w40
+  %h3 Stats
+  
+  = link_to "<span>View my Profile</span>", account_path, :class => 'btn w15'
+  
+.clear
