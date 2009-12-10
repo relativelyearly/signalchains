@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091210184550) do
+ActiveRecord::Schema.define(:version => 20091210210944) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20091210184550) do
     t.datetime "updated_at"
     t.string   "type"
     t.string   "slug"
+    t.string   "login"
   end
 
 end

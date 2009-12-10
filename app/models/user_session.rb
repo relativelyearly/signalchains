@@ -1,3 +1,3 @@
 class UserSession < Authlogic::Session::Base
-  # various configuration goes here, see AuthLogic::Session::Config for more details
+  find_by_login_method :find_by_login_or_email
 end

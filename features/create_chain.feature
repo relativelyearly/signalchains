@@ -37,7 +37,7 @@ Feature: Create Chain
     And I fill in "Year Recorded" with "1994"
     And I press "Submit"
     Then I should be viewing the chain "Awesome Guitar"
-    And I should not see "It needs an audio file."
+    And I should not see "It needs an <a href='#audio'>audio file"
     And I should see "Song Name"
     And I should see "DJ Bad-Knee Bob"
     And I should see "1994"
@@ -66,7 +66,7 @@ Feature: Create Chain
     And I press "Create Chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "This chain is incomplete."
-    And I should see "It needs an audio file."
+    And I should see "It needs an <a href='#audio'>audio file"
 
   Scenario: Adding a Microphone
     Given I am logged in as "test@example.com/password"
@@ -88,7 +88,7 @@ Feature: Create Chain
     And I should see "Large"
     And I should see "Cardioid"
     And I should see "Preamp"
-    And I should not see "It needs an input source."
+    And I should not see "It needs an <a href='#input_sources'>input source"
     And I should not see "Start with"
 
   Scenario: Adding a line source
@@ -98,14 +98,14 @@ Feature: Create Chain
     And I follow "Line In"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Line In"
-    And I should not see "It needs an input source."
+    And I should not see "It needs an <a href='#input_sources'>input source"
     And I should not see "Start with"
 
   Scenario: Adding a Preamp
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    And I follow "Preamp"
+    And I follow "new_preamp"
     And I follow "New Preamp"
     And I fill in "Make" with "Summit"
     And I fill in "Model" with "MPC-100A"
@@ -116,7 +116,7 @@ Feature: Create Chain
     And I should see "Summit"
     And I should see "MPC-100A"
     And I should see "Tube"
-    And I should not see "It needs a preamp."
+    And I should not see "It needs a <a href='#extra_gear'>preamp"
     And I should see "Start with"
 
   Scenario: Adding a Compressor
@@ -141,7 +141,6 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
-  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -181,7 +180,7 @@ Feature: Create Chain
     And I have not added an input source to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     Then I should see "This chain is incomplete."
-    And I should see "It needs an input source."
+    And I should see "It needs an <a href='#input_sources'>input source"
     And I should see "Start with"
 
   Scenario: Chain without an input source or audio file
@@ -191,9 +190,9 @@ Feature: Create Chain
     And I have not added an audio file to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     Then I should see "This chain is incomplete."
-    And I should see "It needs an input source."
-    And I should see "It needs a preamp."
-    And I should see "It needs an audio file"
+    And I should see "It needs an <a href='#input_sources'>input source"
+    And I should see "It needs a <a href='#extra_gear'>preamp"
+    And I should see "It needs an <a href='#audio'>audio file"
     And I should see "Start with"
 
   Scenario: Chain without a preamp
@@ -202,7 +201,7 @@ Feature: Create Chain
     And I have not added a preamp to "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
     Then I should see "This chain is incomplete."
-    And I should see "It needs a preamp."
+    And I should see "It needs a <a href='#extra_gear'>preamp"
     And I should see "Start with"
 
   Scenario: Drafts not viewable by public

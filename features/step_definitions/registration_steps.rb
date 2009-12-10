@@ -1,25 +1,43 @@
 Given /^I am not logged in$/ do
 end
 
-Given /^I am registered with "(.*)\/(.*)"$/ do |email, password|
-  user = Factory(:user, :email => email, :password => password,
+Given /^I am registered with "(.*)\/(.*)"$/ do |login, password|
+  if login =~ /@/
+    user = Factory(:user, :email => login, :password => password,
                  :password_confirmation => password)
+  else
+    user = Factory(:user, :login => login, :password => password,
+           :password_confirmation => password)
+  end
 end
 
-Given /^I am logged in as "(.*)\/(.*)"$/ do |email, password|
-  @user = Factory(:user, :email => email, :password => password,
-                  :password_confirmation => password)
+Given /^I am logged in as "(.*)\/(.*)"$/ do |login, password|
+  if login =~ /@/
+    @user = Factory(:user, :email => login, :password => password,
+                 :password_confirmation => password)
+    find_model('user', "email: \"#{login}\"")
+  else
+    @user = Factory(:user, :login => login, :password => password,
+           :password_confirmation => password)
+    find_model('user', "login: \"#{login}\"")
+  end
+
   When %{I go to the login page}
-  And %{I fill in "email" with "#{email}"}
+  And %{I fill in "login" with "#{login}"}
   And %{I fill in "password" with "#{password}"}
   And %{I press "Login"}
 
-  find_model('user', "email: \"#{email}\"")
 end
 
 Given /^no user exists with an email of "([^\"]*)"$/ do |email|
   if User.find_by_email(email)
     User.find_by_email(email).destroy
+  end
+end
+
+Given /^no user exists with the login "([^\"]*)"$/ do |login|
+  if User.find_by_login(login)
+    User.find_by_login(login).destroy
   end
 end
 

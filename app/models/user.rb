@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic
 
-  attr_accessible :password, :password_confirmation, :email
+  attr_accessible :password, :password_confirmation, :email, :login
 
   has_many :likes, :dependent => :destroy
   has_many :follows, :dependent => :destroy
@@ -29,5 +29,9 @@ class User < ActiveRecord::Base
   def deliver_password_reset_instructions!
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
+  end
+
+  def self.find_by_login_or_email(login)
+    User.find_by_login(login) || User.find_by_email(login)
   end
 end
