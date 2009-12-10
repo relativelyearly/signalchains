@@ -11,6 +11,6 @@ LoadModule passenger_module /usr/local/lib/ruby/gems/1.8/gems/passenger-2.2.7/ex
    PassengerRuby /usr/local/bin/ruby
 END
 
-  run "echo '#{passenger_config} >> '/etc/apache2/apache2.conf"
+  run "echo '#{passenger_config}' >> /etc/apache2/apache2.conf"
   run '/etc/init.d/apache2 restart'
 end

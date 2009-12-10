@@ -1,6 +1,8 @@
 class SignalChains
   include Redprovision::Recipe
 
+  gem :rails
+
   directory("/u") do |d|
     d.user 'deploy'
     d.group 'deploy'
@@ -47,10 +49,12 @@ class SignalChains
   end
 
   timestamp = DateTime.now.strftime("%G%m%d%H%M")
-  run "yes | git clone -q --depth 1 git@github.com:relativelyearly/signalchains.git /u/apps/signalchains/releases/#{timestamp}"
-  run "ln -s /u/apps/signalchains/releases/#{timestamp} /u/apps/signalchains/current"
-  run "rake -f /u/apps/signalchains/releases/#{timestamp}/Rakefile gems:install"
-  run "ln -s /u/apps/signalchains/shared/config/database.yml /u/apps/signalchains/current/config/database.yml"
+  run "cd /home/deploy"
+  run "sudo -u deploy ssh -o StrictHostKeyChecking=no git@github.com"
+  run "sudo -u deploy git clone -q --depth 1 git@github.com:relativelyearly/signalchains.git /u/apps/signalchains/releases/#{timestamp}"
+  run "sudo -u deploy ln -s /u/apps/signalchains/releases/#{timestamp} /u/apps/signalchains/current"
+  run "sudo -u deploy rake -f /u/apps/signalchains/releases/#{timestamp}/Rakefile gems:install"
+  run "sudo -u deploy ln -s /u/apps/signalchains/shared/config/database.yml /u/apps/signalchains/current/config/database.yml"
 
   file('signalchains' => '/etc/apache2/sites-available/signalchains') do |f|
     f.user 'deploy'

@@ -25,7 +25,7 @@ class DeployUser
     f.group 'deploy'
     f.mode '600'
   end
-
+  
   file("id_rsa.pub" => "/home/deploy/.ssh/id_rsa.pub") do |f|
     f.user 'deploy'
     f.group 'deploy'

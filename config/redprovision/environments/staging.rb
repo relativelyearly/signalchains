@@ -7,8 +7,7 @@ class Staging
                      :image_id => 14362,
                      :flavor_id => 1}
 
-  recipes :apt, :ssh, :deploy_user
-
-  # recipes :apt, :build_tools, :iptables, :ssh, :deploy_user, :apache, :ruby, :passenger, :postgres,
-  #         :signal_chains, :signal_chains_database
+  # Add :ssh back in
+  recipes :apt, :build_tools, :iptables, :deploy_user, :apache, :ruby, :passenger, :postgres,
+          :signal_chains, :signal_chains_database
 end
