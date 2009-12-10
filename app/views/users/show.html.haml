@@ -1,5 +1,5 @@
 .content-title
-  %h1= @user.email
+  %h1= @user.login
 = follow_button(@user)
 .first
 #feed.col.first.w50
@@ -10,11 +10,11 @@
   %h3 Created Chains
   %ul
     %li One
-    %li Two      
-  
+    %li Two
+
   %h3 Liked Chains
   %ul
     %li One
-    %li Two      
+    %li Two
   %h3 Recommended
-.first    
+.first

@@ -27,6 +27,3 @@ Feature: Password reset
     And I press "Update my password and log me in"
     Then I should see "Password successfully updated"
     And I should be logged in
-  
-  
-  

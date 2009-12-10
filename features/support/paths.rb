@@ -22,6 +22,10 @@ module NavigationHelpers
       '/chains/new'
     when /the chains index page/
       '/chains'
+    when /the edit profile page/
+      '/account/edit'
+    when /(.*)'s profile page$/i
+      "/#{$1}"
 
     # Add more mappings here.
     # Here is a more fancy example:
