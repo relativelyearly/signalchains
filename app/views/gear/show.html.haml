@@ -7,7 +7,7 @@
 
 - if current_user
   .w50.first.col
-    - semantic_form_for object.comments.build, :url => gear_comments_path(object) do |f|
+    - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
       = render(:partial => 'comments/form', :locals => {:f => f})
 
 .w50.first.col
