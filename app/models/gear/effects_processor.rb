@@ -2,7 +2,7 @@ class EffectsProcessor < Gear
   attr_accessible :effects_type, :interface
 
   def self.effects_types
-    ['Reverb', 'Delay', 'Chorus', 'Other']
+    ['Reverb', 'Delay', 'Chorus', 'Multi', 'Other']
   end
 
   def self.index_partial

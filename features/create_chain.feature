@@ -141,6 +141,7 @@ Feature: Create Chain
     And I should see "Compressor"
     And I should see "Start with"
 
+  @current
   Scenario: Adding an Effects Processor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -154,7 +155,7 @@ Feature: Create Chain
     And I follow "Add to chain"
     Then I should be viewing the chain "Awesome Guitar"
     And I should see "Lexicon"
-    And I should see "PCM70"
+    And I should see "PCM81"
 
   Scenario: Adding an EQ
     Given I am logged in as "test@example.com/password"
