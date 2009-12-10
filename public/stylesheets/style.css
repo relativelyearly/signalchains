@@ -10,7 +10,7 @@ body {
   background-image: url(../images/backgrounds/grill_background.png);
 }
 a{
-  color: #74ed7e;
+  color: #111;
 }
 .wrapper {
   width: 900px;
@@ -27,7 +27,7 @@ a{
   -webkit-border-radius:6px;  -moz-border-radius:6px;
   border: 1px solid #999;
 }
-.comment-text {
+.comment-text, .comment blockquote {
   width: 478px;
   background: #ddd;
   padding: 10px;
@@ -121,6 +121,23 @@ a{
   padding-top: 14px;
   margin: 20px auto 0 auto;
   background: url(../images/backgrounds/rounded_top_background.png) no-repeat center top;
+}
+
+.content-title {
+  background: url(../images/backgrounds/content_head.png);
+  width: 840px;
+  height: 80px;
+  position: relative;
+  margin-left: -50px;
+  margin-top: -40px;
+  margin-bottom: 10px;
+  display: block;
+  padding: 35px 30px 0 30px;
+  overflow: hidden;
+}
+.content-title h1 {
+  color: #fff;
+  text-shadow: 0 2px 1px #000;
 }
 /* @group gear */
 .gear {
@@ -355,9 +372,9 @@ span.score {
   text-align: center;
 }
 #audio a.btn {
-  display: block;
-  width: 150px; 
-  margin: 0 auto 10px auto; 
+  display: inline-block;
+  width: 50px; 
+  margin: 0 20px 10px auto; 
 }
 #audio audio {
   display: block;
@@ -644,5 +661,7 @@ ul.incomplete_chain li {
 	list-style-type: none;
 	font-size: 90%;
 }
-
+ul.incomplete_chain li a {
+    color: #74ed7e;	
+}
 /* @end */

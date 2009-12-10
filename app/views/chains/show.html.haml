@@ -42,12 +42,14 @@
         %h5 #{@chain.performer}, #{@chain.year}
       - if @chain.audio && @chain.audio.high_quality?
         = render :partial => "audio_player"
+        %h5 Download
         - if @chain.audio.mp3.file?
           = mp3_link(@chain)
         - if @chain.audio.ogg.file?
           = ogg_link(@chain)
         - if @chain.audio.high_quality.file?
-          = link_to '<span>download hq</span>', @chain.audio.high_quality.url, :class => 'btn'
+          = link_to '<span>aiff</span>', @chain.audio.high_quality.url, :class => 'btn'
+          .first
       - else
         .pending
           - semantic_form_for @chain, :html => {:multipart => true} do |f|

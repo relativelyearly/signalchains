@@ -1,4 +1,5 @@
-= commented.actor.email
-commented on
-= link_to commented.secondary_subject.name, commented.secondary_subject
-=h commented.subject.body
+.event.comment
+  = commented.actor.email
+  commented on
+  = link_to commented.secondary_subject.name, commented.secondary_subject
+  %blockquote=h commented.subject.body
