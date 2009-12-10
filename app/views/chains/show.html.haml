@@ -62,16 +62,17 @@
   = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
-.w50.first.col
-  .newlink.first#extra_gear
-    %h3 
-      Add
-      = image_tag 'helper/arrow.png', :id => 'arrow'
-    = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'
-    = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'block-btn col w5'
-    = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn col w5'
-    = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
-    .clear
+- if @chain.user == current_user  
+  .w50.first.col
+    .newlink.first#extra_gear
+      %h3 
+        Add
+        = image_tag 'helper/arrow.png', :id => 'arrow'
+      = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'
+      = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'block-btn col w5'
+      = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn col w5'
+      = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
+      .clear
 #comments.first
   %h3 Comments
 
