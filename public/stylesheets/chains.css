@@ -120,6 +120,7 @@ span.score {
 }
 .chain {
   margin-bottom: 25px;
+  -webkit-transition: height 1s linear;  
 }
 .chain_gear {
   background-image: url(../images/backgrounds/chain-gear_bg.png);  
@@ -335,6 +336,7 @@ li.chain_gear {
 	display: inline;
 }
 .empty_chain_gear {
-	height: 100px;
+	height: 200px;
 	width: 100%;
+	list-style: none;
 }

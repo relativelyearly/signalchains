@@ -18,6 +18,9 @@ $(function() {
    handle: '.sort_handle',
    placeholder: 'empty_chain_gear',
    tolerance: 'pointer',
+   start: function() {
+     $('.empty_chain_gear').height($('.sort_handle').parent().height());
+   },
    update:function() { 
      $.ajax({
        data:$(this).sortable('serialize'),
