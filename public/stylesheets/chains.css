@@ -121,6 +121,21 @@ span.score {
 .chain {
   margin-bottom: 25px;
 }
+.chain_gear {
+  background-image: url(../images/backgrounds/chain-gear_bg.png);  
+}
+.sort_handle {
+  height: 80px;
+  width: 30px;
+  background: url(../images/backgrounds/chain_reorder_handle.png) left top;
+  position: absolute;
+  margin-left: 776px;
+  margin-top: 50px;
+  cursor: move;
+}
+.sort_handle:hover {
+  background-position: left -80px ;
+}
 #audio .chain {
   margin-bottom: 0;
 }

@@ -59,9 +59,10 @@
             = f.inputs :high_quality, :for => :audio, :wrapper_html => { :class => "w25" }
             = f.commit_button 'Submit'
   .clear
-  = render(:partial => 'chain_gears/chain_gear', :object => @preamp) if @preamp
-  %ul{:id => @chain.user == current_user ? 'sortable_chain_gear' : 'chain_gear'}
-    = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
+  .chain_gear
+    = render(:partial => 'chain_gears/chain_gear', :object => @preamp) if @preamp
+    %ul.{:id => @chain.user == current_user ? 'sortable_chain_gear' : 'chain_gear'}
+      = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
 - if @chain.user == current_user

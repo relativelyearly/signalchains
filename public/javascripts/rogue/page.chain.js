@@ -1,9 +1,21 @@
 $(function() {
   $('.show-form').click(function () {toggle_edit_link(this); return false;});
 
+  $('.chain_link.sortable').hover(
+    function() {
+      $(this).prepend('<div class="sort_handle"></div>');
+    },
+    function() {
+      $('.sort_handle').remove();
+    }
+  )
+  
  $('#sortable_chain_gear').sortable({
    axis:'y',
+   placeholder: 'chain_link',
+   opacity: 0.9,
    cancel: '.Preamp',
+   handle: '.sort_handle',
    placeholder: 'empty_chain_gear',
    tolerance: 'pointer',
    update:function() { 

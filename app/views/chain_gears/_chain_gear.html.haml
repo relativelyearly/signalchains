@@ -1,5 +1,5 @@
 %li.chain_gear{:id => "chain_gear_#{chain_gear.id}", :class => chain_gear.gear_type}
-  .chain_link{:class => chain_gear.preamp? ? 'top' : nil}
+  .chain_link{:class => chain_gear.preamp? ? 'top' : 'sortable'}
     .first.col.community
       .first.col.w10.action
         = link_to '<span>View</span>', chain_gear.gear, :class => 'btn'
