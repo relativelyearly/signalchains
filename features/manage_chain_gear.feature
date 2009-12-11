@@ -3,7 +3,6 @@ Feature: Manage chain gear
   As a user
   I want to manage the gear
 
-  @current
   Scenario: When not logged in
     Given I am not logged in
     And a chain exists
@@ -12,7 +11,6 @@ Feature: Manage chain gear
     When I go to the chain's page
     Then I should not see "delete"
 
-  @current
   Scenario: When logged in view another user's chain
     Given I am logged in as "test/password"
     And a chain exists
@@ -21,7 +19,6 @@ Feature: Manage chain gear
     When I go to the chain's page
     Then I should not see "delete"
 
-  @current
   Scenario: When logged in on my chain
     Given I am logged in as "test/password"
     And a chain exists with user: the user

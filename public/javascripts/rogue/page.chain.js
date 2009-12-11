@@ -1,6 +1,22 @@
 $(function() {
   $('.show-form').click(function () {toggle_edit_link(this); return false;});
-  
+
+ $('#chain_gear').sortable({
+   axis:'y',
+   // dropOnEmpty:false,
+   cancel: '.Preamp',
+   placeholder: 'empty_chain_gear',
+   tolerance: 'pointer',
+   update:function() { 
+     $.ajax({
+       data:$(this).sortable('serialize'),
+       dataType:'script',
+       type:'post',
+       url:'/chain_gears/sort'
+      })
+    }
+  });
+
   $(document).ready(function() {
     $('.chain .thumb a').fancybox({
         'zoomSpeedIn':    300,
@@ -11,7 +27,6 @@ $(function() {
 });
 
 var global_lp = 0;
-
 
 $("#pause").hide();
 

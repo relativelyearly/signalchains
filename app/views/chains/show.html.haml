@@ -2,7 +2,7 @@
 
 .chain
   - if @chain.user == current_user
-    .admin  
+    .admin
       = link_to "Edit", edit_chain_path(@chain), :class => 'edit', :title => 'Edit Chain'
       = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete Chain'
   .info
@@ -14,9 +14,9 @@
       .social-links
         = like_link(@chain)
         = comments_link(@chain)
-    - if @chain.user == current_user    
+    - if @chain.user == current_user
       - unless @chain.complete?
-        .incomplete_chain.first= complete_message        
+        .incomplete_chain.first= complete_message
     .first.col.w40
       =textilize @chain.notes
       .tags.col
@@ -59,13 +59,15 @@
             = f.inputs :high_quality, :for => :audio, :wrapper_html => { :class => "w25" }
             = f.commit_button 'Submit'
   .clear
-  = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
+  = render(:partial => 'chain_gears/chain_gear', :object => @preamp)
+  %ul#chain_gear
+    = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
-- if @chain.user == current_user  
+- if @chain.user == current_user
   .w50.first.col
     .newlink.first#extra_gear
-      %h3 
+      %h3
         Add
         = image_tag 'helper/arrow.png', :id => 'arrow'
       = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'

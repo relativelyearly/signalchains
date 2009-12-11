@@ -8,6 +8,7 @@ class ChainsController < ResourceController::Base
 
   show.before do
     @input_source = @chain.input_source(:include => :chain)
+    @preamp = @chain.preamp(:include => :chain)
     @gear = @chain.processors(:include => :chain).sort {|x,y| x.position <=> y.position}
     @chain.build_audio unless @chain.audio
   end

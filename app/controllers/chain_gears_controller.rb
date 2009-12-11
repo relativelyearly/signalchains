@@ -2,6 +2,14 @@ class ChainGearsController < ResourceController::Base
   update.wants.html { redirect_to object.chain }
   destroy.wants.html { redirect_to object.chain }
 
+  def sort
+    params[:chain_gear].each_with_index do |id, index|
+      ChainGear.update_all(['position=?', index+2], ['id=?', id])
+    end
+
+    render :nothing => true
+  end
+
   def add_mic
     @chain = Chain.find(params[:chain_id])
     @mic = Mic.find(params[:mic_id])

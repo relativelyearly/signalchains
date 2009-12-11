@@ -312,3 +312,14 @@ float: none;
 #tops .creator {
   font-size: .8em;
 }
+ul#chain_gear {
+	margin: 0;
+	padding: 0;
+}
+li.chain_gear {
+	display: inline;
+}
+.empty_chain_gear {
+	height: 100px;
+	width: 100%;
+}
