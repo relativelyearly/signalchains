@@ -61,7 +61,7 @@
   .clear
   .chain_gear
     = render(:partial => 'chain_gears/chain_gear', :object => @preamp) if @preamp
-    %ul.{:id => @chain.user == current_user ? 'sortable_chain_gear' : 'chain_gear'}
+    %ul{:id => @chain.user == current_user ? 'sortable_chain_gear' : 'chain_gear'}
       = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
