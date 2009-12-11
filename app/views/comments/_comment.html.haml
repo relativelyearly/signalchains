@@ -2,7 +2,7 @@
   =textilize(comment.body)
 .w30.col.snug
   .avatar.col
-    = image_tag 'red_logo_fill_white.png'
+    = image_tag comment.user.avatar.url(:thumb)
   .w20.col
     - if comment.user
       = comment.user.email
