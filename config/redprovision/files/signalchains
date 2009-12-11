@@ -1,0 +1,4 @@
+<VirtualHost *:80>
+  DocumentRoot /u/apps/signalchains/current/public
+  <%= 'RailsEnv staging' if environment.name == 'staging' %>
+</VirtualHost>

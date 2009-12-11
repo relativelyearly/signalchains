@@ -1,9 +1,11 @@
 %h1 Login
 - form_for @user_session, :url => user_session_path do |f|
-  = f.error_messages
-  = f.label :email
+  - if @user_session.errors.present?
+    Invalid username or password
+
+  = f.label :login, 'Login or email'
   %br
-  = f.text_field :email
+  = f.text_field :login
   %br
   %br
   = f.label :password

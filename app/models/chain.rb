@@ -3,9 +3,9 @@ class Chain < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   belongs_to :user
-  has_many :gear, :class_name => 'ChainGear'
+  has_many :gear, :class_name => 'ChainGear', :include => [:gear]
   has_many :likes, :dependent => :destroy
-  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :comments, :as => :commentable, :include => [:user], :dependent => :destroy
   has_one :audio, :as => :audible, :dependent => :destroy
   accepts_nested_attributes_for :audio, :allow_destroy => true
 
@@ -24,12 +24,12 @@ class Chain < ActiveRecord::Base
     gear.any? {|gear| gear.input_source?}
   end
 
-  def input_source
-    gear.select {|g| g.input_source?}.first
+  def input_source(options={})
+    gear.all(options).select {|g| g.input_source?}.first
   end
 
-  def processors
-    gear.select {|g| !g.input_source?}
+  def processors(options={})
+    gear.all(options).select {|g| !g.input_source?}
   end
 
   def complete?

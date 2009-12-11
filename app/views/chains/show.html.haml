@@ -78,7 +78,7 @@
 
   - if current_user
     .w50.first.col
-      - semantic_form_for @chain.comments.build, :url => chain_comments_path(@chain) do |f|
+      - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})
     .w30.col.snug
       .avatar.col

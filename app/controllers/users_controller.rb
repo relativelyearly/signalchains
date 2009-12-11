@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:edit, :update]
-  
+  before_filter :require_user, :only => [:edit, :update, :follow]
+
   def new
     @user = User.new
   end
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   def show
     if params[:id]
-      @user = User.find(params[:id])
-      @events = @user.events_about_self
+      @user = User.find_by_login(params[:id])
+      @events = @user.events_about_self.all(:include => [:actor, :secondary_subject, :subject])
     else
       redirect_to(new_user_session_path) and return unless current_user
       @user = current_user
@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   def update
     @user = @current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to account_url
+      flash[:notice] = "Account updated succesfully"
+      redirect_to edit_account_path
     else
       render :action => :edit
     end
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {redirect_to @user}
+      format.html {redirect_to user_by_login_path(:id => @user.login)}
     end
   end
 end

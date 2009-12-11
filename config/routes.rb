@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :chain_gears
   map.resource :account, :controller => 'users'
   map.resources :password_resets
-  map.resources :users, :member => {:follow => :get}
+  map.resources :users, :except => [:show], :member => {:follow => :get}
   map.resource :user_session
 
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'
@@ -48,5 +48,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.register 'register', :controller => 'users', :action => 'new'
+
+  map.user_by_login ':id', :controller => 'users', :action => 'show'
+
   map.root :controller => 'users', :action => 'show'
 end
