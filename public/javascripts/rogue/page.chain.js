@@ -12,7 +12,6 @@ $(function() {
 
 var global_lp = 0;
 
-
 $("#pause").hide();
 
 function showPauseBtn()

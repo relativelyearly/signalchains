@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091210210944) do
+ActiveRecord::Schema.define(:version => 20091211035803) do
 
   create_table "audios", :force => true do |t|
     t.string   "high_quality_file_name"
@@ -164,8 +164,8 @@ ActiveRecord::Schema.define(:version => 20091210210944) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["context", "taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -202,6 +202,10 @@ ActiveRecord::Schema.define(:version => 20091210210944) do
     t.string   "type"
     t.string   "slug"
     t.string   "login"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

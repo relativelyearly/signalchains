@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   acts_as_authentic
 
-  attr_accessible :password, :password_confirmation, :email, :login, :display_name
+  attr_accessible :password, :password_confirmation, :email, :login,
+                  :display_name, :avatar
 
   has_many :likes, :dependent => :destroy
   has_many :follows, :dependent => :destroy
@@ -17,6 +18,12 @@ class User < ActiveRecord::Base
                     :order => "timeline_events.created_at DESC",
                     :finder_sql => "SELECT timeline_events.* FROM timeline_events WHERE #{EventConditions}",
                     :counter_sql => "SELECT COUNT(*) FROM timeline_events WHERE #{EventConditions}"
+
+  has_attached_file :avatar,
+                    :styles => { :thumb => ["30x30#", :jpg], :wide => ["250x130", :jpg] },
+                    :storage => :s3,
+                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :path => ':class/:id/:style.:extension'
 
   def likes?(chain)
     self.likes.find(:first, :conditions => {:chain_id => chain.id})
