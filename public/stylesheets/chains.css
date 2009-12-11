@@ -312,7 +312,7 @@ float: none;
 #tops .creator {
   font-size: .8em;
 }
-ul#chain_gear {
+ul#chain_gear, ul#sortable_chain_gear {
 	margin: 0;
 	padding: 0;
 }

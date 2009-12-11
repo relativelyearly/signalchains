@@ -1,9 +1,8 @@
 $(function() {
   $('.show-form').click(function () {toggle_edit_link(this); return false;});
 
- $('#chain_gear').sortable({
+ $('#sortable_chain_gear').sortable({
    axis:'y',
-   // dropOnEmpty:false,
    cancel: '.Preamp',
    placeholder: 'empty_chain_gear',
    tolerance: 'pointer',
