@@ -21,8 +21,7 @@
         .notes.first
           = textilize chain_gear.notes
           - if chain_gear.chain.user == current_user
-            .notes-form{:id => "notes-form-#{chain_gear.id}",
-                        :style => 'display:none'}
+            .notes-form{:id => "notes-form-#{chain_gear.id}", :style => 'display:none;'}
               - semantic_form_for chain_gear do |f|
                 = f.input :notes
                 = f.commit_button 'Save'

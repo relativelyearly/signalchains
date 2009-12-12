@@ -1,6 +1,6 @@
 $(function() {
   $('.show-form').click(function () {toggle_edit_link(this); return false;});
-  $('#sortable_chain_gear li').hover(
+  $('#sortable_chain_gear > li').hover(
     function() {
       $(this).prepend('<div class="sort_handle vulnerable"></div>');
     },
@@ -161,8 +161,8 @@ $('#dialog_link, ul#icons li').hover(
 });
 
 function toggle_edit_link (element) {
-  var form = $(element).parent().parent().siblings('.info').children('.notes-form');
-
+  var form = $(element).parent().parent().parent().children('.info').children('.notes').children('.notes-form');
+  
   if(form.css('display') === 'none') {
     $(element).html('hide form');
   } else {

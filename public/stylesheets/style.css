@@ -329,8 +329,8 @@ form#new_chain_gear, form.chain {
 
 
 li#chain_gear_notes_input {
-  margin-top: 20px;
-  padding: 0;
+  padding: 20px 0 0 0;
+  display: block;
 }
 .formtastic label {
   display: block;
