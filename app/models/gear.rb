@@ -14,7 +14,7 @@ class Gear < ActiveRecord::Base
                     :path => ':class/:id/:style.:extension'
 
   def position
-    5
+    2
   end
 
   def score

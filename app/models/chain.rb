@@ -28,8 +28,12 @@ class Chain < ActiveRecord::Base
     gear.all(options).select {|g| g.input_source?}.first
   end
 
+  def preamp(options={})
+    gear.all(options).select {|g| g.preamp?}.first
+  end
+
   def processors(options={})
-    gear.all(options).select {|g| !g.input_source?}
+    gear.all(options).select {|g| !g.input_source? && !g.preamp?}
   end
 
   def complete?

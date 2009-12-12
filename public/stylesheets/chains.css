@@ -120,6 +120,22 @@ span.score {
 }
 .chain {
   margin-bottom: 25px;
+  -webkit-transition: height 1s linear;  
+}
+#chain_gear {
+  background-image: url(../images/backgrounds/chain-gear_bg.png);  
+}
+.sort_handle {
+  height: 80px;
+  width: 30px;
+  background: url(../images/backgrounds/chain_reorder_handle.png) left top;
+  position: absolute;
+  margin-left: 776px;
+  margin-top: 50px;
+  cursor: move;
+}
+.sort_handle:hover {
+  background-position: left -80px ;
 }
 #audio .chain {
   margin-bottom: 0;
@@ -232,6 +248,12 @@ span.score {
   float: right;
   background: url(../images/backgrounds/admin.png) no-repeat;
 }
+.banner .admin {
+  height: 24px;
+  padding: 0;
+  background: none;
+  float: right !important;
+}
 .edit, .delete {
   background-position: top right;
   background-repeat: no-repeat;
@@ -311,4 +333,19 @@ float: none;
 }
 #tops .creator {
   font-size: .8em;
+}
+ul#sortable_chain_gear {
+
+}
+ul#chain_gear, ul#sortable_chain_gear {
+	margin: 0;
+	padding: 0;
+}
+li.chain_gear {
+	display: inline;
+	width: 800px;
+}
+.empty_chain_gear {
+	width: 100%;
+	list-style: none;
 }
