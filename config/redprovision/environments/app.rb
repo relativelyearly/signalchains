@@ -1,7 +1,6 @@
 class App
   include Redprovision::Environment
 
-  name 'app'
   host 'Rackspace', {:username => 'guitsaru',
                      :api_key => '95123f69f2850861cd755becd2c9d81e',
                      :image_id => 14362,

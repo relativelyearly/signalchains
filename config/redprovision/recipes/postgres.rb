@@ -3,13 +3,13 @@ class Postgres
 
   apt :postgresql
   apt 'postgresql-server-dev-8.4'
-  file('postgresql.conf' => '/etc/postgresql/8.4/main/postgresql.conf')
+  template('postgresql.conf.erb' => '/etc/postgresql/8.4/main/postgresql.conf')
   file('pg_hba.conf' => '/etc/postgresql/8.4/main/pg_hba.conf')
 
-  run 'sudo -u postgres /etc/init.d/postgresql-8.4 restart'
+  run '/etc/init.d/postgresql-8.4 restart', :user => 'postgres'
 
-  run "sudo -u postgres psql -c \"CREATE ROLE deploy WITH LOGIN ENCRYPTED PASSWORD '705YR8jptajUcOb2KQnl';\""
-  run "sudo -u postgres createdb -O deploy -T template0 -E UTF8 signalchains_production"
+  run "psql -c \"CREATE ROLE deploy WITH LOGIN ENCRYPTED PASSWORD '\#{password}';\"", :user => 'postgres'
+  run "createdb -O deploy -T template0 -E UTF8 signalchains_production", :user => 'postgres'
 
-  run 'sudo -u postgres /etc/init.d/postgresql-8.4 restart'
+  run '/etc/init.d/postgresql-8.4 restart', :user => 'postgres'
 end

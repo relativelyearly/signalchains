@@ -1,0 +1,19 @@
+--- 
+- name: staging-4
+  created_at: 2009-12-12 14:45:15 -06:00
+  environment_class: Staging
+  id: 126421
+  ip: 67.23.41.23
+  password: staging-4vzlzC4n
+- name: staging-2
+  created_at: 2009-12-12 14:57:16 -06:00
+  environment_class: Staging
+  id: 126427
+  ip: 174.143.147.141
+  password: staging-2Ki0UIQS
+- name: staging-3
+  created_at: 2009-12-12T15:42:38-06:00
+  environment_class: Staging
+  id: 126442
+  ip: 204.232.209.13
+  password: staging-3QunNQzR
