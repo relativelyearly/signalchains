@@ -28,7 +28,7 @@ Feature: Edit profile
     And I fill in "Email" with "test2@example.com"
     And I fill in "Change password" with "new_password"
     And I fill in "Password Confirmation" with "new_password"
-    And I attach "avatar.jpg" to "Profile Photo"
+    And I attach the file at "test/images/avatar.jpg" to "Avatar"
     And I press "Update"
     Then I should be on the edit profile page
     And I should see "Account updated successfully"
