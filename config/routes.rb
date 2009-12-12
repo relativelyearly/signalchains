@@ -32,7 +32,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :audios, :except => [:index, :show, :create]
 
-  map.resources :chain_gears
+  map.resources :chain_gears, :collection => {:sort => :post} 
   map.resource :account, :controller => 'users'
   map.resources :password_resets
   map.resources :users, :except => [:show], :member => {:follow => :get}

@@ -179,35 +179,38 @@ a{
   border: 1px dashed #aaa;
 }
 
-.gear h4 {
+.gear .banner {
   padding: 10px;
   color: #000;
   border-bottom: 1px solid #111;
   background-image: url(../images/chains/gear_header_sprite.png);
   background-repeat: repeat-x;
+  margin-bottom: 10px;
 }
-.gear.mic h4 {
+.gear.mic .banner {
   background-color: #dedede;
   background-position: left top;
 }
 
-.gear.preamp h4 {
+.gear.preamp .banner {
   background-color: #d8c437;
   background-position: left -400px;
 }
-.gear.dynamicsprocessor h4 {
+.gear.dynamicsprocessor .banner {
   background-color: #a31212;
   background-position: left -800px;
 }
-.gear.effectsprocessor h4 {
+.gear.effectsprocessor .banner {
   background-color: #4d96ba;
   background-position: left -1200px;
 }
-.gear.equalizer h4 {
+.gear.equalizer .banner {
   background-color: #73c356;
   background-position: left -1600px;
 }
-
+.gear .banner h4 {
+  width: 300px;
+}
 .unit {
   margin-bottom: 20px;
 }
@@ -326,8 +329,8 @@ form#new_chain_gear, form.chain {
 
 
 li#chain_gear_notes_input {
-  margin-top: 20px;
-  padding: 0;
+  padding: 20px 0 0 0;
+  display: block;
 }
 .formtastic label {
   display: block;
