@@ -248,10 +248,11 @@ span.score {
   float: right;
   background: url(../images/backgrounds/admin.png) no-repeat;
 }
-h4 .admin {
+.banner .admin {
   height: 24px;
   padding: 0;
   background: none;
+  float: right !important;
 }
 .edit, .delete {
   background-position: top right;
