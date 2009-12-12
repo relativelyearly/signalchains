@@ -1,3 +1,4 @@
+@pending
 Feature: View all chains
   In order see a list of all chains by all users
   As a user
@@ -5,8 +6,8 @@ Feature: View all chains
 
   Scenario: Viewing the chains page
     When I go to the chains page
-    I should see "Search Chains"
-    I should see "Top Chains"
+    Then I should see "Search Chains"
+    And I should see "Top Chains"
     And I should see "Top Tags"
     And I should see "Awesome Guitar"
     And I should see "Song Name"

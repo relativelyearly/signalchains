@@ -1,3 +1,4 @@
+@pending
 Feature: View all gear
   In order see a list of all gear in the database
   As a user
@@ -5,7 +6,7 @@ Feature: View all gear
 
   Scenario: Viewing the gear page
     When I go to the gear page
-    I should see "Type"
+    Then I should see "Type"
     And I should see "Microphones"
     And I should see "Preamps"
     And I should see "Dynamics"

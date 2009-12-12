@@ -12,7 +12,7 @@ Feature: Edit profile
   Scenario: When logged in
     Given I am logged in as "test/password"
     When I go to the edit profile page
-    I should see "Stats"
+    Then I should see "Stats"
     And I should see "4 Chains"
     And I should see "15 Followers"
     And I should see "30 Comments"
@@ -31,7 +31,7 @@ Feature: Edit profile
     And I attach "avatar.jpg" to "Profile Photo"
     And I press "Update"
     Then I should be on the edit profile page
-    And I should see "Account updated succesfully"
+    And I should see "Account updated successfully"
     And I should see "test2"
     And I should see "Test User"
     And I should see "test2@example.com"

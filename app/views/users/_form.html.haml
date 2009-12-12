@@ -13,6 +13,12 @@
 = form.text_field :email
 %br
 %br
+= form.label :avatar
+%br
+= image_tag @user.avatar.url(:thumb)
+= form.file_field :avatar
+%br
+%br
 = form.label :password, form.object.new_record? ? nil : "Change password"
 %br
 = form.password_field :password
