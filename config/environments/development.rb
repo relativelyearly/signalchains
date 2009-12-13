@@ -17,7 +17,7 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 config.middleware.use "Rack::Bug"
 
-Paperclip.options[:command_path] = "/usr/local/bin"
+Paperclip.options[:command_path] = "/opt/local/bin"
 
 ENV['RAILS_ASSET_ID'] = ''
 

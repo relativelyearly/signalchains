@@ -41,7 +41,7 @@
 }
 
 div.chain_link {
-  background: url(../images/backgrounds/gear_rack_bg.png);  
+  background: url(../images/backgrounds/gear_rack_bg.png) repeat-y;  
 }
 div.chain_link.top {
   background: url(../images/backgrounds/gear_rack_bg_top.png);  
@@ -82,7 +82,8 @@ a.btn span {
   color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   font-family: "Gill Sans";
-  width: 100px;  
+  width: 100px;
+  margin: 5px 0 0 0;  
 }
 
 .chain_link .community a.btn span {
@@ -119,18 +120,19 @@ span.score {
   text-shadow: 0 3px 2px #000;  
 }
 .chain {
+  width: 685px;
   margin-bottom: 25px;
   -webkit-transition: height 1s linear;  
 }
 #chain_gear {
-  background-image: url(../images/backgrounds/chain-gear_bg.png);  
+  background-image: url(../images/backgrounds/gear_rack_bg.png);  
 }
 .sort_handle {
   height: 80px;
   width: 30px;
   background: url(../images/backgrounds/chain_reorder_handle.png) left top;
   position: absolute;
-  margin-left: 776px;
+  margin-left: 662px;
   margin-top: 50px;
   cursor: move;
 }
@@ -141,18 +143,25 @@ span.score {
   margin-bottom: 0;
 }
 .chain .info {
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 .chain > .info {
   padding: 0;
 }
+.input_source #input_info {
+  width: 250px;
+  margin-left: 25px;
+}
+.input_source .banner h4 {
+  width: 170px;
+}
 #audio {
   text-align: center;
   border-top: 2px ridge #fff;
-  padding: 20px 270px 50px 270px;
-  width: 260px;
+  padding: 20px 20px 60px 20px;
+  width: 645px;
   min-height: 170px;
-  background: url(../images/backgrounds/gear_rack_tabletop_monitors.png) no-repeat 0 bottom;  
+  background: url(../images/backgrounds/gear_rack_tabletop.png) no-repeat 0 bottom;  
   margin-top: 20px;
 }
 #audio .pending {
@@ -172,7 +181,7 @@ span.score {
 }
 .chain .info h2 {
   margin-bottom: 0;
-  width: 670px;
+  width: 580px;
   float: left;
 }
 .chain .info .community a.btn{
@@ -253,6 +262,9 @@ span.score {
   padding: 0;
   background: none;
   float: right !important;
+}
+.input_source .banner {
+  min-height: 1.9em;
 }
 .edit, .delete {
   background-position: top right;
@@ -343,7 +355,7 @@ ul#chain_gear, ul#sortable_chain_gear {
 }
 li.chain_gear {
 	display: inline;
-	width: 800px;
+	width: 685px;
 }
 .empty_chain_gear {
 	width: 100%;

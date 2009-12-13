@@ -1,11 +1,10 @@
 %li.chain_gear{:id => "chain_gear_#{chain_gear.id}", :class => chain_gear.gear_type}
   .chain_link{:class => chain_gear.preamp? ? 'top' : 'sortable'}
     .first.col.community
-      .first.col.w10.action
-        = link_to '<span>View</span>', chain_gear.gear, :class => 'btn'
-        %span.score= chain_gear.gear.score
-      .col.thumb
+      .thumb
         = link_to image_tag(chain_gear.gear.image.url(:thumb), :alt => chain_gear.gear.model), chain_gear.gear.image.url
+      = link_to '<span>View</span>', chain_gear.gear, :class => 'btn'
+      / %span.score= chain_gear.gear.score
     .gear.col{:class => chain_gear.gear_type.downcase}
       .banner
         - if chain_gear.chain.user == current_user

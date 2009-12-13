@@ -1,8 +1,9 @@
 .first.col.comment-text
   =textilize(comment.body)
-.w30.col.snug
-  .avatar.col
+.w30.col
+  .avatar.col.snug
     = image_tag comment.user.avatar.url(:thumb)
-  .w20.col
-    - if comment.user
-      = comment.user.email
+  
+  - if comment.user
+    .col.w20
+      = comment.user.login

@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
                     :counter_sql => "SELECT COUNT(*) FROM timeline_events WHERE #{EventConditions}"
 
   has_attached_file :avatar,
-                    :styles => { :thumb => ["30x30#", :jpg], :wide => ["250x130", :jpg] },
+                    :styles => { :thumb => ["80x80#", :jpg], :wide => ["250x130", :jpg] },
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'

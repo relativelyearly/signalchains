@@ -161,7 +161,7 @@ input.button {
 /* @end */
 .col {
   float: left;
-  margin-left: 3.125%;
+  margin-left: 15px;
 }
 
 .right {

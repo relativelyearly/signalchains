@@ -1,19 +1,8 @@
 - title "Chains"
 
 / = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
-.col.first.w25
+.col.first.w20
   #tops
-    %h3 Top Chains
-    %ol
-      %li
-        %h5 Cool chain
-        %span.creator by coolmanj
-      %li
-        %h5 Lamezo chain
-        %span.creator by I-aint-cool
-      %li
-        %h5 everyday/everynight vocal sound
-        %span.creator by ross
     %h3 Top Tags
     .tags
       %span tag
@@ -22,13 +11,13 @@
       %span Compression
       %span Overdrive
 - for chain in @chains
-  .unit.w50.col
+  .unit.w45.col
     .col.thumb
       = link_to image_tag(chain.input_source.gear.image.url(:thumb), :alt => chain.input_source.gear.model), chain
       .social-links
         = like_link(chain)
         = comments_link(chain)
-    .col.w35
+    .col.w30
       %h4
         = link_to chain.name, chain
       %h5
