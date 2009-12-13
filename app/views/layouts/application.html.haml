@@ -9,10 +9,9 @@
     #master.wrapper
       #left-content
         #header
-          .container
-            = image_tag 'signalchains.png', :id => 'logo', :class => 'left', :alt => 'Signal Chains'
-            = render :partial => "layouts/nav"
-          .clear
+          = link_to 'Signal Chains', root_url, :id => 'logo' 
+          = render :partial => "layouts/nav"
+        .clear
     
         #content.container
           = render_flash_messages
@@ -32,7 +31,6 @@
           %h4 Featured Studio          
         .clear
       .clear
-      .push
     .footer.redev
       = image_tag '../images/red_logo.png', :alt => 'Relatively Early Development'
       = link_to 'A Relatively Early Development', 'http://relativelyearly.com'

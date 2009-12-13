@@ -80,16 +80,16 @@
   %h3 Comments
 
   - if current_user
-    .w35.first.col
+    .w45.first.col
       - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})
-    .w30.col
+    .w20.col
       .avatar.col.snug
         = image_tag 'red_logo_fill_white.png'
-      .w20.col
+      .w10.col
         = current_user.login
-
   = render(:partial => 'comments/comment', :collection => @chain.comments)
+  .clear
 .first
 = javascript_include_tag 'rogue/page.chain'
 = javascript_include_tag 'plugins/jquery.jplayer'
