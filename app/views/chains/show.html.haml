@@ -17,7 +17,7 @@
     - if @chain.user == current_user
       - unless @chain.complete?
         .incomplete_chain.first= complete_message
-    .first.col.w40
+    .first.col.w25
       =textilize @chain.notes
       .tags.col
         Tags:
@@ -48,7 +48,7 @@
         - if @chain.audio.ogg.file?
           = ogg_link(@chain)
         - if @chain.audio.high_quality.file?
-          = link_to '<span>aiff</span>', @chain.audio.high_quality.url, :class => 'btn'
+          = link_to '<span>hq</span>', @chain.audio.high_quality.url, :class => 'btn'
           .first
       - else
         .pending
@@ -80,14 +80,14 @@
   %h3 Comments
 
   - if current_user
-    .w50.first.col
+    .w35.first.col
       - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})
-    .w30.col.snug
-      .avatar.col
+    .w30.col
+      .avatar.col.snug
         = image_tag 'red_logo_fill_white.png'
       .w20.col
-        = current_user.email
+        = current_user.login
 
   = render(:partial => 'comments/comment', :collection => @chain.comments)
 .first

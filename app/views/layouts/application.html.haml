@@ -5,22 +5,33 @@
     = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Relatively Early Development"
   %body
-    #header
-      .wrapper
-        = image_tag 'signalchains.png', :id => 'logo', :class => 'left', :alt => 'Signal Chains'
-        #controls.right.w30
-          - authenticated_only do
-            .session
-              = link_to current_user.login, edit_account_path, :id => 'edit_profile'
-              = link_to 'Log Out', logout_url
-          %form
-            %input
-            %input{:type => 'submit', :value => 'search'}
-      = render :partial => "layouts/nav"
-    #content.wrapper
-      #container
-        = render_flash_messages
-        = yield
+  
+    #master.wrapper
+      #left-content
+        #header
+          .container
+            = image_tag 'signalchains.png', :id => 'logo', :class => 'left', :alt => 'Signal Chains'
+            = render :partial => "layouts/nav"
+          .clear
+    
+        #content.container
+          = render_flash_messages
+          = yield
+        .first
+      #right-content
+        #sidebar
+          #controls
+            - authenticated_only do
+              .session
+                = link_to current_user.login, edit_account_path, :id => 'edit_profile'
+                = link_to 'Log Out', logout_url
+            %form
+              %input{:size => '16'}
+              %input{:type => 'submit', :value => 'search'}                
+          %h4 Featured Gear
+          %h4 Featured Studio          
+        .clear
+      .clear
       .push
     .footer.redev
       = image_tag '../images/red_logo.png', :alt => 'Relatively Early Development'

@@ -13,7 +13,7 @@ a{
   color: #111;
 }
 .wrapper {
-  width: 900px;
+  width: 950px;
 }
 
 /* @group comments */
@@ -28,7 +28,7 @@ a{
   border: 1px solid #999;
 }
 .comment-text, .comment blockquote {
-  width: 478px;
+  width: 330px;
   background: #ddd;
   padding: 10px;
   -webkit-border-radius:4px;  -moz-border-radius:4px;
@@ -40,32 +40,51 @@ a{
 }
 
 /* @end */
-#container {
-  background: #eee url(../images/backgrounds/container_background.png) repeat-y;
-  padding: 20px 25px;
-  width: 800px;
+#master {
+  background: #e1e1e1;
+}
+#master #header .container {
+  padding: 0;
+  width: 700px;
+}
+#master .container {
+ 
+  float: left;
+  padding: 0 15px;  
+}
+
+#left-content {
+  width: 715px;
+  float: left;
+background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 100px;   
+}
+.container {
+  width: 685px;
   margin: 0 auto;
 }
 
+#sidebar {
+  width: 205px;
+  padding: 15px;
+  height: 300px;
+  float: left;
+  background: #e1e1e1;
+}
 /* @group nav */
-#nav {
 
-}
 #nav ul {
-  width: 800px;
-  margin: 0 auto;
-  padding: 0 0 0 8px;
-  background: #000;
+  width: 490px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background: #708e8d;
 }
 #nav ul li {
   display: block;
-  width: 155px;
-  height: 80px;
+  width: 75px;
   float: left;
   margin: 0; 
   padding: 0; 
-  background: url(../images/backgrounds/nav/patchbay_label.png) no-repeat center 0;  
-  border-right: 4px solid #000;
 }
 #nav ul li a {
   display: block;
@@ -78,15 +97,16 @@ a{
 }
 #nav ul li a:hover {
   color: #000;
+  background: #aab9b9;
 }
 
 #controls {
-  text-align: right;
-  width: 300px;
+  text-align: left;
+  height: 65px;
+  margin-bottom: 17px;
 }
 .session {
   margin-bottom: 10px;
-  color: #74ED7E;
   text-transform: uppercase;
   font-family: "Gill Sans", "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
   font-size: .8em;
@@ -94,7 +114,7 @@ a{
   
 }
 .session a {
-  color: #ccc;
+  color: #999;
   text-decoration: none; 
 }
 .session a:hover {
@@ -105,12 +125,15 @@ a{
 }
 /* @end */
 
-.session {
-  text-align: right;
-}
 #header {
-  background: url(../images/backgrounds/header_banner_back.png) repeat-x;
-  border-bottom: 4px ridge #111;
+  width: 700px;
+  height: 50px;
+  float: left;
+  padding: 15px 0 15px 15px;
+  background: #21615e;
+}
+#header #logo {
+  margin-right: 10px;
 }
 #header .wrapper {
   margin-top: 10px;
@@ -120,22 +143,21 @@ a{
   height: 66px;
 }
 #content {
+  padding: 15px 15px !important;	
   clear: both;
-  padding-top: 14px;
   margin: 0 auto 0 auto;
-  background: url(../images/backgrounds/rounded_top_background.png) no-repeat center top;
 }
 
 .content-title {
-  background: url(../images/backgrounds/content_head.png);
-  width: 840px;
-  height: 80px;
+  background: url(../images/backgrounds/content_head.png) no-repeat;
+  width: 695px;
+  height: 70px;
   position: relative;
-  margin-left: -50px;
-  margin-top: -40px;
+  margin-left: -35px;
+  margin-top: -20px;
   margin-bottom: 10px;
   display: block;
-  padding: 35px 30px 0 30px;
+  padding: 25px 30px 0 30px;
   overflow: hidden;
 }
 .content-title h1 {
@@ -145,6 +167,7 @@ a{
 /* @group gear */
 .gear {
   padding: 0;
+  min-height: ;
   width: 500px;
   color: #ccc;
   border-top: 1px solid #666;
@@ -171,7 +194,7 @@ a{
   color: #666;
 }
 .chain_link .community {
-  width: 240px;
+  width: 123px;
   padding:10px 0 0 35px;
 }
 .gear_img {
@@ -208,8 +231,9 @@ a{
   background-color: #73c356;
   background-position: left -1600px;
 }
-.gear .banner h4 {
+.banner h4 {
   width: 300px;
+  margin: 0;
 }
 .unit {
   margin-bottom: 20px;
@@ -324,7 +348,7 @@ form#new_chain_gear, form.chain {
 }
 
 #chain_notes {
-  width: 356px;
+  width: 300px;
 }
 
 
@@ -350,7 +374,9 @@ form.chain li {
 .formtastic li input, .formtastic select, .formtastic textarea {
   position: relative;
 }
-
+form.chain .first .col.w35 p{
+  padding-top: 15px;
+}
 /* @end */
 
 ul.incomplete_chain {

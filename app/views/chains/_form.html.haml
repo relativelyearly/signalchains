@@ -1,20 +1,20 @@
 - semantic_form_for @chain, :html => {:multipart => true} do |f|
-  .first.w80
-    .first.col.w40
-      = f.input :name
+  .first
+    .first.col.w30
+      = f.input :name, :input_html => {:size => '41'}
     .col.w35
       %p Give your chain a clever name
     .first
-  .first.w80
-    .first.col.w40
+  .first
+    .first.col.w30
       = f.input :notes
     .col.w35
       %p Write some detailed notes about the performer, instruments, environment; anything that affects the sound outside of the actual recording process.
       %p Save all the gear-specific notes (mic placement, device settings, etc.) for the gear itself.
     .first  
-  .first.w80
-    .first.col.w40
-      = f.input :tag_list, :label => 'Tags'
+  .first
+    .first.col.w30
+      = f.input :tag_list, :label => 'Tags', :input_html => {:size => '41'}
     .col.w35
       %p 
         Comma separated

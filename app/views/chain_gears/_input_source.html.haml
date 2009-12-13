@@ -1,27 +1,32 @@
 - unless input_source.gear.nil?
   .input_source.col
-    .first.col.w25{:class => input_source.gear_type.downcase}
-      %h4
-        =h input_source.gear.make
-        =h input_source.gear.model
+    .col.first.w10
+      .thumb
+        = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
+      .meta.first.col.w10
+        = link_to '<span>View</span>', input_source, :class => 'btn'          
 
-      .info
-        = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)
+    #input_info.col
+      .banner
+        - if input_source.chain.user == current_user
+          .admin
+            = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form edit', :title => 'edit notes')
+            = link_to ('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')      
+        %h4
+          =h input_source.gear.make
+          =h input_source.gear.model
+  
+      .info    
+        %h5
+          = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)        
         .notes.first
           = textilize input_source.notes
           - if input_source.chain.user == current_user
-            .admin
-              = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form edit')
             .notes-form{:id => "notes-form-#{input_source.id}", :style => 'display:none'}
               - semantic_form_for input_source do |f|
                 = f.input :notes
                 = f.commit_button 'Save'
 
-    .col.w10
-      .thumb
-        = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
-      .meta.first.col.w10
-        = link_to '<span>View</span>', input_source, :class => 'btn'        
 - else
   .input_source.col.w45
     .first.col.line_in

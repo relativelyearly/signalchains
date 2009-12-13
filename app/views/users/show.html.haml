@@ -2,7 +2,7 @@
   %h1= @user.login
 = follow_button(@user)
 .first
-#feed.col.first.w50
+#feed.col.first.w40
   %h3 Events
   - for event in @events
     = render(:partial => "events/#{event.event_type}", :object => event)
