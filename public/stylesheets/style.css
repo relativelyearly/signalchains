@@ -17,6 +17,9 @@ a{
 }
 
 /* @group comments */
+.comment {
+  margin-bottom: 15px;
+}
 #comments {
   border-top: 2px ridge #fff;
   padding-top: 15px;
@@ -28,7 +31,6 @@ a{
   border: 1px solid #999;
 }
 .comment-text, .comment blockquote {
-  width: 330px;
   background: #ddd;
   padding: 10px;
   -webkit-border-radius:4px;  -moz-border-radius:4px;
@@ -62,21 +64,23 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
   width: 685px;
   margin: 0 auto;
 }
-
+#right-content {
+  background: #6f8e8d url(../images/backgrounds/sidebar.png) 715px;
+}
 #sidebar {
   width: 205px;
   padding: 15px;
   height: 300px;
   float: left;
-  background: #e1e1e1;
 }
 /* @group nav */
 
 #nav ul {
-  width: 490px;
-  float: left;
-  margin: 0;
-  padding: 0;
+  width: 465px;
+  margin: 12px 0 0;
+  height: 36px;
+  overflow: hidden;
+  padding: 0 0 0 250px;
   background: #708e8d;
 }
 #nav ul li {
@@ -92,18 +96,20 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
   padding: 10px;
   text-align: center;
   text-decoration: none;
-  color: #333;
+  color: #222;
   font-family: "Gill Sans", "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
 }
 #nav ul li a:hover {
   color: #000;
   background: #aab9b9;
+  border-bottom-color: #ccc;
 }
 
 #controls {
   text-align: left;
   height: 65px;
   margin-bottom: 17px;
+  border-bottom: 1px solid #d0d3d3;
 }
 .session {
   margin-bottom: 10px;
@@ -114,7 +120,7 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
   
 }
 .session a {
-  color: #999;
+  color: #666;
   text-decoration: none; 
 }
 .session a:hover {
@@ -126,14 +132,26 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
 /* @end */
 
 #header {
-  width: 700px;
-  height: 50px;
+  width: 715px;
+  height: 65px;
   float: left;
-  padding: 15px 0 15px 15px;
+  padding: 5px 0 5px 0;
   background: #21615e;
+  border-bottom: 2px solid #18312f;
 }
 #header #logo {
-  margin-right: 10px;
+  display: block;
+  text-indent: -999em;	
+  position: absolute;
+  height: 65px;
+  margin-top: 0;
+  margin-left: 5px;
+  padding: 2px 10px 0 10px;
+  width: 220px;
+  background-color: #30615e;
+  background-image: url(../images/header_type.png);
+}
+#logo img {
 }
 #header .wrapper {
   margin-top: 10px;
@@ -289,7 +307,7 @@ p {
   padding: 0;
 }
 #search, .bucket {
-  width: 700px;
+  width: 585px;
   padding: 10px 50px 40px 50px;
   background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
   margin-bottom: 10px;

@@ -1,9 +1,12 @@
-.first.col.comment-text
-  =textilize(comment.body)
-.w30.col
-  .avatar.col.snug
-    = image_tag comment.user.avatar.url(:thumb)
+.comment.first
+  .first.col.comment-text.w45
+    =textilize(comment.body)
+  .w20.col
+    .avatar.col.snug
+      = image_tag comment.user.avatar.url(:thumb)
   
-  - if comment.user
-    .col.w20
-      = comment.user.login
+    - if comment.user
+      .col.w10
+        = comment.user.login
+  .clear      
+  
