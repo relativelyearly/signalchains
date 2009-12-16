@@ -12,9 +12,8 @@
           = link_to 'Signal Chains', root_url, :id => 'logo' 
           = render :partial => "layouts/nav"
         .clear
-    
+        = render_flash_messages
         #content.container
-          = render_flash_messages
           = yield
         .first
       #right-content

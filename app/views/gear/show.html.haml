@@ -1,21 +1,38 @@
-- title "Mic"
+- title "#{object.make} #{object.model} - Signal Chains"
 
-= render(:partial => @class.index_partial, :object => object)
+.first.col.w30
+  %h1.snug= @object.model
+  %h5
+    by
+    = @object.make
+  = render(:partial => @class.index_partial, :object => object)
+  %br
+  %br
+  - if @chain
+    = add_to_chain_button(object)
+  %h4 
+    Chains with a  
+    = @object.model
+  %ul.hard
+    %li
+      %h6= link_to 'bob\'s chain'
+      %span in position #5
+    %li
+      %h6= link_to 'ordinary chain'
+      %span in position #3      
 
-- if @chain
-  = add_to_chain_button(object)
+.col.w37
+  .image= link_to image_tag(@object.image.url(:display)), @object.image.url, :title => "#{@object.make} #{@object.model}", :class => 'zoom'
+  %h4 Community Score
+  .col.first.w12
+    %span.score 90
+  .col.w20#rec_stats
+    Recommended 128 times
+.first
+  - if current_user
+    .w50.first.col
+      - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
+        = render(:partial => 'comments/form', :locals => {:f => f})
 
-- if current_user
-  .w50.first.col
-    - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
-      = render(:partial => 'comments/form', :locals => {:f => f})
-
-.w50.first.col
+.w50.first
   = render(:partial => 'comments/comment', :collection => object.comments)
-
-%p
-  = link_to "Edit", edit_object_path
-  |
-  = link_to "Destroy", object, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", collection_path

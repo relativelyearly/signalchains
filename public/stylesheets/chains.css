@@ -78,7 +78,7 @@ a.btn span {
   padding-left: 8px;
 }
 
-.chain_link .community a.btn {
+.chain_link .community a.btn, #audio .btn {
   color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   font-family: "Gill Sans";
@@ -86,16 +86,16 @@ a.btn span {
   margin: 5px 0 0 0;  
 }
 
-.chain_link .community a.btn span {
+.chain_link .community a.btn span, #audio .btn span {
   height: 20px;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   background-position: right 120px;  
   overflow: hidden;
 }
-.chain_link .community a.btn:hover span {
+.chain_link .community a.btn:hover span, #audio .btn:hover span {
   background-position: right -160px;  
 }
-.chain_link .community a.btn:active span {
+.chain_link .community a.btn:active span, #audio .btn:active span {
   background-position: right -200px;  
 }
 a.btn:hover {
@@ -113,11 +113,15 @@ a.btn:active span {
   background-position: right -200px;
 }
 
+.gear span.score {
+  text-shadow: 0 3px 2px #000;    
+  font-size: 28px;  
+}
 span.score {
-  font-size: 28px;
+  font-size: 50px;
   padding-right: 5px;
   color: #3cab3b;
-  text-shadow: 0 3px 2px #000;  
+  text-shadow: 0 1px 2px #000;      
 }
 .chain {
   width: 685px;
@@ -178,6 +182,17 @@ span.score {
 #audio audio {
   display: block;
   margin: 10px auto;
+}
+#audio .player {
+  background: url(../images/backgrounds/plaque_top.png) no-repeat center top;
+  padding-top: 55px;
+  color: #fff; 
+  width: 390px;
+  margin: 0 auto; 
+}
+#audio .download {
+  background: url(../images/backgrounds/plaque-bottom.png) no-repeat center bottom;
+  padding-bottom: 40px;
 }
 .chain .info h2 {
   margin-bottom: 0;
@@ -360,4 +375,8 @@ li.chain_gear {
 .empty_chain_gear {
 	width: 100%;
 	list-style: none;
+}
+
+#rec_stats {
+  margin-top:18px ;
 }

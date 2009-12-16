@@ -37,19 +37,21 @@
     .clear
     #audio.first
       - if @chain.title
-        %h3 &ldquo;#{@chain.title}&rdquo;
-      - if @chain.performer
-        %h5 #{@chain.performer}, #{@chain.year}
-      - if @chain.audio && @chain.audio.high_quality?
-        = render :partial => "audio_player"
-        %h5 Download
-        - if @chain.audio.mp3.file?
-          = mp3_link(@chain)
-        - if @chain.audio.ogg.file?
-          = ogg_link(@chain)
-        - if @chain.audio.high_quality.file?
-          = link_to '<span>hq</span>', @chain.audio.high_quality.url, :class => 'btn'
-          .first
+        .player      
+          %h3 &ldquo;#{@chain.title}&rdquo;
+          - if @chain.performer
+            %h5 #{@chain.performer}, #{@chain.year}
+          - if @chain.audio && @chain.audio.high_quality?
+            = render :partial => "audio_player"
+            .download
+              %h5 Download
+              - if @chain.audio.mp3.file?
+                = mp3_link(@chain)
+              - if @chain.audio.ogg.file?
+                = ogg_link(@chain)
+              - if @chain.audio.high_quality.file?
+                = link_to '<span>hq</span>', @chain.audio.high_quality.url, :class => 'btn'
+                .first
       - else
         .pending
           - semantic_form_for @chain, :html => {:multipart => true} do |f|
