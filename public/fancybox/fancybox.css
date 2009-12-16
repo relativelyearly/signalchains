@@ -1,3 +1,5 @@
+/* @override http://signalchains.local/fancybox/fancybox.css */
+
 div#fancy_overlay {
 	position: fixed;
 	top: 0;
@@ -75,7 +77,7 @@ img#fancy_img {
 div#fancy_close {
 	position: absolute;
 	top: -12px;
-	right: -15px;
+	left: -15px;
 	height: 30px;
 	width: 30px;
 	background: url('fancy_closebox.png') top left no-repeat;

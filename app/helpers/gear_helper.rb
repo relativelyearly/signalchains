@@ -22,7 +22,7 @@ module GearHelper
 
   def add_to_chain_button(gear)
     link_url = eval("add_#{gear.class.to_s.underscore}_path(:chain_id => @chain.id, :#{gear.class.to_s.underscore}_id => gear.id)")
-    link_to '<span>Add to Chain</span>', link_url, :class => 'btn'
+    link_to '<span>Add to Chain</span>', link_url, :class => 'btn w15'
   end
 
   def gear_comments_path(gear)

@@ -196,6 +196,9 @@ input.button {
 .w35{
   width: 350px;
 }
+.w37 {
+  width: 370px;
+}
 .w40{
   width: 400px;
 }
@@ -260,6 +263,10 @@ input.button {
   -moz-border-radius:10px;
 }
 .snug {
-  margin-left: 0;
+  margin: 0;
+}
+.hard {
+  padding: 0;
+  list-style: none;
 }
 /* @end */

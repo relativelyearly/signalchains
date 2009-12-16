@@ -65,7 +65,12 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
   margin: 0 auto;
 }
 #right-content {
-  background: #6f8e8d url(../images/backgrounds/sidebar.png) 715px;
+  background: #eee url(../images/backgrounds/sidebar.png) repeat-y 715px;
+}
+
+div.image a {
+  display: block;
+  margin-bottom: 10px;
 }
 #sidebar {
   width: 205px;
@@ -145,7 +150,7 @@ background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 
   position: absolute;
   height: 65px;
   margin-top: 0;
-  margin-left: 5px;
+  margin-left: 0;
   padding: 2px 10px 0 10px;
   width: 220px;
   background-color: #30615e;
@@ -298,9 +303,17 @@ h5 {
   font-weight: normal;
   margin-bottom: 1em;
 }
+h6 {
+  font-size: 90%;
+  font-weight: normal;
+  margin: 0;
+}
 p {
   font-size: 90%;
   margin: 0 0 1em 0;
+}
+ul li {
+  margin: .8em 0;
 }
 /* @end */
 #search #search_form.mic-search {

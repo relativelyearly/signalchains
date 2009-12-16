@@ -3,10 +3,10 @@
     =textilize(comment.body)
   .w20.col
     .avatar.col.snug
-      = image_tag comment.user.avatar.url(:thumb)
+      = link_to image_tag(comment.user.avatar.url(:thumb)), comment.user
   
     - if comment.user
       .col.w10
-        = comment.user.login
+        = link_to comment.user.login, comment.user
   .clear      
   
