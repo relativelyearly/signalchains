@@ -2,8 +2,7 @@ class DeployUser
   include Redprovision::Recipe
 
   user("deploy",
-    :group => 'www-data',
-    :password => '705YR8jptajUcOb2KQnl')
+    :group => 'www-data')
 
   run "groupadd deploy"
 

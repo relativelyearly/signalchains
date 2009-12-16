@@ -6,6 +6,5 @@ class Staging
                     :image_id => 14362,
                     :flavor_id => 1
 
-  recipes :apt, :build_tools, :iptables, :deploy_user, :ssh, :apache, :ruby, :passenger, :postgres,
-          :signal_chains, :signal_chains_database
+  recipes :apt, :build_tools, :ruby, :chef
 end
