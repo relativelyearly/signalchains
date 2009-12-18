@@ -28,7 +28,15 @@
                 = f.commit_button 'Save'
 
 - else
-  .input_source.col.w45
-    .first.col.line_in
-      %h4 Line In
+  .input_source.col
+    .col.first.w10.mic
+      .thumb
+      .meta.first.col.w10
+
+    #input_info.col
+      .banner
+        - chain_owner(input_source.chain) do
+          .admin
+            = link_to('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')
+        %h4 Line In
 .clear

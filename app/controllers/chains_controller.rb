@@ -1,6 +1,8 @@
 class ChainsController < ResourceController::Base
   before_filter :require_user, :only => [:new, :like]
 
+  index.before {@tags = Chain.tag_counts_on(:tags)}
+
   create.after do
     object.user = current_user
     object.save

@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   map.add_effects_processor '/chains/:chain_id/add/effects_processor/:effects_processor_id', :controller => 'chain_gears', :action => 'add_effects_processor'
   map.add_equalizer '/chains/:chain_id/add/equalizer/:equalizer_id', :controller => 'chain_gears', :action => 'add_equalizer'
 
+  map.gear 'gear', :controller => 'gear', :action => 'index'
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.register 'register', :controller => 'users', :action => 'new'

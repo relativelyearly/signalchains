@@ -1,4 +1,6 @@
 module ChainsHelper
+  include TagsHelper
+
   def mp3_link(chain)
     link_to '<span>mp3</span>', chain.audio.file.url(:mp3), :class => 'btn'
   end
