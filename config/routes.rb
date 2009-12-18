@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :effects_processors
     chain.resources :equalizers
     chain.resources :comments
+    chain.resources :audios
   end
 
   map.resources :equalizers, :collection => {:search => :get} do |equalizer|

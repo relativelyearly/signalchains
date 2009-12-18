@@ -1,4 +1,6 @@
 class AudiosController < ResourceController::Base
+  belongs_to :chain
+
   actions :all, :except => [:index, :show, :create]
 
   update.before do

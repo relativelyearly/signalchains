@@ -1,47 +1,24 @@
 require 'net/http'
 
 class Audio < ActiveRecord::Base
-  attr_accessible :high_quality, :mp3, :ogg, :status, :mp3_file_size,
-                  :mp3_file_name, :mp3_content_type,
-                  :mp3_updated_at, :ogg_file_size,
-                  :ogg_file_name, :ogg_content_type,
-                  :ogg_updated_at
+  attr_accessible :file, :status
 
   belongs_to :audible, :polymorphic => true
 
-  before_save :update_status, :convert
-
-  has_attached_file :high_quality,
+  has_attached_file :file,
+                    :styles => {
+                      :ogg => {:ogg => {:bitrate => '128k'}},
+                      :mp3 => {:mp3 => {:bitrate => '128k'}}
+                    },
+                    :processors => [:mp3, :ogg],
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :path => ':class/:id/:style.:extension'
+                    :path => ':class/:id/:style.:content_type_extension'
 
-  has_attached_file :mp3,
-                    :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :path => ':class/:id/:style.:extension'
-
-  has_attached_file :ogg,
-                  :storage => :s3,
-                  :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                  :path => ':class/:id/:style.:extension'
-
-  private
-  def update_status
-    if self.high_quality_updated_at_changed?
-      self.status = 'converting'
-    elsif self.mp3_updated_at_changed?
-      self.status = 'converted'
-    end
-  end
-
-  def convert
-    return if Rails.env == 'test'
-    if self.high_quality_updated_at_changed?
-      conversion_url = URI.parse(ConversionSettings["url"])
-      audio_url = "#{ConversionSettings["host"]}/audios/#{self.id}.xml"
-
-      Net::HTTP.new(conversion_url.host).post('/convert', "file=#{self.high_quality.url}&url=#{audio_url}")
-    end
-  end
+  validates_attachment_content_type :file,
+                                    :content_type => ['audio/aiff', 'audio/x-aiff', 'audio/wav', 'audio/x-wav'],
+                                    :message => 'The audio file must be an aiff or a wav'
+  validates_attachment_size :file,
+                            :less_than => 5.5.megabytes,
+                            :message => 'The audio file must be less than 30 seconds'
 end

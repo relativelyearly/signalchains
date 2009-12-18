@@ -13,6 +13,16 @@ class ChainsController < ResourceController::Base
     @chain.build_audio unless @chain.audio
   end
 
+  update.failure.wants.html do
+    if params[:chain][:title] || params[:chain][:year] || params[:chain][:file_attributes]
+      @input_source = @chain.input_source(:include => :chain)
+      @preamp = @chain.preamp(:include => :chain)
+      @gear = @chain.processors(:include => :chain).sort {|x,y| x.position <=> y.position}
+      @chain.build_audio unless @chain.audio
+      render :show
+    end
+  end
+
   def like
     if current_user.likes?(object)
       Like.find(:first, :conditions => {:user_id => current_user.id, :chain_id => object.id}).destroy
