@@ -1,4 +1,6 @@
 class AudiosController < ResourceController::Base
+  belongs_to :chain
+
   actions :all, :except => [:index, :show, :create]
 
   update.before do
@@ -14,4 +16,6 @@ class AudiosController < ResourceController::Base
   update.wants.xml do
     head :ok
   end
+  
+  destroy.wants.html {redirect_to object.audible}
 end

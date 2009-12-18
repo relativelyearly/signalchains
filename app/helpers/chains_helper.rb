@@ -1,18 +1,12 @@
 module ChainsHelper
+  include TagsHelper
+
   def mp3_link(chain)
-    if chain.audio.status == 'converted'
-      link_to '<span>mp3</span>', chain.audio.mp3.url, :class => 'btn'
-    else
-      'converting...'
-    end
+    link_to '<span>mp3</span>', chain.audio.file.url(:mp3), :class => 'btn'
   end
 
   def ogg_link(chain)
-    if chain.audio.status == 'converted'
-      link_to '<span>ogg</span>', chain.audio.ogg.url, :class => 'btn'
-    else
-      'converting...'
-    end
+    link_to '<span>ogg</span>', chain.audio.file.url(:ogg), :class => 'btn'
   end
 
   def like_link(chain)
@@ -22,20 +16,26 @@ module ChainsHelper
       link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :title => 'Like this chain'
     end
   end
-  
+
   def comments_link(chain)
     link_to "<span>#{chain.comments.size}</span>", '#comments', :id => 'comments_btn'
+  end
+
+  def chain_owner(chain, &block)
+    if current_user == chain.user
+      block.call
+    end
   end
 
   def complete_message
     capture_haml do
       haml_tag(:ul, :class => 'incomplete_chain') do
-        unless @chain.audio.high_quality.file? && @chain.input_source? && @chain.preamp?
+        unless @chain.audio.file.file? && @chain.input_source? && @chain.preamp?
           haml_tag(:h4, 'This chain is incomplete')
-          haml_tag(:p, 'In order for others to see your chain, you need to finish creating it.')          
+          haml_tag(:p, 'In order for others to see your chain, you need to finish creating it.')
         end
 
-        unless @chain.audio.high_quality.file?
+        unless @chain.audio.file.file?
           haml_tag(:li, "It needs an <a href='#audio'>audio file</a>.")
         end
 

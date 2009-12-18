@@ -1,7 +1,7 @@
 - title "Chain"
 
 .chain
-  - if @chain.user == current_user
+  - chain_owner(@chain) do
     .admin
       = link_to "Edit", edit_chain_path(@chain), :class => 'edit', :title => 'Edit Chain'
       = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete Chain'
@@ -9,12 +9,12 @@
     %h2= h @chain.name
     %h5.first
       by
-      =h @chain.user.email
+      =h @chain.user.login
     .community.first
       .social-links
         = like_link(@chain)
         = comments_link(@chain)
-    - if @chain.user == current_user
+    - chain_owner(@chain) do
       - unless @chain.complete?
         .incomplete_chain.first= complete_message
     .first.col.w25
@@ -36,30 +36,7 @@
       = render(:partial => 'chain_gears/input_source', :object => @input_source)
     .clear
     #audio.first
-      - if @chain.title
-        .player      
-          %h3 &ldquo;#{@chain.title}&rdquo;
-          - if @chain.performer
-            %h5 #{@chain.performer}, #{@chain.year}
-          - if @chain.audio && @chain.audio.high_quality?
-            = render :partial => "audio_player"
-            .download
-              %h5 Download
-              - if @chain.audio.mp3.file?
-                = mp3_link(@chain)
-              - if @chain.audio.ogg.file?
-                = ogg_link(@chain)
-              - if @chain.audio.high_quality.file?
-                = link_to '<span>hq</span>', @chain.audio.high_quality.url, :class => 'btn'
-                .first
-      - else
-        .pending
-          - semantic_form_for @chain, :html => {:multipart => true} do |f|
-            = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
-            = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }
-            = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
-            = f.inputs :high_quality, :for => :audio, :wrapper_html => { :class => "w25" }
-            = f.commit_button 'Submit'
+      = render(:partial => 'chains/audio')
   .clear
   #chain_gear
     = render(:partial => 'chain_gears/chain_gear', :object => @preamp) if @preamp
@@ -67,7 +44,7 @@
       = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
-- if @chain.user == current_user
+- chain_owner(@chain) do
   .w50.first.col
     .newlink.first#extra_gear
       %h3
@@ -81,7 +58,7 @@
 #comments.first
   %h3 Comments
 
-  - if current_user
+  - authenticated_only do
     .w45.first.col
       - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})
@@ -100,6 +77,6 @@
     oggSupport: true,
     ready: function ()
     {
-      $("#jquery_jplayer").setFile("#{@chain.audio.mp3.url}", "#{@chain.audio.ogg.url}");
+      $("#jquery_jplayer").setFile("#{@chain.audio.file.url(:mp3)}", "#{@chain.audio.file.url(:ogg)}");
     }
   });

@@ -36,7 +36,7 @@ end
 
 Given /^I have added an audio file to "([^\"]*)"$/ do |name|
    When %{I view the chain named "#{name}"}
-   When %{I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_high_quality"}
+   When %{I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_file"}
    When %{I press "Submit"}
 end
 

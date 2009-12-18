@@ -3,13 +3,13 @@
   %head
     = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
     = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
-    %title= yield(:title) || "Relatively Early Development"
+    %title= yield(:title) || "Signal Chains"
   %body
-  
+
     #master.wrapper
       #left-content
         #header
-          = link_to 'Signal Chains', root_url, :id => 'logo' 
+          = link_to 'Signal Chains', root_url, :id => 'logo'
           = render :partial => "layouts/nav"
         .clear
         = render_flash_messages
@@ -23,11 +23,14 @@
               .session
                 = link_to current_user.login, edit_account_path, :id => 'edit_profile'
                 = link_to 'Log Out', logout_url
+            - anonymous_only do
+              .session
+                = link_to 'Login', login_path, :id => 'edit_profile'
             %form
               %input{:size => '16'}
-              %input{:type => 'submit', :value => 'search'}                
+              %input{:type => 'submit', :value => 'search'}
           %h4 Featured Gear
-          %h4 Featured Studio          
+          %h4 Featured Studio
         .clear
       .clear
     .footer.redev.wrapper

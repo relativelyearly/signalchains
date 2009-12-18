@@ -4,10 +4,16 @@ class User < ActiveRecord::Base
   attr_accessible :password, :password_confirmation, :email, :login,
                   :display_name, :avatar
 
+  validates_exclusion_of :login, :in => %w(comments chains equalizers effects_processors dynamics_processors
+                                           preamps mics audios chain_gears account password_resets users
+                                           user_sessions gear login logout register admin)
+
   has_many :likes, :dependent => :destroy
+  has_many :liked_chains, :through => :likes, :source => :chain
   has_many :follows, :dependent => :destroy
   has_many :followed_users, :through => :follows, :source => :followed
   has_many :events_about_self, :foreign_key => :actor_id, :class_name => "TimelineEvent", :order => "timeline_events.created_at DESC"
+  has_many :chains
 
   EventConditions = '((actor_type = \'User\' AND actor_id IN (SELECT followed_id FROM follows WHERE follows.user_id = #{id}))
                      OR (secondary_subject_type = \'Chain\' AND secondary_subject_id IN (SELECT chain_id FROM likes WHERE likes.user_id = #{id}))

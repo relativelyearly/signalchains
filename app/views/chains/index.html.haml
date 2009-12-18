@@ -1,19 +1,19 @@
 - title "Chains"
 
-/ = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
+= link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
 .col.first.w20
   #tops
     %h3 Top Tags
     .tags
-      %span tag
-      %span Guitar
-      %span Vocal
-      %span Compression
-      %span Overdrive
+      - tag_cloud(@tags, %w()) do |tag, css_class|
+        %span= tag.name
+%br.clear
+%br.clear
 - for chain in @chains
   .unit.w45.col
     .col.thumb
-      = link_to image_tag(chain.input_source.gear.image.url(:thumb), :alt => chain.input_source.gear.model), chain
+      - if chain.input_source.gear
+        = link_to image_tag(chain.input_source.gear.image.url(:thumb), :alt => chain.input_source.gear.model), chain
       .social-links
         = like_link(chain)
         = comments_link(chain)
@@ -28,5 +28,6 @@
         &mdash;
         = chain.year
       =textilize chain.notes
+    %br.clear
     %br.clear
 .clear

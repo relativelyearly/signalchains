@@ -27,11 +27,12 @@ Feature: Create Chain
     And I should see "Awesome Guitar"
     And I should see "A nice sounding setup for my guitar rig, man."
 
+  @current
   Scenario: Adding audio
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
     When I view the chain named "Awesome Guitar"
-    And I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_high_quality"
+    And I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_file"
     And I fill in "Title" with "Song Name"
     And I fill in "Performer" with "DJ Bad-Knee Bob"
     And I fill in "Year Recorded" with "1994"
@@ -211,6 +212,7 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
+  @current
   Scenario: Complete chains viewable by public
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"

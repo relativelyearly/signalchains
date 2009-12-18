@@ -9,12 +9,19 @@
 .col.w25
   %h3 Created Chains
   %ul
-    %li One
-    %li Two
+    - if @user == current_user
+      - @user.chains.each do |chain|
+        %li= link_to chain.name, chain
+    - else
+      - @user.chains.complete.each do |chain|
+        %li= link_to chain.name, chain
 
   %h3 Liked Chains
   %ul
-    %li One
-    %li Two
+    - @user.liked_chains.each do |chain|
+      %li= link_to chain.name, chain
   %h3 Recommended
+  %ul
+    - @recommended_chains.each do |chain|
+      %li= link_to chain.name, chain
 .first

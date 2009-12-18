@@ -40,11 +40,10 @@ class Chain < ActiveRecord::Base
     self.status == 'complete'
   end
 
-  private
   def update_completion
     completion = 'draft'
 
-    if input_source? && preamp? && audio && audio.high_quality.file?
+    if input_source? && preamp? && audio && audio.file.file?
       completion = 'complete'
     end
 

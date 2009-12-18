@@ -9,26 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091211035803) do
+ActiveRecord::Schema.define(:version => 20091218191603) do
 
   create_table "audios", :force => true do |t|
-    t.string   "high_quality_file_name"
-    t.string   "high_quality_content_type"
-    t.integer  "high_quality_file_size"
-    t.datetime "high_quality_updated_at"
-    t.string   "mp3_file_name"
-    t.string   "mp3_content_type"
-    t.integer  "mp3_file_size"
-    t.datetime "mp3_updated_at"
-    t.string   "status",                    :default => "converting"
+    t.string   "status",            :default => "converting"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "audible_id"
     t.string   "audible_type"
-    t.string   "ogg_file_name"
-    t.string   "ogg_content_type"
-    t.integer  "ogg_file_size"
-    t.datetime "ogg_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "chain_gears", :force => true do |t|
@@ -51,7 +43,8 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "year"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "likes_count", :default => 0
+    t.integer  "likes_count",    :default => 0
+    t.integer  "comments_count", :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -76,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",     :default => 0
   end
 
   create_table "effects_processors", :force => true do |t|
@@ -89,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",     :default => 0
   end
 
   create_table "equalizers", :force => true do |t|
@@ -103,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",     :default => 0
   end
 
   create_table "follows", :force => true do |t|
@@ -131,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "pattern"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",     :default => 0
   end
 
   create_table "preamps", :force => true do |t|
@@ -143,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.string   "circuitry"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",     :default => 0
   end
 
   create_table "sessions", :force => true do |t|
@@ -165,8 +163,8 @@ ActiveRecord::Schema.define(:version => 20091211035803) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["context", "taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
     t.string "name"

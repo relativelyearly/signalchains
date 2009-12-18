@@ -1,24 +1,24 @@
 - unless input_source.gear.nil?
   .input_source.col
-    .col.first.w10
+    .col.first.w10.mic
       .thumb
         = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
       .meta.first.col.w10
-        = link_to '<span>View</span>', input_source, :class => 'btn'          
+        = link_to '<span>View</span>', input_source.gear, :class => 'btn'
 
     #input_info.col
       .banner
         - if input_source.chain.user == current_user
           .admin
             = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form edit', :title => 'edit notes')
-            = link_to ('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')      
+            = link_to('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')
         %h4
           =h input_source.gear.make
           =h input_source.gear.model
-  
-      .info    
+
+      .info
         %h5
-          = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)        
+          = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)
         .notes.first
           = textilize input_source.notes
           - if input_source.chain.user == current_user
@@ -28,7 +28,15 @@
                 = f.commit_button 'Save'
 
 - else
-  .input_source.col.w45
-    .first.col.line_in
-      %h4 Line In
+  .input_source.col
+    .col.first.w10.mic
+      .thumb
+      .meta.first.col.w10
+
+    #input_info.col
+      .banner
+        - chain_owner(input_source.chain) do
+          .admin
+            = link_to('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')
+        %h4 Line In
 .clear
