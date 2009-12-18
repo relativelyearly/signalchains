@@ -1,7 +1,7 @@
 - title "Chain"
 
 .chain
-  - if @chain.user == current_user
+  - chain_owner(@chain) do
     .admin
       = link_to "Edit", edit_chain_path(@chain), :class => 'edit', :title => 'Edit Chain'
       = link_to "Delete", @chain, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete Chain'
@@ -36,29 +36,7 @@
       = render(:partial => 'chain_gears/input_source', :object => @input_source)
     .clear
     #audio.first
-      - if @chain.audio.file.file? && !@chain.audio.new_record?
-        .player
-          %h3== &ldquo;#{@chain.title}&rdquo;
-          - if @chain.performer
-            %h5 #{@chain.performer}, #{@chain.year}
-          - if @chain.audio && @chain.audio.file?
-            = render :partial => "audio_player"
-            .download
-              %h5 Download
-              - if @chain.audio.file.file?
-                = mp3_link(@chain)
-                = ogg_link(@chain)
-                = link_to '<span>hq</span>', @chain.audio.file.url, :class => 'btn'
-                .first
-      - else
-        .pending
-          - semantic_form_for @chain, :html => {:multipart => true} do |f|
-            = f.error_messages
-            = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
-            = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }
-            = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
-            = f.inputs :file, :for => :audio, :wrapper_html => { :class => "w25" }
-            = f.commit_button 'Submit'
+      = render(:partial => 'chains/audio')
   .clear
   #chain_gear
     = render(:partial => 'chain_gears/chain_gear', :object => @preamp) if @preamp

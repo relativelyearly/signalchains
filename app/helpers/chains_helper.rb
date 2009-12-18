@@ -19,6 +19,12 @@ module ChainsHelper
     link_to "<span>#{chain.comments.size}</span>", '#comments', :id => 'comments_btn'
   end
 
+  def chain_owner(chain, &block)
+    if current_user == chain.user
+      block.call
+    end
+  end
+
   def complete_message
     capture_haml do
       haml_tag(:ul, :class => 'incomplete_chain') do
