@@ -16,4 +16,6 @@ class AudiosController < ResourceController::Base
   update.wants.xml do
     head :ok
   end
+  
+  destroy.wants.html {redirect_to object.audible}
 end

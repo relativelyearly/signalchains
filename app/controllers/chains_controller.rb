@@ -36,6 +36,14 @@ class ChainsController < ResourceController::Base
   end
 
   private
+  def object
+    chain = Chain.find(params[:id]) if params[:id]
+    @object ||= Chain.new unless chain
+    @object ||= Chain.complete.find(params[:id]) if chain && chain.complete?
+    @object ||= current_user.chains.find(params[:id])
+    @object
+  end
+
   def collection
     @collection ||= Chain.complete
   end

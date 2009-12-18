@@ -9,12 +9,12 @@
     %h2= h @chain.name
     %h5.first
       by
-      =h @chain.user.email
+      =h @chain.user.login
     .community.first
       .social-links
         = like_link(@chain)
         = comments_link(@chain)
-    - if @chain.user == current_user
+    - chain_owner(@chain) do
       - unless @chain.complete?
         .incomplete_chain.first= complete_message
     .first.col.w25
@@ -44,7 +44,7 @@
       = render(:partial => 'chain_gears/chain_gear', :collection => @gear)
   .power
 
-- if @chain.user == current_user
+- chain_owner(@chain) do
   .w50.first.col
     .newlink.first#extra_gear
       %h3
@@ -58,7 +58,7 @@
 #comments.first
   %h3 Comments
 
-  - if current_user
+  - authenticated_only do
     .w45.first.col
       - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})

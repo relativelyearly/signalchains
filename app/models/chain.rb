@@ -40,7 +40,6 @@ class Chain < ActiveRecord::Base
     self.status == 'complete'
   end
 
-  private
   def update_completion
     completion = 'draft'
 

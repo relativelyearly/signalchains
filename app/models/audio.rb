@@ -4,6 +4,7 @@ class Audio < ActiveRecord::Base
   attr_accessible :file, :status
 
   belongs_to :audible, :polymorphic => true
+  after_destroy :update_chain_status
 
   has_attached_file :file,
                     :styles => {
@@ -21,4 +22,13 @@ class Audio < ActiveRecord::Base
   validates_attachment_size :file,
                             :less_than => 5.5.megabytes,
                             :message => 'The audio file must be less than 30 seconds'
+
+  private
+  def update_chain_status
+    if self.audible.respond_to? :update_completion
+      audible = self.audible
+      audible.update_completion
+      audible.save
+    end
+  end
 end
