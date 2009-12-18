@@ -2,7 +2,7 @@ class Mic < Gear
   attr_accessible :mic_type, :diaphragm_size, :pattern
 
   def self.types
-    ['Condenser', 'Dynamic', 'Ribbon', 'PZM']
+    ['Condenser', 'Dynamic', 'Ribbon', 'PZM', 'Tube']
   end
 
   def self.diaphragm_sizes
