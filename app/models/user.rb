@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   attr_accessible :password, :password_confirmation, :email, :login,
                   :display_name, :avatar
 
+  validates_exclusion_of :login, :in => %w(comments chains equalizers effects_processors dynamics_processors
+                                           preamps mics audios chain_gears account password_resets users
+                                           user_sessions gear login logout register admin)
+
   has_many :likes, :dependent => :destroy
   has_many :liked_chains, :through => :likes, :source => :chain
   has_many :follows, :dependent => :destroy

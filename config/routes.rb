@@ -51,7 +51,6 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.register 'register', :controller => 'users', :action => 'new'
 
+  map.root :controller => 'home', :action => 'index'
   map.user_by_login ':id', :controller => 'users', :action => 'show'
-
-  map.root :controller => 'users', :action => 'show'
 end
