@@ -17,6 +17,7 @@
       .social-links
         = like_link(chain)
         = comments_link(chain)
+        = chain.user.login
     .col.w30
       %h4
         = link_to chain.name, chain

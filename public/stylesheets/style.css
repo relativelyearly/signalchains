@@ -187,6 +187,11 @@ div.image a {
   color: #fff;
   text-shadow: 0 2px 1px #000;
 }
+
+.footer {
+  background: #eee url(../images/backgrounds/footer.jpg) no-repeat;
+  height: 200px !important;
+}
 /* @group gear */
 .gear {
   padding: 0;
