@@ -75,7 +75,6 @@ div.image a {
 #sidebar {
   width: 205px;
   padding: 15px;
-  height: 300px;
   float: left;
 }
 /* @group nav */
@@ -188,9 +187,13 @@ div.image a {
   text-shadow: 0 2px 1px #000;
 }
 
+.footer .content{
+  background-image: url(../images/backgrounds/footer-bottom.png);
+  padding: 20px;
+}
 .footer {
-  background: #eee url(../images/backgrounds/footer.jpg) no-repeat;
-  height: 200px !important;
+	padding-top: 125px;
+  background: #eee url(../images/backgrounds/footer-top.png) no-repeat;	
 }
 /* @group gear */
 .gear {
