@@ -20,8 +20,9 @@
   %ul
     - @user.liked_chains.each do |chain|
       %li= link_to chain.name, chain
-  %h3 Recommended
-  %ul
-    - @recommended_chains.each do |chain|
-      %li= link_to chain.name, chain
+  - if @recommended_chains
+    %h3 Recommended
+    %ul
+      - @recommended_chains.each do |chain|
+        %li= link_to chain.name, chain
 .first
