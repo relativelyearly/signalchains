@@ -54,7 +54,7 @@
         .col.w35
           %h3 Contact
           %ul
-            %li= link_to "Support/Feedback", "#"
+            %li= link_to "Support/Feedback", "#", :id => 'support'
             %li= link_to "Twitter", "http://twitter.com/signalchains"
         .col.w20#mark
           = image_tag '../images/red_logo_white.png', :alt => 'Relatively Early Development'
@@ -63,3 +63,9 @@
           %br
           %p &copy; 2010 Relatively Early Development
         .first
+  :javascript
+    Tender = {
+      hideToggle: true,
+      widgetToggles: $('#support')
+    }
+  = javascript_include_tag('https://signal-chains.tenderapp.com/tender_widget.js')        
