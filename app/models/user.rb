@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  include Tender::MultiPassMethods
+
+  tender_multipass do |user|
+    {:external_id => user.id, :name => user.login, :email => user.email}
+  end
+
   acts_as_authentic
 
   attr_accessible :password, :password_confirmation, :email, :login,

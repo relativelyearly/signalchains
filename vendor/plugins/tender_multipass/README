@@ -1,0 +1,105 @@
+Tender MultiPass
+===============
+
+Easily add auto-login cookie values for Tender (http://tenderapp.com)
+
+Setup (Unencrypted Cookie Values)
+=====
+
+* Install the plugin, and include the Tender::MultiPassMethods into your user model
+* Set up these 3 values:  Tender::MultiPass.site_key, 
+  Tender::MultiPass.cookie_domain, and Tender::MultiPass.support_domain
+* Use @user.tender_multipass(cookies) to modify cookies inside your controller request.
+
+The 3 required cookie values (tender_email, tender_hash, and tender_expires) are all taken care of for you.  
+You can also set three special cookies to further identify users: tender_name, tender_external_id, and tender_external_url.  
+These specify some text and an optional link that display next to users created by the automatic logging feature.  
+This is needed when you may have multiple users from different areas of your app that might have the same email address.  
+This is a potential issue in web applications that separate user accounts by some top level structure like Account or Company.
+
+* More info: http://help.tenderapp.com/faqs/setup-installation/login-from-cookies
+
+Example (Rails, Unencrypted Cookie Values)
+=======
+
+# /config/initializers/tender_multi_pass.rb
+# ensure the plugin class is loaded before proceeding
+Tender::MultiPass.class_eval do
+  self.site_key       = "abc"
+  self.support_domain = "help.xoo.com"
+  self.cookie_domain  = ".xoo.com"
+end
+
+# /app/models/user.rb
+class User < ActiveRecord::Base
+  include Tender::MultiPassMethods
+
+  # Use this block to define a default hash for all Tender multipasses.
+  tender_multipass do |user|
+    {:external_id => user.company.id, :account_balance => user.balance,
+    # you can specify :name and :email if your model uses different attribute names
+     :name => user.login, :email => user.email_address}
+  end
+end
+
+# /app/controllers/sessions_controller.rb
+class SessionsController
+  def login
+    if user = User.authenticate(params[:login], params[:password])
+      # default method of creating a tender multipass
+      user.tender_multipass(cookies, 1.week.from_now)
+
+      # use a hash to set the expiration
+      user.tender_multipass(cookies, :expires => 1.week.from_now)
+
+      # specify custom tender_* cookies.
+      # These will be shown in the tender discussion to the support users only
+      # This adds a tender_account_balance cookie:
+      user.tender_multipass(cookies, :account_balance => user.balance)
+      
+      # fill in the profile's visible name field by sending the field name
+      user.tender_multipass(cookies, :name_field => :login)
+
+      # fill in the profile's visible name field by sending the name
+      user.tender_multipass(cookies, :name => user.login)
+    end
+    redirect_to "/"
+  end
+
+  def logout
+    user.tender_expire(cookies) if user
+    redirect_to "/"
+  end
+end
+
+If you want to have Tender redirect to your site's login form and can't/don't want to use domain cookies you can just pass the variables in the URL. 
+  
+  Tender -> click "login" -> goes to your site -> returns to Tender with URL params
+  
+Your login action should also check to see if the user is already logged in, so you can just bounce them back to Tender.
+You can implement this something like:
+
+# /app/controllers/sessions_controller.rb
+class SessionsController
+  def login
+    if logged_in? || current_user = User.authenticate(params[:login], params[:password])
+      if params[:tender]
+        auth = current_user.tender_multipass({}, 1.week.from_now.to_i)
+        redirect_to "http://your.tenderapp.com/login?email=#{auth[:tender_email][:value]}&expires=#{auth[:tender_expires][:value]}&hash=#{auth[:tender_hash][:value]}"
+      else
+        redirect_to "/"
+      end
+    end
+  end
+end
+
+
+Notes
+=====
+
+* It is assumed User#email is available
+* When testing, you must use strings rather than symbols to check for the cookies
+
+  assert_equal ['hello@example.com'], response.cookies['tender_email']
+
+Copyright (c) 2008-* rick olson, released under the MIT license
