@@ -25,7 +25,8 @@
                 = link_to 'Log Out', logout_url
             - anonymous_only do
               .session
-                = link_to 'Login', login_path, :id => 'edit_profile'
+                = link_to 'Login', login_path
+                = link_to 'Register', register_path
             %form
               %input{:size => '16'}
               %input{:type => 'submit', :value => 'search'}
@@ -42,20 +43,18 @@
           %ul
             %li= link_to "Chains", chains_path
             %li= link_to "Gear", gear_path
-            %li= link_to "Studios", gear_path
             %li= link_to "Engineers", gear_path
         .col.w15
           %h3 About
           %ul
             %li= link_to "What is Signal Chains?", "#"
             %li= link_to "Blog", "#"
-            %li= link_to "Terms of Service", "#"
-            %li= link_to "Privacy Policy", "#"
         .col.w35
           %h3 Contact
           %ul
             %li= link_to "Support/Feedback", "#", :id => 'support'
             %li= link_to "Twitter", "http://twitter.com/signalchains"
+            %li= link_to "Advertising", "#"            
         .col.w20#mark
           = image_tag '../images/red_logo_white.png', :alt => 'Relatively Early Development'
           = link_to 'A Relatively Early Development', 'http://relativelyearly.com'
