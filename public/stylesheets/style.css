@@ -91,7 +91,7 @@ div.image a {
 }
 #nav ul li {
   display: block;
-  width: auto;
+  min-width: 75px;
   float: left;
   margin: 0; 
   padding: 0; 
