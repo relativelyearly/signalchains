@@ -1,6 +1,4 @@
-%ul
-  %li= link_to 'Mics', mics_path
-  %li= link_to 'Preamps', preamps_path
-  %li= link_to 'Equalizers', equalizers_path
-  %li= link_to 'Dynamics Processors', dynamics_processors_path
-  %li= link_to 'Effects Processors', effects_processors_path
+= link_to 'Preamp', "#", :id => 'new_preamp', :class => 'block-btn first col w5'
+= link_to 'Dynamics', "#", :id => 'new_dynamics', :class => 'block-btn col w5'
+= link_to 'EQ', "#", :id => 'new_eq', :class => 'block-btn col w5'
+= link_to 'Effects', "#", :id => 'new_effects', :class => 'block-btn col w5'

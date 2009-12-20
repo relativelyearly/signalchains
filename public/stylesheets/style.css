@@ -21,7 +21,6 @@ a{
   margin-bottom: 15px;
 }
 #comments {
-  border-top: 2px ridge #fff;
   padding-top: 15px;
 }
 #comment_body {
@@ -56,16 +55,19 @@ a{
 }
 
 #left-content {
-  width: 715px;
+  width: 714px;
   float: left;
 background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 100px;   
+border-right: 1px solid #fff;
 }
 .container {
   width: 685px;
   margin: 0 auto;
 }
 #right-content {
-  background: #eee url(../images/backgrounds/sidebar.png) repeat-y 715px;
+  /*background: #eee url(../images/backgrounds/sidebar.png) repeat-y 715px;*/
+background: #eee url(../images/backgrounds/sidebar_bg.png) repeat-y 715px 0;  
+  
 }
 
 div.image a {
@@ -75,7 +77,6 @@ div.image a {
 #sidebar {
   width: 205px;
   padding: 15px;
-  height: 300px;
   float: left;
 }
 /* @group nav */
@@ -186,6 +187,33 @@ div.image a {
 .content-title h1 {
   color: #fff;
   text-shadow: 0 2px 1px #000;
+}
+
+.footer .content{
+  background: #0e111c;
+  padding: 20px 0;
+  background-image: url(../images/backgrounds/footer-bottom.png);  
+}
+.footer .content * {
+  color: #ccc !important;
+  text-shadow: 1px 2px 1px #000;
+}
+.footer {
+  border-top: 2px groove #fff;
+  background: #eee url(../images/backgrounds/footer-top.png) no-repeat;	
+}
+.footer .stats { 
+  color: #ccc;
+  padding: 45px 30px 10px 30px;
+  height:50px;  
+  overflow: hidden;
+}
+.footer ul {
+  padding: 0;
+  margin: 0;
+}
+.footer ul li {
+  list-style: none;
 }
 /* @group gear */
 .gear {
