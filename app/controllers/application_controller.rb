@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
     if current_user
       store_location
       session[:return_to] = params[:return_to] if params[:return_to]
+      current_user.tender_multipass(cookies, 1.week.from_now)
       flash[:notice] = "You must be logged out to access this page"
       redirect_back_or_default account_url
       return false
