@@ -15,16 +15,19 @@ a {
 #flash_messages p.notice, #flash_messages p.error {
   padding: 5px 8px;
   margin: 10px 0;
+  position: absolute;
+  display: block;
+  width: 699px;
+  z-index: 100;
+  top: 44px;
 }
 
 #flash_messages p.notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+  background-color: #d0ffde;  
 }
 
 #flash_messages p.error {
   background-color: #FCC;
-  border: solid 1px #C66;
 }
 
 .fieldWithErrors {
@@ -89,9 +92,6 @@ a {
 html, body {
 	height: 100%;
 }
-.footer.redev, .push {
-	height: 50px; /* .push must be the same height as .footer */
-}
 .footer.redev {
   color: #000;
   font: 70% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
@@ -108,11 +108,14 @@ html, body {
   vertical-align: middle;
   margin-right: 10px;
 }
-.footer.redeve.white, .footer.redev.white a {
+.footer.redev.white, .footer.redev.white a {
   color: #fff;
 }
 .footer.redev.white a:hover {
   border-bottom: .2em solid #ddd;
+}
+.footer #mark {
+  text-align: right;
 }
 
 /* @group framework */
@@ -193,6 +196,9 @@ input.button {
 .w30{
   width: 300px;
 }
+.w33{
+  width: 335px;
+}
 .w35{
   width: 350px;
 }
@@ -216,6 +222,9 @@ input.button {
 }
 .w65{
   width: 650px;
+}
+.w68{
+  width: 685px;
 }
 .w70{
   width: 700px;
@@ -268,5 +277,8 @@ input.button {
 .hard {
   padding: 0;
   list-style: none;
+}
+.col.first.w68 {
+  margin-bottom: 25px;
 }
 /* @end */

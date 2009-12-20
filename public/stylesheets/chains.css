@@ -13,7 +13,7 @@
   text-indent: -999em;
   background-position: 0 top;
   background-repeat: no-repeat;
-  margin-right: 10px;
+  margin: 0 15px 0 0;
 }
 .block-btn:hover {
   background-position: 0 -100px;
@@ -231,6 +231,9 @@ span.score {
   width: 112px;
   height: 112px;
 }
+.unit .thumb {
+  height: auto;
+}
 .thumb a {
   display: block;	
   width: 100px;
@@ -379,4 +382,10 @@ li.chain_gear {
 
 #rec_stats {
   margin-top:18px ;
+}
+#gear_types{
+  margin-top: 0;
+}
+#gear_types li{
+  margin-top: 0;
 }

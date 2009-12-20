@@ -16,12 +16,12 @@
       - @user.chains.complete.each do |chain|
         %li= link_to chain.name, chain
 
-  %h3 Liked Chains
-  %ul
-    - @user.liked_chains.each do |chain|
-      %li= link_to chain.name, chain
-  %h3 Recommended
-  %ul
-    - @recommended_chains.each do |chain|
-      %li= link_to chain.name, chain
+  / %h3 Liked Chains
+  / %ul
+  /   - @user.liked_chains.each do |chain|
+  /     %li= link_to chain.name, chain
+  / %h3 Recommended
+  / %ul
+  /   - @recommended_chains.each do |chain|
+  /     %li= link_to chain.name, chain
 .first
