@@ -4,5 +4,5 @@ Tender::MultiPass.class_eval do
   #
   self.site_key       = "signal-chains" # Found in your Tender site settings
   self.support_domain = "support.signalchains.com" # custom domain
-  self.cookie_domain  = ".signalchains.com"
+  self.cookie_domain  = "signalchains.com"
 end
