@@ -8,6 +8,8 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    session[:return_to] = params[:return_to] if params[:return_to]
+
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       @user_session.user.tender_multipass(cookies, 1.week.from_now)
@@ -19,6 +21,8 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    session[:return_to] = params[:return_to] if params[:return_to]
+
     current_user_session.destroy
     current_user.tender_expire(cookies) if current_user
     flash[:notice] = "Logout successful!"
