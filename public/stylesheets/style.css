@@ -91,7 +91,7 @@ div.image a {
 }
 #nav ul li {
   display: block;
-  width: 75px;
+  width: auto;
   float: left;
   margin: 0; 
   padding: 0; 
@@ -173,7 +173,7 @@ div.image a {
 }
 
 .content-title {
-  background: url(../images/backgrounds/content_head.png) no-repeat;
+  /*background: url(../images/backgrounds/content_head.png) no-repeat;
   width: 695px;
   height: 70px;
   position: relative;
@@ -182,11 +182,10 @@ div.image a {
   margin-bottom: 10px;
   display: block;
   padding: 25px 30px 0 30px;
-  overflow: hidden;
+  overflow: hidden;*/
 }
-.content-title h1 {
-  color: #fff;
-  text-shadow: 0 2px 1px #000;
+.user-page h1 img{
+  vertical-align: middle;
 }
 
 .footer .content{
@@ -336,12 +335,22 @@ h6 {
   font-weight: normal;
   margin: 0;
 }
-p {
+p, cite {
   font-size: 90%;
   margin: 0 0 1em 0;
+  line-height: 1.8em;
 }
 ul li {
   margin: .8em 0;
+}
+blockquote {
+  font: normal 100%/1.3em Palatino, Georgia, "Times New Roman", Times, serif;
+  border-left: 2px solid #22615e;
+  padding-left: 15px;
+  margin: 0;
+}
+blockquote p {
+  font-size: ;
 }
 /* @end */
 #search #search_form.mic-search {

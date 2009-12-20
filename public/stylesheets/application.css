@@ -14,16 +14,15 @@ a {
 
 #flash_messages p.notice, #flash_messages p.error {
   padding: 5px 8px;
-  margin: 10px 0;
-  position: absolute;
+  margin: 0;
   display: block;
   width: 699px;
-  z-index: 100;
-  top: 44px;
+  text-align: center;
+  font-weight: bold;
 }
 
 #flash_messages p.notice {
-  background-color: #d0ffde;  
+  background-color: #74ED7E;  
 }
 
 #flash_messages p.error {
@@ -161,6 +160,7 @@ input.button {
   background:-webkit-gradient(linear, left top, left bottom, from(rgba(164, 172, 169, 1)),to(rgba(104, 102, 99, 1)));
 }
 
+
 /* @end */
 .col {
   float: left;
@@ -256,6 +256,7 @@ input.button {
 }
 .left.pad {
   margin-right: 10px;
+  margin-top: 5px;
 }
 .right {
   float: right;

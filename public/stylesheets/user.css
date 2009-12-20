@@ -8,3 +8,17 @@
   padding-left: 20px;
   background: url(../images/backgrounds/gear.png) no-repeat left;
 }
+
+#feed blockquote {
+  padding: 5px 10px;
+  border-left: none;
+}
+#feed blockquote p {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.user-page.bucket {
+  padding: 0 28px 20px 28px;
+  width: 630px;
+}

@@ -1,28 +1,37 @@
-.content-title
-  %h1= @user.login
-= follow_button(@user)
-.first
+.bucket.user-page
+  .first.col.w37
+    %h1
+      = link_to image_tag(@user.avatar.url(:thumb), :alt => @user.login), @user.avatar.url(:display), :class => 'zoom'
+      = @user.login
+  .col.w20
+    = follow_button(@user)
+  .first
 #feed.col.first.w40
   %h3 Events
-  - for event in @events
-    = render(:partial => "events/#{event.event_type}", :object => event)
-.col.w25
-  %h3 Created Chains
-  %ul
+  - if @events.empty?
+    %p
+      %small There is no activity to show here, and that's pretty lame. Start following someone or do something fantastic to fill this empty void.
+  - else
+    - for event in @events
+      = render(:partial => "events/#{event.event_type}", :object => event)
+
+.col.w25#user-chains
+  %h4 Created Chains
+  %ul.hard
     - if @user == current_user
       - @user.chains.each do |chain|
         %li= link_to chain.name, chain
     - else
       - @user.chains.complete.each do |chain|
-        %li= link_to chain.name, chain
+        %li= link_to chain.name, chain        
 
-  %h3 Liked Chains
-  %ul
+  %h4 Liked Chains
+  %ul.hard
     - @user.liked_chains.each do |chain|
       %li= link_to chain.name, chain
   - if @recommended_chains
-    %h3 Recommended
-    %ul
+    %h4 Recommended
+    %ul.hard
       - @recommended_chains.each do |chain|
         %li= link_to chain.name, chain
 .first
