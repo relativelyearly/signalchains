@@ -10,6 +10,10 @@
   %br
   - if @chain
     = add_to_chain_button(object)
+
+    %br.clear
+  - admin_only do
+    = link_to 'Feature', eval("feature_#{@class.to_s.underscore}_path(object)")
   %h4
     Chains with a
     = @object.model

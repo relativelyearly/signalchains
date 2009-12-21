@@ -24,6 +24,10 @@
         - for tag in @chain.tags
           %span=link_to(h(tag.name), tag_path(tag.name))
 
+      %br.clear
+      - admin_only do
+        = link_to 'Feature', feature_chain_path(@chain)
+
     - if @input_source.nil?
       .input_source.col
         .first.col.w25

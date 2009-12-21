@@ -1,5 +1,6 @@
 class ChainsController < ResourceController::Base
   before_filter :require_user, :only => [:new, :like]
+  before_filter :require_admin, :only => [:feature]
 
   index.before {@tags = Chain.tag_counts_on(:tags)}
 
@@ -34,6 +35,15 @@ class ChainsController < ResourceController::Base
 
     respond_to do |format|
       format.html { redirect_to(chain_path(object)) }
+    end
+  end
+
+  def feature
+    @chain = object
+    @chain.update_attribute(:featured_at, DateTime.now)
+
+    respond_to do |format|
+      format.html { redirect_to(chain_path(@chain)) }
     end
   end
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221173221) do
+ActiveRecord::Schema.define(:version => 20091221193519) do
 
   create_table "ads", :force => true do |t|
     t.string   "image_file_name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "likes_count",    :default => 0
     t.integer  "comments_count", :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "comments", :force => true do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "effects_processors", :force => true do |t|
@@ -96,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "equalizers", :force => true do |t|
@@ -112,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "follows", :force => true do |t|
@@ -142,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "preamps", :force => true do |t|
@@ -156,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20091221173221) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
   end
 
   create_table "sessions", :force => true do |t|

@@ -14,6 +14,7 @@
 #  updated_at     :datetime
 #  likes_count    :integer(4)      default(0)
 #  comments_count :integer(4)      default(0)
+#  featured_at    :datetime
 #
 
 class Chain < ActiveRecord::Base
@@ -45,6 +46,10 @@ class Chain < ActiveRecord::Base
     indexes user(:display_name)
 
     has :likes_count, :updated_at, :created_at
+  end
+
+  def self.featured
+    @featured ||= Chain.first(:order => 'featured_at DESC')
   end
 
   def preamp?

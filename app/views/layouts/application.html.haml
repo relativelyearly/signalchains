@@ -31,7 +31,17 @@
               = f.text_field :keyword, :size => 16
               = f.submit 'search'
           %h4 Featured Gear
-          %h4 Featured Studio
+          = link_to(image_tag(Gear.featured.image.url(:thumb)), Gear.featured)
+          %br
+          = link_to(Gear.featured.name, Gear.featured)
+          %br.clear
+          %h4 Featured Chain
+          = link_to(image_tag(Chain.featured.input_source.gear.image.url(:thumb)), Chain.featured)
+          %br
+          = link_to(Chain.featured.name, Chain.featured)
+          by
+          = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
+          %br.clear
           = ad
         .clear
       .clear

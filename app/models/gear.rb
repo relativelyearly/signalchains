@@ -13,6 +13,14 @@ class Gear < ActiveRecord::Base
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
 
+  def self.featured
+    @featured ||= ThinkingSphinx.search('',
+      :classes => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+      :page => 1,
+      :per_page => 1,
+      :order => 'featured_at DESC').first
+  end
+
   def position
     2
   end

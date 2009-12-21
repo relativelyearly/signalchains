@@ -14,6 +14,7 @@
 #  updated_at     :datetime
 #  likes_count    :integer(4)      default(0)
 #  comments_count :integer(4)      default(0)
+#  featured_at    :datetime
 #
 
 require 'test_helper'
