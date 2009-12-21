@@ -2,9 +2,9 @@
   .first.col.comment-text.w45
     =textilize(comment.body)
   .w20.col
-    .avatar.col.snug
+    .avatar.col.first.snug
       = link_to image_tag(comment.user.avatar.url(:thumb)), comment.user
-  
+
     - if comment.user
       .col.w10
         = link_to comment.user.display_name, user_by_login_path(comment.user.login)

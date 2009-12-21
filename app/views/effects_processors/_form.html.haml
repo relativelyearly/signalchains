@@ -1,9 +1,10 @@
+%h3 Create a New Effects Processor
 - semantic_form_for @effects_processor, :html => {:multipart => true} do |f|
-  = render(:partial => 'gear/form', :locals => {:f => f})
-
-  = f.input :effects_type, :as => :select, :collection => EffectsProcessor.effects_types, :label => 'Type'
-  = f.input :interface, :as => :select, :collection => EffectsProcessor.interfaces
-  - if @chain
-    = hidden_field_tag :chain_id, @chain.id
-  = f.buttons do
+  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.w15
+    = f.input :effects_type, :as => :select, :collection => EffectsProcessor.effects_types, :label => 'Type'
+    = f.input :interface, :as => :select, :collection => EffectsProcessor.interfaces
+    - if @chain
+      = hidden_field_tag :chain_id, @chain.id
+  .first
     = f.commit_button 'Create Effects Processor'

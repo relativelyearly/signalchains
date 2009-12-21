@@ -1,6 +1,7 @@
+%h3 Create a New Preamp
 - semantic_form_for @preamp, :html => {:multipart => true} do |f|
-  = render(:partial => 'gear/form', :locals => {:f => f})
-  .col.w25
+  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.w15
     = f.input :circuitry, :as => :select, :collection => Preamp.circuitries
     - if @chain
       = hidden_field_tag :chain_id, @chain.id

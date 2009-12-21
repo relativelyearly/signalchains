@@ -5,13 +5,12 @@
       Invalid username or password
 
     = f.label :login, 'Username or email'
-    %br
     = f.text_field :login
     %br
     %br
     = f.label :password
-    %br
     = f.password_field :password
+    %br
     %br
     .left.pad
       = f.check_box :remember_me

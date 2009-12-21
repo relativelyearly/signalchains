@@ -13,17 +13,22 @@
           = mp3_link(@chain)
           = ogg_link(@chain)
           = link_to '<span>hq</span>', @chain.audio.file.url, :class => 'btn'
-          - chain_owner(@chain) do
-            = link_to '<span>Delete</span>', @chain.audio, :method => :delete, :confirm => 'Are you sure?', :class => 'btn'
+          .admin
+            - chain_owner(@chain) do
+              = link_to 'Delete this audio', @chain.audio, :method => :delete, :confirm => 'Are you sure?', :class => 'delete'
           .first
 
 - chain_owner(@chain) do
   .pending{:style => pending_style}
-    - semantic_form_for @chain, :html => {:multipart => true} do |f|
-      = f.error_messages
-      = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
-      = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }
-      = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
-      - f.semantic_fields_for :audio do |audio|
-        = audio.input :file, :wrapper_html => { :class => "w25" }
-      = f.commit_button 'Submit'
+    .col.first.w30
+      - semantic_form_for @chain, :html => {:multipart => true} do |f|
+        = f.error_messages
+        = f.input :title, :input_html => { :size => 20 }, :wrapper_html => { :class => "col w15 first" }
+        = f.input :year, :label => 'Year Recorded', :input_html => { :size => 12 }, :wrapper_html => { :class => "col w10" }
+        = f.input :performer, :input_html => { :size => 35 }, :wrapper_html => { :class => "first w25" }
+        - f.semantic_fields_for :audio do |audio|
+          = audio.input :file, :wrapper_html => { :class => "w25" }
+        = f.commit_button 'Submit'
+    .col.w30
+      %p
+        %small Attach a short (about 30 seconds) CD-quality audio sample of this chain in action. File size is limited to 5.5mb

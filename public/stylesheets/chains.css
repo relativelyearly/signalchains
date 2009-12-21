@@ -88,6 +88,7 @@ a.btn span {
 
 .chain_link .community a.btn span, #audio .btn span {
   height: 20px;
+  color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
   background-position: right 120px;  
   overflow: hidden;
@@ -145,6 +146,7 @@ span.score {
 }
 #audio .chain {
   margin-bottom: 0;
+  width: auto;
 }
 .chain .info {
   padding-bottom: 35px;
@@ -275,6 +277,15 @@ span.score {
   float: right;
   background: url(../images/backgrounds/admin.png) no-repeat;
 }
+.player .admin {
+  float: none;
+  width: auto;
+  display: inline-block;
+  height: auto;
+  padding: 0;
+  background: none;
+}
+
 .banner .admin {
   height: 24px;
   padding: 0;

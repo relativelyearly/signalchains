@@ -1,13 +1,11 @@
+%h1 Edit My Account
 .col.first.w35
-  %h1 Edit My Account
   - form_for @user, :url => account_path, :html => {:multipart => true} do |f|
     = f.error_messages
     = render :partial => "form", :object => f
     = f.submit "Update"
 
 .col.w30
-  %h3 Stats
-  
   = link_to "<span>View my Profile</span>", account_path, :class => 'btn w15'
-  
+
 .clear

@@ -11,7 +11,8 @@
   - if @events.empty?
     %p
       %small There is no activity to show here, and that's pretty lame. Start following someone or do something fantastic to fill this empty void.
-  - else
+
+  -else
     - for event in @events
       = render(:partial => "events/#{event.event_type}", :object => event)
 

@@ -5,18 +5,18 @@
     .social-links
       = like_link(chain)
       = comments_link(chain)
-      %br
-      %br
-      %h5= link_to(chain.user.display_name, user_by_login_path(chain.user.login))
   .col.w30
     %h4
       = link_to chain.name, chain
-    %h5
+    %h6
       &ldquo;#{chain.title}&rdquo;
       by
       = chain.performer
       &mdash;
       = chain.year
+    %p 
+      Created by
+      = link_to(chain.user.display_name, user_by_login_path(chain.user.login))      
     =textilize chain.notes
   .first
 %br.clear

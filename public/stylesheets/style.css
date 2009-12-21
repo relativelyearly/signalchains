@@ -12,6 +12,9 @@ body {
 a{
   color: #111;
 }
+#content a {
+  color: #041647;
+}
 .wrapper {
   width: 950px;
 }
@@ -321,6 +324,7 @@ h2 {
 h3 {
   font-size: 140%;
   font-weight: normal;
+  margin-bottom: .8em;
 }
 h4 {
   font-size: 110%;
@@ -357,8 +361,8 @@ blockquote p {
   padding: 0;
 }
 #search, .bucket {
-  width: 585px;
-  padding: 10px 50px 40px 50px;
+  width: 625px;
+  padding: 10px 30px 40px 30px;
   background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
   margin-bottom: 10px;
 }
@@ -424,7 +428,7 @@ li#chain_gear_notes_input {
   padding: 20px 0 0 0;
   display: block;
 }
-.formtastic label {
+.formtastic label, label {
   display: block;
   text-transform: uppercase;
   font-size: .8em;
@@ -460,7 +464,7 @@ ul.incomplete_chain li {
 	list-style-type: none;
 	font-size: 90%;
 }
-ul.incomplete_chain li a {
+#content ul.incomplete_chain li a {
     color: #74ed7e;	
 }
 /* @end */
