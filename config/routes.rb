@@ -41,6 +41,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :except => [:show], :member => {:follow => :get}
   map.resource :user_session
 
+  map.namespace(:admin) do |admin|
+    admin.resources :ads
+  end
+
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'
   map.add_line_in '/chains/:chain_id/add/line_in', :controller => 'chain_gears', :action => 'add_line_in'
   map.add_preamp '/chains/:chain_id/add/preamp/:preamp_id', :controller => 'chain_gears', :action => 'add_preamp'

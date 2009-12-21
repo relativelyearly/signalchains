@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   attr_accessible :password, :password_confirmation, :email, :login,
                   :display_name, :avatar
 
+  before_validation_on_create :make_default_roles
+
   validates_exclusion_of :login, :in => %w(comments chains equalizers effects_processors dynamics_processors
                                            preamps mics audios chain_gears account password_resets users
                                            user_sessions gear login logout register admin)
@@ -66,12 +68,41 @@ class User < ActiveRecord::Base
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
 
+  serialize :roles, Array
+
   define_index do
     indexes :email
     indexes :login, :sortable => true
     indexes :display_name
 
     has :created_at, :updated_at
+  end
+
+  def admin?
+    has_role?("admin")
+  end
+  
+  def has_role?(role)
+    roles.include?(role)
+  end
+     
+  def has_any_role?(*roles)
+    roles.each do |role|
+      return true if has_role?(role)
+    end
+    false
+  end
+ 
+  def add_role(role)
+    self.roles << role unless self.has_role?(role)
+  end
+     
+  def remove_role(role)
+    self.roles.delete(role)
+  end
+  
+  def clear_roles
+    self.roles = []
   end
 
   def display_name
@@ -95,5 +126,10 @@ class User < ActiveRecord::Base
 
   def self.find_by_login_or_email(login)
     User.find_by_login(login) || User.find_by_email(login)
+  end
+  
+  private
+  def make_default_roles
+    clear_roles if roles.nil?
   end
 end

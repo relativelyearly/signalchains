@@ -28,6 +28,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    unless current_user && current_user.admin?
+      render :file => "public/404.html", :layout => false, :status => 404
+      return false
+    end
+  end
+
   def require_no_user
     if current_user
       store_location
