@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
 
   def display_name
     display_name = read_attribute(:display_name)
-    display_name = self.login if display_name.empty?
+    display_name = self.login if display_name.nil? || display_name.empty?
     display_name
   end
 
