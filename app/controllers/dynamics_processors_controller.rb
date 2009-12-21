@@ -6,7 +6,7 @@ class DynamicsProcessorsController < ResourceController::Base
     @search = DynamicsProcessor.searchlogic({})
     @class = DynamicsProcessor
   end
-  
+
   index.wants.html { render 'gear/index' }
 
   create.wants.html do

@@ -15,7 +15,7 @@ class Gear < ActiveRecord::Base
 
   def self.featured
     @featured ||= ThinkingSphinx.search('',
-      :classes => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+      :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
       :page => 1,
       :per_page => 1,
       :order => 'featured_at DESC').first

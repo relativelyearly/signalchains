@@ -46,6 +46,7 @@ class Chain < ActiveRecord::Base
     indexes user(:display_name)
 
     has :likes_count, :updated_at, :created_at
+    set_property :delta => true
   end
 
   def self.featured

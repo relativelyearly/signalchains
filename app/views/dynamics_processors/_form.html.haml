@@ -8,5 +8,4 @@
     - if @chain
       = hidden_field_tag :chain_id, @chain.id
   .clear    
-  = f.buttons do
-    = f.commit_button 'Create Dynamics Processor'
+  = f.submit 'Create Dynamics Processor'

@@ -26,6 +26,7 @@ class EffectsProcessor < Gear
     indexes :model
 
     has :updated_at, :created_at, :chain_gears_count, :featured_at
+    set_property :delta => true
   end
 
   def self.effects_types

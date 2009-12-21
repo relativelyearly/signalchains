@@ -77,6 +77,7 @@ class User < ActiveRecord::Base
     indexes :display_name
 
     has :created_at, :updated_at
+    set_property :delta => true
   end
 
   def admin?
