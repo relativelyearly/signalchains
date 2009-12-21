@@ -9,7 +9,7 @@
     %h2= h @chain.name
     %h5.first
       by
-      =link_to @chain.user.login, @chain.user
+      =link_to @chain.user.display_name, user_by_login_path(@chain.user.login)
     .community.first
       .social-links
         = like_link(@chain)
@@ -64,9 +64,9 @@
         = render(:partial => 'comments/form', :locals => {:f => f})
     .w20.col
       .avatar.col.snug
-        = image_tag 'red_logo_fill_white.png'
+        = image_tag current_user.avatar.url(:thumb)
       .w10.col
-        = current_user.login
+        = current_user.display_name
   = render(:partial => 'comments/comment', :collection => @chain.comments)
   .clear
 .first

@@ -7,6 +7,6 @@
   
     - if comment.user
       .col.w10
-        = link_to comment.user.login, comment.user
+        = link_to comment.user.display_name, user_by_login_path(comment.user.login)
   .clear      
   

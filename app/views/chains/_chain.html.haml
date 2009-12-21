@@ -7,7 +7,7 @@
       = comments_link(chain)
       %br
       %br
-      %h5= chain.user.login
+      %h5= link_to(chain.user.display_name, user_by_login_path(chain.user.login))
   .col.w30
     %h4
       = link_to chain.name, chain

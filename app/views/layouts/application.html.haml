@@ -21,7 +21,7 @@
           #controls
             - authenticated_only do
               .session
-                = link_to current_user.login, edit_account_path, :id => 'edit_profile'
+                = link_to current_user.display_name, edit_account_path, :id => 'edit_profile'
                 = link_to 'Log Out', logout_url
             - anonymous_only do
               .session
