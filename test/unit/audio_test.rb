@@ -2,15 +2,15 @@
 #
 # Table name: audios
 #
-#  id                :integer         not null, primary key
+#  id                :integer(4)      not null, primary key
 #  status            :string(255)     default("converting")
 #  created_at        :datetime
 #  updated_at        :datetime
-#  audible_id        :integer
+#  audible_id        :integer(4)
 #  audible_type      :string(255)
 #  file_file_name    :string(255)
 #  file_content_type :string(255)
-#  file_file_size    :integer
+#  file_file_size    :integer(4)
 #  file_updated_at   :datetime
 #
 

@@ -2,14 +2,14 @@
 #
 # Table name: users
 #
-#  id                  :integer         not null, primary key
+#  id                  :integer(4)      not null, primary key
 #  crypted_password    :string(255)
 #  password_salt       :string(255)
 #  email               :string(255)
 #  persistence_token   :string(255)
 #  single_access_token :string(255)
 #  perishable_token    :string(255)
-#  login_count         :integer
+#  login_count         :integer(4)
 #  last_request_at     :datetime
 #  current_login_at    :datetime
 #  last_login_at       :datetime
@@ -23,7 +23,7 @@
 #  login               :string(255)
 #  avatar_file_name    :string(255)
 #  avatar_content_type :string(255)
-#  avatar_file_size    :integer
+#  avatar_file_size    :integer(4)
 #  avatar_updated_at   :datetime
 #
 

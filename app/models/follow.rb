@@ -2,9 +2,9 @@
 #
 # Table name: follows
 #
-#  id          :integer         not null, primary key
-#  user_id     :integer
-#  followed_id :integer
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  followed_id :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

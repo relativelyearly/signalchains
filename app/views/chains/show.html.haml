@@ -22,7 +22,7 @@
       .tags.col
         Tags:
         - for tag in @chain.tags
-          %span=h tag.name
+          %span=link_to(h(tag.name), tag_path(tag.name))
 
     - if @input_source.nil?
       .input_source.col

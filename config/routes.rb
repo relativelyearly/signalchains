@@ -35,6 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :chain_gears, :collection => {:sort => :post} 
   map.resources :searches, :controller => 'searches', :member => {:users => :get, :chains => :get, :gear => :get}
+  map.resources :tags, :only => [:show]
   map.resource :account, :controller => 'users'
   map.resources :password_resets
   map.resources :users, :except => [:show], :member => {:follow => :get}

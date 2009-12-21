@@ -8,5 +8,8 @@
   .first
 .col.first.w33
   %h3 Most Used
+  %ul
+    - @most_used.each do |gear|
+      %li= link_to gear.name, gear
 .col.w33
   %h3 Most Recommended 

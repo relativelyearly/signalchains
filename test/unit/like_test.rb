@@ -2,9 +2,9 @@
 #
 # Table name: likes
 #
-#  id         :integer         not null, primary key
-#  chain_id   :integer
-#  user_id    :integer
+#  id         :integer(4)      not null, primary key
+#  chain_id   :integer(4)
+#  user_id    :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #

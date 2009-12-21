@@ -4,7 +4,7 @@ class Gear < ActiveRecord::Base
   attr_accessible :make, :model, :image
 
   has_many :chain_gears, :as => :gear
-  has_many :chains, :through => :chain_gears
+  has_many :chains, :through => :chain_gears, :order => 'likes_count DESC'
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   has_attached_file :image,

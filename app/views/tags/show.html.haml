@@ -1,0 +1,4 @@
+%h2== Chains tagged with #{params[:id]}
+#chains= render(:partial => 'chains/chain', :collection => @chains)
+
+= will_paginate(@chains)

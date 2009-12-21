@@ -10,16 +10,13 @@
   %br
   - if @chain
     = add_to_chain_button(object)
-  %h4 
-    Chains with a  
+  %h4
+    Chains with a
     = @object.model
   %ul.hard
-    %li
-      %h6= link_to 'bob\'s chain'
-      %span in position #5
-    %li
-      %h6= link_to 'ordinary chain'
-      %span in position #3      
+    - @object.chains.each do |chain|
+      %li
+        %h6= link_to chain.name, chain
 
 .col.w37
   .image= link_to image_tag(@object.image.url(:display)), @object.image.url, :title => "#{@object.make} #{@object.model}", :class => 'zoom'

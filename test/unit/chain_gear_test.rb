@@ -2,14 +2,14 @@
 #
 # Table name: chain_gears
 #
-#  id         :integer         not null, primary key
-#  gear_id    :integer
+#  id         :integer(4)      not null, primary key
+#  gear_id    :integer(4)
 #  gear_type  :string(255)
-#  chain_id   :integer
+#  chain_id   :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #  notes      :text
-#  position   :integer         default(2)
+#  position   :integer(4)      default(2)
 #
 
 require 'test_helper'

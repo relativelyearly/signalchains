@@ -2,21 +2,21 @@
 #
 # Table name: chain_gears
 #
-#  id         :integer         not null, primary key
-#  gear_id    :integer
+#  id         :integer(4)      not null, primary key
+#  gear_id    :integer(4)
 #  gear_type  :string(255)
-#  chain_id   :integer
+#  chain_id   :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #  notes      :text
-#  position   :integer         default(2)
+#  position   :integer(4)      default(2)
 #
 
 class ChainGear < ActiveRecord::Base
   attr_accessible :gear_id, :gear_type, :chain_id, :notes
 
   belongs_to :chain, :touch => true
-  belongs_to :gear, :polymorphic => true
+  belongs_to :gear, :polymorphic => true, :counter_cache => true
 
   before_create :set_position
 

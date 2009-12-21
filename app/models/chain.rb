@@ -2,8 +2,8 @@
 #
 # Table name: chains
 #
-#  id             :integer         not null, primary key
-#  user_id        :integer
+#  id             :integer(4)      not null, primary key
+#  user_id        :integer(4)
 #  status         :string(255)
 #  name           :string(255)
 #  notes          :text
@@ -12,8 +12,8 @@
 #  year           :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  likes_count    :integer         default(0)
-#  comments_count :integer         default(0)
+#  likes_count    :integer(4)      default(0)
+#  comments_count :integer(4)      default(0)
 #
 
 class Chain < ActiveRecord::Base

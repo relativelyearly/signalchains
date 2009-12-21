@@ -13,6 +13,10 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def gear_count
+    Mic.count + Preamp.count + Equalizer.count + EffectsProcessor.count + DynamicsProcessor.count
+  end
+
   # Block method that creates an area of the view that
   # only renders if the request is coming from an
   # authenticated user.

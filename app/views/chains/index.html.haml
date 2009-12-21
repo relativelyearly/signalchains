@@ -6,6 +6,6 @@
     %h3 Top Tags
     .tags
       - tag_cloud(@tags, %w()) do |tag, css_class|
-        %span= tag.name
+        %span= link_to(h(tag.name), tag_path(tag.name))
 .col.w45
   = render(:partial => 'chains/chain', :collection => collection)

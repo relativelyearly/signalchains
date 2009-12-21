@@ -1,8 +1,4 @@
 module GearHelper
-  def gear_count
-    Mic.count + Preamp.count + Equalizer.count + EffectsProcessor.count + DynamicsProcessor.count
-  end
-
   def new_button(gear_class)
     if @chain.nil?
       link_url = eval("new_#{gear_class.to_s.underscore}_path")
