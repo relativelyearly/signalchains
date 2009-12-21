@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer         not null, primary key
+#  crypted_password    :string(255)
+#  password_salt       :string(255)
+#  email               :string(255)
+#  persistence_token   :string(255)
+#  single_access_token :string(255)
+#  perishable_token    :string(255)
+#  login_count         :integer
+#  last_request_at     :datetime
+#  current_login_at    :datetime
+#  last_login_at       :datetime
+#  current_login_ip    :string(255)
+#  last_login_ip       :string(255)
+#  display_name        :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  type                :string(255)
+#  slug                :string(255)
+#  login               :string(255)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#
+
 class User < ActiveRecord::Base
   include Tender::MultiPassMethods
 
@@ -36,6 +65,14 @@ class User < ActiveRecord::Base
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
+
+  define_index do
+    indexes :email
+    indexes :login, :sortable => true
+    indexes :display_name
+
+    has :created_at, :updated_at
+  end
 
   def likes?(chain)
     self.likes.find(:first, :conditions => {:chain_id => chain.id})

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: chains
+#
+#  id             :integer         not null, primary key
+#  user_id        :integer
+#  status         :string(255)
+#  name           :string(255)
+#  notes          :text
+#  title          :string(255)
+#  performer      :string(255)
+#  year           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  likes_count    :integer         default(0)
+#  comments_count :integer         default(0)
+#
+
 require 'test_helper'
 
 class ChainTest < ActiveSupport::TestCase

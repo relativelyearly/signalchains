@@ -8,25 +8,4 @@
       - tag_cloud(@tags, %w()) do |tag, css_class|
         %span= tag.name
 .col.w45
-  - for chain in @chains
-    .unit.w45.col.first
-      .col.thumb
-        - if chain.input_source.gear
-          = link_to image_tag(chain.input_source.gear.image.url(:thumb), :alt => chain.input_source.gear.model), chain
-        .social-links
-          = like_link(chain)
-          = comments_link(chain)
-          %br
-          %br
-          %h5= chain.user.login
-      .col.w30
-        %h4
-          = link_to chain.name, chain
-        %h5
-          &ldquo;#{chain.title}&rdquo;
-          by
-          = chain.performer
-          &mdash;
-          = chain.year
-        =textilize chain.notes
-      .first
+  = render(:partial => 'chains/chain', :collection => collection)

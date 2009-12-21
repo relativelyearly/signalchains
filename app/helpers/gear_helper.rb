@@ -1,4 +1,7 @@
 module GearHelper
+  def gear_count
+    Mic.count + Preamp.count + Equalizer.count + EffectsProcessor.count + DynamicsProcessor.count
+  end
 
   def new_button(gear_class)
     if @chain.nil?

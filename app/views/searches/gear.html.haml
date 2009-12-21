@@ -1,0 +1,4 @@
+%h2 Gear
+#gear= render(:partial => 'gear/index_gear', :collection => @search.gear)
+
+= will_paginate(@search.gear)

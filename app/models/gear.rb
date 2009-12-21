@@ -20,7 +20,7 @@ class Gear < ActiveRecord::Base
   def score
     90
   end
-  
+
   def name
     "#{self.make} #{self.model}"
   end

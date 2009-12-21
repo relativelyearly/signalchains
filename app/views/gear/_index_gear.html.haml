@@ -4,7 +4,7 @@
   .col.w35
     %h4
       = gear_link(index_gear)
-    = render(:partial => @class.index_partial, :collection => collection)
+    = render(:partial => index_gear.class.index_partial, :object => index_gear)
   .col.w15
     - if @chain
       = add_to_chain_button(index_gear)

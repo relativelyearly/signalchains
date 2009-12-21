@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: audios
+#
+#  id                :integer         not null, primary key
+#  status            :string(255)     default("converting")
+#  created_at        :datetime
+#  updated_at        :datetime
+#  audible_id        :integer
+#  audible_type      :string(255)
+#  file_file_name    :string(255)
+#  file_content_type :string(255)
+#  file_file_size    :integer
+#  file_updated_at   :datetime
+#
+
 require 'net/http'
 
 class Audio < ActiveRecord::Base

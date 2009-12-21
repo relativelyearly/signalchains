@@ -1,0 +1,13 @@
+.unit.w45.col.first
+  .col.thumb
+    = link_to image_tag(user.avatar.url(:thumb), :alt => user.login), user
+    .social-links
+      = follow_button(user)
+  .col.w30
+    %h4
+      = link_to user.login, user
+    - if user.display_name
+      %h4
+        = link_to user.display_name, user
+  .first
+%br.clear

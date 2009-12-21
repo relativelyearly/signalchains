@@ -1,0 +1,4 @@
+%h2 Users
+#users= render(:partial => 'users/user', :collection => @search.users)
+
+= will_paginate(@search.users)

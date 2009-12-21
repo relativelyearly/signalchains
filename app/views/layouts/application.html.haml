@@ -27,16 +27,16 @@
               .session
                 = link_to 'Login', login_path
                 = link_to 'Register', register_path
-            %form
-              %input{:size => '16'}
-              %input{:type => 'submit', :value => 'search'}
+            - form_for Search.new do |f|
+              = f.text_field :keyword, :size => 16
+              = f.submit 'search'
           %h4 Featured Gear
           %h4 Featured Studio
         .clear
       .clear
     .footer.wrapper.redev.white
       .stats
-        539 pieces of gear, 1,256 chains, 2,003 users
+        == #{gear_count} pieces of gear, #{Chain.count} chains, #{User.count} users
       .content
         .col.w15
           %h3 Find

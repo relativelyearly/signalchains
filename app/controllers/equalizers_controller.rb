@@ -2,7 +2,7 @@ class EqualizersController < ResourceController::Base
   before_filter :load_chain
 
   index.before do
-    @search = Equalizer.search({})
+    @search = Equalizer.searchlogic({})
     @class = Equalizer
   end
   

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: chains
+#
+#  id             :integer         not null, primary key
+#  user_id        :integer
+#  status         :string(255)
+#  name           :string(255)
+#  notes          :text
+#  title          :string(255)
+#  performer      :string(255)
+#  year           :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  likes_count    :integer         default(0)
+#  comments_count :integer         default(0)
+#
+
 class Chain < ActiveRecord::Base
   attr_accessible :user_id, :status, :name, :notes, :title, :performer, :year, :tag_list, :audio_attributes
   acts_as_taggable_on :tags
@@ -15,6 +33,19 @@ class Chain < ActiveRecord::Base
                     :actor => :user
 
   named_scope :complete, :conditions => {:status => 'complete'}
+
+  define_index do
+    indexes :name
+    indexes :notes
+    indexes :title
+    indexes :performer
+    indexes :year
+
+    indexes user(:login)
+    indexes user(:display_name)
+
+    has :likes_count, :updated_at, :created_at
+  end
 
   def preamp?
      gear.any? {|gear| gear.preamp?}

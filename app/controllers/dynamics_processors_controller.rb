@@ -2,7 +2,7 @@ class DynamicsProcessorsController < ResourceController::Base
   before_filter :load_chain
 
   index.before do
-    @search = DynamicsProcessor.search({})
+    @search = DynamicsProcessor.searchlogic({})
     @class = DynamicsProcessor
   end
   

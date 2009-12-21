@@ -1,0 +1,4 @@
+%h2 Chains
+#chains= render(:partial => 'chains/chain', :collection => @search.chains)
+
+= will_paginate(@search.chains)

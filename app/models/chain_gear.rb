@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: chain_gears
+#
+#  id         :integer         not null, primary key
+#  gear_id    :integer
+#  gear_type  :string(255)
+#  chain_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  notes      :text
+#  position   :integer         default(2)
+#
+
 class ChainGear < ActiveRecord::Base
   attr_accessible :gear_id, :gear_type, :chain_id, :notes
 

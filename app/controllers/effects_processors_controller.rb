@@ -2,7 +2,7 @@ class EffectsProcessorsController < ResourceController::Base
   before_filter :load_chain
 
   index.before do
-    @search = EffectsProcessor.search({})
+    @search = EffectsProcessor.searchlogic({})
     @class = EffectsProcessor
   end
   

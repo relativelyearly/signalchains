@@ -2,7 +2,7 @@ class PreampsController < ResourceController::Base
   before_filter :load_chain
 
   index.before do
-    @search = Preamp.search({})
+    @search = Preamp.searchlogic({})
     @class = Preamp
   end
   

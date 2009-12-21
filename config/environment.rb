@@ -15,7 +15,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
   config.gem "acts-as-taggable-on"
   config.gem "aws-s3", :lib => "aws/s3"
-
+  config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
   config.time_zone = 'UTC'
   config.load_paths << "#{RAILS_ROOT}/app/models/gear"
 end

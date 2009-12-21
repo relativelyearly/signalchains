@@ -2,7 +2,7 @@ class MicsController < ResourceController::Base
   before_filter :load_chain
 
   index.before do
-    @search = Mic.search({})
+    @search = Mic.searchlogic({})
     @class = Mic
   end
 
