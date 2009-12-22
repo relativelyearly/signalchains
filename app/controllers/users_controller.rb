@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @recommended_chains = Chain.complete.find(:all, :order => 'likes_count DESC')
     if params[:id]
       @user = User.find_by_login(params[:id])
+      render(:file => "public/404.html", :layout => false, :status => 404) and return unless @user
       @events = @user.events_about_self.all(:include => [:actor, :secondary_subject, :subject])
     else
       redirect_to(new_user_session_path) and return unless current_user

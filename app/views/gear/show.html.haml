@@ -18,7 +18,7 @@
     Chains with a
     = @object.model
   %ul.hard
-    - @object.chains.each do |chain|
+    - @object.chains.complete.each do |chain|
       %li
         %h6= link_to chain.name, chain
 
