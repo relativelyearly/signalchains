@@ -1,0 +1,4 @@
+- url = @ad.new_record? ? admin_ads_path : admin_ad_path(@ad)
+- semantic_form_for @ad, :url => url, :html => {:multipart => true} do |f|
+  = f.inputs :image, :url
+  = f.buttons

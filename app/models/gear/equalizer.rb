@@ -16,6 +16,7 @@
 #  updated_at         :datetime
 #  comments_count     :integer(4)      default(0)
 #  chain_gears_count  :integer(4)      default(0)
+#  featured_at        :datetime
 #
 
 class Equalizer < Gear
@@ -25,7 +26,8 @@ class Equalizer < Gear
     indexes :make
     indexes :model
 
-    has :updated_at, :created_at, :chain_gears_count
+    has :updated_at, :created_at, :chain_gears_count, :featured_at
+    set_property :delta => true
   end
 
   def self.equalizer_types

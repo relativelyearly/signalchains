@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :comments
 
-  map.resources :chains, :member => {:like => :get} do |chain|
+  map.resources :chains, :member => {:like => :get, :feature => :get} do |chain|
     chain.resources :mics
     chain.resources :preamps
     chain.resources :dynamics_processors
@@ -11,23 +11,23 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :audios
   end
 
-  map.resources :equalizers, :collection => {:search => :get} do |equalizer|
+  map.resources :equalizers, :collection => {:search => :get}, :member => {:feature => :get} do |equalizer|
     equalizer.resources :comments
   end
 
-  map.resources :effects_processors, :collection => {:search => :get} do |effects_processor|
+  map.resources :effects_processors, :collection => {:search => :get}, :member => {:feature => :get} do |effects_processor|
     effects_processor.resources :comments
   end
 
-  map.resources :dynamics_processors, :collection => {:search => :get} do |dynamics_processor|
+  map.resources :dynamics_processors, :collection => {:search => :get}, :member => {:feature => :get} do |dynamics_processor|
     dynamics_processor.resources :comments
   end
 
-  map.resources :preamps, :collection => {:search => :get} do |preamp|
+  map.resources :preamps, :collection => {:search => :get}, :member => {:feature => :get} do |preamp|
     preamp.resources :comments
   end
 
-  map.resources :mics, :collection => {:search => :get} do |mic|
+  map.resources :mics, :collection => {:search => :get}, :member => {:feature => :get} do |mic|
     mic.resources :comments
   end
 
@@ -40,6 +40,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.resources :users, :except => [:show], :member => {:follow => :get}
   map.resource :user_session
+
+  map.namespace(:admin) do |admin|
+    admin.resources :ads
+  end
 
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'
   map.add_line_in '/chains/:chain_id/add/line_in', :controller => 'chain_gears', :action => 'add_line_in'

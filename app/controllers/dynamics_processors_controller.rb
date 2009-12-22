@@ -1,11 +1,12 @@
 class DynamicsProcessorsController < ResourceController::Base
   before_filter :load_chain
+  before_filter :require_admin, :only => [:feature]
 
   index.before do
     @search = DynamicsProcessor.searchlogic({})
     @class = DynamicsProcessor
   end
-  
+
   index.wants.html { render 'gear/index' }
 
   create.wants.html do
@@ -28,6 +29,15 @@ class DynamicsProcessorsController < ResourceController::Base
 
     respond_to do |format|
       format.html { render(:partial => 'gear/index_gear', :collection => @dynamics_processors) }
+    end
+  end
+
+  def feature
+    @gear = object
+    @gear.update_attribute(:featured_at, DateTime.now)
+
+    respond_to do |format|
+      format.html { redirect_to(@gear) }
     end
   end
 

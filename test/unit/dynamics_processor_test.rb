@@ -17,6 +17,7 @@
 #  updated_at         :datetime
 #  comments_count     :integer(4)      default(0)
 #  chain_gears_count  :integer(4)      default(0)
+#  featured_at        :datetime
 #
 
 require 'test_helper'

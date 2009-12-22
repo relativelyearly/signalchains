@@ -1,0 +1,13 @@
+- title "Ads"
+
+%table
+  %tr
+    %th Image
+  - for ad in @ads
+    %tr
+      %td= image_tag ad.image.url
+      %td= link_to 'Show', object_path(ad)
+      %td= link_to 'Edit', edit_object_path(ad)
+      %td= link_to 'Destroy', object_path(ad), :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Ad", new_object_path

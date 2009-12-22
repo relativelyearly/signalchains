@@ -1,5 +1,6 @@
 class MicsController < ResourceController::Base
   before_filter :load_chain
+  before_filter :require_admin, :only => [:feature]
 
   index.before do
     @search = Mic.searchlogic({})
@@ -28,6 +29,15 @@ class MicsController < ResourceController::Base
 
     respond_to do |format|
       format.html { render(:partial => 'gear/index_gear', :collection => @mics) }
+    end
+  end
+
+  def feature
+    @gear = object
+    @gear.update_attribute(:featured_at, DateTime.now)
+
+    respond_to do |format|
+      format.html { redirect_to(@gear) }
     end
   end
 

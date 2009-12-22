@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221001150) do
+ActiveRecord::Schema.define(:version => 20091221201432) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+  end
 
   create_table "audios", :force => true do |t|
     t.string   "status",            :default => "converting"
@@ -45,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "likes_count",    :default => 0
     t.integer  "comments_count", :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",          :default => true, :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -71,6 +83,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",              :default => true, :null => false
   end
 
   create_table "effects_processors", :force => true do |t|
@@ -86,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",              :default => true, :null => false
   end
 
   create_table "equalizers", :force => true do |t|
@@ -102,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",              :default => true, :null => false
   end
 
   create_table "follows", :force => true do |t|
@@ -132,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",              :default => true, :null => false
   end
 
   create_table "preamps", :force => true do |t|
@@ -146,6 +166,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.datetime "updated_at"
     t.integer  "comments_count",     :default => 0
     t.integer  "chain_gears_count",  :default => 0
+    t.datetime "featured_at"
+    t.boolean  "delta",              :default => true, :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -210,6 +232,8 @@ ActiveRecord::Schema.define(:version => 20091221001150) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "roles"
+    t.boolean  "delta",               :default => true, :null => false
   end
 
 end
