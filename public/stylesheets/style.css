@@ -21,13 +21,18 @@ a{
 
 /* @group comments */
 .comment {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 #comments {
   padding-top: 15px;
 }
+#comments .username {
+  font-size: 70%;
+  margin-top: 5px;
+  text-align: center;
+}
 #comment_body {
-  height: 80px;
+  height: 100px;
   width: 100%;
   -webkit-border-radius:6px;  -moz-border-radius:6px;
   border: 1px solid #999;
@@ -38,9 +43,13 @@ a{
   -webkit-border-radius:4px;  -moz-border-radius:4px;
   border-bottom: 1px solid #fff;
 }
+.comment-text {
+  width: 430px;
+}
 .avatar {
   width: 80px;
   height: 80px;
+  margin: 0 auto;
 }
 
 /* @end */
@@ -60,7 +69,7 @@ a{
 #left-content {
   width: 714px;
   float: left;
-background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 100px;   
+background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 0;   
 border-right: 1px solid #fff;
 }
 .container {
@@ -68,8 +77,8 @@ border-right: 1px solid #fff;
   margin: 0 auto;
 }
 #right-content {
-  /*background: #eee url(../images/backgrounds/sidebar.png) repeat-y 715px;*/
-background: #eee url(../images/backgrounds/sidebar_bg.png) repeat-y 715px 0;  
+
+background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 0;  
   
 }
 
@@ -79,8 +88,11 @@ div.image a {
 }
 #sidebar {
   width: 205px;
-  padding: 15px;
+  padding: 6px 15px 15px 15px;
   float: left;
+}
+#sidebar > div {
+  margin-bottom: 15px;
 }
 /* @group nav */
 
@@ -116,7 +128,7 @@ div.image a {
 
 #controls {
   text-align: left;
-  height: 65px;
+  min-height: 50px;
   margin-bottom: 17px;
   border-bottom: 1px solid #d0d3d3;
 }
@@ -131,7 +143,10 @@ div.image a {
 .session a {
   color: #666;
   text-decoration: none; 
+  display: block;
+  float: left;
 }
+
 .session a:hover {
   text-decoration: underline;
 }
@@ -460,6 +475,19 @@ ul.incomplete_chain {
   background-image: url(../images/backgrounds/grill_background.png);
 }
 
+#sidebar div.ad {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px ridge #fff;
+}
+.ad small {
+  font-size: 70%;
+  color: #666;
+}
+
+div#featured-chain .col{
+  font-size: 80%;
+}
 ul.incomplete_chain li {
 	list-style-type: none;
 	font-size: 90%;

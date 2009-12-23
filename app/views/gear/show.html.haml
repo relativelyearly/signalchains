@@ -13,7 +13,7 @@
 
     %br.clear
   - admin_only do
-    = link_to 'Feature', eval("feature_#{@class.to_s.underscore}_path(object)")
+    = link_to '<span>Feature</span>', eval("feature_#{@class.to_s.underscore}_path(object)"), :class => 'btn w10'
   %h4
     Chains with a
     = @object.model
@@ -24,12 +24,6 @@
 
 .col.w37
   .image= link_to image_tag(@object.image.url(:display)), @object.image.url, :title => "#{@object.make} #{@object.model}", :class => 'zoom'
-  %h4 Community Score
-  .col.first.w12
-    %span.score 90
-  .col.w20#rec_stats
-    Recommended 128 times
-
 #comments.first
   %h3 Comments
   .first

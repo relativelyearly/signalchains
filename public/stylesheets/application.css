@@ -184,6 +184,10 @@ input.button {
 .w10{
   width: 100px;
 }
+
+.w14{
+  width: 140px;
+}
 .w15{
   width: 150px;
 }
@@ -278,6 +282,9 @@ input.button {
 .hard {
   padding: 0;
   list-style: none;
+}
+.inline {
+  display: inline;
 }
 .col.first.w68 {
   margin-bottom: 25px;

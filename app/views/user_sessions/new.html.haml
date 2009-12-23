@@ -12,11 +12,11 @@
     = f.password_field :password
     %br
     %br
-    .left.pad
+    .left.pad.w10
       = f.check_box :remember_me
       %small
-        = f.label :remember_me
-    = f.submit "Login", :class => 'button left pad'
+        = f.label :remember_me, 'Remember Me', :class => 'inline'
+    = f.submit "Login", :class => 'btn w10 pad'
     %br
     %br
     %br
@@ -25,8 +25,8 @@
 .col.w30
   %h6 Don't have a Signal Chains account?
   %p
-    Quit being ridiculous and 
-    = link_to 'register', new_user_url, :class => 'button'
+    Quit being ridiculous.
+  %p= link_to '<span>register</span>', new_user_url, :class => 'btn w10'
 
   %p Creating your Signal Chains account has potential to be one of the most satisfying internet experiences you will ever have.
   %blockquote

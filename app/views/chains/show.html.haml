@@ -26,7 +26,8 @@
 
       %br.clear
       - admin_only do
-        = link_to 'Feature', feature_chain_path(@chain)
+        %br
+        = link_to '<span>Feature</span>', feature_chain_path(@chain), :class => 'btn w10'
 
     - if @input_source.nil?
       .input_source.col
@@ -67,9 +68,9 @@
       - semantic_form_for @chain.comments.new, :url => chain_comments_path(@chain) do |f|
         = render(:partial => 'comments/form', :locals => {:f => f})
     .w20.col
-      .avatar.col.snug
+      .avatar
         = image_tag current_user.avatar.url(:thumb)
-      .w10.col
+      .username
         = current_user.display_name
   = render(:partial => 'comments/comment', :collection => @chain.comments)
   .clear

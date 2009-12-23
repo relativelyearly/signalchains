@@ -1,14 +1,15 @@
-%h2 Gear
+%h2 Search for "#{@search.keyword}" 
+%h3 Gear
 #gear= render(:partial => 'gear/index_gear', :collection => @search.gear(2))
 
-= link_to 'All Gear', gear_search_path(@search.keyword)
+= link_to '<span>All Gear</span>', gear_search_path(@search.keyword), :class => 'btn w10'
 
-%h2 Users
+%h3 Users
 #users= render(:partial => 'users/user', :collection => @search.users(2))
 
-= link_to 'All Users', users_search_path(@search.keyword)
+= link_to '<span>All Users</span>', users_search_path(@search.keyword), :class => 'btn w10'
 
-%h2 Chains
+%h3 Chains
 #chains= render(:partial => 'chains/chain', :collection => @search.chains(2))
 
-= link_to 'All Chains', chains_search_path(@search.keyword)
+= link_to '<span>All Chains</span>', chains_search_path(@search.keyword), :class => 'btn w10'
