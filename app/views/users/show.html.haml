@@ -1,9 +1,9 @@
 .bucket.user-page
-  .first.col.w37
+  .first.col.w50
     %h1
       = link_to image_tag(@user.avatar.url(:thumb), :alt => @user.display_name), @user.avatar.url(:display), :class => 'zoom'
       = @user.display_name
-  .col.w20
+  .col.w10#follow
     = follow_button(@user)
   .first
 #feed.col.first.w40

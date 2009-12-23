@@ -2,7 +2,7 @@
 %html
   %head
     = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
-    = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
+    = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'home', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Signal Chains"
   %body
 
@@ -31,8 +31,8 @@
               - form_for Search.new do |f|
                 = f.text_field :keyword, :size => 16
                 = f.submit 'search'
-          %h4 Featured Gear
           - if Gear.featured
+            %h4 Featured Gear          
             .first.col.w5
               = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
             .col.w14
@@ -62,7 +62,6 @@
           %ul
             %li= link_to "Chains", chains_path
             %li= link_to "Gear", gear_path
-            %li= link_to "Engineers", gear_path
         .col.w15
           %h3 About
           %ul

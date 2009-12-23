@@ -3,7 +3,7 @@
     =textilize(comment.body)
   .col.w20
     .avatar
-      = link_to image_tag(comment.user.avatar.url(:thumb)), comment.user
+      = link_to image_tag(comment.user.avatar.url(:thumb)), user_by_login_path(comment.user.login)
 
     - if comment.user
       .username

@@ -166,6 +166,16 @@ input.button {
   float: left;
   margin-left: 15px;
 }
+.col-3 {
+  float: left;	
+  width: 215px;
+  margin:0 0 15px 15px;
+}
+.col-3-2 {
+  float: left;	
+  width: 445px;
+  margin:0 0 15px 15px;
+}
 
 .right {
   float: right;

@@ -1,6 +1,7 @@
 .event.comment
-  = commented.actor.display_name
-  commented on
-  = link_to commented.secondary_subject.name, commented.secondary_subject
+  %p
+    = link_to commented.actor.display_name, user_by_login_path(commented.actor.display_name)
+    commented on
+    = link_to commented.secondary_subject.name, commented.secondary_subject
   %blockquote
-    %p=h commented.subject.body
+    %p=textilize commented.subject.body

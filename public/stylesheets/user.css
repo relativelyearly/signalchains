@@ -26,6 +26,13 @@ a#logout {
   padding: 5px 10px;
   border-left: none;
 }
+
+#feed div.event p {
+  margin-bottom: 0;
+}
+#feed .event blockquote {
+  margin-top: 5px;
+}
 #feed blockquote p {
   margin: 5px 0;
   padding: 0;
@@ -34,4 +41,8 @@ a#logout {
 .user-page.bucket {
   padding: 0 28px 20px 28px;
   width: 630px;
+}
+
+#follow {
+  margin-top: 20px;
 }

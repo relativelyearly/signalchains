@@ -8,7 +8,7 @@ class Gear < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   has_attached_file :image,
-                    :styles => { :micro => ["50x50#"], :thumb => ["100x100#", :jpg], :wide => ["250x130", :jpg], :display => ["370x500"] },
+                    :styles => { :micro => ["50x50#"], :thumb => ["100x100#", :jpg], :featured => ["445x150^", :jpg], :display => ["370x500"] },
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
