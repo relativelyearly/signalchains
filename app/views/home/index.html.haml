@@ -24,19 +24,22 @@
     %h4= link_to "<span>#{Gear.featured.name}</span>", Gear.featured, {:style => 'background-image: url(' "#{Gear.featured.image.url(:featured)}" ')'}
 .first.col-3
   %h4 Most Used Gear
-  %ul
-    - most_used_gear.each do |gear|
-      %li= link_to gear.name, gear
+  - if most_used_gear
+    %ul
+      - most_used_gear.each do |gear|
+        %li= link_to gear.name, gear
 .col-3
   %h4 Newest Chains
-  %ul
-    - @new_chains.each do |chain|
-      %li= link_to(chain.name, chain)
+  - if @new_chains
+    %ul
+      - @new_chains.each do |chain|
+        %li= link_to(chain.name, chain)
 .col-3
   %h4 Newest Users
-  %ul
-    - @new_users.each do |user|
-      %li= link_to(user.display_name, user_by_login_path(user))
+  - if @new_users
+    %ul
+      - @new_users.each do |user|
+        %li= link_to(user.display_name, user_by_login_path(user))
 
 %br.clear
 %br.clear
