@@ -5,7 +5,8 @@
   #tops
     %h3 Top Tags
     .tags
-      - tag_cloud(@tags, %w()) do |tag, css_class|
-        %span= link_to(h(tag.name), tag_path(tag.name))
+      - if Tag.count > 0
+        - tag_cloud(@tags, %w()) do |tag, css_class|
+          %span= link_to(h(tag.name), tag_path(tag.name))
 .col.w45
   = render(:partial => 'chains/chain', :collection => collection)
