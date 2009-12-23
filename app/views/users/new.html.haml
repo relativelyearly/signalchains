@@ -1,24 +1,26 @@
 %h1 Register
-- form_for @user, :url => account_path do |f|
-  = f.error_messages
-  = f.label :username
-  %br
-  = f.text_field :login
-  %br
-  %br
-  = f.label :email
-  %br
-  = f.text_field :email
-  %br
-  %br
-  = f.label :password, f.object.new_record? ? nil : "Change password"
-  %br
-  = f.password_field :password
-  %br
-  %br
-  = f.label :password_confirmation
-  %br
-  = f.password_field :password_confirmation
-  %br
-  %br
-  = f.submit "Register", :class => 'button'
+.first.col.w25
+  - form_for @user, :url => account_path do |f|
+    = f.error_messages
+    = f.label :username
+    = f.text_field :login
+    %br
+    %br
+    = f.label :email
+    = f.text_field :email
+    %br
+    %br
+    = f.label :password, f.object.new_record? ? nil : "Change password"
+    = f.password_field :password
+    %br
+    %br
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+    %br
+    %br
+    = f.submit "Register", :class => 'button'
+.col.w35
+  %h6 Already have a Signal Chains account?
+  %p
+    And you're trying to sign up for another one? Quit being greedy.
+  %p= link_to '<span>Login</span>', login_url, :class => 'btn w10'

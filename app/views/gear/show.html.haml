@@ -13,7 +13,7 @@
 
     %br.clear
   - admin_only do
-    = link_to 'Feature', eval("feature_#{@class.to_s.underscore}_path(object)")
+    = link_to '<span>Feature</span>', eval("feature_#{@class.to_s.underscore}_path(object)"), :class => 'btn w10'
   %h4
     Chains with a
     = @object.model
@@ -24,16 +24,18 @@
 
 .col.w37
   .image= link_to image_tag(@object.image.url(:display)), @object.image.url, :title => "#{@object.make} #{@object.model}", :class => 'zoom'
-  %h4 Community Score
-  .col.first.w12
-    %span.score 90
-  .col.w20#rec_stats
-    Recommended 128 times
-.first
-  - if current_user
-    .w50.first.col
-      - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
-        = render(:partial => 'comments/form', :locals => {:f => f})
-
-.w50.first
-  = render(:partial => 'comments/comment', :collection => object.comments)
+#comments.first
+  %h3 Comments
+  .first
+    - authenticated_only do
+      .w45.first.col
+        - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
+          = render(:partial => 'comments/form', :locals => {:f => f})  
+      .w20.col
+        .avatar.col.snug
+          = image_tag current_user.avatar.url(:thumb)
+        .w10.col
+          = current_user.display_name
+          
+  .first
+    = render(:partial => 'comments/comment', :collection => object.comments)

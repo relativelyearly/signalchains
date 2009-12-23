@@ -1,11 +1,12 @@
+%h3 Create a New Dynamics Processor
 - semantic_form_for @dynamics_processor, :html => {:multipart => true} do |f|
-  = render(:partial => 'gear/form', :locals => {:f => f})
-  .col.w25
+  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.w15
     = f.input :dynamics_type, :as => :select, :collection => DynamicsProcessor.dynamics_types, :label => 'Type'
     = f.input :circuitry, :as => :select, :collection => DynamicsProcessor.circuitries
     = f.input :compression_type, :as => :select, :collection => DynamicsProcessor.compression_types
     = f.input :interface, :as => :select, :collection => DynamicsProcessor.interfaces
     - if @chain
       = hidden_field_tag :chain_id, @chain.id
-  .clear    
-  = f.submit 'Create Dynamics Processor'
+  .first
+    = f.commit_button 'Create Dynamics Processor'

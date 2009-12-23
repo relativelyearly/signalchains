@@ -1,37 +1,29 @@
 %h1 Login
-.col.first.w30
+.col.first.w25
   - form_for @user_session, :url => user_session_path do |f|
     - if @user_session.errors.present?
       Invalid username or password
 
     = f.label :login, 'Username or email'
-    %br
     = f.text_field :login
     %br
     %br
     = f.label :password
-    %br
     = f.password_field :password
     %br
-    .left.pad
+    %br
+    .left.pad.w10
       = f.check_box :remember_me
       %small
-        = f.label :remember_me
-    = f.submit "Login", :class => 'button left pad'
+        = f.label :remember_me, 'Remember Me', :class => 'inline'
+    = f.submit "Login", :class => 'btn w10 pad'
     %br
     %br
     %br
     .first
       %small= link_to 'Forgot Password?', new_password_reset_path    
-.col.w30
+.col.w35
   %h6 Don't have a Signal Chains account?
   %p
-    Quit being ridiculous and 
-    = link_to 'register', new_user_url, :class => 'button'
-
-  %p Creating your Signal Chains account has potential to be one of the most satisfying internet experiences you will ever have.
-  %blockquote
-    %p
-      "Creating my Signal Chains account was one of the most satisfying internet experiences I've ever had."
-  %cite
-    &mdash; Matt Pruitt, Co-creator of Signal Chains
+    Quit being ridiculous.
+  %p= link_to '<span>register</span>', new_user_url, :class => 'btn w10'

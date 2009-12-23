@@ -12,19 +12,27 @@ body {
 a{
   color: #111;
 }
+#content a {
+  color: #041647;
+}
 .wrapper {
   width: 950px;
 }
 
 /* @group comments */
 .comment {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 #comments {
   padding-top: 15px;
 }
+#comments .username {
+  font-size: 90%;
+  margin-top: 5px;
+  text-align: center;
+}
 #comment_body {
-  height: 80px;
+  height: 100px;
   width: 100%;
   -webkit-border-radius:6px;  -moz-border-radius:6px;
   border: 1px solid #999;
@@ -35,9 +43,13 @@ a{
   -webkit-border-radius:4px;  -moz-border-radius:4px;
   border-bottom: 1px solid #fff;
 }
+.comment-text {
+  width: 430px;
+}
 .avatar {
   width: 80px;
   height: 80px;
+  margin: 0 auto;
 }
 
 /* @end */
@@ -57,7 +69,7 @@ a{
 #left-content {
   width: 714px;
   float: left;
-background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 100px;   
+background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 0;   
 border-right: 1px solid #fff;
 }
 .container {
@@ -65,8 +77,8 @@ border-right: 1px solid #fff;
   margin: 0 auto;
 }
 #right-content {
-  /*background: #eee url(../images/backgrounds/sidebar.png) repeat-y 715px;*/
-background: #eee url(../images/backgrounds/sidebar_bg.png) repeat-y 715px 0;  
+
+background: #eee url(../images/backgrounds/container_background.png) repeat-y 0 0;  
   
 }
 
@@ -76,8 +88,11 @@ div.image a {
 }
 #sidebar {
   width: 205px;
-  padding: 15px;
+  padding: 6px 15px 15px 15px;
   float: left;
+}
+#sidebar > div {
+  margin-bottom: 15px;
 }
 /* @group nav */
 
@@ -113,7 +128,7 @@ div.image a {
 
 #controls {
   text-align: left;
-  height: 65px;
+  min-height: 60px;
   margin-bottom: 17px;
   border-bottom: 1px solid #d0d3d3;
 }
@@ -128,7 +143,10 @@ div.image a {
 .session a {
   color: #666;
   text-decoration: none; 
+  display: block;
+  float: left;
 }
+
 .session a:hover {
   text-decoration: underline;
 }
@@ -151,7 +169,7 @@ div.image a {
   position: absolute;
   height: 65px;
   margin-top: 0;
-  margin-left: 0;
+  margin-left: 4px;
   padding: 2px 10px 0 10px;
   width: 220px;
   background-color: #30615e;
@@ -321,6 +339,7 @@ h2 {
 h3 {
   font-size: 140%;
   font-weight: normal;
+  margin-bottom: .8em;
 }
 h4 {
   font-size: 110%;
@@ -344,7 +363,6 @@ ul li {
   margin: .8em 0;
 }
 blockquote {
-  font: normal 100%/1.3em Palatino, Georgia, "Times New Roman", Times, serif;
   border-left: 2px solid #22615e;
   padding-left: 15px;
   margin: 0;
@@ -357,8 +375,8 @@ blockquote p {
   padding: 0;
 }
 #search, .bucket {
-  width: 585px;
-  padding: 10px 50px 40px 50px;
+  width: 625px;
+  padding: 10px 30px 40px 30px;
   background: url(../images/backgrounds/search_bg.png) no-repeat 0 bottom;
   margin-bottom: 10px;
 }
@@ -424,7 +442,7 @@ li#chain_gear_notes_input {
   padding: 20px 0 0 0;
   display: block;
 }
-.formtastic label {
+.formtastic label, label {
   display: block;
   text-transform: uppercase;
   font-size: .8em;
@@ -456,11 +474,24 @@ ul.incomplete_chain {
   background-image: url(../images/backgrounds/grill_background.png);
 }
 
+#sidebar div.ad {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px ridge #fff;
+}
+.ad small {
+  font-size: 70%;
+  color: #666;
+}
+
+div#featured-chain .col{
+  font-size: 80%;
+}
 ul.incomplete_chain li {
 	list-style-type: none;
 	font-size: 90%;
 }
-ul.incomplete_chain li a {
+#content ul.incomplete_chain li a {
     color: #74ed7e;	
 }
 /* @end */

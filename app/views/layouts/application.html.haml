@@ -2,7 +2,7 @@
 %html
   %head
     = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
-    = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
+    = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'home', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Signal Chains"
   %body
 
@@ -22,29 +22,35 @@
             - authenticated_only do
               .session
                 = link_to current_user.display_name, edit_account_path, :id => 'edit_profile'
-                = link_to 'Log Out', logout_url
+                = link_to 'Log Out', logout_url, :id => 'logout'
             - anonymous_only do
-              .session
+              .session.first
                 = link_to 'Login', login_path
                 = link_to 'Register', register_path
-            - form_for Search.new do |f|
-              = f.text_field :keyword, :size => 16
-              = f.submit 'search'
-          %h4 Featured Gear
+            .first
+              - form_for Search.new do |f|
+                = f.text_field :keyword, :size => 16
+                = f.submit 'search'
           - if Gear.featured
-            = link_to(image_tag(Gear.featured.image.url(:thumb)), Gear.featured)
+            %h4 Featured Gear          
+            .first.col.w5
+              = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
+            .col.w14
+              = link_to(Gear.featured.name, Gear.featured)
+          #featured-chain.first
+            %h4 Featured Chain
+            - if Chain.featured
+              .first.col.w5
+                = link_to(image_tag(Chain.featured.input_source.gear.image.url(:micro)), Chain.featured)
+              .col.w14
+                = link_to(Chain.featured.name, Chain.featured)
+                by
+                = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
+              %br.clear
+          .ad
+            = ad
             %br
-            = link_to(Gear.featured.name, Gear.featured)
-            %br.clear
-          %h4 Featured Chain
-          - if Chain.featured
-            = link_to(image_tag(Chain.featured.input_source.gear.image.url(:thumb)), Chain.featured)
-            %br
-            = link_to(Chain.featured.name, Chain.featured)
-            by
-            = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
-            %br.clear
-          = ad
+            %small ADVERTISEMENT
         .clear
       .clear
     .footer.wrapper.redev.white
@@ -56,7 +62,6 @@
           %ul
             %li= link_to "Chains", chains_path
             %li= link_to "Gear", gear_path
-            %li= link_to "Engineers", gear_path
         .col.w15
           %h3 About
           %ul
@@ -67,7 +72,7 @@
           %ul
             %li= link_to "Support/Feedback", "#", :id => 'support'
             %li= link_to "Twitter", "http://twitter.com/signalchains"
-            %li= link_to "Advertising", "#"            
+            %li= link_to "Advertising", "#"
         .col.w20#mark
           = image_tag '../images/red_logo_white.png', :alt => 'Relatively Early Development'
           = link_to 'A Relatively Early Development', 'http://relativelyearly.com'
@@ -80,4 +85,4 @@
       hideToggle: true,
       widgetToggles: $('#support')
     }
-  = javascript_include_tag('https://signal-chains.tenderapp.com/tender_widget.js')        
+  = javascript_include_tag('https://signal-chains.tenderapp.com/tender_widget.js')

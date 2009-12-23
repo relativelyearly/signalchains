@@ -166,6 +166,16 @@ input.button {
   float: left;
   margin-left: 15px;
 }
+.col-3 {
+  float: left;	
+  width: 215px;
+  margin:0 0 15px 15px;
+}
+.col-3-2 {
+  float: left;	
+  width: 445px;
+  margin:0 0 15px 15px;
+}
 
 .right {
   float: right;
@@ -183,6 +193,10 @@ input.button {
 }
 .w10{
   width: 100px;
+}
+
+.w14{
+  width: 140px;
 }
 .w15{
   width: 150px;
@@ -278,6 +292,9 @@ input.button {
 .hard {
   padding: 0;
   list-style: none;
+}
+.inline {
+  display: inline;
 }
 .col.first.w68 {
   margin-bottom: 25px;

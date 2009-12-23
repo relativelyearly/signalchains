@@ -26,3 +26,4 @@ config/*.sphinx.conf
 db/sphinx/
 public/system/audios/**
 *.orig
+public/system/images/**
