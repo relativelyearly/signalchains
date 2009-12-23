@@ -50,7 +50,7 @@ class Chain < ActiveRecord::Base
   end
 
   def self.featured
-    @featured ||= Chain.first(:order => 'featured_at DESC')
+    @featured ||= Chain.first(:conditions => "featured_at is not null", :order => 'featured_at DESC')
   end
 
   def preamp?
