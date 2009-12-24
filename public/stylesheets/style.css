@@ -505,8 +505,8 @@ ul.incomplete_chain {
   color: #666;
 }
 
-div#featured-chain .col{
-  font-size: 80%;
+div#featured-chain .col, #featured-gear-sidebar .div{
+  font-size: 90%;
 }
 ul.incomplete_chain li {
 	list-style-type: none;

@@ -32,11 +32,12 @@
                 = f.text_field :keyword, :size => 16
                 = f.submit 'search'
           - if Gear.featured
-            %h4 Featured Gear          
-            .first.col.w5
-              = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
-            .col.w14
-              = link_to(Gear.featured.name, Gear.featured)
+            #featured-gear-sidebar
+              %h4 Featured Gear          
+              .first.col.w5
+                = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
+              .col.w14
+                = link_to(Gear.featured.name, Gear.featured)
           #featured-chain.first
             %h4 Featured Chain
             - if Chain.featured

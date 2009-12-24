@@ -1,4 +1,8 @@
-/* @override http://signalchains.local/stylesheets/home.css */
+/* @override 
+	http://signalchains.local/stylesheets/home.css
+	http://signalchains.com/stylesheets/home.css?1261631230
+*/
+
 #intro {
   margin-bottom: 15px;
   background: url(../images/backgrounds/soft-grad.png) repeat-x 0 -12px;
@@ -26,9 +30,9 @@
 }
 #featured-gear a{
   display: block;
-  height: 150px;
+  height: 200px;
   overflow: hidden;
-  background-position: top center;
+  background-position: 0 -50px;
   background-repeat: no-repeat;
   color: #fff;
   text-decoration: none;  
