@@ -1,5 +1,5 @@
 class ChainsController < ResourceController::Base
-  before_filter :require_user, :only => [:new, :like]
+  before_filter :require_user, :only => [:new, :like, :create, :edit, :update, :destroy]
   before_filter :require_admin, :only => [:feature]
 
   index.before {@tags = Chain.tag_counts_on(:tags)}

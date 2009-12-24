@@ -2,6 +2,7 @@ class AudiosController < ResourceController::Base
   belongs_to :chain
 
   actions :all, :except => [:index, :show, :create]
+  before_filter :require_user, :only => [:new, :edit, :update, :destroy]
 
   update.before do
     if params[:audio][:mp3_file_size]

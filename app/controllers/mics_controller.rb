@@ -1,6 +1,7 @@
 class MicsController < ResourceController::Base
   before_filter :load_chain
   before_filter :require_admin, :only => [:feature]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   index.before do
     @search = Mic.searchlogic({})
