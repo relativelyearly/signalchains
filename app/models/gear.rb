@@ -18,6 +18,7 @@ class Gear < ActiveRecord::Base
       :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
       :page => 1,
       :per_page => 1,
+      :without => {:featured_at => nil},
       :order => 'featured_at DESC').first
   end
 
