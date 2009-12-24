@@ -219,14 +219,13 @@ span.score {
 }
 
 .tags a {
-  padding: .3em;
-  line-height: 2em;
-  background: #fff;
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
-  border: 1px solid #ddd;
+  background: #fafafa;
+  width: auto;
+  float: left;
+  margin: 0 5px 5px 0;
   text-decoration: none;
 }
+
 .chain_link .action {
   width: 110px;
 }
