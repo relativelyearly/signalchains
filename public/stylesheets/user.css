@@ -46,3 +46,7 @@ a#logout {
 #follow {
   margin-top: 20px;
 }
+
+#user-chains h4 {
+  margin: 10px 0 0 0;
+}

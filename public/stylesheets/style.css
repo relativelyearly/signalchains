@@ -329,6 +329,9 @@ div.image a {
 /* @end */
 
 /* @group Global Text */
+body {
+  font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   font-family: Gill Sans, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
