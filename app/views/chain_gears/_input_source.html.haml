@@ -20,10 +20,10 @@
         %h5
           = render(:partial => input_source.gear.chain_gear_partial, :object => input_source.gear)
         .notes.first
-          = textilize input_source.notes
+          %div{:id => "input_source_#{input_source.id}_notes"}= textilize input_source.notes
           - if input_source.chain.user == current_user
             .notes-form{:id => "notes-form-#{input_source.id}", :style => 'display:none'}
-              - semantic_form_for input_source do |f|
+              - semantic_remote_form_for input_source, :update => "input_source_#{input_source.id}_notes" do |f|
                 = f.input :notes
                 = f.commit_button 'Save'
 

@@ -1,5 +1,6 @@
 class ChainGearsController < ResourceController::Base
   update.wants.html { redirect_to object.chain }
+  update.wants.js { render :text => object.notes}
   destroy.wants.html { redirect_to object.chain }
 
   def sort
