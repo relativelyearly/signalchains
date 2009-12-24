@@ -6,8 +6,13 @@
   = link_to 'EQs', equalizers_path, :id => 'new_eq', :class => 'block-btn w5 col'
   = link_to 'Effects', effects_processors_path, :id => 'new_effects', :class => 'block-btn w5 col'
   .first
-.col.first.w33
+.first.col-3
   %h3 Most Used
   %ul
     - most_used_gear.each do |gear|
       %li= link_to gear.name, gear
+.col-3-2
+  - if Gear.featured
+    .col-3-2#featured-gear
+      %h4 Featured Gear
+      %h4= link_to "<span>#{Gear.featured.name}</span>", Gear.featured, {:style => 'background-image: url(' "#{Gear.featured.image.url(:featured)}" ')'}
