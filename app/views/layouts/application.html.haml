@@ -41,7 +41,7 @@
             %h4 Featured Chain
             - if Chain.featured
               .first.col.w5
-                = link_to(image_tag(Chain.featured.input_source.gear.image.url(:micro)), Chain.featured)
+                = link_to(image_tag(Chain.featured.input_source_image(:micro)), Chain.featured)
               .col.w14
                 = link_to(Chain.featured.name, Chain.featured)
                 by

@@ -2,7 +2,7 @@
   .input_source.col
     .col.first.w10.mic
       .thumb
-        = link_to image_tag(input_source.gear.image.url(:thumb), :alt => input_source.gear.model), input_source.gear.image.url
+        = link_to image_tag(input_source_image(:thumb), :alt => input_source.gear.model), input_source_image
       .meta.first.col.w10
         = link_to '<span>View</span>', input_source.gear, :class => 'btn'
 

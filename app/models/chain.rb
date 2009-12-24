@@ -50,7 +50,15 @@ class Chain < ActiveRecord::Base
   end
 
   def self.featured
-    @featured ||= Chain.first(:conditions => "featured_at is not null", :order => 'featured_at DESC')
+    @featured ||= Chain.complete.first(:conditions => "featured_at is not null", :order => 'featured_at DESC')
+  end
+
+  def input_source_image(style = :original)
+    if input_source.gear
+      input_source.gear.image.url(style)
+    else
+      "/images/#{style}_line_in.png"
+    end
   end
 
   def preamp?
