@@ -39,7 +39,7 @@ class Mic < Gear
   end
 
   def self.patterns
-    ['Cardioid', 'Omni', 'Bi', 'Supercardioid', 'XY', 'ORTF', 'Spaced Pair', 'MS Stereo', 'Blumlein']
+    ['Cardioid', 'Omni', 'Bidirectional', 'Supercardioid', 'XY', 'ORTF', 'Spaced Pair', 'MS Stereo', 'Blumlein', 'Multi']
   end
 
   def self.index_partial
