@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   validates_exclusion_of :login, :in => %w(comments chains equalizers effects_processors dynamics_processors
                                            preamps mics audios chain_gears account password_resets users
-                                           user_sessions gear login logout register admin)
+                                           user_sessions gear login logout register admin home)
 
   has_many :likes, :dependent => :destroy
   has_many :liked_chains, :through => :likes, :source => :chain
