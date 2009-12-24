@@ -375,12 +375,13 @@ ul li {
   border-top: 1px solid #fff;
   -webkit-border-radius:4px;-moz-border-radius:4px;  
   padding: 5px;
+  text-decoration: none;  
 }
-#content ul li a {
-  text-decoration: none;
-}
+
 #content ul li a:hover {
-  text-decoration: underline;
+  border-top: 1px solid #ccc;	
+  text-decoration: none;
+  background: #dedede;
 }
 blockquote {
   border-left: 2px solid #22615e;
