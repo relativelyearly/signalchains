@@ -4,6 +4,8 @@
     = javascript_include_tag('jquery', 'jquery-ui.custom.min', 'plugins/jquery.validate', 'jrails', 'plugins/jquery.form', 'plugins/jquery.scrollTo', 'plugins/jquery.localscroll', 'plugins/jquery.jplayer', '/fancybox/fancybox', 'application.js')
     = stylesheet_link_tag('application', 'style', 'chains', 'events', 'user', 'home', 'custom-theme/custom', 'audioplayer', '/fancybox/fancybox')
     %title= yield(:title) || "Signal Chains"
+    %link{ :href => "/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+
   %body
 
     #master.wrapper
@@ -66,8 +68,7 @@
         .col.w15
           %h3 About
           %ul
-            %li= link_to "What is Signal Chains?", "#"
-            %li= link_to "Blog", "#"
+            %li= link_to "Blog", "http://relativelyearly.com/archive.html"
         .col.w35
           %h3 Contact
           %ul
