@@ -20,7 +20,7 @@
     .first.col.w25
       =textilize @chain.notes
       .tags.col
-        Tags:
+        %h5.first Tags:
         - for tag in @chain.tags
           %span=link_to(h(tag.name), tag_path(tag.name))
 
