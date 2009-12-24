@@ -368,6 +368,7 @@ ul li {
 }
 ul.list {
   padding: 0;
+  margin: 0 0 10px 0;
 }
 ul.list li {
   list-style: none;

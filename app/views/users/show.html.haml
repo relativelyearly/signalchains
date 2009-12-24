@@ -6,6 +6,7 @@
   .col.w10#follow
     = follow_button(@user)
   .first
+
 #feed.col.first.w40
   %h3 Events
   - if @events.empty?
@@ -17,7 +18,10 @@
       = render(:partial => "events/#{event.event_type}", :object => event)
 
 .col.w25#user-chains
-  %h4 Created Chains
+  %h3 Chains
+  - if current_user == @user
+    = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
+  %h4 Created
   %ul.list
     - if @user == current_user
       - @user.chains.each do |chain|
@@ -26,7 +30,7 @@
       - @user.chains.complete.each do |chain|
         %li= link_to chain.name, chain        
 
-  %h4 Liked Chains
+  %h4 Liked
   %ul.list
     - @user.liked_chains.each do |chain|
       %li= link_to chain.name, chain
