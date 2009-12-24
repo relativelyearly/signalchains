@@ -8,9 +8,9 @@
   .first
     
 .stats
-  .first.col-3
-    %h4 Featured Chain
-    - if Chain.featured
+  - if Chain.featured
+    .first.col-3
+      %h4 Featured Chain
       .first.col.w5
         = link_to(image_tag(Chain.featured.input_source_image(:micro)), Chain.featured)
       .col.w14
