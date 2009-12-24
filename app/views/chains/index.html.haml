@@ -5,7 +5,7 @@
   #tops
     %h3 Top Tags
     .tags
-      - if Tag.count > 0
+      - if @tags.any?
         - tag_cloud(@tags, %w()) do |tag, css_class|
           %span= link_to(h(tag.name), tag_path(tag.name))
 .col.w45
