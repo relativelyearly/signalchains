@@ -18,7 +18,7 @@
 
 .col.w25#user-chains
   %h4 Created Chains
-  %ul.hard
+  %ul.list
     - if @user == current_user
       - @user.chains.each do |chain|
         %li= link_to chain.name, chain
@@ -27,12 +27,12 @@
         %li= link_to chain.name, chain        
 
   %h4 Liked Chains
-  %ul.hard
+  %ul.list
     - @user.liked_chains.each do |chain|
       %li= link_to chain.name, chain
   - if @recommended_chains
     %h4 Recommended
-    %ul.hard
+    %ul.list
       - @recommended_chains.each do |chain|
         %li= link_to chain.name, chain
 .first

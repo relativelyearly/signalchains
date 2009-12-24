@@ -8,7 +8,10 @@ $(function() {
       $('.sort_handle.vulnerable').hide();
     }
   )
-
+  
+  $('.notes-form form').submit(function() {
+    $(this).parent().slideUp();
+  })
   
  $('#sortable_chain_gear').sortable({
    axis:'y',

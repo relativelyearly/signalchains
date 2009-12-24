@@ -55,8 +55,8 @@ a{
 /* @end */
 #master {
   background: #e1e1e1;
-  -webkit-box-shadow:0 0 10px #000;
-  -moz-box-shadow:0 0 10px #000;  
+  z-index: 10;
+  position: relative;
 }
 #master #header .container {
   padding: 0;
@@ -220,8 +220,8 @@ div.image a {
 .footer {
   border-top: 2px groove #fff;
   background: #eee url(../images/backgrounds/footer-top.png) no-repeat;	
-  -webkit-box-shadow:0 -10px 10px #000;
-  -moz-box-shadow:0 0 10px #000;    
+  position: relative;
+  z-index: 0;    
 }
 .footer .stats { 
   color: #ccc;
@@ -366,14 +366,14 @@ p, cite {
 ul li {
   margin: .8em 0;
 }
-#content ul {
+ul.list {
   padding: 0;
 }
-#content ul li {
+ul.list li {
   list-style: none;
   margin: 4px 0;
 }
-#content ul li a, .tags a {
+ul.list li a, .tags a {
   display: block;
   background: #f5f5f5;
   border-top: 1px solid #fff;
@@ -382,7 +382,7 @@ ul li {
   text-decoration: none;  
 }
 
-#content ul li a:hover, .tags a:hover {
+ul.list li a:hover, .tags a:hover {
   border-top: 1px solid #ccc;	
   text-decoration: none;
   background: #dedede;
@@ -490,7 +490,7 @@ form.chain .first .col.w35 p{
 }
 /* @end */
 
-ul.incomplete_chain {
+#content ul.incomplete_chain {
   margin: 25px 0;
   padding: .8em;
   color: #eee;
@@ -498,7 +498,15 @@ ul.incomplete_chain {
   -webkit-border-radius:6px;-moz-border-radius:4px;
   background-image: url(../images/backgrounds/grill_background.png);
 }
-
+#content ul.incomplete_chain li a {
+  display: inline;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+#content ul.incomplete_chain li a:hover {
+  text-decoration: underline;
+}
 #sidebar div.ad {
   margin-top: 15px;
   padding-top: 15px;

@@ -166,7 +166,6 @@ span.score {
   border-top: 2px ridge #fff;
   padding: 20px 20px 60px 20px;
   width: 645px;
-  min-height: 170px;
   background: url(../images/backgrounds/gear_rack_tabletop.png) no-repeat 0 bottom;  
   margin-top: 20px;
 }
@@ -195,6 +194,13 @@ span.score {
 #audio .download {
   background: url(../images/backgrounds/plaque-bottom.png) no-repeat center bottom;
   padding-bottom: 40px;
+}
+#audio .loading {
+  background:#74ed7e ;
+  padding: 10px;
+  -webkit-border-radius:4px;-moz-border-radius:4px;
+  display: block;
+  margin-bottom: 15px;
 }
 .chain .info h2 {
   margin-bottom: 0;
