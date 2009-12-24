@@ -1,1 +1,6 @@
-%span== #{microphone.diaphragm_size}-diaphragm #{microphone.pattern} #{microphone.mic_type}
+%span
+  - unless microphone.diaphragm_size.empty?
+    = microphone.diaphragm_size
+    diaphragm
+  = microphone.pattern 
+  = microphone.mic_type

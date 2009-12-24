@@ -15,6 +15,9 @@ a{
 #content a {
   color: #041647;
 }
+#content a.zoom {
+  text-align: center;
+}
 .wrapper {
   width: 950px;
 }

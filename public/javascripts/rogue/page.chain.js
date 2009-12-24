@@ -13,6 +13,11 @@ $(function() {
     $(this).parent().slideUp();
   })
   
+  $('#audio form.chain').submit(function() {
+    $(this).prepend('<small class="loading"><img src="/images/ajax-loader.gif"/> Your audio is uploading. Please be patient.</small>').hide().fadeIn();
+    $('#chain_submit.update').attr({disabled: "disabled"});
+  })
+  
  $('#sortable_chain_gear').sortable({
    axis:'y',
    scroll: true,

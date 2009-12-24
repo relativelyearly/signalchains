@@ -33,7 +33,3 @@
       %p
         %small Attach a short (about 30 seconds) CD-quality audio sample of this chain in action. File size is limited to 5.5mb
 .first
-:javascript
-  $('#audio form.chain').submit(function() {
-    $(this).prepend('<small class="loading"><img src="/images/ajax-loader.gif"/> Your audio is uploading. Please be patient.</small>').hide().fadeIn();
-  })
