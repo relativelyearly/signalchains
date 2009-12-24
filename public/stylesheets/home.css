@@ -39,8 +39,11 @@
   background-color: #aaa;
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
+  border: 1px solid #eee;
 }
-
+#featured-gear a:hover {
+  border: 1px solid #ccc;
+}
 #featured-gear a span {
   display: block;
   padding: 10px;
