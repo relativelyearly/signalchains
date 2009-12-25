@@ -25,7 +25,7 @@ class MicsController < ResourceController::Base
   end
 
   def search
-    @mics = Mic.search(:conditions => params["search"]).all
+    @mics = Mic.searchlogic(:conditions => params["search"]).all
     @class = Mic
 
     respond_to do |format|

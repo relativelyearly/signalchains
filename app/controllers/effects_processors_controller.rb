@@ -25,7 +25,7 @@ class EffectsProcessorsController < ResourceController::Base
   show.wants.html { render 'gear/show' }
 
   def search
-    @effects_processors = EffectsProcessor.search(:conditions => params["search"]).all
+    @effects_processors = EffectsProcessor.searchlogic(:conditions => params["search"]).all
     @class = EffectsProcessor
 
     respond_to do |format|

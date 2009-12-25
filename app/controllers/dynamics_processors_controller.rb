@@ -25,7 +25,7 @@ class DynamicsProcessorsController < ResourceController::Base
   show.wants.html { render 'gear/show' }
 
   def search
-    @dynamics_processors = DynamicsProcessor.search(:conditions => params["search"]).all
+    @dynamics_processors = DynamicsProcessor.searchlogic(:conditions => params["search"]).all
     @class = DynamicsProcessor
 
     respond_to do |format|

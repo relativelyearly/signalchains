@@ -25,7 +25,7 @@ class EqualizersController < ResourceController::Base
   show.wants.html { render 'gear/show' }
 
   def search
-    @equalizers = Equalizer.search(:conditions => params["search"]).all
+    @equalizers = Equalizer.searchlogic(:conditions => params["search"]).all
     @class = Equalizer
 
     respond_to do |format|
