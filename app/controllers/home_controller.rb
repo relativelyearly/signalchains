@@ -5,15 +5,15 @@ class HomeController < ApplicationController
       @events = @user.events
       render 'users/show' and return
     else
-      @new_chains = Chain.complete(:order => 'created_at DESC', :limit => 5)
+      @new_chains = Chain.complete.find(:all, :order => 'created_at DESC', :limit => 5)
       @new_users = User.all(:order => 'created_at DESC', :limit => 5)
     end
   end
-  
+
   def show
-    @new_chains = Chain.complete(:order => 'created_at DESC', :limit => 5)
+    @new_chains = Chain.complete.find(:all, :order => 'created_at DESC', :limit => 5)
     @new_users = User.all(:order => 'created_at DESC', :limit => 5)
-    
+
     render :action => 'index'
   end
 end
