@@ -34,6 +34,7 @@
   %ul.list
     - @user.liked_chains.each do |chain|
       %li= link_to chain.name, chain
+
   - if @recommended_chains
     %h4 Recommended
     %ul.list
