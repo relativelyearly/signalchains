@@ -15,5 +15,8 @@
 class Ad < ActiveRecord::Base
   attr_accessible :image, :url
 
-  has_attached_file(:image, :styles => {:display => '130x100#'})
+  has_attached_file(:image,
+    :styles => {:display => '130x100#'},
+    :storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml")
 end
