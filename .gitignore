@@ -28,3 +28,4 @@ public/system/audios/**
 *.orig
 public/system/images/**
 \#*\#
+signalchains.esproj/**

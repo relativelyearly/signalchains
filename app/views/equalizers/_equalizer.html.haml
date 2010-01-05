@@ -1,4 +1,5 @@
 %span== #{equalizer.bands}-band
 %span= h equalizer.equalizer_type
 %br
-%em= h equalizer.interface
+- if equalizer.interface == "Software"
+  %em= h equalizer.interface

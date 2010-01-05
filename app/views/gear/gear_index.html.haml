@@ -7,7 +7,7 @@
   = link_to 'Effects', effects_processors_path, :id => 'new_effects', :class => 'block-btn w5 col'
   .first
 .first.col-3
-  %h3 Most Used
+  %h4 Most Used
   %ul.list
     - most_used_gear.each do |gear|
       %li= link_to gear.name, gear

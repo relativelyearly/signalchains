@@ -1,5 +1,5 @@
 .unit.w45.col.first
-  .col.thumb
+  .col.w10
     = link_to image_tag(user.avatar.url(:thumb), :alt => user.display_name), user_by_login_path(user.login)
     .social-links
       = follow_button(user)
