@@ -24,10 +24,7 @@ class AudioTest < ActiveSupport::TestCase
 
     subject { @audio }
 
-    should_have_attached_file :high_quality
-    should_have_attached_file :mp3
-    should_have_attached_file :ogg
-
+    should_have_attached_file :file
     should_belong_to :audible
   end
 end

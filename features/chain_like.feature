@@ -6,6 +6,7 @@ Feature: Chain like
   Scenario: When not logged in
     Given I am not logged in
     And a chain exists
+    And the chain is complete
     When I go to the chain's page
     And I follow "like"
     Then I should be on the login page
@@ -13,6 +14,7 @@ Feature: Chain like
   Scenario: When logged in
     Given I am logged in as "test@example.com/password"
     And a chain exists
+    And the chain is complete
     When I go to the chain's page
     And I follow "like"
     Then I should be on the chain's page
@@ -21,6 +23,7 @@ Feature: Chain like
   Scenario: When logged in and previously liked
     Given I am logged in as "test@example.com/password"
     And a chain exists
+    And the chain is complete
     And I have liked that chain
     When I go to the chain's page
     And I follow "unlike"

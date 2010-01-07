@@ -6,10 +6,7 @@ Feature: Chain gear notes
   Scenario: When not logged in
     Given I am not logged in
     And a chain exists with name: "Not my chain"
-    And a preamp exists
-    And a mic exists
-    And a chain gear exists with gear: the preamp, chain: the chain
-    And a chain gear exists with gear: the mic, chain: the chain
+    And the chain is complete
     When I go to the chain's page
     Then I should not see "edit notes"
 

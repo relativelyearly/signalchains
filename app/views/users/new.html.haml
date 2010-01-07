@@ -2,7 +2,7 @@
 .first.col.w25
   - form_for @user, :url => account_path do |f|
     = f.error_messages
-    = f.label :username
+    = f.label :login, 'Username'
     = f.text_field :login
     %br
     %br

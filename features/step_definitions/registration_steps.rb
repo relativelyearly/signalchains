@@ -23,7 +23,7 @@ Given /^I am logged in as "(.*)\/(.*)"$/ do |login, password|
   end
 
   When %{I go to the login page}
-  And %{I fill in "login" with "#{login}"}
+  And %{I fill in "user_session_login" with "#{login}"}
   And %{I fill in "password" with "#{password}"}
   And %{I press "Login"}
 
