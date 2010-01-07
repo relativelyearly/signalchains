@@ -26,3 +26,15 @@ require 'pickle/email/world'
 Dir.glob(File.dirname(__FILE__) + '/../../test/factories/*_factory.rb').each do |lib|
   require lib
 end
+
+require 'cucumber/thinking_sphinx/external_world'
+Cucumber::ThinkingSphinx::ExternalWorld.new
+
+# Transactional fixtures need to be false for sphinx
+require 'database_cleaner'
+Cucumber::Rails::World.use_transactional_fixtures = false
+DatabaseCleaner.strategy = :truncation
+
+Before do
+  DatabaseCleaner.clean
+end

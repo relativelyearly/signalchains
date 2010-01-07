@@ -3,10 +3,12 @@ set :repository,  "git@github.com:relativelyearly/signalchains.git"
 set :user, "deploy"
 set :deploy_via, :fast_remote_cache
 set :scm, :git
+set :deploy_to, '/data/signalchains'
 
-role(:app) { Redprovision::Server.all["app"] }
-role(:web) { Redprovision::Server.all["app"] }
-role(:db) { Redprovision::Server.all["db"] }
+set :host, 'signalchains.com'
+role :app, host
+role :web, host
+role :db,  host
 
 # Customise the deployment
 set :keep_releases, 6

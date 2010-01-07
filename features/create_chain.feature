@@ -27,7 +27,6 @@ Feature: Create Chain
     And I should see "Awesome Guitar"
     And I should see "A nice sounding setup for my guitar rig, man."
 
-  @current
   Scenario: Adding audio
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"
@@ -212,13 +211,10 @@ Feature: Create Chain
     When I go to the chains index page
     Then I should not see "Awesome Guitar"
 
-  @current
   Scenario: Complete chains viewable by public
-    Given I am logged in as "test@example.com/password"
-    And I have started a chain named "Awesome Guitar"
-    And I have added an input source to "Awesome Guitar"
-    And I have added a preamp to "Awesome Guitar"
-    And I have added an audio file to "Awesome Guitar"
+    Given I am not logged in
+    And a chain exists with name: "Awesome Guitar"
+    And the chain is complete
     When I go to the chains index page
     Then I should see "Awesome Guitar"
 

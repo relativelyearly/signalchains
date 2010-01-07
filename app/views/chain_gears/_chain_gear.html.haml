@@ -10,7 +10,7 @@
         - if chain_gear.chain.user == current_user
           .admin
             = link_to('edit notes', edit_chain_gear_path(chain_gear), :class => 'show-form edit', :title => 'edit notes')
-            = link_to ('delete gear', chain_gear, :method => :delete, :class => 'delete', :title => 'delete gear')      
+            = link_to('delete gear', chain_gear, :method => :delete, :class => 'delete', :title => 'delete gear')      
         %h4
           =h chain_gear.gear.make
           =h chain_gear.gear.model

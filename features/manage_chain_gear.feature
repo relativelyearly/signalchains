@@ -6,8 +6,7 @@ Feature: Manage chain gear
   Scenario: When not logged in
     Given I am not logged in
     And a chain exists
-    And a preamp exists
-    And a chain gear exists with gear: the preamp, chain: the chain
+    And the chain is complete
     When I go to the chain's page
     Then I should not see "delete"
 

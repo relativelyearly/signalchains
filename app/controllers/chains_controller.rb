@@ -10,10 +10,20 @@ class ChainsController < ResourceController::Base
   end
 
   show.before do
-    @input_source = @chain.input_source(:include => :chain)
-    @preamp = @chain.preamp(:include => :chain)
-    @gear = @chain.processors(:include => :chain).sort {|x,y| x.position <=> y.position}
-    @chain.build_audio unless @chain.audio
+    if object
+      @input_source = object.input_source(:include => :chain)
+      @preamp = object.preamp(:include => :chain)
+      @gear = object.processors(:include => :chain).sort {|x,y| x.position <=> y.position}
+      object.build_audio unless object.audio
+    end
+  end
+
+  show.wants.html do
+    if object
+      render(:action => :show)
+    else
+      render(:file => "public/404.html", :layout => false, :status => 404)
+    end
   end
 
   update.failure.wants.html do
@@ -49,14 +59,30 @@ class ChainsController < ResourceController::Base
 
   private
   def object
-    chain = Chain.find(params[:id]) if params[:id]
-    @object ||= Chain.new unless chain
-    @object ||= Chain.complete.find(params[:id]) if chain && chain.complete?
-    @object ||= current_user.chains.find(params[:id])
+    return @object if @object
+    chain = Chain.find(params[:id])
+
+    if (chain && chain.complete?) || (current_user && chain.user == current_user)
+      @object = chain
+    end
+
     @object
   end
 
   def collection
-    @collection ||= Chain.complete
+    return @collection if @collection
+    if params[:user_id]
+      user = User.find(params[:user_id])
+    elsif params[:username]
+      user = User.find_by_login(params[:username])
+    end
+    if user
+      @collection = user.chains.all(:include => [:user]) if current_user == user
+      @collection = user.chains.complete.all(:include => [:user]) unless current_user == user
+    else
+      @collection = Chain.complete
+    end
+
+    @collection
   end
 end

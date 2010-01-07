@@ -7,7 +7,7 @@ Feature: Follow user
     Given I am not logged in
     And a user exists with login: "friend"
     When I go to friend's profile page
-    Then I should not see "follow"
+    Then I should not see "<span>follow</span>"
 
   Scenario: Logged in without following
     Given I am logged in as "test@example.com/password"
@@ -15,7 +15,7 @@ Feature: Follow user
     When I go to friend's profile page
     And I follow "follow"
     Then I should be on friend's profile page
-    And I should see "unfollow"
+    And I should see "<span>unfollow</span>"
 
   Scenario: Logged in currently following
     Given I am logged in as "test@example.com/password"
@@ -24,4 +24,4 @@ Feature: Follow user
     When I go to friend's profile page
     And I follow "unfollow"
     Then I should be on friend's profile page
-    And I should see "follow"
+    And I should see "<span>follow</span>"

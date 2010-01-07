@@ -35,15 +35,22 @@ Given /^I have added a preamp to "([^\"]*)"$/ do |name|
 end
 
 Given /^I have added an audio file to "([^\"]*)"$/ do |name|
-   When %{I view the chain named "#{name}"}
-   When %{I attach the file at "test/audio_files/guitar.aif" to "chain_audio_attributes_file"}
-   When %{I press "Submit"}
+  chain = Chain.find_by_name(name)
+  Factory(:audio, :audible => chain)
 end
 
 Given /^I have added a dynamics processor to "([^\"]*)"$/ do |name|
   chain = Chain.find(:first, :conditions => {:name => name})
   dynamics_processor = Factory(:dynamics_processor)
   Factory(:chain_gear, :gear => dynamics_processor, :chain => chain)
+end
+
+Given /^#{capture_model} is complete$/ do |model_name|
+  chain = model(model_name)
+  Given %{I have added an input source to "#{chain.name}"}
+  Given %{I have added a preamp to "#{chain.name}"}
+  Given %{I have added an audio file to "#{chain.name}"}
+  chain.update_attribute(:status, 'complete')
 end
 
 When /^I add an input source to "([^\"]*)"$/ do |name|

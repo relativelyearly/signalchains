@@ -27,6 +27,12 @@ class UsersController < ApplicationController
       @events = @user.events
       @recommended_chains = Chain.complete.find(:all, :order => 'likes_count DESC', :limit => 5)
     end
+
+    if @user == current_user
+      @chains = @user.chains.all(:limit => 5, :order => 'created_at DESC')
+    else
+      @chains = @user.chains.complete.all(:limit => 5, :order => 'created_at DESC')
+    end
   end
 
   def edit

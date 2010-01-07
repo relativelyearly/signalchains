@@ -28,4 +28,5 @@ public/system/audios/**
 *.orig
 public/system/images/**
 \#*\#
+db/*.sql.bz2
 signalchains.esproj/**
