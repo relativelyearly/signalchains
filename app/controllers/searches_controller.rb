@@ -4,6 +4,9 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.new(:keyword => params[:id], :page => params[:page])
+    @chains = @search.chains(2)
+    @users = @search.users(2)
+    @gear = @search.gear(2)
   end
 
   def gear

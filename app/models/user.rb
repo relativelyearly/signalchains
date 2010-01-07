@@ -78,31 +78,33 @@ class User < ActiveRecord::Base
 
     has :created_at, :updated_at
     set_property :delta => true
+    set_property :enable_star => true
+    set_property :min_prefix_len => 3
   end
 
   def admin?
     has_role?("admin")
   end
-  
+
   def has_role?(role)
     roles.include?(role)
   end
-     
+
   def has_any_role?(*roles)
     roles.each do |role|
       return true if has_role?(role)
     end
     false
   end
- 
+
   def add_role(role)
     self.roles << role unless self.has_role?(role)
   end
-     
+
   def remove_role(role)
     self.roles.delete(role)
   end
-  
+
   def clear_roles
     self.roles = []
   end
@@ -129,7 +131,7 @@ class User < ActiveRecord::Base
   def self.find_by_login_or_email(login)
     User.find_by_login(login) || User.find_by_email(login)
   end
-  
+
   private
   def make_default_roles
     clear_roles if roles.nil?

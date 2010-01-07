@@ -22,11 +22,11 @@ class Search
 
   def chains(per_page=10)
     Chain.complete.search(self.keyword, :page => self.page, :per_page => per_page,
-      :order => 'likes_count DESC')
+      :order => 'likes_count DESC', :star => true)
   end
   
   def users(per_page=10)
-    User.search(self.keyword, :page => self.page, :per_page => per_page, :order => :login)
+    User.search(self.keyword, :page => self.page, :per_page => per_page, :order => :login, :star => true)
   end
 
   def gear(per_page=10)
@@ -34,7 +34,8 @@ class Search
       :classes => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
       :page => self.page,
       :per_page => per_page, 
-      :order => :created_at
+      :order => :created_at,
+      :star => true
   end
 
   def errors
