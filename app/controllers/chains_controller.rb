@@ -78,7 +78,7 @@ class ChainsController < ResourceController::Base
     end
     if user
       @collection = user.chains.all(:include => [:user]) if current_user == user
-      @collection = user.complete.all(:include => [:user]) unless current_user == user
+      @collection = user.chains.complete.all(:include => [:user]) unless current_user == user
     else
       @collection = Chain.complete
     end
