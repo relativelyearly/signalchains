@@ -38,7 +38,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags, :only => [:show]
   map.resource :account, :controller => 'users'
   map.resources :password_resets
-  map.resources :users, :except => [:show], :member => {:follow => :get}
+  map.resources :users, :except => [:show], :member => {:follow => :get} do |user|
+    user.resources :chains
+  end
   map.resource :user_session
 
   map.namespace(:admin) do |admin|
@@ -59,5 +61,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.home 'home', :controller => 'home', :action => 'show'
   map.root :controller => 'home', :action => 'index'
+  map.chains_by_login ':username/chains', :controller => 'chains', :action => 'index'
   map.user_by_login ':id', :controller => 'users', :action => 'show'
 end

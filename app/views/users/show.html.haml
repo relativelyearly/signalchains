@@ -23,16 +23,14 @@
     = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
   %h4 Created
   %ul.list
-    - if @user == current_user
-      - @user.chains.each do |chain|
-        %li= link_to chain.name, chain
-    - else
-      - @user.chains.complete.each do |chain|
-        %li= link_to chain.name, chain        
+    - @chains.each do |chain|
+      %li= link_to chain.name, chain
+  - if @chains.size > 0
+    = link_to '<span>View All</span>', chains_by_login_path(:username => @user.login), :class => 'btn'
 
   %h4 Liked
   %ul.list
-    - @user.liked_chains.each do |chain|
+    - @user.liked_chains.all(:limit => 5, :order => 'created_at DESC').each do |chain|
       %li= link_to chain.name, chain
 
   - if @recommended_chains

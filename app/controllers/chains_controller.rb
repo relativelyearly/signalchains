@@ -70,6 +70,19 @@ class ChainsController < ResourceController::Base
   end
 
   def collection
-    @collection ||= Chain.complete
+    return @collection if @collection
+    if params[:user_id]
+      user = User.find(params[:user_id])
+    elsif params[:username]
+      user = User.find_by_login(params[:username])
+    end
+    if user
+      @collection = user.chains.all(:include => [:user]) if current_user == user
+      @collection = user.complete.all(:include => [:user]) unless current_user == user
+    else
+      @collection = Chain.complete
+    end
+
+    @collection
   end
 end

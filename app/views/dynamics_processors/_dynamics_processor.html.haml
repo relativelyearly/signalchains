@@ -1,4 +1,5 @@
 %span= h dynamics_processor.compression_type
 %span= h dynamics_processor.circuitry
 %br
-%em= h dynamics_processor.interface
+- if dynamics_processor.interface == "Software"
+  %em= h dynamics_processor.interface

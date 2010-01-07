@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     if logged_in?
       @user = current_user
       @events = @user.events
+      @chains = @user.chains.all(:limit => 5, :order => 'created_at DESC')
       render 'users/show' and return
     else
       @new_chains = Chain.complete.find(:all, :order => 'created_at DESC', :limit => 5)

@@ -1,3 +1,4 @@
 %span= h effects_processor.effects_type
 %br
-%em= h effects_processor.interface
+- if effects_processor.interface == "Software"
+  %em= h effects_processor.interface
