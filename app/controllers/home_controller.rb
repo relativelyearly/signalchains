@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     if logged_in?
       @user = current_user
-      @events = @user.events.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 20, :page => params[:page])
+      @events = @user.events.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 15, :page => params[:page])
       @chains = @user.chains.all(:limit => 5, :order => 'created_at DESC')
       render 'users/show' and return
     else
