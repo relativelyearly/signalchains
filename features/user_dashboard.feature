@@ -24,7 +24,6 @@ Feature: User dashboard
     And I should see "A really awesome chain"
     And I should see "What an awesome chain."
 
-  @current
   Scenario: Someone I follow creates a chain
     Given I am logged in as "test@example.com/password"
     And a user exists with login: "bob"
@@ -35,6 +34,18 @@ Feature: User dashboard
     Then I should see "bob"
     And I should see "created a new chain"
     And I should see "A really awesome chain"
+
+  @current
+  Scenario: Someone I follow follows someone
+    Given I am logged in as "test@example.com/password"
+    And a user: "bob" exists with login: "bob"
+    And I have followed the user
+    And a user: "rob" exists with login: "rob"
+    And a follow exists with user: user "bob", followed: user "rob"
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "is now following"
+    And I should see "rob"
 
   @pending
   Scenario: Someone I follow recommends some gear
@@ -65,3 +76,6 @@ Feature: User dashboard
     Then I should see "bob"
     And I should see "created a new chain"
     And I should see "A really awesome chain"
+  
+  
+  

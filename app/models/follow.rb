@@ -14,4 +14,9 @@ class Follow < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :followed, :class_name => 'User'
+
+  fires :following, :on => :create,
+                    :actor => :user,
+                    :subject => :followed,
+                    :for => lambda {|follow| follow.user.followers}
 end

@@ -1,0 +1,5 @@
+.event.follow
+  %p
+    = link_to following.actor.display_name, user_by_login_path(following.actor.login)
+    is now following
+    = link_to following.subject.display_name, user_by_login_path(following.subject)
