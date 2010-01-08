@@ -63,6 +63,14 @@ class Chain < ActiveRecord::Base
     end
   end
 
+  def input_source_model
+    if input_source.gear
+      input_source.gear.model
+    else
+      'line in'
+    end
+  end
+
   def preamp?
      gear.any? {|gear| gear.preamp?}
   end
