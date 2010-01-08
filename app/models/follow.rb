@@ -18,5 +18,5 @@ class Follow < ActiveRecord::Base
   fires :following, :on => :create,
                     :actor => :user,
                     :subject => :followed,
-                    :for => lambda {|follow| follow.user.followers}
+                    :for => lambda {|follow| (follow.user.followers + Array(follow.followed)).uniq}
 end
