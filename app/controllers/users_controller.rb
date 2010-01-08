@@ -20,11 +20,11 @@ class UsersController < ApplicationController
     if params[:id]
       @user = User.find_by_login(params[:id])
       render(:file => "public/404.html", :layout => false, :status => 404) and return unless @user
-      @events = @user.events_about_self.all(:include => [:actor, :secondary_subject, :subject])
+      @events = @user.events_about_self.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 10, :page => params[:page])
     else
       redirect_to(new_user_session_path) and return unless current_user
       @user = current_user
-      @events = @user.events
+      @events = @user.events.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 20, :page => params[:page])
       @recommended_chains = Chain.complete.find(:all, :order => 'likes_count DESC', :limit => 5)
     end
 
