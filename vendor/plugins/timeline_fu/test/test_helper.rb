@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'activerecord'
+require 'active_record'
 require 'mocha'
 require 'test/unit'
 require 'logger'
@@ -23,17 +23,28 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string  :title
   end
 
+  create_table :list_with_fors do |t|
+    t.integer :author_id
+    t.string  :title
+  end
+
   create_table :comments do |t|
     t.integer :list_id, :author_id
     t.string  :body
+  end
+
+  create_table :timeline_events do |t|
+    t.string   :event_type, :subject_type,  :actor_type,  :secondary_subject_type
+    t.integer               :subject_id,    :actor_id,    :secondary_subject_id
+    t.timestamps
   end
 end
 
 class Person < ActiveRecord::Base
   attr_accessor :new_watcher, :fire
-  
-  fires :follow_created,  :on     => :update, 
-                          :actor  => :new_watcher, 
+
+  fires :follow_created,  :on     => :update,
+                          :actor  => :new_watcher,
                           :if     => lambda { |person| !person.new_watcher.nil? }
   fires :person_updated,  :on     => :update,
                           :if     => :fire?
@@ -46,9 +57,22 @@ end
 class List < ActiveRecord::Base
   belongs_to :author, :class_name => "Person"
   has_many :comments
-  
-  fires :list_created_or_updated,  :actor  => :author, 
+
+  fires :list_created_or_updated,  :actor  => :author,
                                    :on     => [:create, :update]
+end
+
+class ListWithFor < ActiveRecord::Base
+  belongs_to :author, :class_name => "Person"
+  has_many :comments
+
+  fires :list_created_or_updated,  :actor  => :author,
+                                   :on     => [:create, :update],
+                                   :for    => :target
+
+  def target
+    self.author
+  end
 end
 
 class Comment < ActiveRecord::Base
@@ -64,22 +88,30 @@ class Comment < ActiveRecord::Base
                           :secondary_subject => :self
 end
 
-TimelineEvent = Class.new
+class TimelineEvent < ActiveRecord::Base
+  belongs_to :actor,              :polymorphic => true
+  belongs_to :subject,            :polymorphic => true
+  belongs_to :secondary_subject,  :polymorphic => true
+end
+
+UserTimelineEvent = Class.new
 
 class Test::Unit::TestCase
+  include Mocha::ParameterMatchers
+
   protected
     def hash_for_list(opts = {})
       {:title => 'whatever'}.merge(opts)
     end
-    
+
     def create_list(opts = {})
       List.create!(hash_for_list(opts))
     end
-    
+
     def hash_for_person(opts = {})
       {:email => 'james'}.merge(opts)
     end
-    
+
     def create_person(opts = {})
       Person.create!(hash_for_person(opts))
     end

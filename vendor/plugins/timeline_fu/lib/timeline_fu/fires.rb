@@ -29,7 +29,13 @@ module TimelineFu
           end
           create_options[:event_type] = event_type.to_s
 
-          TimelineEvent.create!(create_options)
+          timeline_event = TimelineEvent.create!(create_options)
+
+          if opts[:for]
+            Array(send(opts[:for])).each do |target|
+              UserTimelineEvent.create!(:target => target, :timeline_event => timeline_event)
+            end
+          end
         end
 
         send(:"after_#{opts[:on]}", method_name, :if => opts[:if])

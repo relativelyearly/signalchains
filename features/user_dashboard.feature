@@ -24,14 +24,16 @@ Feature: User dashboard
     And I should see "A really awesome chain"
     And I should see "What an awesome chain."
 
+  @current
   Scenario: Someone I follow creates a chain
     Given I am logged in as "test@example.com/password"
     And a user exists with login: "bob"
     And I have followed the user
     And a chain exists with name: "A really awesome chain", user: the user
+    And the chain is complete
     When I go to the homepage
     Then I should see "bob"
-    And I should see "created"
+    And I should see "created a new chain"
     And I should see "A really awesome chain"
 
   @pending
@@ -58,7 +60,8 @@ Feature: User dashboard
     Given I am logged in as "test@example.com/password"
     Given a user exists with login: "bob"
     And a chain exists with name: "A really awesome chain", user: the user
+    And the chain is complete
     When I go to bob's profile page
     Then I should see "bob"
-    And I should see "created"
+    And I should see "created a new chain"
     And I should see "A really awesome chain"

@@ -5,11 +5,17 @@ class CreateTimelineEvents < ActiveRecord::Migration
       t.integer               :subject_id,    :actor_id,    :secondary_subject_id
       t.timestamps
     end
+
+    create_table :user_timeline_events do |t|
+      t.integer  :target_id, :timeline_event_id
+      t.timestamps
+    end
   end
- 
+
   def self.down
     drop_table :timeline_events
+    drop_table :user_timeline_events
   end
 end
- 
+
 

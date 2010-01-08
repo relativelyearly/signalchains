@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221201432) do
+ActiveRecord::Schema.define(:version => 20100108165544) do
 
   create_table "ads", :force => true do |t|
     t.string   "image_file_name"
@@ -205,6 +205,14 @@ ActiveRecord::Schema.define(:version => 20091221201432) do
     t.integer  "subject_id"
     t.integer  "actor_id"
     t.integer  "secondary_subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_timeline_events", :force => true do |t|
+    t.integer  "target_id"
+    t.integer  "timeline_event_id"
+    t.string   "target_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

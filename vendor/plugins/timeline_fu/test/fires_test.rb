@@ -75,4 +75,27 @@ class FiresTest < Test::Unit::TestCase
                                          :event_type        => 'comment_deleted')
     @comment.destroy
   end
+
+  def test_should_create_user_timeline_event_with_for
+    @list = ListWithFor.new(hash_for_list(:author => @james));
+    timeline_event = TimelineEvent.new(:actor => @james, :subject => @list, :event_type => 'list_created_or_updated')
+    TimelineEvent.stubs(:create!).with(:actor => @james, :subject => @list, :event_type => 'list_created_or_updated').returns(timeline_event)
+    UserTimelineEvent.expects(:create!).with(:target => @james, :timeline_event => timeline_event)
+    @list.save
+    @list.author = @mat
+    timeline_event = TimelineEvent.new(:actor => @mat, :subject => @list, :event_type => 'list_created_or_updated')
+    TimelineEvent.stubs(:create!).with(:actor => @mat, :subject => @list, :event_type => 'list_created_or_updated').returns(timeline_event)
+    UserTimelineEvent.expects(:create!).with(:target => @mat, :timeline_event => timeline_event)
+    @list.save
+  end
+  
+  def test_should_create_multiple_user_timeline_event_with_for
+    @list = ListWithFor.new(hash_for_list(:author => @james));
+    @list.stubs(:target).returns([@james, @mat])
+    timeline_event = TimelineEvent.new(:actor => @james, :subject => @list, :event_type => 'list_created_or_updated')
+    TimelineEvent.stubs(:create!).with(:actor => @james, :subject => @list, :event_type => 'list_created_or_updated').returns(timeline_event)
+    UserTimelineEvent.expects(:create!).with(:target => @james, :timeline_event => timeline_event)
+    UserTimelineEvent.expects(:create!).with(:target => @mat, :timeline_event => timeline_event)
+    @list.save
+  end
 end

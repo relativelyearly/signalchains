@@ -1,8 +1,0 @@
---- 
-format: 1
-handler: 
-  commit: aea06b78d4ea33223d6fb2b589a1eea86a108856
-  branch: master
-lock: false
-repository_class: Piston::Git::Repository
-repository_url: git://github.com/giraffesoft/timeline_fu.git
