@@ -32,7 +32,13 @@ module TimelineFu
           timeline_event = TimelineEvent.create!(create_options)
 
           if opts[:for]
-            Array(send(opts[:for])).each do |target|
+            if opts[:for].class == Proc
+              targets = opts[:for].call(self)
+            else
+              targets = Array(send(opts[:for].to_sym))
+            end
+
+            targets.each do |target|
               UserTimelineEvent.create!(:target => target, :timeline_event => timeline_event)
             end
           end

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if params[:id]
       @user = User.find_by_login(params[:id])
       render(:file => "public/404.html", :layout => false, :status => 404) and return unless @user
-      @events = @user.events_about_self.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 10, :page => params[:page])
+      @events = @user.events_about_self.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 15, :page => params[:page])
     else
       redirect_to(new_user_session_path) and return unless current_user
       @user = current_user
