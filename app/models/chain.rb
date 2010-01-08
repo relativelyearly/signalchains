@@ -37,6 +37,10 @@ class Chain < ActiveRecord::Base
                     :for => lambda {|chain| chain.user.followers},
                     :if => :fire?
 
+  def target
+    self.user.followers
+  end
+
   def fire?
     self.complete? && TimelineEvent.first(:conditions => {:subject_type => 'Chain', :subject_id => self.id}).nil?
   end
