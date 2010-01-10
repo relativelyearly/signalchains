@@ -30,14 +30,15 @@
   - if @chains.size > 0
     = link_to '<span>View All</span>', chains_by_login_path(:username => @user.login), :class => 'btn'
 
-  %h4 Liked
-  %ul.list
-    - @user.liked_chains.all(:limit => 5, :order => 'created_at DESC').each do |chain|
-      %li= link_to chain.name, chain
-
-  - if @recommended_chains
-    %h4 Recommended
+  - unless @user.liked_chains.empty?
+    %h4 Liked
     %ul.list
-      - @recommended_chains.each do |chain|
+      - @user.liked_chains.all(:limit => 5, :order => 'created_at DESC').each do |chain|
         %li= link_to chain.name, chain
+
+    - if @recommended_chains
+      %h4 Recommended
+      %ul.list
+        - @recommended_chains.each do |chain|
+          %li= link_to chain.name, chain
 .first

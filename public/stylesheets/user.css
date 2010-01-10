@@ -37,6 +37,16 @@ a#logout {
   margin: 5px 0;
   padding: 0;
 }
+#feed .event a {
+  text-decoration: none;
+}
+#feed .event a:hover {
+  text-decoration: underline;
+}
+
+#feed .event.new_chain {
+  font-weight: bold;
+}
 
 .user-page.bucket {
   padding: 0 28px 20px 28px;
