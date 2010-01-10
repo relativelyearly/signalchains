@@ -18,6 +18,9 @@ a{
 #content a.zoom {
   text-align: center;
 }
+.unit a img {
+  display: block;
+}
 .wrapper {
   width: 950px;
 }

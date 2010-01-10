@@ -1,22 +1,23 @@
-%h2 Search for "#{@search.keyword}" 
+#search_results
+  %h2 Search for "#{@search.keyword}" 
 
-- unless @gear.empty?
-  %h3 Gear
-  #gear= render(:partial => 'gear/index_gear', :collection => @gear)
+  - unless @gear.empty?
+    %h3 Gear
+    #gear= render(:partial => 'gear/index_gear', :collection => @gear)
 
-  - if @gear.total_entries > 2
-    = link_to '<span>All Gear</span>', gear_search_path(@search.keyword), :class => 'btn w10'
+    - if @gear.total_entries > 2
+      = link_to '<span>All Gear</span>', gear_search_path(@search.keyword), :class => 'btn w10'
 
-- unless @users.empty?
-  %h3 Users
-  #users= render(:partial => 'users/user', :collection => @users)
+  - unless @users.empty?
+    %h3 Users
+    #users= render(:partial => 'users/user', :collection => @users)
 
-  - if @users.total_entries > 2
-    = link_to '<span>All Users</span>', users_search_path(@search.keyword), :class => 'btn w10'
+    - if @users.total_entries > 2
+      = link_to '<span>All Users</span>', users_search_path(@search.keyword), :class => 'btn w10'
 
-- unless @chains.empty?
-  %h3 Chains
-  #chains= render(:partial => 'chains/chain', :collection => @chains)
+  - unless @chains.empty?
+    %h3 Chains
+    #chains= render(:partial => 'chains/chain', :collection => @chains)
 
-  - if @chains.total_entries > 2
-    = link_to '<span>All Chains</span>', chains_search_path(@search.keyword), :class => 'btn w10'
+    - if @chains.total_entries > 2
+      = link_to '<span>All Chains</span>', chains_search_path(@search.keyword), :class => 'btn w10'
