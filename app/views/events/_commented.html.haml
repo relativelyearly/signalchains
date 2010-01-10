@@ -2,6 +2,6 @@
   %p
     = link_to commented.actor.display_name, user_by_login_path(commented.actor.login)
     commented on
-    = link_to commented.secondary_subject.name, commented.secondary_subject
+    %strong= link_to commented.secondary_subject.name, commented.secondary_subject
   %blockquote
     %p=textilize commented.subject.body

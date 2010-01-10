@@ -58,5 +58,10 @@ a#logout {
 }
 
 #user-chains h4 {
-  margin: 10px 0 0 0;
+  margin: 15px 0 0 0;
+}
+
+#user-chains h4 a {
+  text-decoration: none;
+  color: #000;  
 }

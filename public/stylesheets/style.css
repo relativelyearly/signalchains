@@ -332,6 +332,9 @@ div.image a {
   display: block;
 }
 /* @end */
+#featured-gear-sidebar, #featured-chain {
+  margin-bottom: 15px;
+}
 /* @end */
 
 /* @group Global Text */

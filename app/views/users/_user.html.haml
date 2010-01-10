@@ -1,9 +1,16 @@
-.unit.w45.col.first
-  .col.w10
+.unit.w65.col.first
+  .col.first.w11
     = link_to image_tag(user.avatar.url(:thumb), :alt => user.display_name), user_by_login_path(user.login)
   .col.w30
     %h4
-      = link_to user.display_name, user_by_login_path(user.login)
-    = follow_button(user)
+      = link_to user.display_name, user_by_login_path(user.login)  
+    .col.first.w10
+      %p
+        = link_to "#{user.chains.count} Chains", root_url
+        %br
+          = user.followers.count
+          Followers
+    .col.w15
+      = follow_button(user)
   .first
 %br.clear

@@ -50,9 +50,9 @@
                 = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
               .col.w14
                 = link_to(Gear.featured.name, Gear.featured)
-          #featured-chain.first
-            %h4 Featured Chain
-            - if Chain.featured
+          - if Chain.featured                
+            #featured-chain.first
+              %h4 Featured Chain
               .first.col.w5
                 = link_to(image_tag(Chain.featured.input_source_image(:micro)), Chain.featured)
               .col.w14

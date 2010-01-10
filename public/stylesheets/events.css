@@ -4,6 +4,15 @@
   margin: 1em 0;
   width: ;
 }
+#feed {
+  padding-left: 10px;
+}
 .event {
   margin-bottom: 20px;
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#search_results #chains .unit.w45 {
+  width: 650px;
 }

@@ -5,13 +5,21 @@
       = @user.display_name
   .col.w10#follow
     = follow_button(@user)
+    - if current_user == @user
+      = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'    
   .first
 
 #feed.col.first.w40
   %h3 Events
   - if @events.empty?
-    %p
-      %small There is no activity to show here, and that's pretty lame. Start following someone or do something fantastic to fill this empty void.
+    - if @user == current_user
+      %p
+        %small There is no activity to show here, and that's pretty lame. Start following someone or do something fantastic to fill this empty void.
+    - else
+      %p
+        %small
+          = @user.display_name
+          hasn't really done anything worth talking about. Try back later when they get their bearings.
 
   -else
     - for event in @events
@@ -21,14 +29,13 @@
 
 .col.w25#user-chains
   %h3 Chains
-  - if current_user == @user
-    = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
-  %h4 Created
-  %ul.list
-    - @chains.each do |chain|
-      %li= link_to chain.name, chain
-  - if @chains.size > 0
-    = link_to '<span>View All</span>', chains_by_login_path(:username => @user.login), :class => 'btn'
+  - unless @user.chains.empty?
+    %h4= link_to 'Created', chains_by_login_path(:username => @user.login)
+    %ul.list
+      - @chains.each do |chain|
+        %li= link_to chain.name, chain
+    - if @chains.size > 0
+      = link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
 
   - unless @user.liked_chains.empty?
     %h4 Liked
