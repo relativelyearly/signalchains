@@ -2,4 +2,4 @@
   %p
     = link_to new_chain.actor.display_name, user_by_login_path(new_chain.actor.login)
     created a chain called
-    = link_to new_chain.subject.name, new_chain.subject
+    %strong= link_to new_chain.subject.name, new_chain.subject

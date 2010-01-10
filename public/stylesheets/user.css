@@ -44,10 +44,6 @@ a#logout {
   text-decoration: underline;
 }
 
-#feed .event.new_chain {
-  font-weight: bold;
-}
-
 .user-page.bucket {
   padding: 0 28px 20px 28px;
   width: 630px;
