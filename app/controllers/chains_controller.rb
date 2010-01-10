@@ -4,9 +4,9 @@ class ChainsController < ResourceController::Base
 
   index.before {@tags = Chain.tag_counts_on(:tags)}
 
-  create.after do
+  create.before do
     object.user = current_user
-    object.save
+    object
   end
 
   show.before do

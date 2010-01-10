@@ -29,9 +29,51 @@ Feature: User dashboard
     And a user exists with login: "bob"
     And I have followed the user
     And a chain exists with name: "A really awesome chain", user: the user
+    And the chain is complete
     When I go to the homepage
     Then I should see "bob"
-    And I should see "created"
+    And I should see "created a new chain"
+    And I should see "A really awesome chain"
+
+  Scenario: Someone follows me
+    Given a user: "bob" exists with login: "bob"
+    And I am logged in as "test/password"
+    And a follow exists with user: user "bob", followed: the user
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "is now following"
+    And I should see "test"
+
+  Scenario: Someone I follow follows someone
+    Given I am logged in as "test@example.com/password"
+    And a user: "bob" exists with login: "bob"
+    And I have followed the user
+    And a user: "rob" exists with login: "rob"
+    And a follow exists with user: user "bob", followed: user "rob"
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "is now following"
+    And I should see "rob"
+
+  Scenario: Someone I follow likes a chain
+    Given I am logged in as "test@example.com/password"
+    And a user: "bob" exists with login: "bob"
+    And I have followed the user
+    And a chain exists with name: "A chain you should know about"
+    And the user has liked the chain
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "has liked a chain"
+    And I should see "A chain you should know about"
+
+  Scenario: Someone likes my chain
+    Given I am logged in as "test@example.com/password"
+    And a chain exists with name: "A really awesome chain", user: the user
+    And a user: "bob" exists with login: "bob"
+    And a like exists with user: user "bob", chain: the chain
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "has liked a chain"
     And I should see "A really awesome chain"
 
   @pending
@@ -58,7 +100,8 @@ Feature: User dashboard
     Given I am logged in as "test@example.com/password"
     Given a user exists with login: "bob"
     And a chain exists with name: "A really awesome chain", user: the user
+    And the chain is complete
     When I go to bob's profile page
     Then I should see "bob"
-    And I should see "created"
+    And I should see "created a new chain"
     And I should see "A really awesome chain"

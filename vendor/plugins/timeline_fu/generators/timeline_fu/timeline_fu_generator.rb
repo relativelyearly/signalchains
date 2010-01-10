@@ -4,6 +4,7 @@ class TimelineFuGenerator < Rails::Generator::Base
       m.migration_template 'migration.rb', 'db/migrate', 
         :migration_file_name => 'create_timeline_events'
       m.template 'model.rb', 'app/models/timeline_event.rb'
+      m.template 'user_timeline_event_model.rb', 'app/models/user_timeline_event.rb'
     end
   end
 end

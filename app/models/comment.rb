@@ -19,5 +19,12 @@ class Comment < ActiveRecord::Base
 
   fires :commented, :on => :create,
                     :actor => :user,
-                    :secondary_subject => :commentable
+                    :secondary_subject => :commentable,
+                    :for => :target
+
+  def target
+    target = self.user.followers
+    target += Array(self.commentable.user) if self.commentable.respond_to?(:user)
+    target.delete_if {|t| t == self.user}.uniq
+  end
 end

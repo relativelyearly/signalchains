@@ -16,4 +16,9 @@ class Like < ActiveRecord::Base
   belongs_to :user
 
   validates_uniqueness_of :chain_id, :scope => [:user_id]
+
+  fires :likes, :on => :create,
+                :actor => :user,
+                :subject => :chain,
+                :for => lambda {|follow| (follow.user.followers + Array(follow.chain.user)).uniq}
 end

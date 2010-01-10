@@ -28,10 +28,22 @@ class Chain < ActiveRecord::Base
   has_one :audio, :as => :audible, :dependent => :destroy
   accepts_nested_attributes_for :audio, :allow_destroy => true
 
+  validates_presence_of :name, :user_id
+
   before_save :update_completion
 
-  fires :new_chain, :on => :create,
-                    :actor => :user
+  fires :new_chain, :on => :update,
+                    :actor => :user,
+                    :for => lambda {|chain| chain.user.followers},
+                    :if => :fire?
+
+  def target
+    self.user.followers
+  end
+
+  def fire?
+    self.complete? && TimelineEvent.first(:conditions => {:subject_type => 'Chain', :subject_id => self.id}).nil?
+  end
 
   named_scope :complete, :conditions => {:status => 'complete'}
 
@@ -60,6 +72,14 @@ class Chain < ActiveRecord::Base
       input_source.gear.image.url(style)
     else
       "/images/#{style}_line_in.png"
+    end
+  end
+
+  def input_source_model
+    if input_source.gear
+      input_source.gear.model
+    else
+      'line in'
     end
   end
 
