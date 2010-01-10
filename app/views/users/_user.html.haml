@@ -6,7 +6,7 @@
       = link_to user.display_name, user_by_login_path(user.login)  
     .col.first.w10
       %p
-        = link_to "#{user.chains.count} Chains", root_url
+        = link_to "#{user.chains.count} Chains", chains_by_login_path(:username => user.login)
         %br
           = user.followers.count
           Followers
