@@ -2,4 +2,4 @@
   %p
     = link_to likes.actor.display_name, user_by_login_path(likes.actor.login)
     has liked a chain:
-    = link_to likes.subject.name, likes.subject
+    %strong= link_to likes.subject.name, likes.subject
