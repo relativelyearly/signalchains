@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :chains, :member => {:like => :get, :feature => :get} do |chain|
     chain.resources :mics
     chain.resources :preamps
+    chain.resources :converters
     chain.resources :dynamics_processors
     chain.resources :effects_processors
     chain.resources :equalizers
@@ -24,6 +25,10 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :preamps, :collection => {:search => :get}, :member => {:feature => :get} do |preamp|
+    preamp.resources :comments
+  end
+
+  map.resources :converters, :collection => {:search => :get}, :member => {:feature => :get} do |preamp|
     preamp.resources :comments
   end
 
@@ -50,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'
   map.add_line_in '/chains/:chain_id/add/line_in', :controller => 'chain_gears', :action => 'add_line_in'
   map.add_preamp '/chains/:chain_id/add/preamp/:preamp_id', :controller => 'chain_gears', :action => 'add_preamp'
+  map.add_converter '/chains/:chain_id/add/converter/:converter_id', :controller => 'chain_gears', :action => 'add_converter'
   map.add_dynamics_processor '/chains/:chain_id/add/dynamics_processor/:dynamics_processor_id', :controller => 'chain_gears', :action => 'add_dynamics_processor'
   map.add_effects_processor '/chains/:chain_id/add/effects_processor/:effects_processor_id', :controller => 'chain_gears', :action => 'add_effects_processor'
   map.add_equalizer '/chains/:chain_id/add/equalizer/:equalizer_id', :controller => 'chain_gears', :action => 'add_equalizer'

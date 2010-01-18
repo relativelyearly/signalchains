@@ -1,0 +1,7 @@
+- semantic_form_for @search, :url => {:controller => :preamps, :action => :search}, :html => {:id => 'search_form'} do |f|
+  = f.input :make_like, :input_html => { :size => 27 }, :wrapper_html => {:class => 'first col w20'}
+  = f.input :model_like, :input_html => { :size => 27 }, :wrapper_html => {:class => 'col w20'}
+
+  - if @chain
+    = hidden_field_tag :chain_id, @chain.id
+.clear

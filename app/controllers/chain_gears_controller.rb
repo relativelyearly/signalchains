@@ -52,6 +52,21 @@ class ChainGearsController < ResourceController::Base
     end
   end
 
+  def add_converter
+    @chain = Chain.find(params[:chain_id])
+    @converter = Converter.find(params[:converter_id])
+    @chain_gear = ChainGear.new
+
+    @chain_gear.chain = @chain
+    @chain_gear.gear = @converter
+
+    if @chain_gear.save
+      redirect_to chain_path(@chain)
+    else
+      redirect_to chain_converter_path(@chain, @converter)
+    end
+  end
+
   def add_dynamics_processor
     @chain = Chain.find(params[:chain_id])
     @dynamics_processor = DynamicsProcessor.find(params[:dynamics_processor_id])
