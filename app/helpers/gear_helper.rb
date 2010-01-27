@@ -39,4 +39,12 @@ module GearHelper
       :per_page => 5,
       :order => 'chain_gears_count DESC').compact
   end
+
+  def recommend_link(gear)
+    if current_user && current_user.likes?(gear)
+      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :class => 'unlike', :title => 'Don\'t recommend this gear'
+    else
+      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :title => 'Recommend this gear'
+    end
+  end
 end

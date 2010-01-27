@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
 
   has_many :events_about_self, :foreign_key => :actor_id, :class_name => "TimelineEvent", :order => "timeline_events.created_at DESC"
   has_many :chains
+  has_many :recommendations
 
   has_attached_file :avatar,
                     :styles => { :thumb => ["80x80#", :jpg], :wide => ["250x130", :jpg], :display => ["500x500", :jpg] },
@@ -118,6 +119,10 @@ class User < ActiveRecord::Base
 
   def follows?(user)
     self.follows.find(:first, :conditions => {:followed_id => user.id})
+  end
+
+  def recommends?(gear)
+    self.recommendations.find(:first, :conditions => {:recommendable_id => gear.id, :recommendable_type => gear.class.to_s})
   end
 
   def deliver_password_reset_instructions!

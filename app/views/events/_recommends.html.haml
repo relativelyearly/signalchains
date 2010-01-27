@@ -1,0 +1,5 @@
+.event.recommend
+  %p
+    = link_to recommends.actor.display_name, user_by_login_path(recommends.actor.login)
+    == has recommended a #{recommends.subject.class.to_s.humanize.downcase}:
+    = link_to recommends.subject.name, recommends.subject

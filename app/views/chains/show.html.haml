@@ -9,7 +9,7 @@
     %h2= h @chain.name
     %h5.first
       by
-      =link_to @chain.user.display_name, user_by_login_path(@chain.user.login)
+      = link_to @chain.user.display_name, user_by_login_path(@chain.user.login)
     .community.first
       .social-links
         = like_link(@chain)

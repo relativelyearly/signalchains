@@ -12,27 +12,27 @@ ActionController::Routing::Routes.draw do |map|
     chain.resources :audios
   end
 
-  map.resources :equalizers, :collection => {:search => :get}, :member => {:feature => :get} do |equalizer|
+  map.resources :equalizers, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |equalizer|
     equalizer.resources :comments
   end
 
-  map.resources :effects_processors, :collection => {:search => :get}, :member => {:feature => :get} do |effects_processor|
+  map.resources :effects_processors, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |effects_processor|
     effects_processor.resources :comments
   end
 
-  map.resources :dynamics_processors, :collection => {:search => :get}, :member => {:feature => :get} do |dynamics_processor|
+  map.resources :dynamics_processors, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |dynamics_processor|
     dynamics_processor.resources :comments
   end
 
-  map.resources :preamps, :collection => {:search => :get}, :member => {:feature => :get} do |preamp|
+  map.resources :preamps, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |preamp|
     preamp.resources :comments
   end
 
-  map.resources :converters, :collection => {:search => :get}, :member => {:feature => :get} do |preamp|
+  map.resources :converters, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |preamp|
     preamp.resources :comments
   end
 
-  map.resources :mics, :collection => {:search => :get}, :member => {:feature => :get} do |mic|
+  map.resources :mics, :collection => {:search => :get}, :member => {:feature => :get, :recommend => :get} do |mic|
     mic.resources :comments
   end
 

@@ -42,6 +42,19 @@ class ConvertersController < ResourceController::Base
     end
   end
 
+  def recommend
+    @gear = object
+    if current_user.recommends?(@gear)
+      current_user.recommendations.find(:first, :conditions => {:recommendable_id => @gear.id, :recommendable_type => @gear.class.to_s}).destroy
+    else
+      Recommendation.create(:user_id => current_user.id, :recommendable_id => @gear.id, :recommendable_type => @gear.class.to_s)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(@gear) }
+    end
+  end
+
   private
   def load_chain
     @chain ||= Chain.find(params[:chain_id]) if params[:chain_id]

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100118203726) do
+ActiveRecord::Schema.define(:version => 20100127165047) do
 
   create_table "ads", :force => true do |t|
     t.string   "image_file_name"
@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "recommendations_count"
   end
 
   create_table "dynamics_processors", :force => true do |t|
@@ -95,10 +96,11 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",     :default => 0
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "comments_count",        :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
+    t.integer  "recommendations_count"
   end
 
   create_table "effects_processors", :force => true do |t|
@@ -112,10 +114,11 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",     :default => 0
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "comments_count",        :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
+    t.integer  "recommendations_count"
   end
 
   create_table "equalizers", :force => true do |t|
@@ -130,10 +133,11 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "interface"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",     :default => 0
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "comments_count",        :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
+    t.integer  "recommendations_count"
   end
 
   create_table "follows", :force => true do |t|
@@ -162,10 +166,11 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "pattern"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",     :default => 0
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "comments_count",        :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
+    t.integer  "recommendations_count"
   end
 
   create_table "preamps", :force => true do |t|
@@ -178,10 +183,19 @@ ActiveRecord::Schema.define(:version => 20100118203726) do
     t.string   "circuitry"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",     :default => 0
-    t.integer  "chain_gears_count",  :default => 0
+    t.integer  "comments_count",        :default => 0
+    t.integer  "chain_gears_count",     :default => 0
     t.datetime "featured_at"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",                 :default => true, :null => false
+    t.integer  "recommendations_count"
+  end
+
+  create_table "recommendations", :force => true do |t|
+    t.integer  "recommendable_id"
+    t.string   "recommendable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|
