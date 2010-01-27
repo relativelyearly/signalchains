@@ -1,35 +1,35 @@
-class EffectsProcessorsController < ResourceController::Base
+class ConvertersController < ResourceController::Base
   before_filter :load_chain
   before_filter :require_admin, :only => [:feature]
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   index.before do
-    @search = EffectsProcessor.searchlogic({})
-    @class = EffectsProcessor
+    @search = Converter.searchlogic({})
+    @class = Converter
   end
   
   index.wants.html { render 'gear/index' }
 
   create.wants.html do
     if @chain
-      redirect_to chain_effects_processor_path(@chain, object)
+      redirect_to chain_converter_path(@chain, object)
     else
       redirect_to object
     end
   end
 
   show.before do
-    @class = EffectsProcessor
+    @class = Converter
   end
 
   show.wants.html { render 'gear/show' }
 
   def search
-    @effects_processors = EffectsProcessor.searchlogic(:conditions => params["search"]).all
-    @class = EffectsProcessor
+    @converters = Converter.searchlogic(:conditions => params["search"]).all
+    @class = Converter
 
     respond_to do |format|
-      format.html { render(:partial => 'gear/index_gear', :collection => @effects_processors) }
+      format.html { render(:partial => 'gear/index_gear', :collection => @converters) }
     end
   end
 

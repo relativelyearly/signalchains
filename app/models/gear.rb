@@ -6,6 +6,7 @@ class Gear < ActiveRecord::Base
   has_many :chain_gears, :as => :gear
   has_many :chains, :through => :chain_gears, :order => 'likes_count DESC'
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :recommendations, :as => :recommendable, :dependent => :destroy
 
   has_attached_file :image,
                     :styles => { :micro => ["50x50#"], :thumb => ["100x100#", :jpg], :featured => ["445x150^", :jpg], :display => ["370x500>"] },
@@ -18,7 +19,7 @@ class Gear < ActiveRecord::Base
       :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
       :page => 1,
       :per_page => 1,
-      :without => {:featured_at => 0, :status => 'complete'},
+      :without => {:featured_at => 0},
       :order => 'featured_at DESC').first
   end
 

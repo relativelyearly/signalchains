@@ -8,4 +8,9 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
-require 'thinking_sphinx/tasks'
+
+begin
+  require 'thinking_sphinx/tasks'
+rescue LoadError
+  puts 'Install Thinking Sphinx: sudo gem install thinking-sphinx'
+end

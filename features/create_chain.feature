@@ -119,6 +119,23 @@ Feature: Create Chain
     And I should not see "It needs a <a href='#extra_gear'>preamp"
     And I should see "Start with"
 
+  @current
+  Scenario: Adding a Converter
+    Given I am logged in as "test@example.com/password"
+    And I have started a chain named "Awesome Guitar"
+    When I view the chain named "Awesome Guitar"
+    And I follow "new_converter"
+    And I follow "New Converter"
+    And I fill in "Make" with "Summit"
+    And I fill in "Model" with "MPC-100A"
+    And I press "Create Converter"
+    And I follow "Add to chain"
+    Then I should be viewing the chain "Awesome Guitar"
+    And I should see "Summit"
+    And I should see "MPC-100A"
+    And I should not see "It needs a <a href='#extra_gear'>converter"
+    And I should see "Start with"
+
   Scenario: Adding a Compressor
     Given I am logged in as "test@example.com/password"
     And I have started a chain named "Awesome Guitar"

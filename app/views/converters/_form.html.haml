@@ -1,0 +1,8 @@
+%h3 Create a New Converter
+- semantic_form_for @converter, :html => {:multipart => true} do |f|
+  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.w15
+    - if @chain
+      = hidden_field_tag :chain_id, @chain.id
+  .clear
+  = f.buttons

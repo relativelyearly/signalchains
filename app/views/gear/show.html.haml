@@ -5,6 +5,9 @@
   %h5
     by
     = @object.make
+  .community.first
+    .social-links
+      = recommend_link(@object)
   = render(:partial => @class.index_partial, :object => object)
   %br
   %br
