@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :followings, :source => :user
 
   has_many :events_about_others, :as => :target, :class_name => 'UserTimelineEvent', :order => 'user_timeline_events.created_at DESC'
-  has_many :events, :through => :events_about_others, :source => :timeline_event
+  has_many :events, :through => :events_about_others, :source => :timeline_event, :order => "timeline_events.created_at DESC"
 
   has_many :events_about_self, :foreign_key => :actor_id, :class_name => "TimelineEvent", :order => "timeline_events.created_at DESC"
   has_many :chains
