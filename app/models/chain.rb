@@ -63,6 +63,10 @@ class Chain < ActiveRecord::Base
     set_property :min_prefix_len => 3
   end
 
+  def to_param
+    "#{self.id}-#{self.name.to_url}"
+  end
+
   def self.featured
     @featured ||= Chain.complete.first(:conditions => "featured_at is not null", :order => 'featured_at DESC')
   end

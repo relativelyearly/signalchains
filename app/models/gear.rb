@@ -14,6 +14,10 @@ class Gear < ActiveRecord::Base
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
 
+    def to_param
+      "#{self.id}-#{self.make.to_url}-#{self.model.to_url}"
+    end
+
   def self.featured
     @featured ||= ThinkingSphinx.search('',
       :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
