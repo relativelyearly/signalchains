@@ -524,6 +524,7 @@ form.chain .first .col.w35 p{
   margin-top: 15px;
   padding-top: 15px;
   border-top: 2px ridge #fff;
+  clear: both;
 }
 .ad small {
   font-size: 70%;

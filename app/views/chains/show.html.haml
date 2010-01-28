@@ -50,17 +50,16 @@
   .power
 
 - chain_owner(@chain) do
-  .w50.first.col
-    .newlink.first#extra_gear
-      %h3
-        Add
-        = image_tag 'helper/arrow.png', :id => 'arrow'
-      = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'block-btn first col w5'
-      = link_to 'Converter', chain_converters_url(@chain), :id => 'new_converter', :class => 'block-btn col w5'
-      = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'block-btn col w5'
-      = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn col w5'
-      = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn col w5'
-      .clear
+  .newlink.first#extra_gear
+    %h3
+      Add
+      = image_tag 'helper/arrow.png', :id => 'arrow'
+    = link_to 'Preamp', chain_preamps_url(@chain), :id => 'new_preamp', :class => 'first block-btn w5 col'
+    = link_to 'Dynamics', chain_dynamics_processors_url(@chain), :id => 'new_dynamics', :class => 'block-btn w5 col'
+    = link_to 'EQ', chain_equalizers_url(@chain), :id => 'new_eq', :class => 'block-btn w5 col'
+    = link_to 'Effects',chain_effects_processors_url(@chain), :id => 'new_effects', :class => 'block-btn w5 col'
+    = link_to 'Converter', chain_converters_url(@chain), :id => 'new_converter', :class => 'block-btn w5 col'    
+    .clear
 #comments.first
   %h3 Comments
 

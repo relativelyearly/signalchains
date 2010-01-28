@@ -5,9 +5,6 @@
   %h5
     by
     = @object.make
-  .community.first
-    .social-links
-      = recommend_link(@object)
   = render(:partial => @class.index_partial, :object => object)
   %br
   %br
@@ -17,7 +14,13 @@
     %br.clear
   - admin_only do
     = link_to '<span>Feature</span>', eval("feature_#{@class.to_s.underscore}_path(object)"), :class => 'btn w10'
-  %h4
+
+  .community.first.vspace
+    .social-links
+      %h5 Community Recommendations
+      = recommend_link(@object)
+
+  %h5
     Chains with a
     = @object.model
   %ul.list
@@ -33,12 +36,12 @@
     - authenticated_only do
       .w45.first.col
         - semantic_form_for object.comments.new, :url => gear_comments_path(object) do |f|
-          = render(:partial => 'comments/form', :locals => {:f => f})  
+          = render(:partial => 'comments/form', :locals => {:f => f})
       .w20.col
         .avatar.col.snug
           = image_tag current_user.avatar.url(:thumb)
         .w10.col
           = current_user.display_name
-          
+
   .first
     = render(:partial => 'comments/comment', :collection => object.comments)

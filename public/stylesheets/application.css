@@ -160,7 +160,9 @@ input.button {
   background:-webkit-gradient(linear, left top, left bottom, from(rgba(164, 172, 169, 1)),to(rgba(104, 102, 99, 1)));
 }
 
-
+.vspace {
+  margin: 20px 0;
+}
 /* @end */
 .col {
   float: left;
@@ -187,7 +189,9 @@ input.button {
   clear: left;
   margin-left: 0;
 }
-
+.last {
+  margin-right: 0;
+}
 .w5 {
   width: 50px;
 }

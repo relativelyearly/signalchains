@@ -13,7 +13,10 @@
   text-indent: -999em;
   background-position: 0 top;
   background-repeat: no-repeat;
-  margin: 0 15px 0 0;
+  margin-left: 17px;
+}
+.block-btn.first {
+  margin-left: 0;
 }
 .block-btn:hover {
   background-position: 0 -100px;
@@ -39,7 +42,9 @@
 .block-btn#new_eq {
   background-image: url(../images/chains/btn_eq.png);
 }
-
+.block-btn#new_converter {
+  background-image: url(../images/chains/btn_converter.png);
+}
 div.chain_link {
   background: url(../images/backgrounds/gear_rack_bg.png) repeat-y;  
 }
@@ -217,9 +222,7 @@ span.score {
 .newlink {
   margin-bottom: 25px;
 }
-.newlink .col, .chain .tags {
-  margin-left: 0px;
-}
+
 .newlink .col.first, .chain_link .col.first {
   margin-left: 0;
 }

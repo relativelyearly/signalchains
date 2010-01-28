@@ -50,6 +50,7 @@
                 = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
               .col.w14
                 = link_to(Gear.featured.name, Gear.featured)
+              .first
           - if Chain.featured                
             #featured-chain.first
               %h4 Featured Chain
@@ -59,7 +60,7 @@
                 = link_to(Chain.featured.name, Chain.featured)
                 by
                 = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
-              %br.clear
+              .first
           .ad
             = ad
             %br
