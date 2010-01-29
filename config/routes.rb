@@ -47,6 +47,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :chains
   end
   map.resource :user_session
+  map.resource :sitemap
 
   map.namespace(:admin) do |admin|
     admin.resources :ads
