@@ -1,7 +1,7 @@
 class MicsController < ResourceController::Base
   before_filter :load_chain
   before_filter :require_admin, :only => [:feature]
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :recommend]
 
   index.before do
     @search = Mic.searchlogic({})
@@ -36,19 +36,6 @@ class MicsController < ResourceController::Base
   def feature
     @gear = object
     @gear.update_attribute(:featured_at, DateTime.now)
-
-    respond_to do |format|
-      format.html { redirect_to(@gear) }
-    end
-  end
-
-  def recommend
-    @gear = object
-    if current_user.recommends?(@gear)
-      current_user.recommendations.find(:first, :conditions => {:recommendable => @gear}).destroy
-    else
-      Recommendation.create(:user_id => current_user.id, :recommendable => @gear)
-    end
 
     respond_to do |format|
       format.html { redirect_to(@gear) }
