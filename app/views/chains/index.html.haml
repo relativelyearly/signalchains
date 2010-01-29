@@ -1,4 +1,7 @@
-- title "Chains"
+- if @user
+  - title "Signal Chains: #{@user.display_name}'s Chains"
+- else
+  - title "Signal Chains: Chains"
 
 = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
 .col.first.w20
