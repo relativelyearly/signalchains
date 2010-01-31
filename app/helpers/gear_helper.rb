@@ -42,9 +42,9 @@ module GearHelper
 
   def recommend_link(gear)
     if current_user && current_user.likes?(gear)
-      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :class => 'unlike', :title => 'Don\'t recommend this gear'
+      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :class => 'unlike', :title => 'Don\'t recommend this gear', :rel => 'nofollow'
     else
-      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :title => 'Recommend this gear'
+      link_to "<span>#{gear.recommendations.size}</span>", eval("recommend_#{gear.class.to_s.underscore}_path(gear)"), :id => 'like', :title => 'Recommend this gear', :rel => 'nofollow'
     end
   end
 end
