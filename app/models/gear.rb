@@ -27,6 +27,14 @@ class Gear < ActiveRecord::Base
       :order => 'featured_at DESC').first
   end
 
+  def self.recommended
+    @recommended ||= ThinkingSphinx.search('',
+      :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+      :page => 1,
+      :per_page => 5,
+      :order => 'recommendations_count DESC')
+  end
+
   def position
     2
   end

@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20100127165047
+#
+# Table name: recommendations
+#
+#  id                 :integer(4)      not null, primary key
+#  recommendable_id   :integer(4)
+#  recommendable_type :string(255)
+#  user_id            :integer(4)
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 class Recommendation < ActiveRecord::Base
   attr_accessible :recommendable_id, :recommendable_type, :user_id
 

@@ -1,4 +1,5 @@
 # == Schema Information
+# Schema version: 20100127165047
 #
 # Table name: chains
 #
@@ -15,6 +16,7 @@
 #  likes_count    :integer(4)      default(0)
 #  comments_count :integer(4)      default(0)
 #  featured_at    :datetime
+#  delta          :boolean(1)      default(TRUE), not null
 #
 
 class Chain < ActiveRecord::Base

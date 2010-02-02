@@ -1,4 +1,5 @@
 # == Schema Information
+# Schema version: 20100127165047
 #
 # Table name: users
 #
@@ -26,6 +27,7 @@
 #  avatar_file_size    :integer(4)
 #  avatar_updated_at   :datetime
 #  roles               :string(255)
+#  delta               :boolean(1)      default(TRUE), not null
 #
 
 class User < ActiveRecord::Base

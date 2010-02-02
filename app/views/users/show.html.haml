@@ -40,14 +40,27 @@
       = link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
 
   - unless @user.liked_chains.empty?
-    %h4 Liked
+    %h4== #{@user.display_name} Likes
     %ul.list
-      - @user.liked_chains.all(:limit => 5, :order => 'created_at DESC').each do |chain|
-        %li= link_to chain.name, chain
+      - @user.likes.all(:limit => 5, :order => 'created_at DESC').each do |like|
+        %li= link_to like.chain.name, like.chain
 
     - if @recommended_chains
-      %h4 Recommended
+      %h4 Suggested
       %ul.list
         - @recommended_chains.each do |chain|
           %li= link_to chain.name, chain
+
+  %h3 Gear
+  - unless @user.recommendations.empty?
+    %h4== #{@user.display_name} Recommends
+    %ul.list
+      - @user.recommendations.all(:limit => 5, :order => 'created_at DESC').each do |recommendation|
+        %li= link_to recommendation.recommendable.name, recommendation.recommendable
+
+  - if @recommended_gear
+    %h4 Suggested
+    %ul.list
+      - @recommended_gear.each do |gear|
+        %li= link_to gear.name, gear
 .first
