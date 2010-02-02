@@ -59,7 +59,7 @@
         - @user.recommendations.all(:limit => 5, :order => 'created_at DESC').each do |recommendation|
           %li= link_to recommendation.recommendable.name, recommendation.recommendable
 
-    - unless @recommended_gear.empty?
+    - if @recommended_gear
       %h4 Suggested
       %ul.list
         - @recommended_gear.each do |gear|
