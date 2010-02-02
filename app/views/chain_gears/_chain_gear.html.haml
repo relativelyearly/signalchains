@@ -12,8 +12,7 @@
             = link_to('edit notes', edit_chain_gear_path(chain_gear), :class => 'show-form edit', :title => 'edit notes')
             = link_to('delete gear', chain_gear, :method => :delete, :class => 'delete', :title => 'delete gear')      
         %h4
-          =h chain_gear.gear.make
-          =h chain_gear.gear.model
+          = link_to "#{chain_gear.gear.make} #{chain_gear.gear.model}", chain_gear.gear
       .info
         %h5
           = render(:partial => chain_gear.gear.chain_gear_partial, :object => chain_gear.gear)

@@ -14,6 +14,10 @@ class Gear < ActiveRecord::Base
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
 
+    def to_param
+      "#{self.id}-#{self.make.to_url}-#{self.model.to_url}"
+    end
+
   def self.featured
     @featured ||= ThinkingSphinx.search('',
       :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
@@ -21,6 +25,14 @@ class Gear < ActiveRecord::Base
       :per_page => 1,
       :without => {:featured_at => 0},
       :order => 'featured_at DESC').first
+  end
+
+  def self.recommended
+    @recommended ||= ThinkingSphinx.search('',
+      :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+      :page => 1,
+      :per_page => 5,
+      :order => 'recommendations_count DESC')
   end
 
   def position

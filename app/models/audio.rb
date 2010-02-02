@@ -36,7 +36,7 @@ class Audio < ActiveRecord::Base
                                     :content_type => ['audio/aiff', 'audio/x-aiff', 'audio/wav', 'audio/x-wav'],
                                     :message => 'The audio file must be an aiff or a wav'
   validates_attachment_size :file,
-                            :less_than => 5.5.megabytes,
+                            :less_than => 8.megabytes,
                             :message => 'The audio file must be less than 30 seconds'
 
   private

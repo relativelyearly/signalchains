@@ -13,8 +13,7 @@
             = link_to('edit notes', edit_chain_gear_path(input_source), :class => 'show-form edit', :title => 'edit notes')
             = link_to('delete gear', input_source, :method => :delete, :class => 'delete', :title => 'delete gear')
         %h4
-          =h input_source.gear.make
-          =h input_source.gear.model
+          = link_to "#{input_source.gear.make} #{input_source.gear.model}", input_source.gear
 
       .info
         %h5

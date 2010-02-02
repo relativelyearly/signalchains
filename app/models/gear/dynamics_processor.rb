@@ -1,27 +1,30 @@
 # == Schema Information
+# Schema version: 20100127165047
 #
 # Table name: dynamics_processors
 #
-#  id                 :integer(4)      not null, primary key
-#  make               :string(255)
-#  model              :string(255)
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer(4)
-#  image_updated_at   :datetime
-#  circuitry          :string(255)
-#  compression_type   :string(255)
-#  dynamics_type      :string(255)
-#  interface          :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  comments_count     :integer(4)      default(0)
-#  chain_gears_count  :integer(4)      default(0)
-#  featured_at        :datetime
+#  id                    :integer(4)      not null, primary key
+#  make                  :string(255)
+#  model                 :string(255)
+#  image_file_name       :string(255)
+#  image_content_type    :string(255)
+#  image_file_size       :integer(4)
+#  image_updated_at      :datetime
+#  circuitry             :string(255)
+#  compression_type      :string(255)
+#  dynamics_type         :string(255)
+#  interface             :string(255)
+#  created_at            :datetime
+#  updated_at            :datetime
+#  comments_count        :integer(4)      default(0)
+#  chain_gears_count     :integer(4)      default(0)
+#  featured_at           :datetime
+#  delta                 :boolean(1)      default(TRUE), not null
+#  recommendations_count :integer(4)
 #
 
 class DynamicsProcessor < Gear
-  attr_accessible :circuitry, :compression_type, :dynamics_type, :interface
+  attr_accessible :circuitry, :compression_type, :dynamics_type, :interface, :recommendations_count
 
   define_index do
     indexes :make

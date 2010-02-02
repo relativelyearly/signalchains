@@ -1,4 +1,5 @@
 # == Schema Information
+# Schema version: 20100127165047
 #
 # Table name: chains
 #
@@ -15,6 +16,7 @@
 #  likes_count    :integer(4)      default(0)
 #  comments_count :integer(4)      default(0)
 #  featured_at    :datetime
+#  delta          :boolean(1)      default(TRUE), not null
 #
 
 class Chain < ActiveRecord::Base
@@ -61,6 +63,10 @@ class Chain < ActiveRecord::Base
     set_property :delta => true
     set_property :enable_star => true
     set_property :min_prefix_len => 3
+  end
+
+  def to_param
+    "#{self.id}-#{self.name.to_url}"
   end
 
   def self.featured

@@ -66,6 +66,17 @@ Feature: User dashboard
     And I should see "has liked a chain"
     And I should see "A chain you should know about"
 
+  Scenario: Someone I follow recommends some gear
+    Given I am logged in as "test@example.com/password"
+    And a user: "bob" exists with login: "bob"
+    And I have followed the user
+    And a mic exists with make: "Shure", model: "SM57"
+    And the user has recommended the mic
+    When I go to the homepage
+    Then I should see "bob"
+    And I should see "has recommended a mic"
+    And I should see "Shure SM57"
+
   Scenario: Someone likes my chain
     Given I am logged in as "test@example.com/password"
     And a chain exists with name: "A really awesome chain", user: the user
@@ -75,9 +86,6 @@ Feature: User dashboard
     Then I should see "bob"
     And I should see "has liked a chain"
     And I should see "A really awesome chain"
-
-  @pending
-  Scenario: Someone I follow recommends some gear
 
   Scenario: I comment on a chain
     Given I am logged in as "test@example.com/password"

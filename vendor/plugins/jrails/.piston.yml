@@ -1,8 +1,0 @@
---- 
-format: 1
-handler: 
-  piston:remote-revision: 96
-  piston:uuid: 1bc9508b-f83e-0410-b78e-05f979d4f8d9
-lock: true
-repository_class: Piston::Svn::Repository
-repository_url: http://ennerchi.googlecode.com/svn/trunk/plugins/jrails

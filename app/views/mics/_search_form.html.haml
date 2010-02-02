@@ -1,10 +1,10 @@
 - semantic_form_for @search, :url => {:controller => :mics, :action => :search}, :html => {:id => 'search_form'} do |f|
-  = f.input :make_like, :input_html => { :size => 20 }, :wrapper_html => {:class => 'first col w15'}
-  = f.input :model_like, :input_html => { :size => 20 }, :wrapper_html => {:class => 'col w15'}
+  = f.input :make_like, :input_html => { :size => 20 }, :wrapper_html => {:class => 'first col w15'}, :label => 'Make', :required => false
+  = f.input :model_like, :input_html => { :size => 20 }, :wrapper_html => {:class => 'col w15'}, :label => 'Model', :required => false
 
-  = f.input :mic_type, :as => :select, :collection => Mic.types, :label => 'Type', :wrapper_html => {:class => 'col w10'}
-  = f.input :diaphragm_size, :as => :select, :collection => Mic.diaphragm_sizes, :wrapper_html => {:class => 'col w10'}
-  = f.input :pattern, :as => :select, :collection => Mic.patterns, :wrapper_html => {:class => 'col w10'}
+  = f.input :mic_type, :as => :select, :collection => Mic.types, :label => 'Type', :wrapper_html => {:class => 'col w10'}, :required => false
+  = f.input :diaphragm_size, :as => :select, :collection => Mic.diaphragm_sizes, :wrapper_html => {:class => 'col w10'}, :required => false
+  = f.input :pattern, :as => :select, :collection => Mic.patterns, :wrapper_html => {:class => 'col w10'}, :required => false
 
   - if @chain
     = hidden_field_tag :chain_id, @chain.id

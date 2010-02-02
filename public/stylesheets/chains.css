@@ -207,7 +207,8 @@ span.score {
 #audio .loading {
   background:#74ed7e ;
   padding: 10px;
-  -webkit-border-radius:4px;-moz-border-radius:4px;
+  -webkit-border-radius:4px;
+-moz-border-radius:4px;
   display: block;
   margin-bottom: 15px;
 }
@@ -412,4 +413,8 @@ li.chain_gear {
 }
 #gear_types li{
   margin-top: 0;
+}
+.gear .banner h4 a, .input_source .banner h4 a {
+  text-decoration: none;
+  color: #000;
 }

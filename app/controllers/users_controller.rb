@@ -24,8 +24,9 @@ class UsersController < ApplicationController
     else
       redirect_to(new_user_session_path) and return unless current_user
       @user = current_user
-      @events = @user.events.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 20, :page => params[:page])
+      @events = @user.events.paginate(:include => [:actor, :secondary_subject, :subject], :per_page => 15, :page => params[:page])
       @recommended_chains = Chain.complete.find(:all, :order => 'likes_count DESC', :limit => 5)
+      @recommended_gear = Gear.recommended
     end
 
     if @user == current_user
