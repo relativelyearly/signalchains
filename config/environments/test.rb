@@ -33,4 +33,6 @@ config.gem 'shoulda'
 config.gem 'nokogiri'
 config.gem 'pickle'
 config.gem 'cucumber'
+config.gem 'cucumber-rails', :lib => false
 config.gem 'webrat'
+config.gem 'database_cleaner'
