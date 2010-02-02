@@ -12,7 +12,7 @@
   float: left;
 
 }
-.list {
+#user-chains .list {
   margin-bottom: 20px;
 }
 a#logout {
