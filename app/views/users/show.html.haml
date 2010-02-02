@@ -30,37 +30,38 @@
   = will_paginate(@events)
 
 .col.w25#user-chains
-  %h3 Chains
-  - unless @user.chains.empty?
-    %h4= link_to 'Created', chains_by_login_path(:username => @user.login)
-    %ul.list
-      - @chains.each do |chain|
-        %li= link_to chain.name, chain
-    - if @chains.size > 0
-      = link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
+  .list
+    %h3 Chains
+    - unless @user.chains.empty?
+      %h4= link_to 'Created', chains_by_login_path(:username => @user.login)
+      %ul.list
+        - @chains.each do |chain|
+          %li= link_to chain.name, chain
+      - if @chains.size > 0
+        = link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
 
-  - unless @user.liked_chains.empty?
-    %h4== #{@user.display_name} Likes
-    %ul.list
-      - @user.likes.all(:limit => 5, :order => 'created_at DESC').each do |like|
-        %li= link_to like.chain.name, like.chain
+    - unless @user.liked_chains.empty?
+      %h4== #{@user.display_name} Likes
+      %ul.list
+        - @user.likes.all(:limit => 5, :order => 'created_at DESC').each do |like|
+          %li= link_to like.chain.name, like.chain
 
-    - if @recommended_chains
+      - if @recommended_chains
+        %h4 Suggested
+        %ul.list
+          - @recommended_chains.each do |chain|
+            %li= link_to chain.name, chain
+  .list
+    %h3 Gear
+    - unless @user.recommendations.empty?
+      %h4== #{@user.display_name} Recommends
+      %ul.list
+        - @user.recommendations.all(:limit => 5, :order => 'created_at DESC').each do |recommendation|
+          %li= link_to recommendation.recommendable.name, recommendation.recommendable
+
+    - unless @recommended_gear.empty?
       %h4 Suggested
       %ul.list
-        - @recommended_chains.each do |chain|
-          %li= link_to chain.name, chain
-
-  %h3 Gear
-  - unless @user.recommendations.empty?
-    %h4== #{@user.display_name} Recommends
-    %ul.list
-      - @user.recommendations.all(:limit => 5, :order => 'created_at DESC').each do |recommendation|
-        %li= link_to recommendation.recommendable.name, recommendation.recommendable
-
-  - if @recommended_gear
-    %h4 Suggested
-    %ul.list
-      - @recommended_gear.each do |gear|
-        %li= link_to gear.name, gear
+        - @recommended_gear.each do |gear|
+          %li= link_to gear.name, gear
 .first

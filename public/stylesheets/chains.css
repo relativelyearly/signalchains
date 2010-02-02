@@ -1,4 +1,7 @@
-/* @override http://signalchains.local/stylesheets/chains.css */
+/* @override 
+	http://signalchains.local/stylesheets/chains.css
+	http://www.signalchains.com/stylesheets/chains.css?1265144565
+*/
 
 .input_source {
   width: 375px;
@@ -155,6 +158,7 @@ span.score {
 }
 .chain .info {
   padding-bottom: 35px;
+  min-height: 35px;
 }
 .chain > .info {
   padding: 0;
