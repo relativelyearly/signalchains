@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :blog_posts, :as => 'blog', :only => [:index, :show]
+
   map.resources :comments
 
   map.resources :chains, :member => {:like => :get, :feature => :get} do |chain|
@@ -51,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace(:admin) do |admin|
     admin.resources :ads
+    admin.resources :blog_posts, :as => :blog
   end
 
   map.add_mic '/chains/:chain_id/add/mic/:mic_id', :controller => 'chain_gears', :action => 'add_mic'

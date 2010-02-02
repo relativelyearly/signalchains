@@ -1,0 +1,14 @@
+- title "Blog Post"
+
+%p
+  %strong Title:
+  =h @blog_post.title
+%p
+  %strong Content:
+  =textilize @blog_post.content
+%p
+  %strong Author:
+  =h @blog_post.author.display_name
+
+%p
+  = link_to "Back", collection_path
