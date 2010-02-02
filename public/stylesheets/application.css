@@ -284,6 +284,9 @@ input.button {
 .right.pad {
   margin-left: 10px;
 }
+.mb-15 {
+  margin-bottom: 15px;
+}
 .r4 {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;

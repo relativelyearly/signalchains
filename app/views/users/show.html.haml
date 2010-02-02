@@ -35,7 +35,7 @@
       - @chains.each do |chain|
         %li= link_to chain.name, chain
     - if @chains.size > 0
-      = link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
+      .mb-15= link_to "<small>View All (#{@user.chains.count})</small>", chains_by_login_path(:username => @user.login)
 
   - unless @user.liked_chains.empty?
     %h4 Liked
