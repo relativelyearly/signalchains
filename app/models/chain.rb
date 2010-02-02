@@ -47,7 +47,7 @@ class Chain < ActiveRecord::Base
     self.complete? && TimelineEvent.first(:conditions => {:subject_type => 'Chain', :subject_id => self.id}).nil?
   end
 
-  named_scope :complete, :conditions => {:status => 'complete'}
+  named_scope :complete, :conditions => {:status => 'complete'}, :order => 'created_at DESC'
 
   define_index do
     indexes :name
