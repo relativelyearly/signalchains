@@ -30,3 +30,4 @@ public/system/images/**
 \#*\#
 db/*.sql.bz2
 signalchains.esproj/**
+tags
