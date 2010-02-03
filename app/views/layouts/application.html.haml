@@ -62,6 +62,10 @@
                 by
                 = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
               .first
+          - if BlogPost.first
+            .blog
+              %h4 Latest News
+              = link_to BlogPost.first.title, BlogPost.first
           .ad
             = ad
             %br
