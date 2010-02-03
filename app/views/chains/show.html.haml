@@ -19,10 +19,11 @@
         .incomplete_chain.first= complete_message
     .first.col.w25
       =textilize @chain.notes
-      .tags.col
-        %h5.first Tags:
-        - for tag in @chain.tags
-          %span=link_to(h(tag.name), tag_path(tag.name))
+      - unless @chain.tags.empty?
+        .tags.col
+          %h5.first Tags:
+          - for tag in @chain.tags
+            %span=link_to(h(tag.name), tag_path(tag.name))
 
       %br.clear
       - admin_only do

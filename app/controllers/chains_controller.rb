@@ -77,8 +77,8 @@ class ChainsController < ResourceController::Base
       @user = User.find_by_login(params[:username])
     end
     if @user
-      @collection = @user.chains.all(:include => [:user]) if current_user == @user
-      @collection = @user.chains.complete.all(:include => [:user]) unless current_user == @user
+      @collection = @user.chains.all(:include => [:user], :order => 'created_at DESC') if current_user == @user
+      @collection = @user.chains.complete.all(:include => [:user], :order => 'created_at DESC') unless current_user == @user
     else
       @collection = Chain.complete
     end
