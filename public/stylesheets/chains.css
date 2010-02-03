@@ -344,7 +344,7 @@ float: none;
   background-position: right -24px;
   color: inherit;  
 }
-.social-links a:active, .admin a:active {
+.social-links a:active, .admin a:active, a.edit:active, a.delete:active {
   position: relative;
   background-position: right -48px;
   top: 1px;
