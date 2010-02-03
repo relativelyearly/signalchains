@@ -8,4 +8,5 @@ class CommentsController < ResourceController::Base
 
   create.wants.html { redirect_to parent_object }
   update.wants.html { redirect_to parent_object }
+  destroy.wants.html { redirect_to parent_object }
 end

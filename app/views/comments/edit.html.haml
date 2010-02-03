@@ -1,8 +1,7 @@
 - title "Edit Comment"
 
-= render :partial => 'form'
+- semantic_form_for [@comment.commentable, @comment] do |f|
+  = render :partial => 'form', :locals => {:f => f}
 
 %p
-  = link_to "Show", object_path
-  |
-  = link_to "View All", collection_path
+  = link_to "Cancel", @comment.commentable
