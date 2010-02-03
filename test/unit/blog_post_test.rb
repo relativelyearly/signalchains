@@ -9,5 +9,6 @@ class BlogPostTest < ActiveSupport::TestCase
     subject { @blog_post }
 
     should_belong_to :author
+    should_have_many :comments, :dependent => :destroy
   end
 end

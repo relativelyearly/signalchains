@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :blog_posts, :as => 'blog', :only => [:index, :show]
+  map.resources :blog_posts, :as => 'blog', :only => [:index, :show] do |blog|
+    blog.resources :comments
+  end
 
   map.resources :comments
 

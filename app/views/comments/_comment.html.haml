@@ -1,6 +1,9 @@
 .comment.first
   .first.col.comment-text
     =textilize(comment.body)
+    %br
+    - admin_only do
+      = link_to 'Delete', [comment.commentable, comment], :method => :delete
   .col.w20
     .avatar
       = link_to image_tag(comment.user.avatar.url(:thumb)), user_by_login_path(comment.user.login)
@@ -8,5 +11,5 @@
     - if comment.user
       .username
         = link_to comment.user.display_name, user_by_login_path(comment.user.login)
-  .clear      
-  
+  .clear
+
