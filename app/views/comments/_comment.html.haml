@@ -1,7 +1,7 @@
 .comment.first
   .first.col.comment-text
     =textilize(comment.body)
-    - if comment.user == current_user || current_user.admin?
+    - if comment.user == current_user || (current_user && current_user.admin?)
       = link_to 'Edit', eval("edit_#{comment.commentable_type.underscore}_comment_path(comment.commentable, comment)"), :class => 'edit'
       = link_to 'Delete', [comment.commentable, comment], :method => :delete, :class => 'delete'
   .col.w20
