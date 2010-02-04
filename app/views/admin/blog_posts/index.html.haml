@@ -1,0 +1,17 @@
+- title "Signal Chains: Blog"
+
+%table
+  %tr
+    %th Title
+    %th Content
+    %th Author
+  - for blog_post in @blog_posts
+    %tr
+      %td= h blog_post.title
+      %td= textilize blog_post.content
+      %td= h blog_post.author.display_name
+      %td= link_to 'Show', admin_blog_post_path(blog_post)
+      %td= link_to 'Edit', edit_admin_blog_post_path(blog_post)
+      %td= link_to 'Destroy', admin_blog_post_path(blog_post), :method => :destroy
+
+= link_to 'New', new_admin_blog_post_path

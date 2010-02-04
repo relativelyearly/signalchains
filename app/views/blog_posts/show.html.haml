@@ -1,0 +1,30 @@
+- title "Signal Chains Blog: #{@blog_post.title}"
+
+%p
+  %strong Title:
+  =h @blog_post.title
+%p
+  %strong Content:
+  =textilize @blog_post.content
+%p
+  %strong Author:
+  =h @blog_post.author.display_name
+
+%p
+  = link_to "Back", collection_path
+
+#comments.first
+  %h3 Comments
+
+  - authenticated_only do
+    .w45.first.col
+      - semantic_form_for @blog_post.comments.new, :url => blog_post_comments_path(@blog_post) do |f|
+        = render(:partial => 'comments/form', :locals => {:f => f})
+    .w20.col
+      .avatar
+        = image_tag current_user.avatar.url(:thumb)
+      .username
+        = current_user.display_name
+  = render(:partial => 'comments/comment', :collection => @blog_post.comments)
+  .clear
+

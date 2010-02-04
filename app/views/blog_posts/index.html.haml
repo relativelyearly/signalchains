@@ -1,0 +1,13 @@
+- title "Signal Chains: Blog"
+
+%table
+  %tr
+    %th Title
+    %th Content
+    %th Author
+  - for blog_post in @blog_posts
+    %tr
+      %td= h blog_post.title
+      %td= textilize blog_post.content
+      %td= h blog_post.author.display_name
+      %td= link_to 'Show', object_path(blog_post)

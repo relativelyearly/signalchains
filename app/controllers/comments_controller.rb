@@ -1,5 +1,5 @@
 class CommentsController < ResourceController::Base
-  belongs_to :chain, :mic, :preamp, :dynamics_processor, :effects_processor, :equalizer
+  belongs_to :chain, :mic, :preamp, :dynamics_processor, :effects_processor, :equalizer, :blog_post
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   create.before do
