@@ -6,3 +6,6 @@
 
 - content_for :admin do
   = link_to 'New Post', new_admin_blog_post_path
+
+- content_for :head do
+  %link{:rel => "alternate", :type => "application/atom+xml", :href => blog_posts_url(:format => :atom)}

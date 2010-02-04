@@ -47,3 +47,4 @@
 
 - content_for :admin do
   = link_to 'Feature', eval("feature_#{@class.to_s.underscore}_path(object)")
+  = link_to 'Edit', eval("edit_#{@class.to_s.underscore}_path(object)")

@@ -21,3 +21,5 @@
     = render(:partial => 'comments/comment', :collection => @blog_post.comments)
     .clear
 
+- content_for(:admin) do
+  = link_to 'Edit', edit_admin_blog_post_path(@blog_post)

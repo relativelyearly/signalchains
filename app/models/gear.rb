@@ -32,7 +32,8 @@ class Gear < ActiveRecord::Base
       :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
       :page => 1,
       :per_page => 5,
-      :order => 'recommendations_count DESC')
+      :order => 'recommendations_count DESC').compact
+    @recommended ||= []
   end
 
   def position

@@ -32,7 +32,7 @@ Feature: User dashboard
     And the chain is complete
     When I go to the homepage
     Then I should see "bob"
-    And I should see "created a new chain"
+    And I should see "created a chain called"
     And I should see "A really awesome chain"
 
   Scenario: Someone follows me
@@ -111,5 +111,5 @@ Feature: User dashboard
     And the chain is complete
     When I go to bob's profile page
     Then I should see "bob"
-    And I should see "created a new chain"
+    And I should see "created a chain called"
     And I should see "A really awesome chain"

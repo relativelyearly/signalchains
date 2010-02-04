@@ -1,10 +1,11 @@
-.featured-chain.first
-  %h4 Featured Chain
-  .first.col.w5
-    = link_to(image_tag(featured_chain.input_source_image(:micro)), featured_chain)
-  .col.w14
-    %h5= link_to(featured_chain.name, featured_chain)
-    %small
-      by
-      = link_to(featured_chain.user.display_name, user_by_login_path(featured_chain.user.login))
-  .first
+- if featured_chain
+  .featured-chain.first
+    %h4 Featured Chain
+    .first.col.w5
+      = link_to(image_tag(featured_chain.input_source_image(:micro)), featured_chain)
+    .col.w14
+      %h5= link_to(featured_chain.name, featured_chain)
+      %small
+        by
+        = link_to(featured_chain.user.display_name, user_by_login_path(featured_chain.user.login))
+    .first
