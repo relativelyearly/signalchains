@@ -13,16 +13,19 @@ a {
 }
 
 #flash_messages p.notice, #flash_messages p.error {
-  padding: 5px 8px;
+  padding: 8px 8px;
   margin: 0;
   display: block;
   width: 699px;
   text-align: center;
   font-weight: bold;
+  border-bottom: 4px groove #aaa;
 }
 
 #flash_messages p.notice {
-  background-color: #74ED7E;  
+  background-color: #2a4c49;
+  background-image: url(../images/backgrounds/grill_background_success.png);
+  color: #fff;
 }
 
 #flash_messages p.error {
