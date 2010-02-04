@@ -7,4 +7,5 @@ $(function() {
       'overlayShow': false,
       'imageScale': true
     });  
+  $('.timestamp').cuteTime();
 })

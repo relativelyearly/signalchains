@@ -14,6 +14,13 @@
 #user-chains .list {
   margin-bottom: 20px;
 }
+#user-chains .list a, #user-chains .list a small {
+  display: block;
+}
+#user-chains .list a small {
+  text-align: right;
+}
+
 a#logout {
   margin-bottom: 10px;
   padding: 2px;
@@ -45,6 +52,23 @@ a#logout {
   text-decoration: underline;
 }
 
+.event .timestamp {
+  width: auto;
+  float: right;
+  font-size: .8em;
+  color: #999;
+  padding: 5px 5px .9em 5px;
+  position: relative;
+  top: -2em;
+  text-align: right;
+}
+
+.event p {
+  width: 320px;
+}
+.event blockquote p {
+  width: auto;
+}
 .user-page.bucket {
   padding: 0 28px 20px 28px;
   width: 630px;
@@ -54,6 +78,9 @@ a#logout {
   margin-top: 20px;
 }
 
+#user-chains {
+  margin-left: 25px;
+}
 #user-chains h4 {
   margin: 15px 0 0 0;
 }

@@ -3,5 +3,6 @@
     = link_to commented.actor.display_name, user_by_login_path(commented.actor.login)
     commented on
     %strong= link_to commented.secondary_subject.name, commented.secondary_subject
+  %small.timestamp= commented.created_at.to_s :us_with_time
   %blockquote
-    %p=textilize commented.subject.body
+    = textilize commented.subject.body

@@ -5,5 +5,5 @@
       %li= link_to 'Dashboard', account_path
     %li#gear-nav= link_to 'Gear', gear_path
     %li= link_to 'Chains', chains_path
-    %li= link_to 'Blog', blog_posts_path
+    %li= link_to 'Blog', blog_posts_path if BlogPost.count > 0
     .clear

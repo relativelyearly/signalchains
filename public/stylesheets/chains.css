@@ -174,7 +174,8 @@ span.score {
   margin-left: 25px;
 }
 .input_source .banner h4 {
-  width: 170px;
+  width: auto;
+  margin-bottom: .4em;
 }
 #audio {
   text-align: center;

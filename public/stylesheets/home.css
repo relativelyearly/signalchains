@@ -48,6 +48,7 @@
   display: block;
   padding: 10px;
   background-color: rgba(0,0,0,.6);
+  font-weight: bold;
 }
 
 .blog h5 a, #content .featured-chain h5 a{
