@@ -1,4 +1,6 @@
 - title "Signal Chains: #{@user.display_name}"
+- content_for(:head) do
+  %link{:rel => 'canonical', :href => user_by_login_url(@user.login)}
 
 .bucket.user-page
   .first.col.w50

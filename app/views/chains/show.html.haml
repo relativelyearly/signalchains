@@ -1,4 +1,6 @@
 - title "Signal Chains: #{@chain.name}"
+- content_for(:head) do
+  %link{:rel => 'canonical', :href => chain_url(@chain)}
 
 .chain
   - chain_owner(@chain) do
