@@ -1,8 +1,8 @@
 !!!
 %html
   %head
-    = include_javascripts(:default, :chain)
-    = include_stylesheets(:default, :home, :event, :chain, :user, :media => 'all')
+    = include_javascripts(:default)
+    = include_stylesheets(:default)
 
     %title= yield(:title) || "Signal Chains"
 

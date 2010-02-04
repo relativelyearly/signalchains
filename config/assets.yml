@@ -3,6 +3,7 @@ embed_assets: datauri
 javascripts:
   default:
     - public/javascripts/jquery.js
+    - public/javascripts/plugins/jquery.jplayer.js
     - "public/javascripts/jquery-ui.custom.min.js"
     - public/javascripts/plugins/jquery.validate.js
     - public/javascripts/jrails.js
@@ -11,8 +12,6 @@ javascripts:
     - public/javascripts/plugins/jquery.localscroll.js
     - public/fancybox/fancybox.js
     - public/javascripts/application.js
-  chain:
-    - public/javascripts/plugins/jquery.jplayer.js
     - public/javascripts/rogue/page.chain.js
 
 stylesheets:
@@ -21,12 +20,8 @@ stylesheets:
     - public/stylesheets/style.css
     - public/fancybox/fancybox.css
     - "public/stylesheets/custom-theme/custom.css"
-  home:
     - public/stylesheets/home.css
-  event:
     - public/stylesheets/events.css
-  chain:
     - public/stylesheets/chains.css
     - public/stylesheets/audioplayer.css
-  user:
     - public/stylesheets/user.css
