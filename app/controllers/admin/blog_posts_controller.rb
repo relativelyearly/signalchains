@@ -5,5 +5,7 @@ class Admin::BlogPostsController < ResourceController::Base
     object.author = current_user
   end
   
-  create.wants.html { redirect_to admin_blog_post_path(object) }
+  index.wants.html { render :file => 'blog_posts/index', :layout => 'application' }
+  create.wants.html { redirect_to blog_post_path(object) }
+  update.wants.html { redirect_to blog_post_path(object) }
 end

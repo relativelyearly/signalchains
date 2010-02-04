@@ -1,4 +1,6 @@
 - title "Signal Chains: #{@chain.name}"
+- content_for(:head) do
+  %link{:rel => 'canonical', :href => chain_url(@chain)}
 
 .chain
   - chain_owner(@chain) do
@@ -26,9 +28,6 @@
             %span=link_to(h(tag.name), tag_path(tag.name))
 
       %br.clear
-      - admin_only do
-        %br
-        = link_to '<span>Feature</span>', feature_chain_path(@chain), :class => 'btn w10'
 
     - if @input_source.nil?
       .input_source.col
@@ -76,6 +75,11 @@
   = render(:partial => 'comments/comment', :collection => @chain.comments)
   .clear
 .first
+
+- content_for :admin do
+  = link_to 'Feature', feature_chain_path(@chain)
+
+
 = javascript_include_tag 'rogue/page.chain'
 = javascript_include_tag 'plugins/jquery.jplayer'
 :javascript

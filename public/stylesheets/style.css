@@ -99,8 +99,31 @@ div.image a {
   padding: 6px 15px 15px 15px;
   float: left;
 }
+#sidebar h4 {
+  font-weight: normal;
+  font-size: 1.3em;
+  color: #000;
+}
+#sidebar h5, .featured .col-3 h5{
+  font-size: 1em;
+  margin-bottom: 0;
+}
+#sidebar h4 a, #sidebar h5 a{
+  color: #000;
+}
 #sidebar > div {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  font-size: 12px;
+  color: #666;
+}
+#sidebar a {
+  color: #666;
+}
+#sidebar > div a {
+  text-decoration: none;=
+}
+#sidebar > div a:hover {
+  text-decoration: underline;
 }
 /* @group nav */
 
@@ -144,15 +167,15 @@ div.image a {
   margin-bottom: 10px;
   text-transform: uppercase;
   font-family: "Gill Sans", "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
-  font-size: .8em;
+  font-size: 1em;
   text-decoration: none;
   
 }
 .session a {
   color: #666;
   text-decoration: none; 
-  display: block;
-  float: left;
+  position: relative;
+  top: 5px;
 }
 
 .session a:hover {
@@ -332,9 +355,7 @@ div.image a {
   display: block;
 }
 /* @end */
-#featured-gear-sidebar, #featured-chain {
-  margin-bottom: 15px;
-}
+
 /* @end */
 
 /* @group Global Text */
@@ -421,6 +442,30 @@ blockquote p {
 #new_gear {
   margin-top: 50px;
 }
+
+/* @group admin */
+
+#admin-bar {
+  background:#222 url(../images/backgrounds/grill_background.png);
+  padding: 5px 10px;
+  width: 695px;
+}
+
+#admin-bar .controls {
+  width: 630px;
+}
+#admin-bar .hide {
+  width: 40px;
+}
+#admin-bar .hide a {
+  background: rgba(256,256,256,.3);
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  
+}
+/* @end */
+
 /* @group forms */
 #chain_gear_notes {
   height: 100px;
@@ -521,19 +566,21 @@ form.chain .first .col.w35 p{
   text-decoration: underline;
 }
 #sidebar div.ad {
-  margin-top: 15px;
+  margin: 15px 0;
   padding-top: 15px;
-  border-top: 2px ridge #fff;
+  border-top: 2px groove #fff;
   clear: both;
+  text-align: center;
+}
+.ad img {
+  display: block;
+  margin: 0 auto;
 }
 .ad small {
   font-size: 70%;
   color: #666;
 }
 
-div#featured-chain .col, #featured-gear-sidebar .div{
-  font-size: 90%;
-}
 ul.incomplete_chain li {
 	list-style-type: none;
 	font-size: 90%;
@@ -542,3 +589,67 @@ ul.incomplete_chain li {
     color: #74ed7e;	
 }
 /* @end */
+
+/* @group blog */
+#blog-nav h4 {
+  margin: 0;
+  font-weight: normal;
+  margin-bottom:20px ;
+}
+#blog-nav h4 a{
+  display: block;
+  color:#666 ;
+  margin: 0;
+  text-decoration: none;
+  padding: 10px 25px;
+  background: #ddd;
+  -webkit-border-radius:6px;  -moz-border-radius:6px;  
+}
+#blog-nav h4 a:hover{
+  background: #ccc;
+}
+article{
+  display: block;
+  padding: 10px 25px;
+  margin-bottom: 20px;
+}
+article #comments .w20 {
+  width: 170px;
+}
+article header {
+  margin-bottom: 10px;
+  display: block;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 10px;
+}
+article header .date {
+  margin: 0;
+}
+article header .first.w40 {
+  height: 40px;
+  display: table;
+}
+article h2 {
+  font-weight: normal;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  display: table-cell;
+  vertical-align: bottom;
+  margin: 0;
+}
+
+article h2 a{
+  text-decoration: none;
+}
+#sounding_board {
+  padding: 40px 230px 0 228px;
+  background: url(../images/backgrounds/blog_tabletop_monitors.jpg) no-repeat center top;
+  text-align: center;
+  height: 145px;
+  margin-top: 10px;
+}
+#sounding_board h1 {
+  font-weight: normal;
+}
+/* @end */
+

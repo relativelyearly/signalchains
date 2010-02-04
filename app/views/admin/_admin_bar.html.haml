@@ -1,0 +1,8 @@
+- admin_only do
+  #admin-bar
+    .col.first.controls
+      = link_to 'Ads', admin_ads_path
+      = yield :admin
+    .col.hide
+      = link_to 'Close', '#', :class => 'right', :onclick => "$('#admin-bar').slideUp(); return false;"
+    .first

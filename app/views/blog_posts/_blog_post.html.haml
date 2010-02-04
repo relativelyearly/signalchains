@@ -1,0 +1,4 @@
+%article
+  = render :partial => 'blog_posts/article', :object => blog_post
+  %section.social-links
+    = link_to "<span>#{blog_post.comments_count.size}</span>", blog_post_path(blog_post, :anchor => 'comments'), :class => 'comments_btn'

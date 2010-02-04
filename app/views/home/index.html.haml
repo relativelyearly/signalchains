@@ -7,21 +7,17 @@
     %p By building a chain, you can document exactly what elements were involved in achieving that killer vocal sound or soothing sax solo. Others can view this chain, listen to the result, and become impressed with your imagination and talent.
   .first
     
-.stats
-  - if Chain.featured
-    .first.col-3
-      %h4 Featured Chain
-      .first.col.w5
-        = link_to(image_tag(Chain.featured.input_source_image(:micro)), Chain.featured)
-      .col.w14
-        = link_to(Chain.featured.name, Chain.featured)
-        %br
-        by
-        = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
+.featured
+  .first.col-3
+    = render :partial => "layouts/featured_chain", :object => Chain.featured
+    = render :partial => "layouts/newest_blog", :object => BlogPost.first
+
   - if Gear.featured
     .col-3-2#featured-gear
       %h4 Featured Gear
       %h4= link_to "<span>#{Gear.featured.name}</span>", Gear.featured, {:style => 'background-image: url(' "#{Gear.featured.image.url(:featured)}" ')'}
+  .first
+.newest
   .first.col-3
     %h4 Most Used Gear
     - if most_used_gear
@@ -40,7 +36,7 @@
       %ul.list
         - @new_users.each do |user|
           %li= link_to(user.display_name, user_by_login_path(user.login))
-
+  .first
 %br.clear
 %h4 Browse Gear
 = link_to 'Microphones', mics_path, :id => 'new_mic', :class => 'block-btn first col w5'
