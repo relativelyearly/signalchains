@@ -1,4 +1,6 @@
 - title "Signal Chains: #{object.make} #{object.model}"
+- content_for(:head) do
+  %link{:rel => 'canonical', :href => eval("#{@class.to_s.underscore}_url(object)")}
 
 .first.col.w30
   %h1.snug= @object.model
