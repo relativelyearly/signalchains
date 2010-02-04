@@ -1,0 +1,9 @@
+%header
+  .col.first.w40
+    %h2.title= link_to article.title, blog_post_path(article)
+  .col.w5= image_tag(article.author.avatar.url(:author))
+  .col.w15
+    %h4= article.author.display_name
+    %h5.date= article.created_at.to_s :human
+  .first
+%section.first= textilize article.content

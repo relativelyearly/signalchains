@@ -132,7 +132,7 @@ input.button {
   display: block;
   position: relative;
 }
-.button {
+.button, #admin-bar a {
   display: inline-block;
   margin: 5px 0;
   border: none;
@@ -148,12 +148,12 @@ input.button {
   text-shadow: #d6d6d6 0 1px 0;
   font: .8em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
-.button:hover{
+.button:hover, #admin-bar a:hover{
   top: 1px;
   -webkit-box-shadow:0 2px 2px rgba(0, 0, 0, .6);
   border-bottom: 1px solid rgba(144, 142, 139, 1);
 }
-.button:active{
+.button:active, #admin-bar a:active{
   border-bottom: 1px solid rgba(0,0,0,.6);
   top: 3px;
   -webkit-box-shadow:0 -2px 1px rgba(180, 180, 180, .5);
@@ -176,7 +176,7 @@ input.button {
 .col-3-2 {
   float: left;	
   width: 445px;
-  margin:0 0 15px 15px;
+  margin:0 0 0 15px;
 }
 
 .right {
@@ -185,10 +185,15 @@ input.button {
 .left {
   float: left;
 }
+section {
+  display: block;
+}
+
 .first {
   clear: left;
   margin-left: 0;
 }
+
 .last {
   margin-right: 0;
 }

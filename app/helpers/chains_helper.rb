@@ -11,14 +11,14 @@ module ChainsHelper
 
   def like_link(chain)
     if current_user && current_user.likes?(chain)
-      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :class => 'unlike', :title => 'Unlike this chain', :rel => 'nofollow'
+      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :class => 'like_btn unlike', :title => 'Unlike this chain', :rel => 'nofollow'
     else
-      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :id => 'like', :title => 'Like this chain', :rel => 'nofollow'
+      link_to "<span>#{chain.likes.size}</span>", like_chain_path(chain), :class => 'like_btn', :title => 'Like this chain', :rel => 'nofollow'
     end
   end
 
   def comments_link(chain)
-    link_to "<span>#{chain.comments.size}</span>", '#comments', :id => 'comments_btn'
+    link_to "<span>#{chain.comments.size}</span>", '#comments', :class => 'comments_btn'
   end
 
   def chain_owner(chain, &block)

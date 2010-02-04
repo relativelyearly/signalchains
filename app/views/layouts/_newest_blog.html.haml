@@ -1,0 +1,8 @@
+.blog
+  %h4= link_to 'Latest News', blog_posts_path
+  .col.first.w5
+    = image_tag 'backgrounds/sounding_board_icon.png'
+  .col.w14
+    %h5= link_to newest_blog.title, newest_blog
+    %small= newest_blog.created_at.to_s :human
+  .first

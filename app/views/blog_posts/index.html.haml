@@ -1,13 +1,8 @@
-- title "Signal Chains: Blog"
+- title "Signal Chains Blog"
+#sounding_board
+  %h1 The Sounding Board
+%section#posts
+  = render :partial => "blog_posts/blog_post", :collection => @blog_posts
 
-%table
-  %tr
-    %th Title
-    %th Content
-    %th Author
-  - for blog_post in @blog_posts
-    %tr
-      %td= h blog_post.title
-      %td= textilize blog_post.content
-      %td= h blog_post.author.display_name
-      %td= link_to 'Show', object_path(blog_post)
+- content_for :admin do
+  = link_to 'New Post', new_admin_blog_post_path

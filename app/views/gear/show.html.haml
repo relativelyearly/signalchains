@@ -14,9 +14,6 @@
     = add_to_chain_button(object)
 
     %br.clear
-  - admin_only do
-    = link_to '<span>Feature</span>', eval("feature_#{@class.to_s.underscore}_path(object)"), :class => 'btn w10'
-
   .community.first.vspace
     .social-links
       %h5 Community Recommendations
@@ -47,3 +44,6 @@
 
   .first
     = render(:partial => 'comments/comment', :collection => object.comments)
+
+- content_for :admin do
+  = link_to 'Feature', eval("feature_#{@class.to_s.underscore}_path(object)")

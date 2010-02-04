@@ -9,6 +9,12 @@
 .input_source .meta {
   margin-top: 10px;
 }
+
+.social-links a:hover, .admin a:hover {
+  background-position: right -24px;
+  color: inherit;  
+}
+
 .block-btn {
   display: block;
   width: 100px;
@@ -335,14 +341,11 @@ float: none;
 .social-links a{
   display: inline;
   padding: 3px 10px 5px 0;
+  background-image: url(../images/buttons/like.png);
   background-position: right top;
   position: relative; 
   color: #222;
   background-repeat: no-repeat;
-}
-.social-links a:hover, .admin a:hover {
-  background-position: right -24px;
-  color: inherit;  
 }
 .social-links a:active, .admin a:active, a.edit:active, a.delete:active {
   position: relative;
@@ -363,20 +366,20 @@ float: none;
 .social-links a:active span {
   background-position: left -48px;  
 }
-#like, #like span {
+.like_btn, .like_btn span {
   background-image: url(../images/buttons/like.png);
 }
-#like.unlike span {
+.like_btn.unlike span {
   background-position: left -72px;
 }
-#like.unlike:hover span {
+.like_btn.unlike:hover span {
   background-position: left -96px;
 }
-#like.unlike:active span {
+.like_btn.unlike:active span {
   background-position: left -120px;
 }
 
-#comments_btn, #comments_btn span {
+.comments_btn, .comments_btn span {
   background-image: url(../images/buttons/comments.png);
 }
 

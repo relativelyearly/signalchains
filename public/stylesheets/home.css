@@ -50,6 +50,22 @@
   background-color: rgba(0,0,0,.6);
 }
 
+.blog h5 a, #content .featured-chain h5 a{
+  text-decoration: none;
+}
+#content .featured .col-3 h4 a {
+  color: #000;
+  text-decoration: none;
+}
 #featured-gear a:hover span {
   background-color: rgba(0,0,0,.8);
+}
+.featured small {
+  color: #666;
+}
+#content .featured small a{
+  color: #666;
+}
+.featured .featured-chain{
+  margin-bottom: 20px;
 }

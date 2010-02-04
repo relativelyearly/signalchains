@@ -26,6 +26,7 @@
           = link_to 'Signal Chains', root_url, :id => 'logo'
           = render :partial => "layouts/nav"
         .clear
+        = render :partial => "admin/admin_bar"
         = render_flash_messages
         #content.container
           = yield
@@ -47,26 +48,16 @@
                 = f.submit 'search'
           - if Gear.featured
             #featured-gear-sidebar
-              %h4 Featured Gear          
+              %h4 Featured Gear
               .first.col.w5
                 = link_to(image_tag(Gear.featured.image.url(:micro)), Gear.featured)
               .col.w14
-                = link_to(Gear.featured.name, Gear.featured)
+                %h5= link_to(Gear.featured.name, Gear.featured)
               .first
-          - if Chain.featured                
-            #featured-chain.first
-              %h4 Featured Chain
-              .first.col.w5
-                = link_to(image_tag(Chain.featured.input_source_image(:micro)), Chain.featured)
-              .col.w14
-                = link_to(Chain.featured.name, Chain.featured)
-                by
-                = link_to(Chain.featured.user.display_name, user_by_login_path(Chain.featured.user.login))
-              .first
-          - if BlogPost.first
-            .blog
-              %h4 Latest News
-              = link_to BlogPost.first.title, BlogPost.first
+
+          = render :partial => "layouts/featured_chain", :object => Chain.featured
+          = render :partial => "layouts/newest_blog", :object => BlogPost.first
+
           .ad
             = ad
             %br

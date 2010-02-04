@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   has_many :recommendations
 
   has_attached_file :avatar,
-                    :styles => { :thumb => ["80x80#", :jpg], :wide => ["250x130", :jpg], :display => ["500x500", :jpg] },
+                    :styles => { :author => ["40x40#", :jpg], :thumb => ["80x80#", :jpg], :wide => ["250x130", :jpg], :display => ["500x500", :jpg] },
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => ':class/:id/:style.:extension'
