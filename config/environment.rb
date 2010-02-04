@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
   config.gem "newrelic_rpm"
+  config.gem 'jammit'
   config.time_zone = 'UTC'
   config.load_paths << "#{RAILS_ROOT}/app/models/gear"
 end

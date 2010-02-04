@@ -75,4 +75,6 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'home', :action => 'index'
   map.chains_by_login ':username/chains', :controller => 'chains', :action => 'index'
   map.user_by_login ':id', :controller => 'users', :action => 'show'
+
+  Jammit::Routes.draw(map)
 end

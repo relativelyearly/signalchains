@@ -79,14 +79,10 @@
 - content_for :admin do
   = link_to 'Feature', feature_chain_path(@chain)
 
-
-= javascript_include_tag 'rogue/page.chain'
-= javascript_include_tag 'plugins/jquery.jplayer'
 :javascript
   $("#jquery_jplayer").jPlayer({
     oggSupport: true,
-    ready: function ()
-    {
+    ready: function () {
       $("#jquery_jplayer").setFile("#{@chain.audio.file.url(:mp3)}", "#{@chain.audio.file.url(:ogg)}");
     }
   });
