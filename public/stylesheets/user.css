@@ -20,6 +20,9 @@
 #user-chains .list a small {
   text-align: right;
 }
+#user-chains ul.list {
+  font-size: .9em;
+}
 
 a#logout {
   margin-bottom: 10px;

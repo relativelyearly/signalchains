@@ -220,9 +220,7 @@ span.score {
   margin-bottom: 15px;
 }
 .chain .info h2 {
-  margin-bottom: 0;
-  width: 580px;
-  float: left;
+  margin-bottom: .3em;
 }
 .chain .info .community a.btn{
   color: #CF0A0A;
@@ -338,6 +336,7 @@ float: none;
   background: none;
   width: auto;
   padding: 0;
+  margin-left: 5px;
 }
 .social-links a{
   display: inline;
