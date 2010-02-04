@@ -3,3 +3,4 @@
     = link_to likes.actor.display_name, user_by_login_path(likes.actor.login)
     has liked a chain:
     %strong= link_to likes.subject.name, likes.subject
+  %small.timestamp= likes.created_at.to_s :us_with_time

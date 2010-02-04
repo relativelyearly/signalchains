@@ -3,3 +3,4 @@
     = link_to following.actor.display_name, user_by_login_path(following.actor.login)
     is now following
     %strong= link_to following.subject.display_name, user_by_login_path(following.subject.login)
+  %small.timestamp= following.created_at.to_s :human

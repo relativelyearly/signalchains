@@ -48,6 +48,7 @@
   display: block;
   padding: 10px;
   background-color: rgba(0,0,0,.6);
+  font-weight: bold;
 }
 
 #featured-gear a:hover span {

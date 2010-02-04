@@ -22,8 +22,8 @@
     .first.col.w25
       =textilize @chain.notes
       - unless @chain.tags.empty?
-        .tags.col
-          %h5.first Tags:
+        .tags.col.first
+          %h5 Tags:
           - for tag in @chain.tags
             %span=link_to(h(tag.name), tag_path(tag.name))
 

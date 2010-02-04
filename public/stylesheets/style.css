@@ -358,7 +358,9 @@ h3 {
   margin-bottom: .8em;
 }
 h4 {
-  font-size: 110%;
+  font-size: 100%;
+  font-weight: normal;
+  letter-spacing: .1em;
 }
 h5 {
   font-size: 90%;
@@ -392,7 +394,8 @@ ul.list li a, .tags a {
   border-top: 1px solid #fff;
   -webkit-border-radius:4px;-moz-border-radius:4px;  
   padding: 5px;
-  text-decoration: none;  
+  text-decoration: none;
+  font-size: .9em;
 }
 
 ul.list li a:hover, .tags a:hover {
