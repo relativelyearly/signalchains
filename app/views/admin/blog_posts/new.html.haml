@@ -1,5 +1,11 @@
 - title "New Blog Post"
-
-= render :partial => 'form'
-
-%p= link_to "Back", collection_path
+.col.first.w40
+  = render :partial => 'form'
+.col.w25
+  %h4 Write Amazing things
+  %p Your work will be judged against the likes of Shakespeare, Twain, Voltaire, and Conan O'Brien. Don't mess this up.
+  %p
+    = link_to "Textile", "http://textile.thresholdstate.com/"
+    formatting is supported.
+.first  
+  %p= link_to "Back", collection_path
