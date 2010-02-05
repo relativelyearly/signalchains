@@ -107,6 +107,8 @@ div.image a {
 #sidebar h5, .featured .col-3 h5{
   font-size: 1em;
   margin-bottom: 0;
+  letter-spacing: .1em;
+  word-spacing: .3em;
 }
 #sidebar h4 a, #sidebar h5 a{
   color: #000;
@@ -345,6 +347,7 @@ div.image a {
   text-decoration: none;
   position: relative;
   left: -.3em;
+  display: block;
 }
 .unit h4 a:hover {
   background-color: #fff;
@@ -416,7 +419,6 @@ ul.list li a, .tags a {
   -webkit-border-radius:4px;-moz-border-radius:4px;  
   padding: 5px;
   text-decoration: none;
-  font-size: .9em;
 }
 
 ul.list li a:hover, .tags a:hover {
