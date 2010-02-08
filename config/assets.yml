@@ -1,9 +1,9 @@
 embed_assets: datauri
+package_assets: always
+javascript_compressor: closure
 
 javascripts:
   default:
-    - public/javascripts/jquery.js
-    - public/javascripts/plugins/jquery.jplayer.js
     - "public/javascripts/jquery-ui.custom.min.js"
     - public/javascripts/plugins/jquery.validate.js
     - public/javascripts/jrails.js
@@ -11,9 +11,8 @@ javascripts:
     - public/javascripts/plugins/jquery.scrollTo.js
     - public/javascripts/plugins/jquery.localscroll.js
     - public/fancybox/fancybox.js
-    - public/javascripts/application.js
-    - public/javascripts/rogue/page.chain.js
     - public/javascripts/plugins/jquery.cuteTime.js
+    - public/javascripts/application.js
 
 stylesheets:
   default:

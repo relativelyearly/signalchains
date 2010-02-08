@@ -46,4 +46,17 @@ module ApplicationHelper
     end
     nil
   end
+
+  def javascripts
+    javascript_include_tag('jquery-ui.custom.min.js',
+                           'plugins/jquery.validate.js',
+                           'jrails.js',
+                           'plugins/jquery.form.js',
+                           'plugins/jquery.scrollTo.js',
+                           'plugins/jquery.localscroll.js',
+                           '/fancybox/fancybox.js',
+                           'plugins/jquery.cuteTime.js',
+                           'application.js',
+                           :cache => true)
+  end
 end
