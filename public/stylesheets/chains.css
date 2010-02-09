@@ -10,7 +10,7 @@
   margin-top: 10px;
 }
 
-.social-links a:hover, .admin a:hover {
+#content .social-links a:hover, .admin a:hover {
   background-position: right -24px;
   color: inherit;  
 }
