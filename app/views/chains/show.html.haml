@@ -80,6 +80,9 @@
 - content_for :admin do
   = link_to 'Feature', feature_chain_path(@chain)
 
+- content_for :head do
+  = javascript_include_tag('plugins/jquery.jplayer', 'rogue/page.chain.js', :cache => true)
+
 :javascript
   $("#jquery_jplayer").jPlayer({
     oggSupport: true,
