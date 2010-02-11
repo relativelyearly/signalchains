@@ -1,0 +1,15 @@
+--- 
+- :name: authlogic
+- :name: formtastic
+- :name: haml
+- :name: RedCloth
+- :name: searchlogic
+- :name: will_paginate
+- :name: acts-as-taggable-on
+- :name: aws-s3
+- :name: thinking-sphinx
+- :name: newrelic_rpm
+- :name: jammit
+- :name: bullet
+- :version: 2.3.5
+  :name: rails
