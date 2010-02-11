@@ -76,6 +76,7 @@ END
 
     exec "ts:config", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}"
 
+    package 'vorbis-tools', :ensure => :installed
     package 'ffmpeg', :ensure => :installed
     package 'libmp3lame-dev', :ensure => :installed
     package 'subversion', :ensure => :installed
