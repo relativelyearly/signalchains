@@ -656,5 +656,8 @@ article h2 a{
 #sounding_board h1 {
   font-weight: normal;
 }
+textarea#blog_post_content {
+  width: 350px;
+}
 /* @end */
 

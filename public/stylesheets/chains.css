@@ -10,7 +10,7 @@
   margin-top: 10px;
 }
 
-.social-links a:hover, .admin a:hover {
+#content .social-links a:hover, .admin a:hover {
   background-position: right -24px;
   color: inherit;  
 }
@@ -164,7 +164,7 @@ span.score {
 }
 .chain .info {
   padding-bottom: 35px;
-  min-height: 35px;
+  min-height: 38px;
 }
 .chain > .info {
   padding: 0;
@@ -420,4 +420,8 @@ li.chain_gear {
 .gear .banner h4 a, .input_source .banner h4 a {
   text-decoration: none;
   color: #000;
+}
+
+.unit ul {
+  font-size: .9em;
 }
