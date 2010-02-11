@@ -78,7 +78,7 @@ END
 
     package 'build-dep', :ensure => :installed
     package 'ffmpeg', :ensure => :installed
-    package 'liblame-dev', :ensure => :installed
+    package 'libmp3lame-dev', :ensure => :installed
     package 'subversion', :ensure => :installed
     package 'checkinstall', :ensure => :installed
     exec "build ffmpeg",
