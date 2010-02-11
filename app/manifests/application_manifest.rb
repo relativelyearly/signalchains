@@ -81,7 +81,7 @@ END
     package 'liblame-dev', :ensure => :installed
     package 'subversion', :ensure => :installed
     package 'checkinstall', :ensure => :installed
-    exec "build ffmpeg"
+    exec "build ffmpeg",
       :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 'cd ffmpeg', './configure --enable-gpl --disable-debug --enable-libmp3lame --enable-pthreads --disable-vhook', 'checkinstall'].join(' && '),
       :cwd => '/tmp',
       :creates => '/usr/bin/ffmpeg'
