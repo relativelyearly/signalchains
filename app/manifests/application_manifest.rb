@@ -60,11 +60,11 @@ class ApplicationManifest < Moonshine::Manifest::Rails
     # file '/etc/farm.conf', :ensure => :present, :content => farm_config
 
 
-    MATT_SSH_KEY = <<-END
+    matt_ssh_key = <<-END
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv0klC6nK2tnAHoqrUJuXUcjh4vfMH36y1eCpdj5SFwo1ohX+NvxIkvbDWOpjiSDR3oDRvGf/+v5rnI4iHxS/odnl9NJy1nq3pLC91WOmUGWqlWXVSnJ4qH2zDrVwtdqztMgAqaGawvajxMsyuZpmbnDZJM/7uzkbnrvKoLL5QbuM14pSNK/t3lWVMzC68KonaaFOGG/QgSnlOO+uFEJxxynbr9TyRObvM1ALMcWeqWL2s3W0I/bCwvFCLaZnG/ZWp/+CpZ3acwQFwttYn7iC04S+XhzJU8iWLwzYr4DzKnchyJyHw9zTJcG5SO/Ihqb7/DaAmgMm0xnxjEatbwRUkQ== matt@Auk.local
 END
 
-    file '/home/sftponly/home/sftponly/.ssh/authorized_keys', :ensure => :present, :content => [MATT_SSH_KEY].join('\n')
+    file '/home/sftponly/home/sftponly/.ssh/authorized_keys', :ensure => :present, :content => [matt_ssh_key].join('\n')
 
     # Logs for Rails, MySQL, and Apache are rotated by default
     # logrotate '/var/log/some_service.log', :options => %w(weekly missingok compress), :postrotate => '/etc/init.d/some_service restart'
