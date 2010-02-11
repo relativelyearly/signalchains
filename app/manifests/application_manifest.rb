@@ -64,7 +64,7 @@ class ApplicationManifest < Moonshine::Manifest::Rails
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv0klC6nK2tnAHoqrUJuXUcjh4vfMH36y1eCpdj5SFwo1ohX+NvxIkvbDWOpjiSDR3oDRvGf/+v5rnI4iHxS/odnl9NJy1nq3pLC91WOmUGWqlWXVSnJ4qH2zDrVwtdqztMgAqaGawvajxMsyuZpmbnDZJM/7uzkbnrvKoLL5QbuM14pSNK/t3lWVMzC68KonaaFOGG/QgSnlOO+uFEJxxynbr9TyRObvM1ALMcWeqWL2s3W0I/bCwvFCLaZnG/ZWp/+CpZ3acwQFwttYn7iC04S+XhzJU8iWLwzYr4DzKnchyJyHw9zTJcG5SO/Ihqb7/DaAmgMm0xnxjEatbwRUkQ== matt@Auk.local
 END
 
-    file '/home/sftponly/home/rails/.ssh/authorized_keys', :ensure => :present, :content => [matt_ssh_key].join('\n')
+    file '/home/rails/.ssh/authorized_keys', :ensure => :present, :content => [matt_ssh_key].join('\n')
 
     # Logs for Rails, MySQL, and Apache are rotated by default
     # logrotate '/var/log/some_service.log', :options => %w(weekly missingok compress), :postrotate => '/etc/init.d/some_service restart'
