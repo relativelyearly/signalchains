@@ -76,8 +76,12 @@ END
 
     exec "ts:config", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}"
 
-    package 'build-dep', 'ffmpeg', 'liblame-dev', 'subversion', 'checkinstall'
-    exec "build ffmpeg",
+    package 'build-dep', :ensure => :installed
+    package 'ffmpeg', :ensure => :installed
+    package 'liblame-dev', :ensure => :installed
+    package 'subversion', :ensure => :installed
+    package 'checkinstall' :ensure => :installed
+    exec "build ffmpeg"
       :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 'cd ffmpeg', './configure --enable-gpl --disable-debug --enable-libmp3lame --enable-pthreads --disable-vhook', 'checkinstall'].join(' && '),
       :cwd => '/tmp',
       :creates => '/usr/bin/ffmpeg'
