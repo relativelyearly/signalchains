@@ -17,6 +17,27 @@ class ApplicationManifest < Moonshine::Manifest::Rails
   #   :custom => { :random => random  }
   # })
 
+  configure({
+    :ssh => { :port => 30000, :allow_users => ['rails'] },
+    :iptables => { :rules => [
+      '-A INPUT -m state —state RELATED,ESTABLISHED -j ACCEPT',
+      '-A INPUT -p icmp -j ACCEPT',
+      '-A INPUT -p tcp -m tcp —dport 25 -j ACCEPT',
+      '-A INPUT -p tcp -m tcp —dport 30000 -j ACCEPT',
+      '-A INPUT -p tcp -m tcp —dport 80 -j ACCEPT',
+      '-A INPUT -p tcp -m tcp —dport 443 -j ACCEPT',
+      '-A INPUT -s 127.0.0.1 -j ACCEPT',
+      '-A INPUT -p tcp -m tcp —dport 8000:10000 -j ACCEPT',
+      '-A INPUT -p udp -m udp —dport 8000:10000 -j ACCEPT'
+    ]}
+  })
+
+  MATT_SSH_KEY = <<-END
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv0klC6nK2tnAHoqrUJuXUcjh4vfMH36y1eCpdj5SFwo1ohX+NvxIkvbDWOpjiSDR3oDRvGf/+v5rnI4iHxS/odnl9NJy1nq3pLC91WOmUGWqlWXVSnJ4qH2zDrVwtdqztMgAqaGawvajxMsyuZpmbnDZJM/7uzkbnrvKoLL5QbuM14pSNK/t3lWVMzC68KonaaFOGG/QgSnlOO+uFEJxxynbr9TyRObvM1ALMcWeqWL2s3W0I/bCwvFCLaZnG/ZWp/+CpZ3acwQFwttYn7iC04S+XhzJU8iWLwzYr4DzKnchyJyHw9zTJcG5SO/Ihqb7/DaAmgMm0xnxjEatbwRUkQ== matt@Auk.local
+END
+
+  file '/home/sftponly/home/sftponly/.ssh/authorized_keys', :ensure => :present, :content => [MATT_SSH_KEY].join('\n')
+
   # The default_stack recipe install Rails, Apache, Passenger, the database from
   # database.yml, Postfix, Cron, logrotate and NTP. See lib/moonshine/manifest/rails.rb
   # for details. To customize, remove this recipe and specify the components you want.
@@ -43,25 +64,6 @@ class ApplicationManifest < Moonshine::Manifest::Rails
     # CONFIG
     # file '/etc/farm.conf', :ensure => :present, :content => farm_config
 
-    configure({
-      :ssh => { :port => 30000, :allow_users => ['rails'] },
-      :iptables => { :rules => [
-        '-A INPUT -m state —state RELATED,ESTABLISHED -j ACCEPT',
-        '-A INPUT -p icmp -j ACCEPT',
-        '-A INPUT -p tcp -m tcp —dport 25 -j ACCEPT',
-        '-A INPUT -p tcp -m tcp —dport 30000 -j ACCEPT',
-        '-A INPUT -p tcp -m tcp —dport 80 -j ACCEPT',
-        '-A INPUT -p tcp -m tcp —dport 443 -j ACCEPT',
-        '-A INPUT -s 127.0.0.1 -j ACCEPT',
-        '-A INPUT -p tcp -m tcp —dport 8000:10000 -j ACCEPT',
-        '-A INPUT -p udp -m udp —dport 8000:10000 -j ACCEPT'
-      ]}
-    })
-
-    MATT_SSH_KEY = <<-END
-ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAv0klC6nK2tnAHoqrUJuXUcjh4vfMH36y1eCpdj5SFwo1ohX+NvxIkvbDWOpjiSDR3oDRvGf/+v5rnI4iHxS/odnl9NJy1nq3pLC91WOmUGWqlWXVSnJ4qH2zDrVwtdqztMgAqaGawvajxMsyuZpmbnDZJM/7uzkbnrvKoLL5QbuM14pSNK/t3lWVMzC68KonaaFOGG/QgSnlOO+uFEJxxynbr9TyRObvM1ALMcWeqWL2s3W0I/bCwvFCLaZnG/ZWp/+CpZ3acwQFwttYn7iC04S+XhzJU8iWLwzYr4DzKnchyJyHw9zTJcG5SO/Ihqb7/DaAmgMm0xnxjEatbwRUkQ== matt@Auk.local
-END
-    file '/home/sftponly/home/sftponly/.ssh/authorized_keys', :ensure => :present, :content => [MATT_SSH_KEY].join('\n')
 
     # Logs for Rails, MySQL, and Apache are rotated by default
     # logrotate '/var/log/some_service.log', :options => %w(weekly missingok compress), :postrotate => '/etc/init.d/some_service restart'
