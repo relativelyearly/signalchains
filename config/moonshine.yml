@@ -2,7 +2,7 @@
 :application: signalchains
 :user: rails
 #:time_zone: UTC
-:deploy_to: /srv/your_app_name
+:deploy_to: /srv/signalchains
 :domain: signalchains.com
 #:domain_aliases:
 #  - assets1.yourapp.com
