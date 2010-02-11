@@ -12,12 +12,12 @@ role :app, host
 role :web, host
 role :db,  host
 
-ssh_options[:port] = 30000
+# ssh_options[:port] = 30000
 
 set :backup_database_before_migrations, false
 set :disable_web_during_migrations,     true
 set :build_gems,                        false
-set :tag_on_deploy,                     true
+set :tag_on_deploy,                     false
 set :cleanup_on_deploy,                 false
 set :compress_assets,                   false
 

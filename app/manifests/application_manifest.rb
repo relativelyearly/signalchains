@@ -73,6 +73,15 @@ END
     # on_stage 'testing' do
     #   file '/etc/motd', :ensure => :file, :content => "Welcome to the TEST server!"
     # end
+
+    exec "ts:config", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}"
+
+    package 'build-dep', 'ffmpeg', 'liblame-dev', 'subversion', 'checkinstall'
+    exec "build ffmpeg",
+      :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 'cd ffmpeg', './configure --enable-gpl --disable-debug --enable-libmp3lame --enable-pthreads --disable-vhook', 'checkinstall'].join(' && '),
+      :cwd => '/tmp',
+      :creates => '/usr/bin/ffmpeg'
+
   end
   # The following line includes the 'application_packages' recipe defined above
   recipe :application_packages
