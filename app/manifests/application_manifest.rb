@@ -74,7 +74,7 @@ END
     #   file '/etc/motd', :ensure => :file, :content => "Welcome to the TEST server!"
     # end
 
-    exec "ts:config", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}", :user => configuration[:user]
+    exec "ts:in", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}", :user => configuration[:user]
 
     package 'imagemagick', :ensure => :installed
     package 'vorbis-tools', :ensure => :installed

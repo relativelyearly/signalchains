@@ -18,6 +18,8 @@ Rails::Initializer.run do |config|
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx'
   config.gem "newrelic_rpm"
   config.gem 'jammit'
+  config.gem 'hoptoad_notifier'
+
   config.time_zone = 'UTC'
   config.load_paths << "#{RAILS_ROOT}/app/models/gear"
 end
