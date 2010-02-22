@@ -10,6 +10,7 @@
 - :name: thinking-sphinx
 - :name: newrelic_rpm
 - :name: jammit
+- :name: hoptoad_notifier
 - :name: bullet
 - :version: 2.3.5
   :name: rails
