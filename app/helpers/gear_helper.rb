@@ -6,7 +6,7 @@ module GearHelper
       link_url = eval("new_chain_#{gear_class.to_s.underscore}_path(@chain)")
     end
 
-    link_to "<span>New #{gear_class.to_s.underscore.humanize.titleize}</span>", link_url, :class => 'btn'
+    link_to "<span>#{image_tag 'icons/add.png'} New #{gear_class.to_s.underscore.humanize.titleize}</span>", link_url, :class => 'btn'
   end
 
   def gear_link(gear, text="#{gear.make} #{gear.model}")

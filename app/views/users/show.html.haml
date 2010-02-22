@@ -3,14 +3,14 @@
   %link{:rel => 'canonical', :href => user_by_login_url(@user.login)}
 
 .bucket.user-page
-  .first.col.w50
+  .first.col.w45
     %h1
       = link_to image_tag(@user.avatar.url(:thumb), :alt => @user.display_name), @user.avatar.url(:display), :class => 'zoom'
       = @user.display_name
-  .col.w10#follow
+  .col.w15#follow
     = follow_button(@user)
     - if current_user == @user
-      = link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'    
+      = link_to "<span>#{image_tag 'icons/add.png'} Create a Chain</span>", new_chain_path, :class => 'btn w15'    
   .first
 
 #feed.col.first.w40

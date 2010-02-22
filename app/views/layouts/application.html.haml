@@ -38,7 +38,7 @@
                 = link_to 'Register', register_path
             .first
               - form_for Search.new do |f|
-                = f.text_field :keyword, :size => 16
+                = f.text_field :keyword, :size => 16, :placeholder => 'gear, chains, users'
                 = f.submit 'search'
           - if Gear.featured
             #featured-gear-sidebar

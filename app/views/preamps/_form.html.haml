@@ -1,6 +1,11 @@
 %h3 Create a New Preamp
+%p.borderB
+  Users will be able to use this piece of gear after you create it. 
+  %br
+  All fields are not required, but you won't be able to edit them later. 
+
 - semantic_form_for @preamp, :html => {:multipart => true} do |f|
-  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.first.w45= render(:partial => 'gear/form', :locals => {:f => f})
   .col.w15
     = f.input :circuitry, :as => :select, :collection => Preamp.circuitries
     - if @chain

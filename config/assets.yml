@@ -1,5 +1,4 @@
 embed_assets: datauri
-package_assets: always
 javascript_compressor: closure
 
 javascripts:
@@ -10,12 +9,14 @@ javascripts:
     - public/javascripts/plugins/jquery.form.js
     - public/javascripts/plugins/jquery.scrollTo.js
     - public/javascripts/plugins/jquery.localscroll.js
+    - public/javascripts/plugins/jquery.uniform.js
     - public/fancybox/fancybox.js
     - public/javascripts/plugins/jquery.cuteTime.js
     - public/javascripts/application.js
 
 stylesheets:
   default:
+    - public/stylesheets/uniform.default.css
     - public/stylesheets/application.css
     - public/stylesheets/style.css
     - public/fancybox/fancybox.css

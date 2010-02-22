@@ -1,7 +1,7 @@
-.unit.w65
+.unit
   .col.thumb.first
     = gear_link(index_gear, image_tag(index_gear.image.url(:thumb)))
-  .col.w35
+  .col.desc
     %h4
       = gear_link(index_gear)
     = render(:partial => index_gear.class.index_partial, :object => index_gear)

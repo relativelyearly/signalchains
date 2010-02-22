@@ -91,7 +91,9 @@ a.btn span {
   padding-right: 8px;
   padding-left: 8px;
 }
-
+a.btn span img {
+  vertical-align: sub;
+}
 .chain_link .community a.btn, #audio .btn {
   color: #fff;
   background-image: url(../images/backgrounds/button_dark_sprite.png);
@@ -349,7 +351,7 @@ float: none;
 }
 .social-links a:active, .admin a:active, a.edit:active, a.delete:active {
   position: relative;
-  background-position: right -48px;
+  background-position: right -48px !important;
   top: 1px;
 }
 .social-links a span {

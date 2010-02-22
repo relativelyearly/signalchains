@@ -2,14 +2,16 @@
   - title "Signal Chains: #{@user.display_name}'s Chains"
 - else
   - title "Signal Chains: Chains"
-
-= link_to "<span>New Chain</span>", new_chain_path, :class => 'btn w10'
-.col.first.w20
+.col.first.w45
+  %h3 Chains listed newest to oldest
+.col.w20
+  = link_to "<span>#{image_tag 'icons/add.png'} Create a Chain</span>", new_chain_path, :class => 'btn w15'
+.col.first.w45
+  = render(:partial => 'chains/chain', :collection => collection)
+.col.w20
   #tops
     %h3 Top Tags
     .tags
       - if @tags.any?
         - tag_cloud(@tags, %w()) do |tag, css_class|
-          %span= link_to(h(tag.name), tag_path(tag.name))
-.col.w45
-  = render(:partial => 'chains/chain', :collection => collection)
+          %span= link_to(h(tag.name), tag_path(tag.name))  

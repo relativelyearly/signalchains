@@ -310,6 +310,12 @@ section {
 .inline {
   display: inline;
 }
+
+.borderB {
+  padding-bottom: 15px;
+  border-bottom: 2px groove #fff;
+}
+
 .col.first.w68 {
   margin-bottom: 25px;
 }

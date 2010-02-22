@@ -2,14 +2,16 @@
 
 #search
   %h3 Find the gear you're looking for
+  %h5 Live search through the gear database
   = render(:partial => "#{@class.to_s.pluralize.underscore}/search_form")
 
 %br.clear
 
-#gear= render(:partial => 'gear/index_gear', :collection => collection)
+#gear= render(:partial => 'gear/index_gear', :collection => collection, :order => 'name', :direction => 'asc')
 
 .bucket#new_gear
-  %h3 Or add something new
+  %h3 Can't find it?
+  %h5 No problem. Add it in yourself.
   .w20
     = new_button(@class)
 

@@ -1,6 +1,11 @@
 %h3 Create a New Dynamics Processor
+%p.borderB
+  Users will be able to use this piece of gear after you create it. 
+  %br
+  All fields are not required, but you won't be able to edit them later. 
+
 - semantic_form_for @dynamics_processor, :html => {:multipart => true} do |f|
-  .col.first.w50= render(:partial => 'gear/form', :locals => {:f => f})
+  .col.first.w45= render(:partial => 'gear/form', :locals => {:f => f})
   .col.w15
     = f.input :dynamics_type, :as => :select, :collection => DynamicsProcessor.dynamics_types, :label => 'Type'
     = f.input :circuitry, :as => :select, :collection => DynamicsProcessor.circuitries
