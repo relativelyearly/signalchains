@@ -1,4 +1,4 @@
-:ruby: ree
+:ruby: mri
 :application: signalchains
 :user: rails
 #:time_zone: UTC

@@ -77,7 +77,6 @@ END
     exec "ts:in", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}", :user => configuration[:user]
 
     package 'imagemagick', :ensure => :installed
-    package 'librmagick-ruby1.8', :ensure => :installed
     package 'sun-java6-jre', :ensure => :installed
     package 'vorbis-tools', :ensure => :installed
     package 'ffmpeg', :ensure => :installed
