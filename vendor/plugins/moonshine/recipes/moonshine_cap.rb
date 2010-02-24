@@ -11,52 +11,30 @@ ssh_options[:paranoid] = false
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
-# fix common svn error
+#fix common svn error
 set :scm, :svn if !! repository =~ /^svn/
-
-# set some default values, so we don't have to fetch(:var, :some_default) in multiple places
-set :local_config, []
-set :shared_config, []
-set :rails_env, 'production'
-set :moonshine_manifest, 'application_manifest'
-set :stage, 'undefined'
-set :app_symlinks, []
-set :ruby, :ree
-
-# know the path to rails logs
-set :rails_log do
-  "#{shared_path}/log/#{fetch(:rails_env)}.log"
-end
 
 # callbacks
 on :start, 'moonshine:configure'
 after 'deploy:restart', 'deploy:cleanup'
 
-require 'pathname'
-set :rails_root, Pathname.new(ENV['RAILS_ROOT'] || Dir.pwd)
-set :moonshine_yml_path, rails_root.join('config', 'moonshine.yml')
-
-set :moonshine_yml do
-  if moonshine_yml_path.exist?
-    require 'yaml'
-    YAML::load(ERB.new(moonshine_yml_path.read).result)
-  else
-    puts "Missing #{moonshine_yml_path}"
-    puts "You can generate one using the moonshine generator. See `ruby script/generate moonshine --help` for details"
-    exit(1)
-  end
-end
-
 namespace :moonshine do
-  desc "INTERNAL: populate capistrano with settings from moonshine.yml"
   task :configure do
-    moonshine_yml.each do |key, value|
-      set key.to_sym, value
+    require 'yaml'
+    begin
+      hash = YAML::load(ERB.new(IO.read(File.join(ENV['RAILS_ROOT'] || Dir.pwd, 'config', 'moonshine.yml'))).result)
+      hash.each do |key, value|
+        set(key.to_sym, value)
+      end
+    rescue Exception
+      puts "To use Capistrano with Moonshine, please run 'ruby script/generate moonshine',"
+      puts "edit config/moonshine.yml, then re-run capistrano."
+      raise
     end
   end
 
   desc <<-DESC
-  Bootstrap a barebones Ubuntu system with Git/Subversion, Ruby, RubyGems, and Moonshine
+  Bootstrap a barebones Ubuntu system with Git, Ruby, RubyGems, and Moonshine
   dependencies. Called by deploy:setup.
   DESC
   task :bootstrap do
@@ -71,20 +49,26 @@ namespace :moonshine do
   capistrano deploy:setup behavior.
   DESC
   task :setup_directories do
-    upload moonshine_yml_path.to_s, '/tmp/moonshine.yml'
-    upload File.join(File.dirname(__FILE__), '..', 'lib', 'moonshine_setup_manifest.rb'), '/tmp/moonshine_setup_manifest.rb'
-
-    sudo 'shadow_puppet /tmp/moonshine_setup_manifest.rb'
+    begin
+      config = YAML.load_file(File.join(Dir.pwd, 'config', 'moonshine.yml'))
+      put(YAML.dump(config),"/tmp/moonshine.yml")
+    rescue Exception => e
+      puts e
+      puts "Please make sure the settings in moonshine.yml are valid and that the target hostname is correct."
+      exit(0)
+    end
+    upload(File.join(File.dirname(__FILE__), '..', 'lib', 'moonshine_setup_manifest.rb'), "/tmp/moonshine_setup_manifest.rb")
+    sudo "shadow_puppet /tmp/moonshine_setup_manifest.rb"
     sudo 'rm /tmp/moonshine_setup_manifest.rb'
     sudo 'rm /tmp/moonshine.yml'
   end
 
   desc 'Apply the Moonshine manifest for this application'
   task :apply, :except => { :no_release => true } do
-    sudo "RAILS_ROOT=#{latest_release} DEPLOY_STAGE=#{ENV['DEPLOY_STAGE'] || fetch(:stage)} RAILS_ENV=#{fetch(:rails_env)} shadow_puppet #{latest_release}/app/manifests/#{fetch(:moonshine_manifest)}.rb"
+    sudo "RAILS_ROOT=#{latest_release} DEPLOY_STAGE=#{ENV['DEPLOY_STAGE']||fetch(:stage,'undefined')} RAILS_ENV=#{fetch(:rails_env, 'production')} shadow_puppet #{latest_release}/app/manifests/#{fetch(:moonshine_manifest, 'application_manifest')}.rb"
   end
 
-  desc 'Update code and then run a console. Useful for debugging deployment.'
+  desc "Update code and then run a console. Useful for debugging deployment."
   task :update_and_console do
     set :moonshine_apply, false
     deploy.update_code
@@ -95,7 +79,7 @@ namespace :moonshine do
   task :update_and_rake do
     set :moonshine_apply, false
     deploy.update_code
-    run "cd #{latest_release} && RAILS_ENV=#{fetch(:rails_env)} rake --trace environment"
+    run "cd #{latest_release} && RAILS_ENV=#{fetch(:rails_env, 'production')} rake --trace environment"
   end
 
   after 'deploy:finalize_update' do
@@ -119,27 +103,26 @@ namespace :app do
     Link public directories to shared location.
     DESC
     task :update, :roles => [:app, :web] do
-      fetch(:app_symlinks).each do |link|
-        run "ln -nfs #{shared_path}/public/#{link} #{latest_release}/public/#{link}"
-      end
+      fetch(:app_symlinks, []).each { |link| run "ln -nfs #{shared_path}/public/#{link} #{latest_release}/public/#{link}" }
     end
+
   end
 
-  desc 'Run script/console on the first application server'
+  desc "remotely console"
   task :console, :roles => :app, :except => {:no_symlink => true} do
     input = ''
-    run "cd #{current_path} && ./script/console #{fetch(:rails_env)}" do |channel, stream, data|
+    run "cd #{current_path} && ./script/console #{fetch(:rails_env, "production")}" do |channel, stream, data|
       next if data.chomp == input.chomp || data.chomp == ''
       print data
       channel.send_data(input = $stdin.gets) if data =~ /^(>|\?)>/
     end
   end
 
-  desc 'Show requests per second'
+  desc "Show requests per second"
   task :rps, :roles => :app, :except => {:no_symlink => true} do
     count = 0
     last = Time.now
-    run "tail -f #{rails_log}" do |ch, stream, out|
+    run "tail -f #{shared_path}/log/#{fetch(:rails_env, "production")}.log" do |ch, stream, out|
       break if stream == :err
       count += 1 if out =~ /^Completed in/
       if Time.now - last >= 1
@@ -150,15 +133,15 @@ namespace :app do
     end
   end
 
-  desc 'Tail the application log file of the first app server '
+  desc "tail application log file"
   task :log, :roles => :app, :except => {:no_symlink => true} do
-    run "tail -f #{rails_log}" do |channel, stream, data|
+    run "tail -f #{shared_path}/log/#{fetch(:rails_env, "production")}.log" do |channel, stream, data|
       puts "#{data}"
       break if stream == :err
     end
   end
 
-  desc 'Tail vmstat'
+  desc "tail vmstat"
   task :vmstat, :roles => [:web, :db] do
     run "vmstat 5" do |channel, stream, data|
       puts "[#{channel[:host]}]"
@@ -176,9 +159,9 @@ namespace :local_config do
   later symlinking (if necessary). Called if local_config is set.
   DESC
   task :upload do
-    fetch(:local_config).each do |file|
+    fetch(:local_config,[]).each do |file|
       filename = File.split(file).last
-      if File.exist?(file)
+      if File.exist?( file )
         parent.upload(file, "#{shared_path}/config/#{filename}")
       end
     end
@@ -188,7 +171,7 @@ namespace :local_config do
   Symlinks uploaded local configurations into the release directory.
   DESC
   task :symlink do
-    fetch(:local_config).each do |file|
+    fetch(:local_config,[]).each do |file|
       filename = File.split(file).last
       run "ls #{latest_release}/#{file} 2> /dev/null || ln -nfs #{shared_path}/config/#{filename} #{latest_release}/#{file}"
     end
@@ -197,16 +180,15 @@ namespace :local_config do
 end
 
 namespace :shared_config do
-
   desc <<-DESC
   Uploads local configuration files to the application's shared directory for
   later symlinking (if necessary). Called if shared_config is set.
   DESC
   task :upload do
-    fetch(:shared_config).each do |file|
+    fetch(:shared_config, []).each do |file|
       filename = File.split(file).last
       if File.exist?(file)
-        put File.read(file), "#{shared_path}/config/#{filename}"
+        put File.read(file), "#{ shared_path }/config/#{ filename }"
       end
     end
   end
@@ -216,10 +198,10 @@ namespace :shared_config do
   local use.
   DESC
   task :download do
-    fetch(:shared_config).each do |file|
+    fetch(:shared_config, []).each do |file|
       filename = File.split(file).last
       if File.exist?(file)
-        get "#{shared_path}/config/#{filename}", file
+        get "#{ shared_path }/config/#{ filename }", file
       end
     end
   end
@@ -228,15 +210,15 @@ namespace :shared_config do
   Symlinks uploaded local configurations into the release directory.
   DESC
   task :symlink do
-    fetch(:shared_config).each do |file|
+    fetch(:shared_config, []).each do |file|
       filename = File.split(file).last
-      run "ls #{latest_release}/#{file} 2> /dev/null || ln -nfs #{shared_path}/config/#{filename} #{latest_release}/#{file}"
+      run "ls #{ latest_release }/#{ file } 2> /dev/null || ln -nfs #{ shared_path }/config/#{ filename } #{ latest_release }/#{ file }"
     end
   end
 end
 
 namespace :deploy do
-  desc 'Restart the Passenger processes on the app server by touching tmp/restart.txt.'
+  desc "Restart the Passenger processes on the app server by touching tmp/restart.txt."
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_path}/tmp/restart.txt"
   end
@@ -265,16 +247,16 @@ end
 
 namespace :ruby do
 
-  desc 'Forces a reinstall of Ruby and restarts Apache/Passenger'
+  desc "Forces a reinstall of Ruby and restarts Apache/Passenger"
   task :upgrade do
     install
     apache.restart
   end
 
-  desc 'Install Ruby + Rubygems'
+  desc "Install Ruby + Rubygems"
   task :install do
     install_deps
-    send fetch(:ruby)
+    send fetch(:ruby, 'ree').intern
     install_rubygems
     install_moonshine_deps
   end
@@ -284,11 +266,11 @@ namespace :ruby do
   end
 
   task :apt do
-    sudo 'apt-get install -q -y ruby-full'
+    sudo "apt-get install -q -y ruby-full"
   end
 
   task :remove_ruby_from_apt do
-    sudo 'apt-get remove -q -y ^.*ruby.* || true'
+    sudo "apt-get remove -q -y ^.*ruby.* || true"
     #TODO apt-pinning to ensure ruby is never installed via apt
   end
 
@@ -296,65 +278,65 @@ namespace :ruby do
     remove_ruby_from_apt
     run [
       'cd /tmp',
-      'sudo rm -rf ruby-enterprise-1.8.6-20090610* || true',
+      'rm -rf ruby-enterprise-1.8.6-20090610* || true',
       'wget -q http://assets.railsmachine.com/other/ruby-enterprise-1.8.6-20090610.tar.gz',
       'tar xzf ruby-enterprise-1.8.6-20090610.tar.gz',
       'sudo /tmp/ruby-enterprise-1.8.6-20090610/installer --dont-install-useful-gems -a /usr'
-    ].join(' && ')
+    ].join(" && ")
   end
 
   task :ree187 do
     remove_ruby_from_apt
     run [
       'cd /tmp',
-      'sudo rm -rf ruby-enterprise-1.8.7-2010.01* || true',
+      'rm -rf ruby-enterprise-1.8.7-2010.01* || true',
       'wget -q http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz',
       'tar xzf ruby-enterprise-1.8.7-2010.01.tar.gz',
       'sudo /tmp/ruby-enterprise-1.8.7-2010.01/installer --dont-install-useful-gems -a /usr'
-    ].join(' && ')
+    ].join(" && ")
   end
 
   task :src187 do
     remove_ruby_from_apt
     run [
       'cd /tmp',
-      'sudo rm -rf ruby-1.8.7-p249* || true',
+      'rm -rf ruby-1.8.7-p249* || true',
       'wget -q ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p249.tar.bz2',
       'tar xjf ruby-1.8.7-p249.tar.bz2',
       'cd /tmp/ruby-1.8.7-p249',
       './configure --prefix=/usr',
       'make',
       'sudo make install'
-    ].join(' && ')
+    ].join(" && ")
   end
 
   task :install_rubygems do
     run [
       'cd /tmp',
-      'sudo rm -rf rubygems-1.3.5* || true',
+      'rm -rf rubygems-1.3.5* || true',
       'wget -q http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz',
       'tar xfz rubygems-1.3.5.tgz',
       'cd /tmp/rubygems-1.3.5',
       'sudo ruby setup.rb',
       'sudo ln -s /usr/bin/gem1.8 /usr/bin/gem || true',
-      'sudo gem update --system'
-    ].join(' && ')
+      'gem update --system'
+    ].join(" && ")
   end
 
   task :install_deps do
-    sudo 'apt-get update'
-    sudo 'apt-get install -q -y build-essential zlib1g-dev libssl-dev libreadline5-dev wget'
+    sudo "apt-get update"
+    sudo "apt-get install -q -y build-essential zlib1g-dev libssl-dev libreadline5-dev wget"
   end
 
   task :install_moonshine_deps do
-    sudo 'gem install rake --no-rdoc --no-ri'
-    sudo 'gem install puppet -v 0.24.8 --no-rdoc --no-ri'
-    sudo 'gem install shadow_puppet --no-rdoc --no-ri'
+    sudo "gem install rake --no-rdoc --no-ri"
+    sudo "gem install puppet -v 0.24.8 --no-rdoc --no-ri"
+    sudo "gem install shadow_puppet --no-rdoc --no-ri"
   end
 end
 
 namespace :apache do
-  desc 'Restarts the Apache web server'
+  desc "Restarts the Apache web server"
   task :restart do
     sudo 'service apache2 restart'
   end
@@ -366,8 +348,8 @@ namespace :vcs do
     package = case fetch(:scm).to_s
       when 'svn' then 'subversion'
       when 'git' then 'git-core'
-      else nil
+      else scm.to_s
     end
-    sudo "apt-get -qq -y install #{package}" if package
+    sudo "apt-get -qq -y install #{package}" unless package == 'none'
   end
 end
