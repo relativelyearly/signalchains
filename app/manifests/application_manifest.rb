@@ -91,12 +91,12 @@ END
   end
   # The following line includes the 'application_packages' recipe defined above
   recipe :application_packages
-  plugin :god
+  # plugin :god
   recipe :god
-  plugin :sphinx
+  # plugin :sphinx
   recipe :sphinx
-  plugin :iptables
+  # plugin :iptables
   recipe :iptables
-  plugin :ssh
+  # plugin :ssh
   recipe :ssh
 end
