@@ -1,3 +1,4 @@
+require 'pathname'
 module Moonshine::Manifest::Rails::Rails
 
   # Attempt to bootstrap your application. Calls <tt>rake moonshine:bootstrap</tt>
@@ -87,7 +88,7 @@ module Moonshine::Manifest::Rails::Rails
   def rails_gems
     gemrc = {
       :verbose => true,
-      :gem => "--no-ri --no-rdoc",
+      :gem => '--no-ri --no-rdoc',
       :update_sources => true,
       :sources => [
         'http://gemcutter.org',
@@ -102,15 +103,52 @@ module Moonshine::Manifest::Rails::Rails
       :owner    => 'root',
       :group    => 'root',
       :content  => gemrc.to_yaml
-    #stub for dependencies
+
+    # stub for puppet dependencies
     exec 'rails_gems', :command => 'true'
-    return unless configuration[:gems]
-    configuration[:gems].each do |gem|
-      gem.delete(:source) if gem[:source] && gemrc[:sources].include?(gem[:source])
-      gem(gem[:name], {
-        :version => gem[:version],
-        :source => gem[:source]
-      })
+
+    gemfile_path = rails_root.join('Gemfile')
+    gemfile_lock_path = rails_root.join('Gemfile.lock')
+    if gemfile_path.exist?
+      gem 'bundler', :before => exec('bundle install')
+      #require 'bundler'
+      # FIXME waiting on a bugfix in rubygems 1.3.6 which lets
+      # prerelease gems depend on non-prerelease gems, enabling
+      # rails 3 beta to be installed
+      #ENV['BUNDLE_GEMFILE'] = gemfile_path.to_s
+      #Bundler.load.dependencies_for(:default, rails_env).each do |dependency|
+      #  gem dependency.name,
+      #      :version => dependency.version_requirements,
+      #      :before => exec("bundle install")
+      #end
+
+      # this mkdir is a workaround for http://github.com/carlhuda/bundler/issues/issue/77
+      exec "mkdir #{rails_root.join('.bundle')}",
+        :before => exec("bundle install"),
+        :creates => rails_root.join('.bundle').to_s,
+        :user => configuration[:user]
+      exec 'bundle install',
+        :command => 'bundle install',
+        :cwd => rails_root,
+        :before => [exec('rails_gems'), exec('bundle lock')],
+        :require => file('/etc/gemrc'),
+        :user => configuration[:user]
+      # this is a hack for getting passenger to load the bundler load path
+      # http://groups.google.com/group/phusion-passenger/browse_thread/thread/6642823360242cab/b75495c82b565fb1?#b75495c82b565fb1
+      exec 'bundle lock',
+        :command => 'bundle lock',
+        :cwd => rails_root,
+        :creates => gemfile_lock_path.to_s,
+        :user => configuration[:user]
+    else
+      return unless configuration[:gems]
+      configuration[:gems].each do |gem|
+        gem.delete(:source) if gem[:source] && gemrc[:sources].include?(gem[:source])
+        gem(gem[:name], {
+          :version => gem[:version],
+          :source => gem[:source]
+        })
+      end
     end
   end
 

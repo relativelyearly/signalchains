@@ -2,7 +2,7 @@ default_run_options[:pty] = true
 
 set :application, "signalchains"
 set :repository,  "git@github.com:relativelyearly/signalchains.git"
-set :user, "deploy"
+set :user, "rails"
 set :deploy_via, :remote_cache
 set :scm, :git
 set :deploy_to, '/data/signalchains'
