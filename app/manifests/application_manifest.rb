@@ -78,7 +78,7 @@ END
 
     package 'imagemagick', :ensure => :installed
     package 'libmagick9-dev', :ensure => :installed
-    package 'sun-java6-jre', :ensure => :installed
+    package 'sun-java6-jdk', :ensure => :installed
     package 'vorbis-tools', :ensure => :installed
     package 'ffmpeg', :ensure => :installed
     package 'libmp3lame-dev', :ensure => :installed
