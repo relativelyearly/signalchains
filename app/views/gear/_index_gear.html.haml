@@ -4,8 +4,7 @@
   .col.desc
     %h4
       = gear_link(index_gear)
-    = render(:partial => index_gear.class.index_partial, :object => index_gear)
-  .col.w15
+    %small= render(:partial => index_gear.class.index_partial, :object => index_gear)
     - if @chain
       = add_to_chain_button(index_gear)
   %br.clear

@@ -427,3 +427,7 @@ li.chain_gear {
 .unit ul {
   font-size: .9em;
 }
+
+#gear div.unit div.col.desc a.btn.w15 {
+  margin-top: 10px;
+}
