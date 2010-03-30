@@ -85,11 +85,10 @@ END
     package 'checkinstall', :ensure => :installed
 
     exec "build ffmpeg",
-      :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 
+      :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg',
                    'cd ffmpeg',
-                   './configure --enable-gpl --enable-postproc --enable-swscale --disable-debug --enable-libmp3lame --enable-pthreads', 
+                   './configure --enable-gpl --enable-postproc --enable-swscale --disable-debug --enable-libmp3lame --enable-pthreads --prefix=/usr',
                    'checkinstall'].join(' && '),
-
       :cwd => '/tmp',
       :creates => '/usr/bin/ffmpeg'
 
