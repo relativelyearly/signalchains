@@ -87,7 +87,7 @@ END
     exec "build ffmpeg",
       :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 
                    'cd ffmpeg',
-                   './configure --enable-gpl --enable-postproc --enable-swscale --disable-debug --enable-libmp3lame --enable-pthreads --disable-vhook', 
+                   './configure --enable-gpl --enable-postproc --enable-swscale --disable-debug --enable-libmp3lame --enable-pthreads', 
                    'checkinstall'].join(' && '),
 
       :cwd => '/tmp',
