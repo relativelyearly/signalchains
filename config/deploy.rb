@@ -7,7 +7,7 @@ set :deploy_via, :remote_cache
 set :scm, :git
 set :deploy_to, '/data/signalchains'
 
-set :host, '69.164.194.118'
+set :host, 'signalchains.com'
 role :app, host
 role :web, host
 role :db,  host

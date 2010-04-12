@@ -423,16 +423,17 @@ ul.list li {
   list-style: none;
   margin: 4px 0;
 }
-ul.list li a, .tags a {
+ul.list li a, .tags a, .pagination a {
   display: block;
   background: #f5f5f5;
   border-top: 1px solid #fff;
   -webkit-border-radius:4px;-moz-border-radius:4px;  
+  border-radius:4px;
   padding: 5px;
   text-decoration: none;
 }
 
-ul.list li a:hover, .tags a:hover {
+ul.list li a:hover, .tags a:hover, .pagination a:hover {
   border-top: 1px solid #ccc;	
   text-decoration: none;
   background: #dedede;
@@ -674,4 +675,22 @@ textarea#blog_post_content {
   width: 350px;
 }
 /* @end */
+
+/* @group Pagination */
+.pagination {
+  padding: 20px 10px 10px 10px;
+  color: #666;
+  border-top: 2px groove #fff;
+}
+
+.pagination a {
+  display: inline;
+}
+
+.pagination span.current {
+  font-weight: bold;
+  text-shadow: 0 2px 1px #fff;
+}
+/* @end */
+
 
