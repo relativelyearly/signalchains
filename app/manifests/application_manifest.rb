@@ -76,14 +76,22 @@ END
 
     exec "ts:in", :command => "/usr/bin/rake -f #{configuration[:deploy_to]}/current/Rakefile ts:in RAILS_ENV=#{ENV['RAILS_ENV']}", :user => configuration[:user]
 
+    #exec "install java",
+      #:command => "yes 'yes' | DEBIAN_FRONTEND=Readline apt-get install sun-java6-jre",
+      #:creates => '/usr/bin/java'
+
     package 'imagemagick', :ensure => :installed
+    package 'libmagick9-dev', :ensure => :installed
     package 'vorbis-tools', :ensure => :installed
-    package 'ffmpeg', :ensure => :installed
     package 'libmp3lame-dev', :ensure => :installed
     package 'subversion', :ensure => :installed
     package 'checkinstall', :ensure => :installed
+
     exec "build ffmpeg",
-      :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg', 'cd ffmpeg', './configure --enable-gpl --disable-debug --enable-libmp3lame --enable-pthreads --disable-vhook', 'checkinstall'].join(' && '),
+      :command => ['svn checkout svn://svn.mplayerhq.hu/ffmpeg/trunk ffmpeg',
+                   'cd ffmpeg',
+                   './configure --enable-gpl --enable-postproc --enable-swscale --disable-debug --enable-libmp3lame --enable-pthreads --prefix=/usr',
+                   'checkinstall'].join(' && '),
       :cwd => '/tmp',
       :creates => '/usr/bin/ffmpeg'
 

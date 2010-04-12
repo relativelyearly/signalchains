@@ -9,6 +9,7 @@
 #  - assets2.yourapp.com
 #:scm: git
 :repository: git@github.com:relativelyearly/signalchains.git
+:branch: master
 # Use :app_symlinks to setup directories under public/ that you want to persist
 # across deployments. They'll be symlinked to the shared directory.
 #:app_symlinks:
@@ -22,17 +23,17 @@
 #
 # The entries in shared_children are created in #{application}/shared
 :shared_children:
-- system
-- log
-- pids
-- config
+  - system
+  - log
+  - pids
+  - config
 # After specifying a gem with config.gem, run 'rake moonshine:gems'
 # to update config/gems.yml. If the gem depends on native packages, 
 # tell Moonshine here:
-#:apt_gems:
-#  :awesomegem:
-#    - awesome
-#    - libawesome-dev
+:apt_gems:
+  :paperclip:
+    - imagemagick
+    - libmagick9-dev
 #
 # See all the options for Passenger, Apache vhosts, and MySQL in the
 # respective templates: moonshine/lib/moonshine/manifest/rails/templates

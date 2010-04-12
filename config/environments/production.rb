@@ -26,3 +26,7 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+Paperclip.options[:command_path] = "/usr/bin"
+Paperclip.options[:swallow_stderr] = false
+Paperclip.options[:log_command] = true
