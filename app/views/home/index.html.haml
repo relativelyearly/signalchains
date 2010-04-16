@@ -29,7 +29,7 @@
     - if @new_chains
       %ul.list
         - @new_chains.each do |chain|
-          %li= link_to(chain.name, chain)
+          %li= link_to truncate("#{chain.name}", :length => 28), chain, :title => chain.name
   .col-3
     %h4 Newest Users
     - if @new_users
