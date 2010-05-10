@@ -16,6 +16,7 @@
 }
 #user-chains .list a, #user-chains .list a small {
   display: block;
+  color: #444;
 }
 #user-chains .list a small {
   text-align: right;
@@ -86,9 +87,14 @@ a#logout {
 }
 #user-chains h4 {
   margin: 15px 0 0 0;
+  color: #444;
 }
 
 #user-chains h4 a {
   text-decoration: none;
   color: #000;  
+}
+
+#gear-search input{
+  font-size: 1.5em;
 }

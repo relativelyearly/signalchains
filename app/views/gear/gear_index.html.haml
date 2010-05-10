@@ -9,12 +9,18 @@
   = link_to 'Converters', converters_path, :id => 'new_converter', :class => 'block-btn w5 col'  
   .first
 .first.col-3
-  %h4 Most Used
+  %h3 Most Used
   %ul.list
     - most_used_gear.each do |gear|
       %li= link_to gear.name, gear
 .col-3-2
   - if Gear.featured
     .col-3-2#featured-gear
-      %h4 Featured Gear
+      %h3 Featured Gear
       %h4= link_to "<span>#{Gear.featured.name}</span>", Gear.featured, {:style => 'background-image: url(' "#{Gear.featured.image.url(:featured)}" ')'}
+
+#gear-search.first
+  %h3 Search
+  - form_for Search.new do |f|
+    = f.text_field :keyword, :size => 46, :placeholder => 'make, model, tags'
+    = f.submit 'search'

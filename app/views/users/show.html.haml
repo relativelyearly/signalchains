@@ -14,11 +14,25 @@
   .first
 
 #feed.col.first.w40
-  %h3 Events
+  %h3 Activity
   - if @events.empty?
     - if @user == current_user
-      %p
-        %small There is no activity to show here, and that's pretty lame. Start following someone or do something fantastic to fill this empty void.
+      .help
+        %p
+          Thanks for signing up, now it's time to get this party started! Here are some suggestions for what to do next:
+          %ul
+            %li
+              = link_to "Edit your profile", edit_account_path
+              to set a display name and profile image.
+            %li
+              = link_to "Browse gear", gear_path
+              to hear samples of it in action and share your thoughts.
+            %li
+              = link_to "Create a Chain", new_chain_path
+              featuring your signal flow and audio that you have recorded.
+            %li
+              Follow other users by visiting their profile to create your own activity feed.
+            
     - else
       %p
         %small

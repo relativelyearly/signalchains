@@ -70,3 +70,13 @@
 .featured .featured-chain{
   margin-bottom: 20px;
 }
+
+div.newest {
+  margin-top: 15px;
+}
+.newest .list {
+  margin-bottom: 0;
+}
+.newest .col-3 {
+  margin-bottom: 0;
+}
