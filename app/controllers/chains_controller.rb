@@ -77,10 +77,10 @@ class ChainsController < ResourceController::Base
       @user = User.find_by_login(params[:username])
     end
     if @user
-      @collection = @user.chains.all(:include => [:user], :order => 'created_at DESC') if current_user == @user
-      @collection = @user.chains.complete.all(:include => [:user], :order => 'created_at DESC') unless current_user == @user
+      @collection = @user.chains.paginate(:include => [:user], :order => 'created_at DESC', :page => params[:page], :per_page => 10) if current_user == @user
+      @collection = @user.chains.complete.paginate(:include => [:user], :order => 'created_at DESC', :page => params[:page], :per_page => 10) unless current_user == @user
     else
-      @collection = Chain.complete
+      @collection = Chain.complete.paginate(:page => params[:page], :per_page => 10)
     end
 
     @collection

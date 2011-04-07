@@ -3,7 +3,12 @@
 - else
   - title "Signal Chains: Chains"
 .col.first.w45
-  %h3 Chains listed newest to oldest
+  - if @user
+    %h3= "#{@user.display_name}'s Chains"
+  - else
+    %h3 Chains
+  %h4
+    Listed newest to oldest
 .col.w20
   = link_to "<span>#{image_tag 'icons/add.png'} Create a Chain</span>", new_chain_path, :class => 'btn w15'
 .col.first.w45
@@ -15,3 +20,5 @@
       - if @tags.any?
         - tag_cloud(@tags, %w()) do |tag, css_class|
           %span= link_to(h(tag.name), tag_path(tag.name))  
+.first
+  = will_paginate(collection, :next_label => 'Next &rarr;', :prev_label => '&larr; Previous')

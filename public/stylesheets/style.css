@@ -4,7 +4,7 @@
 
 body {
   background-color: #222;
-  font-family: Lucida Grande;
+  font-family: "Qlassik", Lucida Grande;
   font-size: 14px;
   margin: 0;
   background-image: url(../images/backgrounds/grill_background.png);
@@ -136,6 +136,7 @@ div.image a {
   overflow: hidden;
   padding: 0 0 0 250px;
   background: #708e8d;
+  font-size: 1.1em;
 }
 #nav ul li {
   display: block;
@@ -267,6 +268,22 @@ div.image a {
 .footer ul li {
   list-style: none;
 }
+
+.help {
+  padding: 1em;
+  background: #cbd5d5;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;  
+  border: 1px dashed #eee;
+  color: #1e4e4c;
+}
+#content .help a {
+  text-decoration: none;
+  font-weight: bold;
+}
+#content .help a:hover {
+  text-decoration: underline;
+}
 /* @group gear */
 .gear {
   padding: 0;
@@ -374,26 +391,27 @@ div.image a {
 
 /* @group Global Text */
 body {
-  font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+  font:13px/1.5em "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
-  font-family: Gill Sans, "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
+  font-family: Gill Sans, 'Gillius No 2', "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
   margin: 0 0 .5em 0;
 }
 h1 {
-  font-size: 180%;
+  font-weight: bold;
+  font-size: 218%;
 }
 h2 {
-  font-size: 160%;
+  font-size: 164%;
 }
 h3 {
-  font-size: 140%;
+  font-size: 145%;
   font-weight: normal;
   margin-bottom: .8em;
 }
 h4 {
-  font-size: 100%;
+  font-size: 118%;
   font-weight: normal;
   letter-spacing: .1em;
 }
@@ -423,16 +441,17 @@ ul.list li {
   list-style: none;
   margin: 4px 0;
 }
-ul.list li a, .tags a {
+ul.list li a, .tags a, .pagination a {
   display: block;
   background: #f5f5f5;
   border-top: 1px solid #fff;
   -webkit-border-radius:4px;-moz-border-radius:4px;  
+  border-radius:4px;
   padding: 5px;
   text-decoration: none;
 }
 
-ul.list li a:hover, .tags a:hover {
+ul.list li a:hover, .tags a:hover, .pagination a:hover {
   border-top: 1px solid #ccc;	
   text-decoration: none;
   background: #dedede;
@@ -674,4 +693,22 @@ textarea#blog_post_content {
   width: 350px;
 }
 /* @end */
+
+/* @group Pagination */
+.pagination {
+  padding: 20px 10px 10px 10px;
+  color: #666;
+  border-top: 2px groove #fff;
+}
+
+.pagination a {
+  display: inline;
+}
+
+.pagination span.current {
+  font-weight: bold;
+  text-shadow: 0 2px 1px #fff;
+}
+/* @end */
+
 

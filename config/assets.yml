@@ -18,6 +18,7 @@ stylesheets:
   default:
     - public/stylesheets/uniform.default.css
     - public/stylesheets/application.css
+    - public/stylesheets/fonts.css    
     - public/stylesheets/style.css
     - public/fancybox/fancybox.css
     - "public/stylesheets/custom-theme/custom.css"

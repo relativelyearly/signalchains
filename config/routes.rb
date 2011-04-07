@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect '/chains/page/:page', :controller => 'chains', :action => 'index'
+  map.connect '/:username/chains/:page', :controller => 'chains', :action => 'index'
   map.resources :blog_posts, :as => 'blog', :only => [:index, :show] do |blog|
     blog.resources :comments
   end

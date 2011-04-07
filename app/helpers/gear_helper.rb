@@ -33,11 +33,19 @@ module GearHelper
   end
 
   def most_used_gear
-    @most_used ||= ThinkingSphinx.search('',
-      :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
-      :page => 1,
-      :per_page => 5,
-      :order => 'chain_gears_count DESC').compact
+    if params[:controller] == "gear"
+      @most_used ||= ThinkingSphinx.search('',
+        :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+        :page => 1,
+        :per_page => 6,
+        :order => 'chain_gears_count DESC').compact
+    else
+      @most_used ||= ThinkingSphinx.search('',
+        :class => [Mic, Preamp, Equalizer, DynamicsProcessor, EffectsProcessor],
+        :page => 1,
+        :per_page => 5,
+        :order => 'chain_gears_count DESC').compact
+    end
   end
 
   def recommend_link(gear)
