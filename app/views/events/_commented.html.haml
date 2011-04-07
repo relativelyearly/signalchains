@@ -5,4 +5,4 @@
     %strong= link_to commented.secondary_subject.name, commented.secondary_subject
   %small.timestamp= commented.created_at.to_s :us_with_time
   %blockquote
-    = textilize commented.subject.body
+    = textilize commented.subject.try(:body)
